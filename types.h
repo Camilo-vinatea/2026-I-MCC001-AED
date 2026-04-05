@@ -1,9 +1,12 @@
+#include <string>
 
 // C style
 // typedef int T;
 
 // C++11 style
-using T = int;
+using TI = int;
+using TD = double;
+using TS = string;
 
 // // C++20 style
 // template <typename T> struct Type {
