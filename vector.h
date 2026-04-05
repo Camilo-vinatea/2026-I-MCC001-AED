@@ -12,8 +12,10 @@ class Vector{
         T *m_data;
         size_t  m_size;
         size_t m_capacity;
+    private:
+        void resize();
     public:
-        Vector();
+        Vector(size_t capacity = 10);
         ~Vector();
         void push_back(T value);
         T get(size_t index);
@@ -21,10 +23,11 @@ class Vector{
 };
 
 template <typename T>
-Vector<T>::Vector() {
+Vector<T>::Vector(size_t capacity) {
     m_data = nullptr;
     m_size = 0;
-    m_capacity = 0;
+    m_capacity = capacity;
+    m_data = new T[m_capacity];
 }
 
 template <typename T>
@@ -34,16 +37,20 @@ Vector<T>::~Vector() {
 
 template <typename T>
 void Vector<T>::push_back(T value) {
-    if (m_size == m_capacity) {
-        m_capacity = m_capacity == 0 ? 1 : m_capacity * 2;
-        T *newData = new T[m_capacity];
-        for (int i = 0; i < m_size; i++)
-            newData[i] = m_data[i];
-        delete[] m_data;
-        m_data = newData;
-    }
+    if (m_size == m_capacity)
+        resize();
     m_data[m_size] = value;
     m_size++;
+}
+
+template <typename T>
+void Vector<T>::resize() {
+    m_capacity = m_capacity < 10 ? 10: m_capacity * 2;
+    T *newData = new T[m_capacity];
+    for (size_t i = 0; i < m_size; i++)
+        newData[i] = m_data[i];
+    delete[] m_data;
+    m_data = newData;
 }
 
 template <typename T>

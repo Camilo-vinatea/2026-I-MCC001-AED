@@ -9,7 +9,7 @@ using namespace std;
 
 int main() {
     cout << "Hello World MCS-AED 2026-I" << endl;
-    DemoMacros();
-    // DemoVector();
+    // DemoMacros();
+    DemoVector();
     return 0;
 }
