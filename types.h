@@ -1,3 +1,6 @@
+#ifndef __TYPES_H__
+#define __TYPES_H__
+
 #include <string>
 using namespace std;
 
@@ -13,3 +16,5 @@ using TS = string;
 // template <typename T> struct Type {
 //     using value = T;
 // };
+
+#endif // __TYPES_H__

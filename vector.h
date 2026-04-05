@@ -1,3 +1,6 @@
+#ifndef __VECTOR_H__
+#define __VECTOR_H__
+
 #include <cstddef>
 #include "types.h"
 
@@ -54,3 +57,5 @@ size_t Vector<T>::size() {
 }
 
 void DemoVector();
+
+#endif // __VECTOR_H__
