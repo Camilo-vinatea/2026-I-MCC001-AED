@@ -1,4 +1,5 @@
 #include <iostream>
+#include "vector.h"
 
 using namespace std;
 
@@ -7,5 +8,6 @@ using namespace std;
 
 int main() {
     cout << "Hello World MCS-AED 2026-I" << endl;
+    DemoVector();
     return 0;
 }
