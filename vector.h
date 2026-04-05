@@ -1,5 +1,5 @@
 
-
+// No sirve. Tiene muchas limitaciones.
 class Vector{
     private:
         int *m_data;
