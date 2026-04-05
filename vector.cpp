@@ -13,10 +13,10 @@ Vector::~Vector() {
     delete[] m_data;
 }
 
-void Vector::push_back(int value) {
+void Vector::push_back(T value) {
     if (m_size == m_capacity) {
         m_capacity = m_capacity == 0 ? 1 : m_capacity * 2;
-        int *newData = new int[m_capacity];
+        T *newData = new T[m_capacity];
         for (int i = 0; i < m_size; i++)
             newData[i] = m_data[i];
         delete[] m_data;
@@ -26,11 +26,11 @@ void Vector::push_back(int value) {
     m_size++;
 }
 
-int Vector::get(int index) {
+T Vector::get(size_t index) {
     return m_data[index];
 }
 
-int Vector::size() {
+size_t Vector::size() {
     return m_size;
 }
 
@@ -40,9 +40,9 @@ void DemoVector(){
     v.push_back(5);
     v.push_back(25);
     v.push_back(10);
-    v.push_back(15);
+    v.push_back(13);
 
-    for(auto i = 0; i < v.size(); ++i){
+    for(size_t i = 0; i < v.size(); ++i){
         cout << v.get(i) << " ";
     }
     cout << endl;

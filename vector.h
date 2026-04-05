@@ -1,16 +1,17 @@
+#include <cstddef>
+#include "types.h"
 
-// No sirve. Tiene muchas limitaciones.
 class Vector{
     private:
-        int *m_data;
-        int  m_size;
-        int m_capacity;
+        T *m_data;
+        size_t  m_size;
+        size_t m_capacity;
     public:
         Vector();
         ~Vector();
-        void push_back(int value);
-        int get(int index);
-        int size();
+        void push_back(T value);
+        T get(size_t index);
+        size_t size();
 };
 
 void DemoVector();
