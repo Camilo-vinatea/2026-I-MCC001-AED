@@ -29,9 +29,9 @@ void DemoMacros(){
 
     // for(int i = 3 ; i <= 5 ; ++i)
     //     cout << "GetVar(c" << i << ") = " << GetVar(i) << endl;
-    cout <<"estamos en la linea " << __LINE__ << " del archivo " << __FILE__ << endl;
-    cout << "Hora: " << __TIME__ << endl;
-    cout << "Fecha: " << __DATE__ << endl;
-    cout << "Version: " << __VERSION__ << endl;
+    cout << "Estamos en la linea " << __LINE__ << " del archivo " << __FILE__ << endl;
+    cout << "Hora: "       << __TIME__ << endl;
+    cout << "Fecha: "      << __DATE__ << endl;
+    cout << "Version: "    << __VERSION__ << endl;
     cout << "Compilador: " << __cplusplus << endl;
 }
