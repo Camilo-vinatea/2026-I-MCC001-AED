@@ -57,6 +57,8 @@ void Vector<T>::resize() {
 
 template <typename T>
 T Vector<T>::get(size_t index) {
+    if (index >= m_size)
+        throw out_of_range("Index out of bounds");
     return m_data[index];
 }
 
