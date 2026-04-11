@@ -2,6 +2,7 @@
 #define __VECTOR_H__
 
 #include <cstddef>
+#include <sstream>
 #include "types.h"
 
 // Los templates son una forma de escribir código genérico
@@ -67,13 +68,19 @@ size_t Vector<T>::size() {
 // [1, 2, 3, 4, 5]
 template <typename T>
 string Vector<T>::ToString() {
-    string result = "[";
+    ostringstream oss;
+    oss << "[";
     for (size_t i = 0; i < m_size-1; i++)
-        result += to_string(m_data[i]) + ",";
+        oss << m_data[i] << ",";
     if (m_size > 0)
-        result += to_string(m_data[m_size-1]);
-    result += "]";
-    return result;
+        oss << m_data[m_size-1];
+    oss << "]";
+    return oss.str();
+}
+
+template <typename T>
+ostream& operator<<(ostream& os, Vector<T>& v){
+    return os << v.ToString();
 }
 
 void DemoVector();

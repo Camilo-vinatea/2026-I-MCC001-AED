@@ -12,7 +12,10 @@ void DemoVector(){
     v1.push_back(13);
 
     cout << v1.ToString() << endl;
-    
+    cout << "Vector:" << v1 << " despues" << endl;
+//  cout.operator<<("Vector:");
+//  ==========================
+//               cout << v1 
     cout << "Size: " << v1.size() << endl;
 
     Vector<TD> v2;
