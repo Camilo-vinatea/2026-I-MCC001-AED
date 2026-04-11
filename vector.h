@@ -9,9 +9,9 @@
 template <typename T>
 class Vector{
     private:
-        T *m_data;
+        T      *m_data;
         size_t  m_size;
-        size_t m_capacity;
+        size_t  m_capacity;
     private:
         void resize();
     public:
@@ -20,6 +20,7 @@ class Vector{
         void push_back(T value);
         T get(size_t index);
         size_t size();
+        string ToString();
 };
 
 template <typename T>
@@ -61,6 +62,18 @@ T Vector<T>::get(size_t index) {
 template <typename T>
 size_t Vector<T>::size() {
     return m_size;
+}
+
+// [1, 2, 3, 4, 5]
+template <typename T>
+string Vector<T>::ToString() {
+    string result = "[";
+    for (size_t i = 0; i < m_size-1; i++)
+        result += to_string(m_data[i]) + ",";
+    if (m_size > 0)
+        result += to_string(m_data[m_size-1]);
+    result += "]";
+    return result;
 }
 
 void DemoVector();

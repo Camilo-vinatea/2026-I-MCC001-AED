@@ -11,10 +11,8 @@ void DemoVector(){
     v1.push_back(10);
     v1.push_back(13);
 
-    for(size_t i = 0; i < v1.size(); ++i){
-        cout << v1.get(i) << " ";
-    }
-    cout << endl;
+    cout << v1.ToString() << endl;
+    cout << v1 << endl;
     cout << "Size: " << v1.size() << endl;
 
     Vector<TD> v2;
@@ -24,10 +22,7 @@ void DemoVector(){
     v2.push_back(10.3);
     v2.push_back(13.4);
 
-    for(size_t i = 0; i < v2.size(); ++i){
-        cout << v2.get(i) << " ";
-    }
-    cout << endl;
+    cout << v2.ToString() << endl;
     cout << "Size: " << v2.size() << endl;
 
     Vector<TS> v3;
@@ -35,9 +30,6 @@ void DemoVector(){
     v3.push_back("World");
     v3.push_back("MCS-AED");
 
-    for(size_t i = 0; i < v3.size(); ++i){
-        cout << v3.get(i) << " ";
-    }
-    cout << endl;
+    cout << v3.ToString() << endl;
     cout << "Size: " << v3.size() << endl;
 }
