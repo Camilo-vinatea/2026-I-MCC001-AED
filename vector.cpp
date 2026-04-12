@@ -3,6 +3,21 @@
 
 using namespace std;
 
+template <typename T>
+void Print(T &value, ostream& os){
+    os << value << ",";
+}
+
+template <typename T>
+void AddOne(T &value){
+    ++value;
+}
+
+template <typename T, typename U>
+void AddX(T &value, U x){
+    value += x;
+}
+
 void DemoVector(){
     Vector<TI> v1;
     v1.push_back(7, 15);
@@ -12,10 +27,14 @@ void DemoVector(){
     v1.push_back(13, 25);
 
     cout << "Recorrido con iteradores" << endl;
-    cout << "[";
-    for (auto it = v1.begin(); it != v1.end(); ++it)
-        cout << *it << ",";
-    cout << "]" << endl;
+    v1.ForEach(Print<VectorNode<TI>>, cout);
+    cout << endl;
+    v1.ForEach(AddOne<VectorNode<TI>>);
+    v1.ForEach(Print<VectorNode<TI>>, cout);
+    cout << endl;
+    v1.ForEach(AddX<VectorNode<TI>, TI>, 10);
+    v1.ForEach(Print<VectorNode<TI>>, cout);
+    cout << endl;
     cout << "Fin recorrido con iteradores" << endl;
 
     cout << v1.ToString() << endl;
@@ -40,6 +59,8 @@ void DemoVector(){
     v3.push_back("World", 10);
     v3.push_back("AED", 15);
 
+    cout << v3.ToString() << endl;
+    v3.ForEach(AddX<VectorNode<TS>, TS>, "-X");
     cout << v3.ToString() << endl;
     cout << "Size: " << v3.size() << endl;
 }

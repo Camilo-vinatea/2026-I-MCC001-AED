@@ -4,6 +4,7 @@
 #include <cstddef>
 #include <sstream>
 #include "types.h"
+#include "foreach.h"
 
 template <typename Container>
 class vector_forward_iterator{
@@ -38,6 +39,8 @@ struct VectorNode{
     }
     T   GetData() const { return m_data; }
     Ref GetRef()  const { return m_ref;  }
+    void operator++() { ++m_data; }
+    void operator+=(const T& other) { m_data += other; }
 };
 
 template <typename T>
@@ -66,7 +69,12 @@ class Vector{
 
         forward_iterator begin() { return forward_iterator(this, m_data); }
         forward_iterator end()   { return forward_iterator(this, m_data + m_size); }
-};
+        
+        template <typename Func, typename... Args>
+        void ForEach(Func func, Args &&... args){
+            ::ForEach(begin(), end(), func, forward<Args>(args)...);
+        }
+    };
 
 template <typename T>
 Vector<T>::Vector(size_t capacity) {
