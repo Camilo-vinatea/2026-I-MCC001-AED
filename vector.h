@@ -5,6 +5,24 @@
 #include <sstream>
 #include "types.h"
 
+template <typename Container>
+class vector_forward_iterator{
+    using Node     = typename Container::Node;
+    using Iterator = vector_forward_iterator<Container>;
+
+    Container   *m_pContainer = nullptr;
+    Node        *m_pNode      = nullptr;
+
+    public:
+        vector_forward_iterator(Container *pContainer, Node *pNode) : m_pContainer(pContainer), m_pNode(pNode) {}
+        
+        bool operator!=(const Iterator& other) const { return m_pNode != other.m_pNode; }
+        Node& operator*() const { return *m_pNode; }
+        Node* operator->() const { return m_pNode; }
+
+        Iterator& operator++() { ++m_pNode; return *this; }
+};
+
 // Los templates son una forma de escribir código genérico
 
 template <typename T>
@@ -29,7 +47,9 @@ ostream& operator<<(ostream& os, VectorNode<T>& vn){
 
 template <typename T>
 class Vector{
-    using Node = VectorNode<T>;
+    public:
+        using Node = VectorNode<T>;
+        using forward_iterator = vector_forward_iterator<Vector<T>>;
     private:
         Node * m_data;
         size_t m_size;
@@ -43,6 +63,9 @@ class Vector{
         T get(size_t index);
         size_t size();
         string ToString();
+
+        forward_iterator begin() { return forward_iterator(this, m_data); }
+        forward_iterator end()   { return forward_iterator(this, m_data + m_size); }
 };
 
 template <typename T>

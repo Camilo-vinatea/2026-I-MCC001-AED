@@ -11,6 +11,13 @@ void DemoVector(){
     v1.push_back(10, 20);
     v1.push_back(13, 25);
 
+    cout << "Recorrido con iteradores" << endl;
+    cout << "[";
+    for (auto it = v1.begin(); it != v1.end(); ++it)
+        cout << *it << ",";
+    cout << "]" << endl;
+    cout << "Fin recorrido con iteradores" << endl;
+
     cout << v1.ToString() << endl;
     cout << "Vector:" << v1 << " despues" << endl;
 //  cout.operator<<("Vector:");
