@@ -5,11 +5,11 @@ using namespace std;
 
 void DemoVector(){
     Vector<TI> v1;
-    v1.push_back(7);
-    v1.push_back(5);
-    v1.push_back(25);
-    v1.push_back(10);
-    v1.push_back(13);
+    v1.push_back(7, 15);
+    v1.push_back(5, 10);
+    v1.push_back(25, 5);
+    v1.push_back(10, 20);
+    v1.push_back(13, 25);
 
     cout << v1.ToString() << endl;
     cout << "Vector:" << v1 << " despues" << endl;
@@ -19,19 +19,19 @@ void DemoVector(){
     cout << "Size: " << v1.size() << endl;
 
     Vector<TD> v2;
-    v2.push_back(7.5);
-    v2.push_back(5.2);
-    v2.push_back(25.1);
-    v2.push_back(10.3);
-    v2.push_back(13.4);
+    v2.push_back(7.5, 1);
+    v2.push_back(5.2, 2);
+    v2.push_back(25.1, 3);
+    v2.push_back(10.3, 4);
+    v2.push_back(13.4, 5);
 
     cout << v2.ToString() << endl;
     cout << "Size: " << v2.size() << endl;
 
     Vector<TS> v3;
-    v3.push_back("Hello");
-    v3.push_back("World");
-    v3.push_back("MCS-AED");
+    v3.push_back("Hello", 5);
+    v3.push_back("World", 10);
+    v3.push_back("AED", 15);
 
     cout << v3.ToString() << endl;
     cout << "Size: " << v3.size() << endl;

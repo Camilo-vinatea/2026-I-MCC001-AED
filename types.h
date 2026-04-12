@@ -19,4 +19,6 @@ using TS = string;
     using XT = long;
 #endif
 
+using Ref = long;
+
 #endif // __TYPES_H__
