@@ -4,17 +4,17 @@
 using namespace std;
 
 template <typename T>
-void Print(T &value, ostream& os){
+void Print(VectorNode<T> &value, ostream& os){
     os << value << ",";
 }
 
 template <typename T>
-void AddOne(T &value){
+void AddOne(VectorNode<T> &value){
     ++value;
 }
 
 template <typename T, typename U>
-void AddX(T &value, U x){
+void AddX(VectorNode<T> &value, U x){
     value += x;
 }
 

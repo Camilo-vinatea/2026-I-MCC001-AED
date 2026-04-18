@@ -5,23 +5,15 @@
 #include <sstream>
 #include "types.h"
 #include "foreach.h"
+#include "general_iterator.h"
 
 template <typename Container>
-class vector_forward_iterator{
-    using Node     = typename Container::Node;
-    using Iterator = vector_forward_iterator<Container>;
-
-    Container   *m_pContainer = nullptr;
-    Node        *m_pNode      = nullptr;
-
-    public:
-        vector_forward_iterator(Container *pContainer, Node *pNode) : m_pContainer(pContainer), m_pNode(pNode) {}
-        
-        bool operator!=(const Iterator& other) const { return m_pNode != other.m_pNode; }
-        Node& operator*() const { return *m_pNode; }
-        Node* operator->() const { return m_pNode; }
-
-        Iterator& operator++() { ++m_pNode; return *this; }
+class vector_forward_iterator : public general_iterator<Container, vector_forward_iterator<Container>> {
+public:
+    using MySelf = vector_forward_iterator<Container>;
+    using Parent = general_iterator<Container, MySelf>;
+    using Parent::Parent;
+    MySelf operator++() { this->m_pNode++; return *this; }
 };
 
 // Los templates son una forma de escribir código genérico
@@ -38,9 +30,10 @@ struct VectorNode{
         return oss.str();
     }
     T   GetData() const { return m_data; }
+    T&  GetDataRef()    { return m_data; }
     Ref GetRef()  const { return m_ref;  }
     void operator++() { ++m_data; }
-    void operator+=(const T& other) { m_data += other; }
+    void operator+=(const T& value) { m_data += value; }
 };
 
 template <typename T>
@@ -52,6 +45,7 @@ template <typename T>
 class Vector{
     public:
         using Node = VectorNode<T>;
+        using value_type = T;
         using forward_iterator = vector_forward_iterator<Vector<T>>;
     private:
         Node * m_data;
