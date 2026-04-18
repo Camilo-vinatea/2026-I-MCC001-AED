@@ -9,13 +9,13 @@ void Print(VectorNode<T> &value, ostream& os){
 }
 
 template <typename T>
-void AddOne(VectorNode<T> &value){
-    ++value;
+void AddOne(VectorNode<T> &node){
+    ++node;
 }
 
-template <typename T, typename U>
-void AddX(VectorNode<T> &value, U x){
-    value += x;
+template <typename T>
+void AddX(VectorNode<T> &node, T x){
+    node += x;
 }
 
 void DemoVector(){
@@ -27,13 +27,13 @@ void DemoVector(){
     v1.push_back(13, 25);
 
     cout << "Recorrido con iteradores" << endl;
-    v1.ForEach(Print<VectorNode<TI>>, cout);
+    v1.ForEach(Print<TI>, cout);
     cout << endl;
-    v1.ForEach(AddOne<VectorNode<TI>>);
-    v1.ForEach(Print<VectorNode<TI>>, cout);
+    v1.ForEach(AddOne<TI>);
+    v1.ForEach(Print<TI>, cout);
     cout << endl;
-    v1.ForEach(AddX<VectorNode<TI>, TI>, 10);
-    v1.ForEach(Print<VectorNode<TI>>, cout);
+    v1.ForEach(AddX<TI>, 10);
+    v1.ForEach(Print<TI>, cout);
     cout << endl;
     cout << "Fin recorrido con iteradores" << endl;
 
@@ -60,7 +60,9 @@ void DemoVector(){
     v3.push_back("AED", 15);
 
     cout << v3.ToString() << endl;
-    v3.ForEach(AddX<VectorNode<TS>, TS>, "-X");
+    v3.ForEach(AddX<TS>, "-X");
     cout << v3.ToString() << endl;
+    v3.ReverseForEach(Print<TS>, cout);
+    cout << endl;
     cout << "Size: " << v3.size() << endl;
 }

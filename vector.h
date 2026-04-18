@@ -16,7 +16,14 @@ public:
     MySelf operator++() { this->m_pNode++; return *this; }
 };
 
-// Los templates son una forma de escribir código genérico
+template <typename Container>
+class vector_backward_iterator : public general_iterator<Container, vector_backward_iterator<Container>> {
+public:
+    using MySelf = vector_backward_iterator<Container>;
+    using Parent = general_iterator<Container, MySelf>;
+    using Parent::Parent;
+    MySelf operator++() { this->m_pNode--; return *this; }
+};
 
 template <typename T>
 struct VectorNode{
@@ -46,7 +53,8 @@ class Vector{
     public:
         using Node = VectorNode<T>;
         using value_type = T;
-        using forward_iterator = vector_forward_iterator<Vector<T>>;
+        using forward_iterator  = vector_forward_iterator<Vector<T>>;
+        using backward_iterator = vector_backward_iterator<Vector<T>>;
     private:
         Node * m_data;
         size_t m_size;
@@ -61,12 +69,19 @@ class Vector{
         size_t size();
         string ToString();
 
-        forward_iterator begin() { return forward_iterator(this, m_data); }
-        forward_iterator end()   { return forward_iterator(this, m_data + m_size); }
+        forward_iterator  begin()   { return forward_iterator(this, m_data); }
+        forward_iterator  end()     { return forward_iterator(this, m_data + m_size); }
+        backward_iterator rbegin()  { return backward_iterator(this, m_data + m_size - 1); }
+        backward_iterator rend()    { return backward_iterator(this, m_data - 1); }
         
         template <typename Func, typename... Args>
         void ForEach(Func func, Args &&... args){
             ::ForEach(begin(), end(), func, forward<Args>(args)...);
+        }
+
+        template <typename Func, typename... Args>
+        void ReverseForEach(Func func, Args &&... args){
+            ::ForEach(rbegin(), rend(), func, forward<Args>(args)...);
         }
     };
 
