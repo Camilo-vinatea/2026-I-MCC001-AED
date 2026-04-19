@@ -5,30 +5,30 @@
 
 using namespace std;
 
-template <typename T>
-void Print(VectorNode<T> &value, ostream& os){
+template <typename Node>
+void Print(Node &value, ostream& os){
     os << value << ",";
 }
 
-template <typename T>
-void AddOne(VectorNode<T> &node){    
+template <typename Node>
+void AddOne(Node &node){    
     static mutex mtx;
     scoped_lock<mutex> lock(mtx);
     ++node;
 }
 
-template <typename T>
-void AddX(VectorNode<T> &node, T x){
+template <typename Node>
+void AddX(Node &node, T x){
     node += x;
 }
 
-template <typename T>
-bool IsMultipleOf(VectorNode<T> &node, T x){
+template <typename Node>
+bool IsMultipleOf(Node &node, T x){
     return node.GetDataRef() % x == 0;
 }
 
 template <typename T>
-bool IsGreaterThan(VectorNode<T> &node, T x){
+bool IsGreaterThan(Node &node, T x){
     return node.GetDataRef() > x;
 }
 
