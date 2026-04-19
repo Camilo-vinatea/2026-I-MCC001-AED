@@ -20,6 +20,7 @@ void AddX(VectorNode<T> &node, T x){
 
 void DemoVector(){
     Vector<TI> v1;
+
     v1.push_back(7, 15);
     v1.push_back(5, 10);
     v1.push_back(25, 5);
@@ -32,7 +33,12 @@ void DemoVector(){
     v1.ForEach(AddOne<TI>);
     v1.ForEach(Print<TI>, cout);
     cout << endl;
+    
     v1.ForEach(AddX<TI>, 10);
+    v1.ForEach(Print<TI>, cout);
+    cout << endl;
+    int a = 3;
+    v1.ForEach([a](VectorNode<TI>& node){   node.GetDataRef() *= a; });
     v1.ForEach(Print<TI>, cout);
     cout << endl;
     cout << "Fin recorrido con iteradores" << endl;
