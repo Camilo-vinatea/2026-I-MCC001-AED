@@ -2,7 +2,8 @@
 #define __VECTOR_H__
 
 #include <cstddef>
-#include <sstream>
+#include <sstream> 
+#include <mutex>
 #include "types.h"
 #include "foreach.h"
 #include "general_iterator.h"
@@ -59,6 +60,7 @@ class Vector{
         Node * m_data;
         size_t m_size;
         size_t m_capacity;
+        mutex  m_mtx;
     private:
         void resize();
     public:
@@ -83,6 +85,16 @@ class Vector{
         void ReverseForEach(Func func, Args &&... args){
             ::ForEach(rbegin(), rend(), func, forward<Args>(args)...);
         }
+
+        template <typename Func, typename... Args>
+        forward_iterator FirstThat(Func func, Args &&... args){
+            return ::FirstThat(begin(), end(), func, forward<Args>(args)...);
+        }
+
+        template <typename Func, typename... Args>
+        backward_iterator ReverseFirstThat(Func func, Args &&... args){
+            return ::FirstThat(rbegin(), rend(), func, forward<Args>(args)...);
+        }
     };
 
 template <typename T>
@@ -102,12 +114,14 @@ template <typename T>
 void Vector<T>::push_back(T value, Ref ref) {
     if (m_size == m_capacity)
         resize();
+    scoped_lock<mutex> lock(m_mtx);
     m_data[m_size] = Node(value, ref);
     m_size++;
 }
 
 template <typename T>
 void Vector<T>::resize() {
+    scoped_lock<mutex> lock(m_mtx);
     m_capacity = m_capacity < 10 ? 10: m_capacity * 2;
     Node *newData = new Node[m_capacity];
     for (size_t i = 0; i < m_size; i++)
@@ -131,6 +145,7 @@ size_t Vector<T>::size() {
 // [1, 2, 3, 4, 5]
 template <typename T>
 string Vector<T>::ToString() {
+    scoped_lock lock(m_mtx);
     ostringstream oss;
     oss << "[";
     for (size_t i = 0; i < m_size-1; i++)
@@ -147,5 +162,6 @@ ostream& operator<<(ostream& os, Vector<T>& v){
 }
 
 void DemoVector();
+void DemoConcurrentVector();
 
 #endif // __VECTOR_H__

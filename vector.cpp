@@ -1,4 +1,6 @@
 #include <iostream>
+#include <thread>
+#include <mutex>
 #include "vector.h"
 
 using namespace std;
@@ -9,13 +11,25 @@ void Print(VectorNode<T> &value, ostream& os){
 }
 
 template <typename T>
-void AddOne(VectorNode<T> &node){
+void AddOne(VectorNode<T> &node){    
+    static mutex mtx;
+    scoped_lock<mutex> lock(mtx);
     ++node;
 }
 
 template <typename T>
 void AddX(VectorNode<T> &node, T x){
     node += x;
+}
+
+template <typename T>
+bool IsMultipleOf(VectorNode<T> &node, T x){
+    return node.GetDataRef() % x == 0;
+}
+
+template <typename T>
+bool IsGreaterThan(VectorNode<T> &node, T x){
+    return node.GetDataRef() > x;
 }
 
 void DemoVector(){
@@ -41,6 +55,15 @@ void DemoVector(){
     v1.ForEach([a](VectorNode<TI>& node){   node.GetDataRef() *= a; });
     v1.ForEach(Print<TI>, cout);
     cout << endl;
+
+    // Vector<TI>::forward_iterator it = v1.FirstThat(IsMultipleOf<TI>, 21);
+    auto it = v1.FirstThat(IsMultipleOf<TI>, 21);
+    if (it != v1.end())
+        cout << "Primer multiplo de 21: " << *it << endl;
+    // Vector<TI>::backward_iterator it2 = v1.ReverseFirstThat(IsMultipleOf<TI>, 21);
+    auto it2 = v1.ReverseFirstThat(IsGreaterThan<TI>, 100);
+    if (it2 != v1.rend())
+        cout << "Primer mayor a 100   : " << *it2 << endl;
     cout << "Fin recorrido con iteradores" << endl;
 
     cout << v1.ToString() << endl;
@@ -71,4 +94,32 @@ void DemoVector(){
     v3.ReverseForEach(Print<TS>, cout);
     cout << endl;
     cout << "Size: " << v3.size() << endl;
+}
+
+// DemoConcurrentVector
+void DemoConcurrentVector(){
+    Vector<TI> v(4);
+    v.push_back(0, 0);
+    v.push_back(0, 0);
+    v.push_back(0, 0);
+    v.push_back(0, 0);
+
+    // Cada thread itera el vector 100,000 veces e incrementa cada elemento
+    // Sin sincronizacion → race condition en los contadores
+    auto worker = [&v](int thread_id){
+        for(int i = 0; i < 100000; i++)
+            v.ForEach(AddOne<TI>);
+        cout << "Thread " << thread_id << " terminado\n";
+    };
+
+    thread t1(worker, 1);
+    thread t2(worker, 2);
+    thread t3(worker, 3);
+    thread t4(worker, 4);
+    thread t5(worker, 5);
+
+    t1.join(); t2.join(); t3.join(); t4.join(); t5.join();
+
+    // Resultado esperado sin race condition: 4 elementos * 100000 * 5 threads = 500000
+    cout << "Resultado (esperado 500000): " << v << endl;
 }
