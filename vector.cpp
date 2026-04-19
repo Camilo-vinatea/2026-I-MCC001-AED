@@ -33,7 +33,7 @@ bool IsGreaterThan(VectorNode<T> &node, T x){
 }
 
 void DemoVector(){
-    Vector<TI> v1;
+    Vector< VectorTraits<TI> > v1;
 
     v1.push_back(7, 15);
     v1.push_back(5, 10);
@@ -54,7 +54,7 @@ void DemoVector(){
     int a = 3;
     v1.ForEach([a](VectorNode<TI>& node){   node.GetDataRef() *= a; });
     v1.ForEach(Print<TI>, cout);
-    cout << endl;
+    cout << endl << a << endl;
 
     // Vector<TI>::forward_iterator it = v1.FirstThat(IsMultipleOf<TI>, 21);
     auto it = v1.FirstThat(IsMultipleOf<TI>, 21);
@@ -73,7 +73,7 @@ void DemoVector(){
 //               cout << v1 
     cout << "Size: " << v1.size() << endl;
 
-    Vector<TD> v2;
+    Vector< VectorTraits<TD> > v2;
     v2.push_back(7.5, 1);
     v2.push_back(5.2, 2);
     v2.push_back(25.1, 3);
@@ -83,7 +83,7 @@ void DemoVector(){
     cout << v2.ToString() << endl;
     cout << "Size: " << v2.size() << endl;
 
-    Vector<TS> v3;
+    Vector< VectorTraits<TS> > v3;
     v3.push_back("Hello", 5);
     v3.push_back("World", 10);
     v3.push_back("AED", 15);
@@ -98,7 +98,7 @@ void DemoVector(){
 
 // DemoConcurrentVector
 void DemoConcurrentVector(){
-    Vector<TI> v(4);
+    Vector< VectorTraits<TI> > v(4);
     v.push_back(0, 0);
     v.push_back(0, 0);
     v.push_back(0, 0);
