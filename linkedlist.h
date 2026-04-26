@@ -2,10 +2,10 @@
 #define __LINKEDLIST_H__
 
 #include <iostream>
-#include <cstddef> // size_t
+#include <cstddef>   // size_t
 #include <string>
 #include <sstream>
-#include <shared_mutex> // shared_mutex
+#include <mutex>     // mutex
 #include "general_iterator.h"
 #include "util.h"
 #include "types.h"
@@ -62,7 +62,7 @@ ostream &operator<<(ostream &os, const LLNode<T> &node){
 
 template <typename T>
 struct BaseLinkedListTrait : public BaseContainerTrait<T, LLNode<T>>{
-    
+
 };
 
 template <typename T>
@@ -91,7 +91,7 @@ private:
     Node *m_pTail = nullptr;
     size_t m_size = 0;
     Comp   m_comp;
-    mutable shared_mutex m_mtx;
+    mutex m_mtx;
 public:
     LinkedList() {}
     LinkedList(const LinkedList &other){ // Copy constructor
@@ -132,7 +132,7 @@ public:
     // Agregar Foreach
     template <typename Func, typename... Args>
     void ForEach(Func func, Args &&...  args){
-        unique_lock<shared_mutex> lock(m_mtx);
+        unique_lock<mutex> lock(m_mtx);
         ::ForEach(begin(), end(), func, std::forward<Args>(args)... );
     }
 };
