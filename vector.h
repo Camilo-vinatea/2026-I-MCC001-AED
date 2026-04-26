@@ -59,8 +59,8 @@ ostream& operator<<(ostream& os, VectorNode<Traits>& vn){
 template <typename Traits>
 class Vector{
     public:
-        using Node       = typename Traits::Node;
         using value_type = typename Traits::value_type;
+        using Node       = typename Traits::Node;
         using MySelf     = Vector<Traits>;
         using forward_iterator  = vector_forward_iterator<MySelf>;
         using backward_iterator = vector_backward_iterator<MySelf>;

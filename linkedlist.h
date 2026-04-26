@@ -16,7 +16,8 @@ using namespace std;
 
 // Forward iterator
 template <typename Container>
-class LinkedListForwardIterator : public general_iterator<Container, LinkedListForwardIterator<Container>>{
+class LinkedListForwardIterator : public general_iterator<Container, 
+                                            LinkedListForwardIterator<Container>>{
     using MySelf = LinkedListForwardIterator<Container>;
     using Parent = general_iterator<Container, MySelf>;
     using Parent::Parent;
@@ -61,6 +62,7 @@ ostream &operator<<(ostream &os, const LLNode<T> &node){
 
 template <typename T>
 struct BaseLinkedListTrait : public BaseContainerTrait<T, LLNode<T>>{
+    
 };
 
 template <typename T>
