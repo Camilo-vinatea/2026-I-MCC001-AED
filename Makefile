@@ -3,7 +3,9 @@ CXXFLAGS = -std=c++2b -Wall -g -pthread # Añadido -pthread
 LDFLAGS = -pthread # Añadido -pthread
 
 TARGET = main
-SRCS = main.cpp macros.cpp vector.cpp
+SRCS = main.cpp \
+	   ListsDemo.cpp
+# macros.cpp vector.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

@@ -7,11 +7,8 @@ using namespace std;
 
 template <typename Iterator, typename Func, typename... Args>
 void ForEach(Iterator begin, Iterator end, Func func, Args &&... args){
-    //mutex mtx;
     for (auto it = begin; it != end; ++it)
-    {   //scoped_lock<mutex> lock(mtx);
         func(*it, forward<Args>(args)...);
-    }
 }
 
 template <typename Iterator, typename Func, typename... Args>
@@ -21,7 +18,6 @@ Iterator FirstThat(Iterator begin, Iterator end, Func func, Args &&... args){
             return it;
     return end;
 }
-
 
 template <typename Container, typename Func, typename... Args>
 void ForEach(Container& v1, Func func, Args &&... args){

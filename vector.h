@@ -7,6 +7,7 @@
 #include "types.h"
 #include "foreach.h"
 #include "general_iterator.h"
+#include "basetrait.h"
 
 template <typename Container>
 class vector_forward_iterator : public general_iterator<Container, vector_forward_iterator<Container>> {
@@ -47,9 +48,7 @@ struct VectorNode{
 };
 
 template <typename T>
-struct VectorTraits{
-    using value_type = T;
-    using Node       = VectorNode<value_type>;
+struct VectorTraits : public BaseContainerTrait<T, VectorNode<T>>{
 };
 
 template <typename Traits>
