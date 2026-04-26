@@ -86,7 +86,7 @@ public:
 
 private:
     Node *m_pRoot = nullptr;
-    Node *m_tail = nullptr;
+    Node *m_pTail = nullptr;
     size_t m_size = 0;
     Comp   m_comp;
     mutable shared_mutex m_mtx;
@@ -102,10 +102,19 @@ public:
     }
     
     virtual        ~LinkedList() {}
-    // virtual void    push_front(value_type value, Ref ref);
-    // virtual void    pop_front();
-    // virtual void    push_back(value_type value, Ref ref);
-    // virtual void    pop_back();
+    virtual void    push_front(value_type value, Ref ref){}
+    virtual auto    pop_front() -> std::pair<value_type, Ref>{ 
+        if( m_pRoot ){
+            Node* pTemp = m_pRoot;
+            m_pRoot = m_pRoot->getNext();
+            return std::make_pair(pTemp->getData(), pTemp->getRef());
+        }else
+            throw std::out_of_range("pop_front(): empty list");
+    }
+    virtual void    push_back(value_type value, Ref ref){}
+    virtual auto    pop_back() -> std::pair<value_type, Ref>{
+        return std::pair<value_type, Ref>();
+    }
 private:
             void    internal_insert(Node* &pParent, const value_type &value, Ref ref);
 public:
@@ -132,7 +141,7 @@ void LinkedList<Traits>::internal_insert(Node* &pPrev, const value_type &value, 
         pPrev = new Node(value, ref, pPrev);
         m_size++;
         if(pPrev == m_pRoot)
-            m_tail = pPrev;
+            m_pTail = pPrev;
         return;
     }
     internal_insert(pPrev->getNextRef(), value, ref);
