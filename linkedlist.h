@@ -95,15 +95,44 @@ private:
 public:
     LinkedList() {}
     LinkedList(const LinkedList &other){ // Copy constructor
+
+        Node* pTemp = other.m_pRoot;
+
+        while(pTemp != nullptr){
+            push_back(pTemp -> getData(), pTemp -> getRef());
+            pTemp = pTemp->getNext();
+        }
+            
     }
     LinkedList(LinkedList &&other){ // Move constructor
+        
+        scoped_lock<mutex> lock(m_mtx);
+        m_pRoot = exchange(other.m_pRoot, nullptr);
+        m_pTail = exchange(other.m_pTail, nullptr);
+        m_size = exchange(other.m_size, 0);
+
     }
     LinkedList& operator=(const LinkedList &other){ // Copy assignment operator
     }
     LinkedList& operator=(LinkedList &&other){ // Move assignment operator
     }
     
-    virtual        ~LinkedList() {}
+    virtual        ~LinkedList() {
+        
+        scoped_lock<mutex> lock(m_mtx);
+        Node* pTemp = m_pRoot;
+
+        while (pTemp){
+            Node* pNext = pTemp->getNext();
+            delete pTemp;
+            pTemp = pNext;
+        }
+
+        m_pRoot = nullptr;
+        m_pTail = nullptr;
+        m_size  = 0;
+    }
+
     virtual void   push_front(value_type value, Ref ref) {
         Node* pTemp = new Node(value, ref, m_pRoot);  //Se crea el Nodo temporal con los datos ingresados que apunta a m_pRoot
         
@@ -112,7 +141,6 @@ public:
         if (m_size == 0)
             m_pTail = pTemp;                          //Si la lista esta vacia la cola tambien se debe actualizar
         ++m_size;
-        delete pTemp;
     }
     virtual auto    pop_front() -> pair<value_type, Ref>{ 
         
@@ -162,7 +190,7 @@ public:
         while (pTemp->getNext() != m_pTail)             //Recorrer toda la lista hasta el penultimo elemento
             pTemp = pTemp->getNext();
 
-        auto pDelete = make_pair(m_pTail->getData(), pTemp->getRef());
+        auto pDelete = make_pair(m_pTail->getData(), m_pTail->getRef());
         
         delete pTemp->getNext();
         pTemp->setNext(nullptr);
@@ -176,7 +204,18 @@ private:
 public:
     virtual void    insert(const value_type &value, Ref ref);
     
-    // virtual Node& operator[](size_t index);
+    virtual Node& operator[](const size_t index) const{
+        
+        if (index >= m_size)
+        throw out_of_range("Index out of range");
+
+        Node* pTemp = m_pRoot;
+        for (size_t i = 0; i < index; ++i){
+            pTemp = pTemp -> getNext();
+        }
+        return *pTemp;
+    };
+
     virtual size_t  size() const { return m_size; }
     virtual string  toString();
 
@@ -235,5 +274,27 @@ ostream& operator<<(ostream& os, LinkedList<Traits>& list){
     return os << list.toString();
 }
 
+template <typename Traits>
+istream& operator>>(istream& is, LinkedList<Traits>& list){
+    using value_type = typename LinkedList<Traits>::value_type;
+    string line;
+
+    getline(is, line);
+
+    for (char& c : line){
+        if (c == '[' || c == ']' || c == '(' || c == ')' || c == ',')
+            c = ' ';
+    }
+
+    value_type value;
+    Ref ref;
+    stringstream ss(line);
+
+    while (ss >> value >> ref){
+        list.push_back(value, ref);
+    }
+
+    return is;
+}
 
 #endif // __LINKEDLIST_H__

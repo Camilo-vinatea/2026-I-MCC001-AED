@@ -1,3 +1,4 @@
+#include <fstream>
 #include "linkedlist.h"
 
 template <typename Node>
@@ -33,30 +34,57 @@ void LinkedListDemo(){
     list2.ForEach(Print<LI>, cout);
     
     cout << "Prueba First That: " << endl;
-    auto it = list2.FirstThat(IsGreaterThan<LI, TI>, 7);
+    auto it = list2.FirstThat(IsGreaterThan<LI, TI>, 6);
     if (it != list2.end())
-        cout << "Primer mayor a 7   : " << *it << endl;
+        cout << "Primer mayor a 6   : " << *it << endl;
     cout << "Fin recorrido con iteradores" << endl;
 
     cout << "Prueba PushFront: " << endl;
     list1.push_front(5, 5);
-    cout << "Lista ascendente : " << list1 << endl;
+    cout << "Lista ascendente 1: " << list1 << endl;
 
     cout << "Prueba PopFront: " << endl;
     list1.pop_front();
-    cout << "Lista ascendente : " << list1 << endl;
+    cout << "Lista ascendente 1: " << list1 << endl;
 
     LinkedList<AscendingLinkedListTrait<TI>> list3;
     cout << "Prueba PushBack: " << endl;
     list3.push_back(1, 10);
     list3.push_back(2, 20);
     list3.push_back(3, 30);
-    cout << "Lista ascendente : " << list3 << endl;
+    cout << "Lista ascendente 3: " << list3 << endl;
 
     cout << "Prueba PopBack: " << endl;
     list3.pop_back();
-    cout << "Lista ascendente : " << list3 << endl;
+    cout << "Lista ascendente 3: " << list3 << endl;
 
+    list3.push_back(4, 40);
+    cout << "Prueba Copy Constructor: " << endl;
+    LinkedList<AscendingLinkedListTrait<TI>> list4(list3);
+    cout << "Lista ascendente 4: " << list4 << endl;
+
+    list3.push_back(5, 50);
+    cout << "Prueba Move Constructor: " << endl;
+    LinkedList<AscendingLinkedListTrait<TI>> list5 = move(list3);
+    cout << "Lista ascendente 5: " << list5 << endl;
+
+    cout << "Prueba del Destructor: " << endl;
+    list4.~LinkedList();
+    cout << "Lista ascendente 4: " << list4 << endl;
+
+    cout << "Prueba del operador >>: "<<endl;
+    ofstream ofs;
+    ofs.open("lista1.txt");
+    ofs <<  list1 <<   endl;
+    ofs.close();
+
+    ifstream file("lista1.txt");
+    LinkedList<AscendingLinkedListTrait<TI>> list6;
+    file >> list6;
+    cout << "Lista 6 creada con datos de la lista 1: " << list6 << endl;
+
+    cout << "Prueba operador []: " << endl;
+    cout << "Lista5 [2]: " << list5[2] << endl;
 }
 
 void ListsDemo(){
