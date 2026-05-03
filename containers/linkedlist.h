@@ -95,34 +95,127 @@ private:
 public:
     LinkedList() {}
     LinkedList(const LinkedList &other){ // Copy constructor
+
+        Node* pTemp = other.m_pRoot;
+
+        while(pTemp != nullptr){
+            push_back(pTemp -> getData(), pTemp -> getRef());
+            pTemp = pTemp->getNext();
+        }
+            
     }
     LinkedList(LinkedList &&other){ // Move constructor
+        
+        scoped_lock<mutex> lock(m_mtx);
+        m_pRoot = exchange(other.m_pRoot, nullptr);
+        m_pTail = exchange(other.m_pTail, nullptr);
+        m_size = exchange(other.m_size, 0);
+
     }
     LinkedList& operator=(const LinkedList &other){ // Copy assignment operator
     }
     LinkedList& operator=(LinkedList &&other){ // Move assignment operator
     }
     
-    virtual        ~LinkedList() {}
-    virtual void    push_front(value_type value, Ref ref){}
-    virtual auto    pop_front() -> std::pair<value_type, Ref>{ 
+    virtual        ~LinkedList() {
+        
+        scoped_lock<mutex> lock(m_mtx);
+        Node* pTemp = m_pRoot;
+
+        while (pTemp){
+            Node* pNext = pTemp->getNext();
+            delete pTemp;
+            pTemp = pNext;
+        }
+
+        m_pRoot = nullptr;
+        m_pTail = nullptr;
+        m_size  = 0;
+    }
+
+    virtual void   push_front(value_type value, Ref ref) {
+        Node* pTemp = new Node(value, ref, m_pRoot);  //Se crea el Nodo temporal con los datos ingresados que apunta a m_pRoot
+        
+        scoped_lock<mutex> lock(m_mtx);
+        m_pRoot = pTemp;                              //Se actualiza el nodo raiz
+        if (m_size == 0)
+            m_pTail = pTemp;                          //Si la lista esta vacia la cola tambien se debe actualizar
+        ++m_size;
+    }
+    virtual auto    pop_front() -> pair<value_type, Ref>{ 
+        
+        scoped_lock<mutex> lock(m_mtx);
         if( m_pRoot ){
             Node* pTemp = m_pRoot;
             m_pRoot = m_pRoot->getNext();
-            return std::make_pair(pTemp->getData(), pTemp->getRef());
+            --m_size;
+            return make_pair(pTemp->getData(), pTemp->getRef());
         }else
-            throw std::out_of_range("pop_front(): empty list");
+            throw out_of_range("pop_front(): empty list");
     }
-    virtual void    push_back(value_type value, Ref ref){}
-    virtual auto    pop_back() -> std::pair<value_type, Ref>{
-        return std::pair<value_type, Ref>();
+    virtual void    push_back(value_type value, Ref ref){
+        Node* pTemp = new Node(value, ref, nullptr);  //Como es el ultimo nodo no apunta a nada
+        
+        scoped_lock<mutex> lock(m_mtx);
+        if (m_size == 0){
+            m_pRoot = pTemp;
+            m_pTail = pTemp; 
+        } else {
+            m_pTail->setNext(pTemp);
+            m_pTail = pTemp;
+        }                  
+        ++m_size;
+    }
+    virtual auto    pop_back() -> pair<value_type, Ref>{
+        
+        scoped_lock<mutex> lock(m_mtx);
+        if( !m_pRoot )
+            throw out_of_range("pop_back(): empty list");
+        
+        //Con un solo elemento
+        if( m_pRoot == m_pTail){
+            auto pDelete = make_pair(m_pTail->getData(), m_pTail->getRef());
+
+            delete m_pTail;
+            m_pRoot = nullptr;
+            m_pTail = nullptr;
+            
+            --m_size;
+            return pDelete;
+        }
+
+        //Lista con varios elementos
+        Node *pTemp = m_pRoot;
+
+        while (pTemp->getNext() != m_pTail)             //Recorrer toda la lista hasta el penultimo elemento
+            pTemp = pTemp->getNext();
+
+        auto pDelete = make_pair(m_pTail->getData(), m_pTail->getRef());
+        
+        delete pTemp->getNext();
+        pTemp->setNext(nullptr);
+
+        m_pTail = pTemp;
+        --m_size;
+        return pDelete;
     }
 private:
             void    internal_insert(Node* &pParent, const value_type &value, Ref ref);
 public:
     virtual void    insert(const value_type &value, Ref ref);
     
-    // virtual Node& operator[](size_t index);
+    virtual Node& operator[](const size_t index) const{
+        
+        if (index >= m_size)
+        throw out_of_range("Index out of range");
+
+        Node* pTemp = m_pRoot;
+        for (size_t i = 0; i < index; ++i){
+            pTemp = pTemp -> getNext();
+        }
+        return *pTemp;
+    };
+
     virtual size_t  size() const { return m_size; }
     virtual string  toString();
 
@@ -134,6 +227,12 @@ public:
     void ForEach(Func func, Args &&...  args){
         unique_lock<mutex> lock(m_mtx);
         ::ForEach(begin(), end(), func, std::forward<Args>(args)... );
+    }
+
+    //Agregar FirstThat
+    template <typename Func, typename... Args>
+    forward_iterator FirstThat(Func func, Args &&...  args){
+        return ::FirstThat(begin(), end(), func, std::forward<Args>(args)... );
     }
 };
 
@@ -175,5 +274,27 @@ ostream& operator<<(ostream& os, LinkedList<Traits>& list){
     return os << list.toString();
 }
 
+template <typename Traits>
+istream& operator>>(istream& is, LinkedList<Traits>& list){
+    using value_type = typename LinkedList<Traits>::value_type;
+    string line;
+
+    getline(is, line);
+
+    for (char& c : line){
+        if (c == '[' || c == ']' || c == '(' || c == ')' || c == ',')
+            c = ' ';
+    }
+
+    value_type value;
+    Ref ref;
+    stringstream ss(line);
+
+    while (ss >> value >> ref){
+        list.push_back(value, ref);
+    }
+
+    return is;
+}
 
 #endif // __LINKEDLIST_H__

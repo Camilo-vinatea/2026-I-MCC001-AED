@@ -9,6 +9,7 @@ template <typename Iterator, typename Func, typename... Args>
 void ForEach(Iterator begin, Iterator end, Func func, Args &&... args){
     for (auto it = begin; it != end; ++it)
         func(*it, forward<Args>(args)...);
+    cout<<endl;
 }
 
 template <typename Iterator, typename Func, typename... Args>
