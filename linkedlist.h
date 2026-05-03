@@ -220,9 +220,9 @@ public:
     // First that
     template <typename Func, typename... Args>
     forward_iterator FirstThat(Func func, Args &&... args){
+        unique_lock<mutex> lock(m_mtx);
         return ::FirstThat(begin(), end(), func, std::forward<Args>(args)...);
     }
-
 
 };
 
@@ -268,8 +268,36 @@ template <typename Traits>
 istream& operator>>(istream& is, LinkedList<Traits>& list){
     typename LinkedList<Traits>::value_type data;
     Ref ref;
-    if(is >> data >> ref)
-        list.push_back(data, ref);
+    char ch;
+    // Leer '('
+    is >> ch;
+    if (!is || ch != '(') {
+        is.setstate(std::ios::failbit);
+        return is;
+    }
+    // Leer data
+    is >> data;
+    if (!is) {
+        return is;
+    }
+    // Leer ','
+    is >> ch;
+    if (!is || ch != ',') {
+        is.setstate(std::ios::failbit);
+        return is;
+    }
+    // Leer ref
+    is >> ref;
+    if (!is) {
+        return is;
+    }
+    // Leer ')'
+    is >> ch;
+    if (!is || ch != ')') {
+        is.setstate(std::ios::failbit);
+        return is;
+    }
+    list.push_back(data, ref);
     return is;
 }
 
