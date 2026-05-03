@@ -4,9 +4,9 @@
 #include <cstddef>
 #include <sstream> 
 #include <mutex>
-#include "types.h"
-#include "foreach.h"
 #include "general_iterator.h"
+#include "../types.h"
+#include "../foreach.h"
 #include "basetrait.h"
 
 template <typename Container>
