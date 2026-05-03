@@ -6,6 +6,7 @@
 #include <string>
 #include <sstream>
 #include <mutex> // shared_mutex
+#include <utility> // std::exchange
 #include "general_iterator.h"
 #include "util.h"
 #include "types.h"
@@ -92,19 +93,68 @@ private:
     size_t m_size = 0;
     Comp   m_comp;
     mutex m_mtx;
+
 public:
     LinkedList() {}
-    LinkedList(const LinkedList &other){ // Copy constructor
+
+    // Copy Constructor
+    LinkedList(const LinkedList &other){
+        scoped_lock<mutex> lock(m_mtx);
+        Node *pCurrent = other.m_pRoot;
+        while(pCurrent){
+            push_back(pCurrent->getData(), pCurrent->getRef());
+            pCurrent = pCurrent->getNext();
+        }
     }
-    LinkedList(LinkedList &&other){ // Move constructor
+
+    // Move Constructor
+    LinkedList(LinkedList &&other) noexcept {
+        scoped_lock<mutex> lock(m_mtx);
+        m_pRoot = std::exchange(other.m_pRoot, nullptr);
+        m_pTail = std::exchange(other.m_pTail, nullptr);
+        m_size  = std::exchange(other.m_size, 0);
     }
+
     LinkedList& operator=(const LinkedList &other){ // Copy assignment operator
     }
     LinkedList& operator=(LinkedList &&other){ // Move assignment operator
     }
-    
-    virtual        ~LinkedList() {}
-    virtual void    push_front(value_type value, Ref ref){}
+
+    // Destructor seguro
+    virtual ~LinkedList() {
+        scoped_lock<mutex> lock(m_mtx);
+        Node* pCurrent = m_pRoot;
+        while (pCurrent) {
+            Node* pNext = pCurrent->getNext();
+            delete pCurrent;
+            pCurrent = pNext;
+        }
+        m_pRoot = nullptr;
+        m_pTail = nullptr;
+        m_size  = 0;
+    }
+
+    // Operador []
+    virtual Node& operator[](size_t index){
+        if(index >= m_size)
+            throw std::out_of_range("operator[]: index out of range");
+        Node *pCurrent = m_pRoot;
+        for(size_t i = 0; i < index; ++i)
+            pCurrent = pCurrent->getNext();
+        return *pCurrent;
+    }
+
+
+    // Push front
+    virtual void push_front(value_type value, Ref ref){
+        scoped_lock<mutex> lock(m_mtx);
+        Node *pNew = new Node(value, ref, m_pRoot);
+        m_pRoot = pNew;
+        if(m_size == 0)
+            m_pTail = pNew;
+        m_size++;
+    }
+
     virtual auto    pop_front() -> std::pair<value_type, Ref>{ 
         if( m_pRoot ){
             Node* pTemp = m_pRoot;
@@ -113,10 +163,41 @@ public:
         }else
             throw std::out_of_range("pop_front(): empty list");
     }
-    virtual void    push_back(value_type value, Ref ref){}
-    virtual auto    pop_back() -> std::pair<value_type, Ref>{
-        return std::pair<value_type, Ref>();
+
+    // Push back
+    virtual void push_back(value_type value, Ref ref){
+        scoped_lock<mutex> lock(m_mtx);
+        Node *pNew = new Node(value, ref, nullptr);
+        if(m_pTail)
+            m_pTail->setNext(pNew);
+        else
+            m_pRoot = pNew;
+        m_pTail = pNew;
+        m_size++;
     }
+
+    // Pop back
+    virtual auto pop_back() -> std::pair<value_type, Ref>{
+        scoped_lock<mutex> lock(m_mtx);
+        if(!m_pTail)
+            throw std::out_of_range("pop_back(): empty list");
+        value_type data = m_pTail->getData();
+        Ref        ref  = m_pTail->getRef();
+        if(m_pRoot == m_pTail){
+            delete m_pTail;
+            m_pRoot = m_pTail = nullptr;
+        } else {
+            Node *pPrev = m_pRoot;
+            while(pPrev->getNext() != m_pTail)
+                pPrev = pPrev->getNext();
+            delete m_pTail;
+            pPrev->setNext(nullptr);
+            m_pTail = pPrev;
+        }
+        m_size--;
+        return std::make_pair(data, ref);
+    }
+
 private:
             void    internal_insert(Node* &pParent, const value_type &value, Ref ref);
 public:
@@ -135,6 +216,14 @@ public:
         unique_lock<mutex> lock(m_mtx);
         ::ForEach(begin(), end(), func, std::forward<Args>(args)... );
     }
+
+    // First that
+    template <typename Func, typename... Args>
+    forward_iterator FirstThat(Func func, Args &&... args){
+        return ::FirstThat(begin(), end(), func, std::forward<Args>(args)...);
+    }
+
+
 };
 
 template <typename Traits>
@@ -173,6 +262,15 @@ string  LinkedList<Traits>::toString() {
 template <typename Traits>
 ostream& operator<<(ostream& os, LinkedList<Traits>& list){
     return os << list.toString();
+}
+
+template <typename Traits>
+istream& operator>>(istream& is, LinkedList<Traits>& list){
+    typename LinkedList<Traits>::value_type data;
+    Ref ref;
+    if(is >> data >> ref)
+        list.push_back(data, ref);
+    return is;
 }
 
 

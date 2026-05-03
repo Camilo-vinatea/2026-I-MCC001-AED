@@ -19,6 +19,7 @@ int main() {
     // DemoMacros();
     // DemoVector();
     // DemoConcurrentVector();
-    ListsDemo();
+    // ListsDemo();
+    LinkedListImplDemo();
     return 0;
 }
