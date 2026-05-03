@@ -4,8 +4,8 @@ LDFLAGS = -pthread # Añadido -pthread
 
 TARGET = main
 SRCS = main.cpp \
-	   ListsDemo.cpp \
-	   DemoVector.cpp
+	   ListsDemo.cpp
+# 	   DemoVector.cpp
 # macros.cpp vector.cpp
 
 OBJS = $(SRCS:.cpp=.o)

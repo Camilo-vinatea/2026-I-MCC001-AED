@@ -1,13 +1,19 @@
-<<<<<<< HEAD
 #include "containers/linkedlist.h"
-=======
 #include <fstream>
-#include "linkedlist.h"
->>>>>>> 42253f0b9b8f9ab65b4d0595959cc0149d0586d4
 
 template <typename Node>
-void Print(Node &value, ostream& os){
-    os << value << ",";
+void Print(Node &node, ostream& os){
+    os << node << ",";
+}
+
+template <typename Node>
+void AddX(Node &node, typename Node::value_type value){
+    node.getDataRef() += value;
+}
+
+template <typename Node>
+void AddY(Node &node, typename Node::value_type value1, typename Node::value_type value2){
+    node.getDataRef() += value1 + value2;
 }
 
 template <typename Node, typename T>
@@ -34,7 +40,11 @@ void LinkedListDemo(){
     list2.insert(7, 55);
     cout << "Lista ascendente : " << list2 << endl;
 
-    cout << "Prueba ForEach: " << endl;
+    list2.ForEach(AddX<LI>, 3);
+    cout << "Prueba ForEach + 3: " << endl;
+    list2.ForEach(Print<LI>, cout);
+    list2.ForEach(AddY<LI>, 10, 11);
+    cout << "Prueba ForEach + 10 + 11: " << endl;
     list2.ForEach(Print<LI>, cout);
     
     cout << "Prueba First That: " << endl;

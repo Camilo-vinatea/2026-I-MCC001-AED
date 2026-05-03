@@ -32,9 +32,10 @@ public:
 // Linked List Node
 template <typename T>
 class LLNode{
+public:
     using value_type = T;
     using Node       = LLNode<T>;
-private:
+protected:
     value_type m_data;
     Ref        m_ref;
     Node      *m_pNext;
