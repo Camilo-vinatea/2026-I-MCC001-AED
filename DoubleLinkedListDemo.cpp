@@ -3,7 +3,7 @@
 
 template <typename Node>
 void Print(Node &node, ostream& os){
-    os << node << ",";
+    os << node;
 }
 
 template <typename Node>

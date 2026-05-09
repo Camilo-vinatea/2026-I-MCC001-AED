@@ -15,9 +15,14 @@ void CircularLinkedListDemo(){
          << endl;
 
     auto it = list.begin();
+    size_t n = list.size() * 2;
 
-    for(size_t i = 0; i < list.size()*2; ++i){
-        cout << *it << ",";
+    for(size_t i = 0; i < n; ++i){
+        cout << *it;
+
+        if(i != n - 1)
+            cout << ",";
+
         ++it;
     }
 
