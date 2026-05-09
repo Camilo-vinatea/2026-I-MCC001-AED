@@ -7,7 +7,6 @@
 #include <sstream>
 #include <mutex>     // mutex
 #include "general_iterator.h"
-#include "util.h"
 #include "../types.h"
 #include "../foreach.h"
 #include "basetrait.h"
@@ -87,7 +86,7 @@ public:
     using forward_iterator = LinkedListForwardIterator<MySelf>;
     // friend forward_iterator;
 
-private:
+protected:
     Node *m_pRoot = nullptr;
     Node *m_pTail = nullptr;
     size_t m_size = 0;
