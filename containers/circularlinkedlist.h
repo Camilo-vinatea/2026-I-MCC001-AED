@@ -13,9 +13,7 @@ using namespace std;
 //////////////////////////////////////////////////////////////
 template <typename Container>
 class CircularLinkedListForwardIterator :
-    public general_iterator<
-        Container,
-        CircularLinkedListForwardIterator<Container>>{
+    public general_iterator<Container, CircularLinkedListForwardIterator<Container>>{
 
     using MySelf = CircularLinkedListForwardIterator<Container>;
     using Parent = general_iterator<Container, MySelf>;
@@ -50,9 +48,7 @@ public:
     using value_type = typename Traits::value_type;
     using Node = typename Traits::Node;
 
-    using forward_iterator =
-        CircularLinkedListForwardIterator<
-            CircularLinkedList>;
+    using forward_iterator = CircularLinkedListForwardIterator<CircularLinkedList>;
 
 public:
     CircularLinkedList() : Parent(){}
@@ -64,9 +60,7 @@ public:
         const value_type& value,
         Ref ref
     ){
-
         scoped_lock<mutex> lock(this->m_mtx);
-
         Node* pNew =
             new Node(value, ref);
 
