@@ -10,12 +10,11 @@
 
 using namespace std;
 
-//////////////////////////////////////////////////////////////
-// Double Linked List Node
-//
-// Nodo doblemente enlazado.
-// Hereda datos y next desde LLNode y agrega prev.
-//////////////////////////////////////////////////////////////
+/*
+Double Linked List
+
+Extiende una lista enlazada simple para permitir recorrido en ambas direcciones.
+*/
 template <typename T>
 class DLLNode : public LLNode<T>{
 public:
@@ -35,10 +34,7 @@ public:
 
     virtual ~DLLNode(){}
 
-    //////////////////////////////////////////////////////////
-    // Reutilizamos el puntero next del padre
-    // pero devolviendo DLLNode*
-    //////////////////////////////////////////////////////////
+    // Siguiente nodo
     Node* getNext() const{
         return (Node*)LLNode<T>::getNext();
     }
@@ -51,9 +47,7 @@ public:
         LLNode<T>::setNext(pNext);
     }
 
-    //////////////////////////////////////////////////////////
-    // Prev
-    //////////////////////////////////////////////////////////
+    // Nodo anterior
     Node* getPrev() const{
         return m_pPrev;
     }
@@ -67,12 +61,11 @@ public:
     }
 };
 
-//////////////////////////////////////////////////////////////
-// Forward Iterator
-//
-// Igual al de LinkedList.
-// Solo avanza usando next.
-//////////////////////////////////////////////////////////////
+/*
+Iterador forward
+
+Recorre la lista desde el inicio hasta el final.
+*/
 template <typename Container>
 class DoubleLinkedListForwardIterator :
     public general_iterator<Container,
@@ -90,11 +83,11 @@ public:
     }
 };
 
-//////////////////////////////////////////////////////////////
-// Backward Iterator
-//
-// Recorre la lista desde atrás hacia adelante.
-//////////////////////////////////////////////////////////////
+/*
+Iterador backward
+
+Recorre la lista desde el final hacia el inicio.
+*/
 template <typename Container>
 class DoubleLinkedListBackwardIterator :
     public general_iterator<Container,
@@ -113,14 +106,14 @@ public:
     }
 };
 
-//////////////////////////////////////////////////////////////
-// Traits
-//////////////////////////////////////////////////////////////
+/*
+Traits
+
+Define tipo de dato y criterio de ordenamiento.
+*/
 template <typename T>
 struct BaseDoubleLinkedListTrait :
-    public BaseContainerTrait<T, DLLNode<T>>{
-
-};
+    public BaseContainerTrait<T, DLLNode<T>>{};
 
 template <typename T>
 struct AscendingDoubleLinkedListTrait :
@@ -134,12 +127,12 @@ struct DescendingDoubleLinkedListTrait :
     using Comp = greater<T>;
 };
 
-//////////////////////////////////////////////////////////////
-// DoubleLinkedList
-//
-// Reutiliza gran parte de LinkedList.
-// Solo adapta lo necesario para manejar prev.
-//////////////////////////////////////////////////////////////
+/*
+DoubleLinkedList
+
+Lista enlazada doble con soporte para recorrido bidireccional
+e inserción ordenada.
+*/
 template <typename Traits>
 class DoubleLinkedList : public LinkedList<Traits>{
 public:
@@ -155,12 +148,8 @@ public:
         DoubleLinkedListBackwardIterator<DoubleLinkedList>;
 
 private:
-    //////////////////////////////////////////////////////////////
-    // Insert interno
-    //
-    // Reutiliza la lógica recursiva del LinkedList
-    // pero agrega actualización de prev.
-    //////////////////////////////////////////////////////////////
+
+    // Inserción interna con soporte de prev
     void internal_insert(Node*& pCurrent,
                          Node* pPrev,
                          const value_type& value,
@@ -194,16 +183,10 @@ private:
     }
 
 public:
-    //////////////////////////////////////////////////////////////
-    // Constructor
-    //////////////////////////////////////////////////////////////
+
     DoubleLinkedList() : Parent(){}
 
-    //////////////////////////////////////////////////////////////
-    // Copy constructor
-    //
-    // Reutiliza push_back().
-    //////////////////////////////////////////////////////////////
+    // Copia de lista
     DoubleLinkedList(const DoubleLinkedList& other){
 
         Node* pTemp = (Node*)other.m_pRoot;
@@ -217,16 +200,9 @@ public:
         }
     }
 
-    //////////////////////////////////////////////////////////////
-    // Destructor
-    //
-    // Reutiliza destructor del padre.
-    //////////////////////////////////////////////////////////////
     virtual ~DoubleLinkedList(){}
 
-    //////////////////////////////////////////////////////////////
-    // Push front
-    //////////////////////////////////////////////////////////////
+    // Inserción al inicio
     virtual void push_front(value_type value, Ref ref){
 
         scoped_lock<mutex> lock(this->m_mtx);
@@ -260,9 +236,7 @@ public:
         );
     }
 
-    //////////////////////////////////////////////////////////////
-    // Push back
-    //////////////////////////////////////////////////////////////
+    // Inserción al final
     virtual void push_back(value_type value, Ref ref){
 
         scoped_lock<mutex> lock(this->m_mtx);
@@ -287,12 +261,7 @@ public:
         ++this->m_size;
     }
 
-    //////////////////////////////////////////////////////////////
-    // Insert
-    //
-    // Mantiene misma lógica recursiva que LinkedList
-    // pero corrige prev.
-    //////////////////////////////////////////////////////////////
+    // Inserción ordenada
     virtual void insert(const value_type& value, Ref ref){
 
         scoped_lock<mutex> lock(this->m_mtx);
@@ -305,9 +274,7 @@ public:
         );
     }
 
-    //////////////////////////////////////////////////////////////
     // Iteradores forward
-    //////////////////////////////////////////////////////////////
     forward_iterator begin(){
         return forward_iterator(this, this->m_pRoot);
     }
@@ -316,9 +283,7 @@ public:
         return forward_iterator(this, nullptr);
     }
 
-    //////////////////////////////////////////////////////////////
     // Iteradores backward
-    //////////////////////////////////////////////////////////////
     backward_iterator rbegin(){
         return backward_iterator(this, this->m_pTail);
     }
@@ -328,22 +293,12 @@ public:
     }
 };
 
-//////////////////////////////////////////////////////////////
-// operator<<
-//
-// Reutiliza toString() heredado.
-//////////////////////////////////////////////////////////////
 template <typename Traits>
 ostream& operator<<(ostream& os,
                     DoubleLinkedList<Traits>& list){
     return os << list.toString();
 }
 
-//////////////////////////////////////////////////////////////
-// operator>>
-//
-// Reutiliza push_back().
-//////////////////////////////////////////////////////////////
 template <typename Traits>
 istream& operator>>(istream& is,
                     DoubleLinkedList<Traits>& list){
@@ -352,7 +307,6 @@ istream& operator>>(istream& is,
         typename DoubleLinkedList<Traits>::value_type;
 
     string line;
-
     getline(is, line);
 
     for(char& c : line){
@@ -375,4 +329,4 @@ istream& operator>>(istream& is,
     return is;
 }
 
-#endif // __DOUBLELINKEDLIST_H__
+#endif //__DOUBLELINKEDLIST_H__

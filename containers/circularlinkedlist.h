@@ -5,12 +5,12 @@
 
 using namespace std;
 
-//////////////////////////////////////////////////////////////
-// Forward Iterator para CLL
-//
-// Recorre circularmente.
-// Se detiene cuando vuelve al inicio.
-//////////////////////////////////////////////////////////////
+/*
+Forward Iterator (lista circular)
+
+Permite recorrer la estructura de forma circular.
+El recorrido vuelve al inicio cuando se completa el ciclo.
+*/
 template <typename Container>
 class CircularLinkedListForwardIterator :
     public general_iterator<Container, CircularLinkedListForwardIterator<Container>>{
@@ -36,9 +36,12 @@ public:
     }
 };
 
-//////////////////////////////////////////////////////////////
-// Circular Linked List
-//////////////////////////////////////////////////////////////
+/*
+Circular Linked List
+
+Estructura enlazada donde el último nodo apunta nuevamente al primero,
+formando un ciclo continuo.
+*/
 template <typename Traits>
 class CircularLinkedList :
     public LinkedList<Traits>{
@@ -48,14 +51,17 @@ public:
     using value_type = typename Traits::value_type;
     using Node = typename Traits::Node;
 
-    using forward_iterator = CircularLinkedListForwardIterator<CircularLinkedList>;
+    using forward_iterator =
+        CircularLinkedListForwardIterator<CircularLinkedList>;
 
 public:
     CircularLinkedList() : Parent(){}
 
-    //////////////////////////////////////////////////////////
-    // Insert adaptado para circularidad
-    //////////////////////////////////////////////////////////
+    /*
+    Inserción en lista circular
+
+    Mantiene la propiedad de ciclo entre el último y el primer nodo.
+    */
     virtual void insert(
         const value_type& value,
         Ref ref
@@ -64,7 +70,7 @@ public:
         Node* pNew =
             new Node(value, ref);
 
-        // lista vacía
+        // caso: lista vacía
         if(this->m_size == 0){
             this->m_pRoot = pNew;
             this->m_pTail = pNew;
@@ -80,10 +86,12 @@ public:
         ++this->m_size;
     }
 
+    // Acceso al nodo raíz
     Node* getRoot(){
         return this->m_pRoot;
     }
 
+    // Iterador desde el inicio
     forward_iterator begin(){
         return forward_iterator(
             this,
@@ -91,6 +99,7 @@ public:
         );
     }
 
+    // Fin lógico de iteración
     forward_iterator end(){
         return forward_iterator(
             this,

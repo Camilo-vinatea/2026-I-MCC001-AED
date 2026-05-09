@@ -32,8 +32,8 @@ int main() {
     // DemoVector();
     // DemoConcurrentVector();
     // ListsDemo();
-    // DoubleLinkedListDemo();
+    DoubleLinkedListDemo();
     // CircularLinkedListDemo();
-    CircularDoubleLinkedListDemo();
+    // CircularDoubleLinkedListDemo();
     return 0;
 }

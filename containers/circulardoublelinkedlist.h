@@ -5,9 +5,12 @@
 
 using namespace std;
 
-//////////////////////////////////////////////////////////////
-// Circular Double Linked List
-//////////////////////////////////////////////////////////////
+/*
+Circular Double Linked List
+
+Extiende una lista doblemente enlazada para formar una estructura circular.
+El último nodo conecta con el primero y viceversa, permitiendo recorrido continuo en ambas direcciones.
+*/
 template <typename Traits>
 class CircularDoubleLinkedList :
     public DoubleLinkedList<Traits>{
@@ -20,15 +23,18 @@ public:
 public:
     CircularDoubleLinkedList() : Parent(){}
 
-    //////////////////////////////////////////////////////////
-    // Insert adaptado para circularidad doble
-    //////////////////////////////////////////////////////////
-    virtual void insert(const value_type& value,Ref ref){
+    /*
+    Inserción en lista doble circular
+
+    Mantiene conectividad bidireccional entre primer y último nodo,
+    cerrando el ciclo en ambas direcciones (next y prev).
+    */
+    virtual void insert(const value_type& value, Ref ref){
         scoped_lock<mutex> lock(this->m_mtx);
         Node* pNew =
             new Node(value, ref);
 
-        // lista vacía
+        // caso: lista vacía
         if(this->m_size == 0){
             this->m_pRoot = pNew;
             this->m_pTail = pNew;
