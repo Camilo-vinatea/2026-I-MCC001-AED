@@ -3,5 +3,7 @@
 
 void ListsDemo();
 void DoubleLinkedListDemo();
+void CircularLinkedListDemo();
+void CircularDoubleLinkedListDemo();
 
 #endif // __LISTS_H__
