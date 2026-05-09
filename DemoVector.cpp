@@ -1,7 +1,7 @@
 #include <iostream>
 #include <thread>
 #include <mutex>
-#include "vector.h"
+#include "containers/vector.h"
 
 using namespace std;
 
@@ -17,18 +17,18 @@ void AddOne(Node &node){
     ++node;
 }
 
-template <typename Node>
-void AddX(Node &node, T x){
+template <typename T>
+void AddX(VectorNode<T> &node, T x){
     node += x;
 }
 
-template <typename Node>
-bool IsMultipleOf(Node &node, T x){
+template <typename T>
+bool IsMultipleOf(VectorNode<T> &node, T x){
     return node.GetDataRef() % x == 0;
 }
 
 template <typename T>
-bool IsGreaterThan(Node &node, T x){
+bool IsGreaterThan(VectorNode<T> &node, T x){
     return node.GetDataRef() > x;
 }
 
@@ -52,7 +52,7 @@ void DemoVector(){
     v1.ForEach(Print<TI>, cout);
     cout << endl;
     int a = 3;
-    v1.ForEach([a](VectorNode<TI>& node){   node.GetDataRef() *= a; });
+    v1.ForEach([a](auto& node){   node.GetDataRef() *= a; });
     v1.ForEach(Print<TI>, cout);
     cout << endl << a << endl;
 

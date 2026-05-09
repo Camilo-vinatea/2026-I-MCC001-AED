@@ -9,8 +9,8 @@
 #include <utility> // std::exchange
 #include "general_iterator.h"
 #include "util.h"
-#include "types.h"
-#include "foreach.h"
+#include "../types.h"
+#include "../foreach.h"
 #include "basetrait.h"
 
 using namespace std;
@@ -159,9 +159,10 @@ public:
         if( m_pRoot ){
             Node* pTemp = m_pRoot;
             m_pRoot = m_pRoot->getNext();
-            return std::make_pair(pTemp->getData(), pTemp->getRef());
+            --m_size;
+            return make_pair(pTemp->getData(), pTemp->getRef());
         }else
-            throw std::out_of_range("pop_front(): empty list");
+            throw out_of_range("pop_front(): empty list");
     }
 
     // Push back
@@ -203,7 +204,18 @@ private:
 public:
     virtual void    insert(const value_type &value, Ref ref);
     
-    // virtual Node& operator[](size_t index);
+    virtual Node& operator[](const size_t index) const{
+        
+        if (index >= m_size)
+        throw out_of_range("Index out of range");
+
+        Node* pTemp = m_pRoot;
+        for (size_t i = 0; i < index; ++i){
+            pTemp = pTemp -> getNext();
+        }
+        return *pTemp;
+    };
+
     virtual size_t  size() const { return m_size; }
     virtual string  toString();
 
