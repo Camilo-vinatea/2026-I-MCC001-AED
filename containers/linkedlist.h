@@ -67,13 +67,15 @@ struct BaseLinkedListTrait : public BaseContainerTrait<T, LLNode<T>>{
 };
 
 template <typename T>
-struct AscendingLinkedListTrait : public BaseLinkedListTrait<T>{
-    using Comp = less<T>;
+struct AscendingLinkedListTrait : public BaseLinkedListTrait<T>,
+                                  public AscendingTrait<T>
+{
 };
 
 template <typename T>
-struct DescendingLinkedListTrait : public BaseLinkedListTrait<T>{
-    using Comp = greater<T>;
+struct DescendingLinkedListTrait : public BaseLinkedListTrait<T>,
+                                   public DescendingTrait<T>
+{
 };
 
 template <typename Traits>
