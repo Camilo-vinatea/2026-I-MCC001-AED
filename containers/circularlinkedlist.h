@@ -57,6 +57,7 @@ public:
     CircularLinkedList() : Parent(){}
 
     virtual ~CircularLinkedList(){
+        scoped_lock<mutex> lock(this->m_mtx);
         if(this->m_size > 0)
             this->m_pTail->setNext(nullptr);
     }

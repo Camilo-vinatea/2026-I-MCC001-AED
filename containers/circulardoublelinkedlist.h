@@ -93,6 +93,7 @@ public:
     CircularDoubleLinkedList() : Parent(){}
 
     virtual ~CircularDoubleLinkedList(){
+        scoped_lock<mutex> lock(this->m_mtx);
         if(this->m_size > 0){
             ((Node*)this->m_pTail)->setNext(nullptr);
             ((Node*)this->m_pRoot)->setPrev(nullptr);
