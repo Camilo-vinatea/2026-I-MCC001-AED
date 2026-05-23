@@ -1,10 +1,10 @@
-# Data Structures - Linked Lists
+# Estructura de datos: listas enlazadas
 
-Este documento describe la jerarquía de estructuras de listas enlazadas implementadas en el proyecto.
+Jerarquía de estructuras de listas enlazadas
 
 ---
 
-## Class Diagram
+## Diagrama de clases
 
 ```mermaid
 classDiagram
