@@ -18,20 +18,19 @@ class CircularLinkedListForwardIterator :
     using MySelf = CircularLinkedListForwardIterator<Container>;
     using Parent = general_iterator<Container, MySelf>;
 
-    using Parent::Parent;
-
-private:
-    bool m_firstPass = true;
+    typename Container::Node* m_pStart;
 
 public:
     CircularLinkedListForwardIterator(
         Container* pContainer,
         typename Container::Node* pNode
     )
-    : Parent(pContainer, pNode){}
+    : Parent(pContainer, pNode), m_pStart(pNode) {}
 
     MySelf& operator++(){
         this->m_pNode = this->m_pNode->getNext();
+        if(this->m_pNode == m_pStart)
+            this->m_pNode = nullptr;
         return *this;
     }
 };
@@ -57,33 +56,29 @@ public:
 public:
     CircularLinkedList() : Parent(){}
 
-    /*
-    Inserción en lista circular
+    virtual ~CircularLinkedList(){
+        if(this->m_size > 0)
+            this->m_pTail->setNext(nullptr);
+    }
 
-    Mantiene la propiedad de ciclo entre el último y el primer nodo.
+    /*
+    Inserción ordenada en lista circular
+
+    Rompe temporalmente el enlace circular para reutilizar la inserción
+    ordenada de LinkedList, luego restaura la circularidad.
     */
     virtual void insert(
         const value_type& value,
         Ref ref
-    ){
+    ) override {
         scoped_lock<mutex> lock(this->m_mtx);
-        Node* pNew =
-            new Node(value, ref);
 
-        // caso: lista vacía
-        if(this->m_size == 0){
-            this->m_pRoot = pNew;
-            this->m_pTail = pNew;
+        if(this->m_size > 0)
+            this->m_pTail->setNext(nullptr);
 
-            pNew->setNext(pNew);
-        }
-        else{
-            this->m_pTail->setNext(pNew);
-            pNew->setNext(this->m_pRoot);
-            this->m_pTail = pNew;
-        }
+        Parent::internal_insert(this->m_pRoot, value, ref, nullptr);
 
-        ++this->m_size;
+        this->m_pTail->setNext(this->m_pRoot);
     }
 
     // Acceso al nodo raíz

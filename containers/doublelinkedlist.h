@@ -147,22 +147,21 @@ public:
     using backward_iterator =
         DoubleLinkedListBackwardIterator<DoubleLinkedList>;
 
-private:
+protected:
 
-    // Inserción interna con soporte de prev
-    void internal_insert(Node*& pCurrent,
-                         Node* pPrev,
+    void internal_insert(Node*& pNode,
                          const value_type& value,
-                         Ref ref){
+                         Ref ref,
+                         Node* pPrev = nullptr) override {
 
-        if(!pCurrent || this->m_comp(value, pCurrent->getDataRef())){
+        if(!pNode || this->m_comp(value, pNode->getDataRef())){
 
-            Node* pNew = new Node(value, ref, pCurrent, pPrev);
+            Node* pNew = new Node(value, ref, pNode, pPrev);
 
-            if(pCurrent)
-                pCurrent->setPrev(pNew);
+            if(pNode)
+                pNode->setPrev(pNew);
 
-            pCurrent = pNew;
+            pNode = pNew;
 
             if(!pPrev)
                 this->m_pRoot = pNew;
@@ -175,10 +174,10 @@ private:
         }
 
         internal_insert(
-            (Node*&)pCurrent->getNextRef(),
-            pCurrent,
+            (Node*&)pNode->getNextRef(),
             value,
-            ref
+            ref,
+            pNode
         );
     }
 
@@ -261,19 +260,6 @@ public:
         ++this->m_size;
     }
 
-    // Inserción ordenada
-    virtual void insert(const value_type& value, Ref ref){
-
-        scoped_lock<mutex> lock(this->m_mtx);
-
-        internal_insert(
-            (Node*&)this->m_pRoot,
-            nullptr,
-            value,
-            ref
-        );
-    }
-
     // Iteradores forward
     forward_iterator begin(){
         return forward_iterator(this, this->m_pRoot);
@@ -294,39 +280,13 @@ public:
 };
 
 template <typename Traits>
-ostream& operator<<(ostream& os,
-                    DoubleLinkedList<Traits>& list){
-    return os << list.toString();
+ostream& operator<<(ostream& os, DoubleLinkedList<Traits>& list){
+    return os << static_cast<LinkedList<Traits>&>(list);
 }
 
 template <typename Traits>
-istream& operator>>(istream& is,
-                    DoubleLinkedList<Traits>& list){
-
-    using value_type =
-        typename DoubleLinkedList<Traits>::value_type;
-
-    string line;
-    getline(is, line);
-
-    for(char& c : line){
-        if(c == '[' || c == ']' ||
-           c == '(' || c == ')' ||
-           c == ','){
-            c = ' ';
-        }
-    }
-
-    value_type value;
-    Ref ref;
-
-    stringstream ss(line);
-
-    while(ss >> value >> ref){
-        list.push_back(value, ref);
-    }
-
-    return is;
+istream& operator>>(istream& is, DoubleLinkedList<Traits>& list){
+    return is >> static_cast<LinkedList<Traits>&>(list);
 }
 
 #endif //__DOUBLELINKEDLIST_H__

@@ -14,16 +14,13 @@ void CircularLinkedListDemo(){
     cout << "Recorrido circular (2 vueltas): "
          << endl;
 
-    auto it = list.begin();
-    size_t n = list.size() * 2;
-
-    for(size_t i = 0; i < n; ++i){
-        cout << *it;
-
-        if(i != n - 1)
-            cout << ",";
-
-        ++it;
+    bool first = true;
+    for(int cycle = 0; cycle < 2; ++cycle){
+        for(auto it = list.begin(); it != list.end(); ++it){
+            if(!first) cout << ",";
+            cout << *it;
+            first = false;
+        }
     }
 
     cout << endl;

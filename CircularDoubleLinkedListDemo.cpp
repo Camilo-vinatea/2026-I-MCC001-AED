@@ -11,31 +11,29 @@ void CircularDoubleLinkedListDemo(){
     list.insert(3, 3);
     list.insert(4, 4);
 
-    size_t n = list.size() * 2;
-    
     cout << "Forward circular (2 vueltas): " << endl;
 
-    auto it = list.begin();
-
-    for(size_t i = 0; i < n; ++i){
-        cout << *it;
-        if(i != n - 1)
-            cout << ",";
-        ++it;
+    bool first = true;
+    for(int cycle = 0; cycle < 2; ++cycle){
+        for(auto it = list.begin(); it != list.end(); ++it){
+            if(!first) cout << ",";
+            cout << *it;
+            first = false;
+        }
     }
 
     cout << endl;
 
     cout << "Backward circular (2 vueltas): " << endl;
 
-    auto rit = list.rbegin();
-
-
-    for(size_t i = 0; i < n; ++i){
-        cout << *rit;
-        if(i != n - 1)
-            cout << ",";
-        ++rit;
+    first = true;
+    for(int cycle = 0; cycle < 2; ++cycle){
+        for(auto rit = list.rbegin(); rit != list.rend(); ++rit){
+            if(!first) cout << ",";
+            cout << *rit;
+            first = false;
+        }
     }
+
     cout << endl;
 }
