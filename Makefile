@@ -6,7 +6,8 @@ TARGET = main
 SRCS = main.cpp \
 	   CircularLinkedListDemo.cpp\
 	   CircularDoubleLinkedListDemo.cpp\
-	   DoubleLinkedListDemo.cpp
+	   DoubleLinkedListDemo.cpp\
+	   HeapDemo.cpp
 #	   ListsDemo.cpp
 # 	   DemoVector.cpp
 # macros.cpp vector.cpp

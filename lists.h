@@ -5,5 +5,6 @@ void ListsDemo();
 void DoubleLinkedListDemo();
 void CircularLinkedListDemo();
 void CircularDoubleLinkedListDemo();
+void HeapDemo();
 
 #endif // __LISTS_H__

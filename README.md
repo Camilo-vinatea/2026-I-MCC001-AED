@@ -74,6 +74,22 @@ classDiagram
         -resize()
     }
 
+    class Heap~Traits~ {
+        -Node* m_data
+        -size_t m_size
+        -size_t m_capacity
+        -mutable mutex m_mtx
+        +insert(value, ref)
+        +extract() Node
+        +peek() Node&
+        +replace(value, ref) Node
+        +build(values, refs, n)
+        +size() size_t
+        +empty() bool
+        +toString() string
+        +ForEach(func, args)
+    }
+
     LinkedList <|-- DoubleLinkedList : hereda
     LinkedList <|-- CircularLinkedList : hereda
     DoubleLinkedList <|-- CircularDoubleLinkedList : hereda
@@ -217,6 +233,24 @@ classDiagram
     class VectorTraits~T~ {
     }
 
+    class AscendingTrait~T~ {
+        +Comp = less~T~
+    }
+
+    class DescendingTrait~T~ {
+        +Comp = greater~T~
+    }
+
+    class BaseHeapTrait~T~ {
+        +value_type = T
+    }
+
+    class AscendingHeapTrait~T~ {
+    }
+
+    class DescendingHeapTrait~T~ {
+    }
+
     BaseContainerTrait <|-- BaseLinkedListTrait : hereda
     BaseContainerTrait <|-- BaseDoubleLinkedListTrait : hereda
     BaseContainerTrait <|-- VectorTraits : hereda
@@ -224,6 +258,14 @@ classDiagram
     BaseLinkedListTrait <|-- DescendingLinkedListTrait : hereda
     BaseDoubleLinkedListTrait <|-- AscendingDoubleLinkedListTrait : hereda
     BaseDoubleLinkedListTrait <|-- DescendingDoubleLinkedListTrait : hereda
+    AscendingTrait <|-- AscendingLinkedListTrait : hereda
+    DescendingTrait <|-- DescendingLinkedListTrait : hereda
+    AscendingTrait <|-- AscendingDoubleLinkedListTrait : hereda
+    DescendingTrait <|-- DescendingDoubleLinkedListTrait : hereda
+    BaseHeapTrait <|-- AscendingHeapTrait : hereda
+    BaseHeapTrait <|-- DescendingHeapTrait : hereda
+    AscendingTrait <|-- AscendingHeapTrait : hereda
+    DescendingTrait <|-- DescendingHeapTrait : hereda
 ```
 
 ---
@@ -331,12 +373,15 @@ graph TD
     DemoLL["DoubleLinkedListDemo.cpp"]
     DemoCLL["CircularLinkedListDemo.cpp"]
     DemoCDLL["CircularDoubleLinkedListDemo.cpp"]
+    DemoHeap["HeapDemo.cpp"]
+    heap["containers/heap.h<br/>Heap + Node interno + Traits"]
 
     main --> lists
     main --> macros
     DemoLL --> dll
     DemoCLL --> cll
     DemoCDLL --> cdll
+    DemoHeap --> heap
 
     dll --> ll
     cll --> ll
@@ -349,7 +394,37 @@ graph TD
     vector --> geniter
     vector --> basetrait
     vector --> types
+    heap --> basetrait
+    heap --> types
+    heap --> foreach
 ```
+
+---
+
+## Heap — operaciones y complejidad
+
+```mermaid
+flowchart TD
+    insert["insert(v, ref)\nO(log n)"]
+    extract["extract()\nO(log n)"]
+    peek["peek()\nO(1)"]
+    replace["replace(v, ref)\nO(log n)"]
+    build["build(arr, n)\nO(n) Floyd"]
+
+    insert --> HU["heapify_up\nburbujea hacia la raíz"]
+    extract --> HD["heapify_down\nbaja el último a raíz"]
+    replace --> HD2["heapify_down\nun solo recorrido descendente"]
+    build --> HD3["heapify_down desde\nútimo nodo interno → raíz"]
+    peek --> R["retorna m_data[0]"]
+```
+
+| Operación | Complejidad | Descripción |
+|-----------|-------------|-------------|
+| `insert` | O(log n) | Inserta al final, sube hasta posición correcta |
+| `extract` | O(log n) | Extrae raíz, sube último elemento, baja |
+| `peek` | O(1) | Accede `m_data[0]` sin modificar |
+| `replace` | O(log n) | Reemplaza raíz y baja — 1 recorrido vs 2 de extract+insert |
+| `build` | O(n) | Algoritmo de Floyd: heapify_down desde n/2-1 hasta 0 |
 
 ---
 
