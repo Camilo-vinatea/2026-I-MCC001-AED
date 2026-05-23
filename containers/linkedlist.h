@@ -7,7 +7,6 @@
 #include <sstream>
 #include <mutex>     // mutex
 #include "general_iterator.h"
-#include "util.h"
 #include "../types.h"
 #include "../foreach.h"
 #include "basetrait.h"
@@ -89,7 +88,7 @@ public:
     using forward_iterator = LinkedListForwardIterator<MySelf>;
     // friend forward_iterator;
 
-private:
+protected:
     Node *m_pRoot = nullptr;
     Node *m_pTail = nullptr;
     size_t m_size = 0;
@@ -202,8 +201,8 @@ public:
         --m_size;
         return pDelete;
     }
-private:
-            void    internal_insert(Node* &pParent, const value_type &value, Ref ref);
+protected:
+    virtual void    internal_insert(Node* &pNode, const value_type &value, Ref ref, Node* pPrev = nullptr);
 public:
     virtual void    insert(const value_type &value, Ref ref);
     
@@ -240,20 +239,21 @@ public:
 };
 
 template <typename Traits>
-void LinkedList<Traits>::internal_insert(Node* &pPrev, const value_type &value, Ref ref){
-    if(!pPrev || m_comp(value, pPrev->getDataRef())){
-        pPrev = new Node(value, ref, pPrev);
-        m_size++;
-        if(pPrev == m_pRoot)
-            m_pTail = pPrev;
+void LinkedList<Traits>::internal_insert(Node* &pNode, const value_type &value, Ref ref, Node* /*pPrev*/){
+    if(!pNode || m_comp(value, pNode->getDataRef())){
+        pNode = new Node(value, ref, pNode);
+        ++m_size;
+        if(!pNode->getNext())
+            m_pTail = pNode;
         return;
     }
-    internal_insert(pPrev->getNextRef(), value, ref);
+    internal_insert(pNode->getNextRef(), value, ref, pNode);
 }
 
 template <typename Traits>
 void LinkedList<Traits>::insert(const value_type &value, Ref ref){
-    internal_insert(m_pRoot, value, ref);
+    scoped_lock<mutex> lock(m_mtx);
+    internal_insert(m_pRoot, value, ref, nullptr);
 }
 
 template <typename Traits>
