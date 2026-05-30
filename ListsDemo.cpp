@@ -22,8 +22,8 @@ bool IsGreaterThan(Node &node, T x){
 }
 
 void LinkedListDemo(){
-    // 
-    LinkedList<DescendingLinkedListTrait<TI>> list1;
+    //
+    LinkedList<TI, greater<TI>> list1;
     list1.insert(6, 15);
     list1.insert(2, 25);
     list1.insert(9, 35);
@@ -31,8 +31,8 @@ void LinkedListDemo(){
     list1.insert(7, 55);
     cout << "Lista descendente: " << list1 << endl;
 
-    LinkedList<AscendingLinkedListTrait<TI>> list2;
-    using LI = LinkedList<AscendingLinkedListTrait<TI>>::Node;
+    LinkedList<TI> list2;
+    using LI = LinkedList<TI>::Node;
     list2.insert(6, 15);
     list2.insert(2, 25);
     list2.insert(9, 35);
@@ -46,7 +46,7 @@ void LinkedListDemo(){
     list2.ForEach(AddY<LI>, 10, 11);
     cout << "Prueba ForEach + 10 + 11: " << endl;
     list2.ForEach(Print<LI>, cout);
-    
+
     cout << "Prueba First That: " << endl;
     auto it = list2.FirstThat(IsGreaterThan<LI, TI>, 6);
     if (it != list2.end())
@@ -61,7 +61,7 @@ void LinkedListDemo(){
     list1.pop_front();
     cout << "Lista ascendente 1: " << list1 << endl;
 
-    LinkedList<AscendingLinkedListTrait<TI>> list3;
+    LinkedList<TI> list3;
     cout << "Prueba PushBack: " << endl;
     list3.push_back(1, 10);
     list3.push_back(2, 20);
@@ -74,12 +74,12 @@ void LinkedListDemo(){
 
     list3.push_back(4, 40);
     cout << "Prueba Copy Constructor: " << endl;
-    LinkedList<AscendingLinkedListTrait<TI>> list4(list3);
+    LinkedList<TI> list4(list3);
     cout << "Lista ascendente 4: " << list4 << endl;
 
     list3.push_back(5, 50);
     cout << "Prueba Move Constructor: " << endl;
-    LinkedList<AscendingLinkedListTrait<TI>> list5 = move(list3);
+    LinkedList<TI> list5 = move(list3);
     cout << "Lista ascendente 5: " << list5 << endl;
 
     cout << "Prueba del Destructor: " << endl;
@@ -93,7 +93,7 @@ void LinkedListDemo(){
     ofs.close();
 
     ifstream file("lista1.txt");
-    LinkedList<AscendingLinkedListTrait<TI>> list6;
+    LinkedList<TI> list6;
     file >> list6;
     cout << "Lista 6 creada con datos de la lista 1: " << list6 << endl;
 

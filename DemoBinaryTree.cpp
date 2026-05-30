@@ -7,8 +7,8 @@ using namespace std;
 void DemoBinaryTree() {
     cout << "\n=== DemoBinaryTree ===" << endl;
 
-    // --- Build BST: AscendingBinaryTreeListTrait<TI> ---
-    BinaryTree<AscendingBinaryTreeListTrait<TI>> bt;
+    // --- Construcción BST ascendente ---
+    BinaryTree<TI> bt;
     bt.insert(50, 0);
     bt.insert(30, 1);
     bt.insert(70, 2);
@@ -17,83 +17,82 @@ void DemoBinaryTree() {
     bt.insert(60, 5);
     bt.insert(80, 6);
 
-    cout << "Size: " << bt.size() << endl;
-    cout << "toString (inorder): " << bt.toString() << endl;
+    cout << "Tamanio: " << bt.size() << endl;
+    cout << "toString (inorden): " << bt.toString() << endl;
 
-    auto printNode = [](auto& node) {
-        cout << node.getData() << " ";
+    auto imprimirNodo = [](auto& nodo) {
+        cout << nodo.getData() << " ";
     };
 
-    cout << "\nInorder Forward  (LNR): ";
-    bt.ForEach(printNode);
+    cout << "\nInorden Adelante  (LNR): ";
+    bt.ForEach(imprimirNodo);
     cout << endl;
 
-    cout << "Inorder Backward (RNL): ";
-    bt.ReverseForEach(printNode);
+    cout << "Inorden Reverso   (RNL): ";
+    bt.ReverseForEach(imprimirNodo);
     cout << endl;
 
-    cout << "Preorder Forward  (NLR): ";
-    bt.ForEachPreorder(printNode);
+    cout << "Preorden Adelante  (NLR): ";
+    bt.ForEachPreorder(imprimirNodo);
     cout << endl;
 
-    cout << "Preorder Backward (NRL): ";
-    bt.ForEachReversePreorder(printNode);
+    cout << "Preorden Reverso   (NRL): ";
+    bt.ForEachReversePreorder(imprimirNodo);
     cout << endl;
 
-    cout << "Postorder Forward  (LRN): ";
-    bt.ForEachPostorder(printNode);
+    cout << "Postorden Adelante (LRN): ";
+    bt.ForEachPostorder(imprimirNodo);
     cout << endl;
 
-    cout << "Postorder Backward (RLN): ";
-    bt.ForEachReversePostorder(printNode);
+    cout << "Postorden Reverso  (RLN): ";
+    bt.ForEachReversePostorder(imprimirNodo);
     cout << endl;
 
-    // --- FirstThat ---
-    auto found = bt.FirstThat([](auto& node) {
-        return node.getData() > 35;
+    // --- Búsqueda condicional ---
+    auto encontrado = bt.FirstThat([](auto& nodo) {
+        return nodo.getData() > 35;
     });
-    if (found != bt.end())
-        cout << "\nFirstThat(data > 35): " << (*found).getData() << endl;
+    if (encontrado != bt.end())
+        cout << "\nPrimero con dato > 35: " << (*encontrado).getData() << endl;
 
-    // --- Copy Constructor ---
-    BinaryTree<AscendingBinaryTreeListTrait<TI>> bt2(bt);
-    cout << "\nCopy (inorder): ";
-    bt2.ForEach(printNode);
+    // --- Copy constructor ---
+    BinaryTree<TI> bt2(bt);
+    cout << "\nCopia (inorden): ";
+    bt2.ForEach(imprimirNodo);
     cout << endl;
 
-    // --- Move Constructor ---
-    BinaryTree<AscendingBinaryTreeListTrait<TI>> bt3(move(bt2));
-    cout << "Move (inorder, source empty=" << bt2.empty() << "): ";
-    bt3.ForEach(printNode);
+    // --- Move constructor ---
+    BinaryTree<TI> bt3(move(bt2));
+    cout << "Movimiento (inorden, origen vacio=" << bt2.empty() << "): ";
+    bt3.ForEach(imprimirNodo);
     cout << endl;
 
-    // --- Disk write ---
+    // --- Escritura en disco ---
     {
-        ofstream file("binarytree.txt");
-        file << bt;
-        cout << "\nWritten to binarytree.txt" << endl;
+        ofstream archivo("binarytree.txt");
+        archivo << bt;
+        cout << "\nEscrito en binarytree.txt" << endl;
     }
 
-    // --- Disk read ---
+    // --- Lectura desde archivo ---
     {
-        BinaryTree<AscendingBinaryTreeListTrait<TI>> bt4;
-        ifstream file("binarytree.txt");
-        file >> bt4;
-        cout << "Read from disk (inorder): ";
-        bt4.ForEach(printNode);
+        BinaryTree<TI> bt4;
+        ifstream archivo("binarytree.txt");
+        archivo >> bt4;
+        cout << "Leido desde disco (inorden): ";
+        bt4.ForEach(imprimirNodo);
         cout << endl;
     }
 
-    // --- Descending tree ---
-    BinaryTree<DescendingBinaryTreeListTrait<TI>> btDesc;
+    // --- Árbol descendente ---
+    BinaryTree<TI, greater<TI>> btDesc;
     btDesc.insert(50, 0);
     btDesc.insert(30, 1);
     btDesc.insert(70, 2);
     btDesc.insert(20, 3);
     btDesc.insert(40, 4);
-    cout << "\nDescending BST inorder: ";
-    btDesc.ForEach(printNode);
+    cout << "\nBST descendente (inorden): ";
+    btDesc.ForEach(imprimirNodo);
     cout << endl;
 
-    cout << "=== DemoBinaryTree done ===" << endl;
 }
