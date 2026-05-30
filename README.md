@@ -8,7 +8,7 @@ Documentación de todas las clases, jerarquías y relaciones del repositorio.
 
 ```mermaid
 classDiagram
-    class LinkedList~Traits~ {
+    class LinkedList~T,Comp~ {
         #Node* m_pRoot
         #Node* m_pTail
         #size_t m_size
@@ -26,18 +26,19 @@ classDiagram
         +end() forward_iterator
         +ForEach(func, args)
         +FirstThat(func, args) forward_iterator
-        #internal_insert(pNode&, value, ref, pPrev)*
+        -insertar_interno(pNode&, value, ref)
     }
 
-    class DoubleLinkedList~Traits~ {
+    class DoubleLinkedList~T,Comp~ {
         +push_front(value, ref)
         +push_back(value, ref)
+        +insert(value, ref)
         +begin() forward_iterator
         +end() forward_iterator
         +rbegin() backward_iterator
         +rend() backward_iterator
-        +FirstThat(func, args) forward_iterator
-        #internal_insert(pNode&, value, ref, pPrev)
+        +ReverseForEach(func, args)
+        +ReverseFirstThat(func, args) backward_iterator
     }
 
     class CircularLinkedList~Traits~ {
@@ -75,22 +76,18 @@ classDiagram
     }
 
     class Heap~Traits~ {
-        -Node* m_data
-        -size_t m_size
-        -size_t m_capacity
-        -mutable mutex m_mtx
+        -vector~Node~ m_heap
+        -Comp m_comp
         +insert(value, ref)
-        +extract() Node
-        +peek() Node&
-        +replace(value, ref) Node
-        +build(values, refs, n)
+        +extract()
+        +peek_min() value_type
         +size() size_t
         +empty() bool
-        +toString() string
-        +ForEach(func, args)
+        -heapify_up(index)
+        -heapify_down(index)
     }
 
-    class BinaryTree~Traits~ {
+    class BinaryTree~T,Comp~ {
         #Node* m_pRoot
         #size_t m_size
         #Comp m_comp
@@ -113,9 +110,9 @@ classDiagram
         +ForEachReversePostorder(func, args)
         +FirstThat(func, args) forward_inorder_iterator
         +ReverseFirstThat(func, args) backward_inorder_iterator
-        #internal_insert(pNode&, value, ref)
-        #internal_copy(dst&, src)
-        #internal_write(os, node)
+        -insertar_interno(pNode&, value, ref)
+        -copiar_interno(dst&, src)
+        -escribir_interno(os, node)
     }
 
     LinkedList <|-- DoubleLinkedList : hereda
@@ -127,32 +124,47 @@ classDiagram
 
 ## Jerarquía de Nodos
 
+Los nodos de `LinkedList`, `DoubleLinkedList` y `BinaryTree` están definidos como `struct Node` **anidado dentro del contenedor** — no son clases externas.
+
 ```mermaid
 classDiagram
-    class LLNode~T~ {
-        #value_type m_data
-        #Ref m_ref
-        #Node* m_pNext
-        +getData() value_type
-        +getDataRef() value_type&
-        +setData(data)
+    class LinkedListNode~T~ {
+        +T m_data
+        +Ref m_ref
+        +Node* m_pNext
+        +getData() T
+        +getDataRef() T&
         +getRef() Ref
-        +getRefRef() Ref&
-        +setRef(ref)
         +getNext() Node*
         +getNextRef() Node*&
-        +setNext(pNext)
+        +setNext(Node*)
+        +virtual ~Node()
     }
+    note for LinkedListNode "struct Node anidado en LinkedList"
 
-    class DLLNode~T~ {
-        -Node* m_pPrev
+    class DoubleLinkedListNode~T~ {
+        +Node* m_pPrev
         +getNext() Node*
-        +getNextRef() Node*&
-        +setNext(pNext)
+        +setNext(Node*)
         +getPrev() Node*
         +getPrevRef() Node*&
-        +setPrev(pPrev)
+        +setPrev(Node*)
     }
+    note for DoubleLinkedListNode "struct Node anidado en DoubleLinkedList"
+
+    class BinaryTreeNode~T~ {
+        +T m_data
+        +Ref m_ref
+        +Node* m_pChild[2]
+        +Node* m_pParent
+        +getData() T
+        +getDataRef() T&
+        +getChild(pos) Node*
+        +getChildRef(pos) Node*&
+        +to_string() string
+        +~Node()
+    }
+    note for BinaryTreeNode "struct Node anidado en BinaryTree — destructor en cascada"
 
     class VectorNode~Traits~ {
         +value_type m_data
@@ -165,21 +177,7 @@ classDiagram
         +operator+=(value)
     }
 
-    class BinaryTreeNode~T~ {
-        #value_type m_data
-        #Ref m_ref
-        #NodePtr m_pChild[2]
-        #NodePtr m_pParent
-        +getData() value_type
-        +getDataRef() value_type&
-        +getRef() Ref
-        +getChild(pos) NodePtr
-        +getChildRef(pos) NodePtr&
-        +getParent() NodePtr
-        +to_string() string
-    }
-
-    LLNode <|-- DLLNode : hereda
+    LinkedListNode <|-- DoubleLinkedListNode : hereda
 ```
 
 ---
@@ -198,10 +196,6 @@ classDiagram
     }
 
     class LinkedListForwardIterator~Container~ {
-        +operator++() MySelf&
-    }
-
-    class DoubleLinkedListForwardIterator~Container~ {
         +operator++() MySelf&
     }
 
@@ -230,32 +224,31 @@ classDiagram
     }
 
     class BinaryTreeForwardInorderIterator~Container~ {
-        -deque~Node*~ m_queue
+        -deque~Node*~ m_cola
         +operator++() MySelf&
     }
     class BinaryTreeBackwardInorderIterator~Container~ {
-        -deque~Node*~ m_queue
+        -deque~Node*~ m_cola
         +operator++() MySelf&
     }
     class BinaryTreeForwardPreorderIterator~Container~ {
-        -deque~Node*~ m_queue
+        -deque~Node*~ m_cola
         +operator++() MySelf&
     }
     class BinaryTreeBackwardPreorderIterator~Container~ {
-        -deque~Node*~ m_queue
+        -deque~Node*~ m_cola
         +operator++() MySelf&
     }
     class BinaryTreeForwardPostorderIterator~Container~ {
-        -deque~Node*~ m_queue
+        -deque~Node*~ m_cola
         +operator++() MySelf&
     }
     class BinaryTreeBackwardPostorderIterator~Container~ {
-        -deque~Node*~ m_queue
+        -deque~Node*~ m_cola
         +operator++() MySelf&
     }
 
     general_iterator <|-- LinkedListForwardIterator : hereda
-    general_iterator <|-- DoubleLinkedListForwardIterator : hereda
     general_iterator <|-- DoubleLinkedListBackwardIterator : hereda
     general_iterator <|-- CircularLinkedListForwardIterator : hereda
     general_iterator <|-- CircularDoubleLinkedListForwardIterator : hereda
@@ -270,40 +263,19 @@ classDiagram
     general_iterator <|-- BinaryTreeBackwardPostorderIterator : hereda
 ```
 
+> `LinkedListForwardIterator` es reutilizado por `DoubleLinkedList` como `forward_iterator`.
+
 ---
 
-## Jerarquía de Traits
+## Traits (solo Vector y Heap)
+
+`LinkedList`, `DoubleLinkedList` y `BinaryTree` ya **no** usan traits — se parametrizan directamente con `template<T, Comp = less<T>>` y definen su nodo internamente. `Vector` y `Heap` mantienen el patrón Traits.
 
 ```mermaid
 classDiagram
     class BaseContainerTrait~_T_Node~ {
         +value_type
         +Node
-    }
-
-    class BaseLinkedListTrait~T~ {
-    }
-
-    class AscendingLinkedListTrait~T~ {
-        +Comp = less~T~
-    }
-
-    class DescendingLinkedListTrait~T~ {
-        +Comp = greater~T~
-    }
-
-    class BaseDoubleLinkedListTrait~T~ {
-    }
-
-    class AscendingDoubleLinkedListTrait~T~ {
-        +Comp = less~T~
-    }
-
-    class DescendingDoubleLinkedListTrait~T~ {
-        +Comp = greater~T~
-    }
-
-    class VectorTraits~T~ {
     }
 
     class AscendingTrait~T~ {
@@ -314,8 +286,7 @@ classDiagram
         +Comp = greater~T~
     }
 
-    class BaseHeapTrait~T~ {
-        +value_type = T
+    class VectorTraits~T~ {
     }
 
     class AscendingHeapTrait~T~ {
@@ -324,92 +295,60 @@ classDiagram
     class DescendingHeapTrait~T~ {
     }
 
-    BaseContainerTrait <|-- BaseLinkedListTrait : hereda
-    BaseContainerTrait <|-- BaseDoubleLinkedListTrait : hereda
     BaseContainerTrait <|-- VectorTraits : hereda
-    BaseLinkedListTrait <|-- AscendingLinkedListTrait : hereda
-    BaseLinkedListTrait <|-- DescendingLinkedListTrait : hereda
-    BaseDoubleLinkedListTrait <|-- AscendingDoubleLinkedListTrait : hereda
-    BaseDoubleLinkedListTrait <|-- DescendingDoubleLinkedListTrait : hereda
-    AscendingTrait <|-- AscendingLinkedListTrait : hereda
-    DescendingTrait <|-- DescendingLinkedListTrait : hereda
-    AscendingTrait <|-- AscendingDoubleLinkedListTrait : hereda
-    DescendingTrait <|-- DescendingDoubleLinkedListTrait : hereda
-    class BaseBinaryTreeListTrait~T~ {
-    }
-    class AscendingBinaryTreeListTrait~T~ {
-        +Comp = less~T~
-    }
-    class DescendingBinaryTreeListTrait~T~ {
-        +Comp = greater~T~
-    }
-
-    BaseHeapTrait <|-- AscendingHeapTrait : hereda
-    BaseHeapTrait <|-- DescendingHeapTrait : hereda
+    BaseContainerTrait <|-- AscendingHeapTrait : hereda
+    BaseContainerTrait <|-- DescendingHeapTrait : hereda
     AscendingTrait <|-- AscendingHeapTrait : hereda
     DescendingTrait <|-- DescendingHeapTrait : hereda
-    BaseContainerTrait <|-- BaseBinaryTreeListTrait : hereda
-    BaseBinaryTreeListTrait <|-- AscendingBinaryTreeListTrait : hereda
-    BaseBinaryTreeListTrait <|-- DescendingBinaryTreeListTrait : hereda
-    AscendingTrait <|-- AscendingBinaryTreeListTrait : hereda
-    DescendingTrait <|-- DescendingBinaryTreeListTrait : hereda
 ```
 
 ---
 
-## Asociación: Contenedor ↔ Traits ↔ Nodo ↔ Iterador
+## Asociación: Contenedor ↔ Nodo anidado ↔ Iterador
 
 ```mermaid
 classDiagram
     direction LR
 
-    class LinkedList~Traits~ {
-        Node = Traits::Node
-        Comp = Traits::Comp
+    class LinkedList~T_Comp~ {
+        struct Node nested
+        Comp = less~T~ por defecto
     }
-    class AscendingLinkedListTrait~T~ {
-        Node = LLNode~T~
-        Comp = less~T~
+    class LinkedListNode~T~ {
+        m_data, m_ref, m_pNext
     }
-    class LLNode~T~
     class LinkedListForwardIterator~Container~
 
-    LinkedList --> AscendingLinkedListTrait : usa traits
-    AscendingLinkedListTrait --> LLNode : define Node
-    LinkedList --> LinkedListForwardIterator : provee begin/end
+    LinkedList *-- LinkedListNode : contiene
+    LinkedList --> LinkedListForwardIterator : begin/end
 
-    class DoubleLinkedList~Traits~ {
-        Node = DLLNode~T~
+    class DoubleLinkedList~T_Comp~ {
+        struct Node extends LinkedList_Node
+        sobreescribe push/insert
     }
-    class AscendingDoubleLinkedListTrait~T~ {
-        Node = DLLNode~T~
-        Comp = less~T~
+    class DoubleLinkedListNode~T~ {
+        m_pPrev, getNext sombrea padre
     }
-    class DLLNode~T~
-    class DoubleLinkedListForwardIterator~Container~
     class DoubleLinkedListBackwardIterator~Container~
 
-    DoubleLinkedList --> AscendingDoubleLinkedListTrait : usa traits
-    AscendingDoubleLinkedListTrait --> DLLNode : define Node
-    DoubleLinkedList --> DoubleLinkedListForwardIterator : begin/end
+    DoubleLinkedList *-- DoubleLinkedListNode : contiene
+    DoubleLinkedListNode --|> LinkedListNode : hereda
+    DoubleLinkedList --> LinkedListForwardIterator : begin/end
     DoubleLinkedList --> DoubleLinkedListBackwardIterator : rbegin/rend
 
-    class BinaryTree~Traits~ {
-        Node = BinaryTreeNode~T~
-        Comp = less~T~ o greater~T~
+    class BinaryTree~T_Comp~ {
+        struct Node nested
+        Comp = less~T~ por defecto
     }
-    class AscendingBinaryTreeListTrait2~T~ {
-        Node = BinaryTreeNode~T~
-        Comp = less~T~
+    class BinaryTreeNode~T~ {
+        m_data, m_ref, m_pChild[2]
     }
-    class BinaryTreeNode~T~
-    class BinaryTreeForwardInorderIterator~Container~
-    class BinaryTreeBackwardInorderIterator~Container~
+    class BTFwdInorder~Container~
+    class BTBwdInorder~Container~
 
-    BinaryTree --> AscendingBinaryTreeListTrait2 : usa traits
-    AscendingBinaryTreeListTrait2 --> BinaryTreeNode : define Node
-    BinaryTree --> BinaryTreeForwardInorderIterator : begin/end
-    BinaryTree --> BinaryTreeBackwardInorderIterator : rbegin/rend
+    BinaryTree *-- BinaryTreeNode : contiene
+    BinaryTree --> BTFwdInorder : begin/end
+    BinaryTree --> BTBwdInorder : rbegin/rend
 ```
 
 ---
@@ -420,19 +359,18 @@ classDiagram
 sequenceDiagram
     participant Cliente
     participant LinkedList
-    participant internal_insert
+    participant insertar_interno
 
     Cliente->>LinkedList: insert(value, ref)
-    LinkedList->>LinkedList: scoped_lock(m_mtx)
-    LinkedList->>internal_insert: internal_insert(m_pRoot, value, ref, nullptr)
+    LinkedList->>insertar_interno: insertar_interno(m_pRoot, value, ref)
 
     loop Recorrido recursivo hasta posición correcta
-        internal_insert->>internal_insert: ¿comp(value, pNode->data)?
+        insertar_interno->>insertar_interno: ¿comp(value, pNode->data)?
         alt Sí: insertar aquí
-            internal_insert->>internal_insert: pNode = new Node(value, ref, pNode)
-            internal_insert->>internal_insert: actualizar m_pTail si es último
+            insertar_interno->>insertar_interno: pNode = new Node(value, ref, pNode)
+            insertar_interno->>insertar_interno: actualizar m_pTail si pNode == m_pRoot
         else No: avanzar
-            internal_insert->>internal_insert: internal_insert(pNode->next, value, ref, pNode)
+            insertar_interno->>insertar_interno: insertar_interno(pNode->getNextRef(), value, ref)
         end
     end
 ```
@@ -445,12 +383,12 @@ sequenceDiagram
 sequenceDiagram
     participant Cliente
     participant CircularList
-    participant BaseInsert as LinkedList/DLL::internal_insert
+    participant BaseInsert as LinkedList::insertar_interno
 
     Cliente->>CircularList: insert(value, ref)
     CircularList->>CircularList: scoped_lock(m_mtx)
     CircularList->>CircularList: romper link circular (tail->next = nullptr)
-    CircularList->>BaseInsert: internal_insert(m_pRoot, value, ref, nullptr)
+    CircularList->>BaseInsert: insertar_interno(m_pRoot, value, ref)
     BaseInsert-->>CircularList: inserción ordenada completa
     CircularList->>CircularList: restaurar link circular (tail->next = root)
 ```
@@ -466,30 +404,29 @@ graph TD
     types["types.h<br/>TI, TD, TS, Ref, XT"]
     macros["macros.h / macros.cpp<br/>SUMA, MULT, MAX, CUADRADO, GetVar"]
     foreach["foreach.h<br/>ForEach, FirstThat genéricos"]
-    basetrait["containers/basetrait.h<br/>BaseContainerTrait"]
+    basetrait["containers/basetrait.h<br/>BaseContainerTrait (Vector, Heap)"]
     geniter["containers/general_iterator.h<br/>general_iterator CRTP"]
     vector["containers/vector.h<br/>Vector + VectorNode + Traits"]
-    ll["containers/linkedlist.h<br/>LinkedList + LLNode + Traits"]
-    dll["containers/doublelinkedlist.h<br/>DoubleLinkedList + DLLNode + Traits"]
+    ll["containers/linkedlist.h<br/>LinkedList + struct Node anidado"]
+    dll["containers/doublelinkedlist.h<br/>DoubleLinkedList + struct Node anidado"]
     cll["containers/circularlinkedlist.h<br/>CircularLinkedList"]
     cdll["containers/circulardoublelinkedlist.h<br/>CircularDoubleLinkedList"]
+    heap["containers/heap.h<br/>Heap + HeapNode + Traits"]
+    bt["containers/binarytree.h<br/>BinaryTree + struct Node anidado"]
 
     DemoLL["DoubleLinkedListDemo.cpp"]
     DemoCLL["CircularLinkedListDemo.cpp"]
     DemoCDLL["CircularDoubleLinkedListDemo.cpp"]
     DemoHeap["HeapDemo.cpp"]
-    heap["containers/heap.h<br/>Heap + Node interno + Traits"]
+    DemoBT["DemoBinaryTree.cpp"]
 
     main --> lists
     main --> macros
+    main --> bt
     DemoLL --> dll
     DemoCLL --> cll
     DemoCDLL --> cdll
-    bt["containers/binarytree.h<br/>BinaryTree + BinaryTreeNode + Traits"]
-    DemoBT["DemoBinaryTree.cpp"]
-
     DemoHeap --> heap
-    main --> bt
     DemoBT --> bt
 
     dll --> ll
@@ -497,7 +434,6 @@ graph TD
     cdll --> dll
 
     ll --> geniter
-    ll --> basetrait
     ll --> types
     ll --> foreach
     vector --> geniter
@@ -507,77 +443,9 @@ graph TD
     heap --> types
     heap --> foreach
     bt --> geniter
-    bt --> basetrait
     bt --> types
     bt --> foreach
 ```
-
----
-
-## Heap — operaciones y complejidad
-
-```mermaid
-flowchart TD
-    insert["insert(v, ref)\nO(log n)"]
-    extract["extract()\nO(log n)"]
-    peek["peek()\nO(1)"]
-    replace["replace(v, ref)\nO(log n)"]
-    build["build(arr, n)\nO(n) Floyd"]
-
-    insert --> HU["heapify_up\nburbujea hacia la raíz"]
-    extract --> HD["heapify_down\nbaja el último a raíz"]
-    replace --> HD2["heapify_down\nun solo recorrido descendente"]
-    build --> HD3["heapify_down desde\nútimo nodo interno → raíz"]
-    peek --> R["retorna m_data[0]"]
-```
-
-| Operación | Complejidad | Descripción |
-|-----------|-------------|-------------|
-| `insert` | O(log n) | Inserta al final, sube hasta posición correcta |
-| `extract` | O(log n) | Extrae raíz, sube último elemento, baja |
-| `peek` | O(1) | Accede `m_data[0]` sin modificar |
-| `replace` | O(log n) | Reemplaza raíz y baja — 1 recorrido vs 2 de extract+insert |
-| `build` | O(n) | Algoritmo de Floyd: heapify_down desde n/2-1 hasta 0 |
-
----
-
-## Operadores de stream
-
-| Clase | `operator<<` | `operator>>` |
-|-------|-------------|--------------|
-| `VectorNode` | imprime `(data, ref)` | — |
-| `Vector` | imprime `[n0, n1, ...]` | — |
-| `LLNode` | imprime `(data, ref)` | — |
-| `LinkedList` | llama `toString()` | `push_back` desde stream |
-| `DoubleLinkedList` | delega a `LinkedList::operator<<` | delega a `LinkedList::operator>>` |
-| `BinaryTreeNode` | imprime `Node(data: X, ref: Y)` | lee `data ref` por línea |
-| `BinaryTree` | escribe `n` + nodos en preorden (`data ref\n`) | lee conteo + `data ref` → `insert()` |
-
----
-
-## Concurrencia
-
-Todos los contenedores usan `std::mutex m_mtx` (heredado desde `LinkedList` / en `Vector` / `mutable` en `BinaryTree`).
-
-| Operación | Mecanismo |
-|-----------|-----------|
-| `push_front / push_back` | `scoped_lock<mutex>` |
-| `pop_front / pop_back` | `scoped_lock<mutex>` |
-| `insert` | `scoped_lock<mutex>` en el punto de entrada |
-| `toString` (LinkedList) | sin lock — uso interno |
-| `ForEach` (LinkedList) | `unique_lock<mutex>` |
-| `Vector::push_back` | `scoped_lock<mutex>` |
-| `Vector::resize` | `scoped_lock<mutex>` |
-| `Vector::ToString` | `scoped_lock<mutex>` |
-| `BinaryTree::insert` | `scoped_lock<mutex>` |
-| `BinaryTree::ForEach` / variantes | `scoped_lock<mutex>` |
-| `BinaryTree::FirstThat` / `ReverseFirstThat` | `scoped_lock<mutex>` |
-| `BinaryTree::toString` | `scoped_lock<mutex>` |
-| `BinaryTree::operator<<` | `scoped_lock<mutex>` |
-| `BinaryTree` copy/move constructors | `scoped_lock<mutex>` sobre `other.m_mtx` |
-| `BinaryTree` destructor | `scoped_lock<mutex>` |
-
-> `internal_insert`, `internal_copy`, `internal_write` no adquieren lock propio — siempre llamados bajo lock del método público.
 
 ---
 
@@ -587,20 +455,20 @@ Todos los contenedores usan `std::mutex m_mtx` (heredado desde `LinkedList` / en
 sequenceDiagram
     participant Cliente
     participant BinaryTree
-    participant internal_insert
+    participant insertar_interno
 
     Cliente->>BinaryTree: insert(value, ref)
     BinaryTree->>BinaryTree: scoped_lock(m_mtx)
-    BinaryTree->>internal_insert: internal_insert(m_pRoot, value, ref)
+    BinaryTree->>insertar_interno: insertar_interno(m_pRoot, value, ref)
 
     loop Descenso recursivo BST
-        internal_insert->>internal_insert: ¿pNode == nullptr?
+        insertar_interno->>insertar_interno: ¿pNode == nullptr?
         alt Sí: posición encontrada
-            internal_insert->>internal_insert: pNode = new Node(value, ref)
-            internal_insert->>internal_insert: ++m_size
+            insertar_interno->>insertar_interno: pNode = new Node(value, ref)
+            insertar_interno->>insertar_interno: ++m_size
         else No: elegir hijo
-            internal_insert->>internal_insert: pos = !comp(value, pNode->data)
-            internal_insert->>internal_insert: internal_insert(pNode->getChildRef(pos), value, ref)
+            insertar_interno->>insertar_interno: pos = !comp(value, pNode->data)
+            insertar_interno->>insertar_interno: insertar_interno(pNode->getChildRef(pos), value, ref)
         end
     end
 ```
@@ -618,7 +486,67 @@ sequenceDiagram
 | `BinaryTreeForwardPostorderIterator` | LRN (izq → der → nodo) | raíz al final |
 | `BinaryTreeBackwardPostorderIterator` | RLN (der → izq → nodo) | raíz al final, der antes izq |
 
-> Todos usan `deque<Node*>` pre-construida en el constructor (`build()` recursivo). `operator++` solo avanza la deque. Coste de construcción: O(n) tiempo y espacio. Compatible con el patrón `general_iterator` CRTP sin modificar la clase base.
+> Todos usan `deque<Node*>` pre-construida en el constructor (`construir()` recursivo). `operator++` solo avanza la deque. Coste: O(n) tiempo y espacio. Compatible con `general_iterator` CRTP sin modificar la clase base.
+
+---
+
+## Heap — operaciones y complejidad
+
+```mermaid
+flowchart TD
+    insert["insert(v, ref)\nO(log n)"]
+    extract["extract()\nO(log n)"]
+    peek["peek_min()\nO(1)"]
+
+    insert --> HU["heapify_up\nburbujea hacia la raíz"]
+    extract --> HD["heapify_down\nbaja el último a raíz"]
+    peek --> R["retorna m_heap[0]"]
+```
+
+| Operación | Complejidad | Descripción |
+|-----------|-------------|-------------|
+| `insert` | O(log n) | Inserta al final, sube hasta posición correcta |
+| `extract` | O(log n) | Extrae raíz, sube último elemento, baja |
+| `peek_min` | O(1) | Accede `m_heap[0]` sin modificar |
+
+---
+
+## Operadores de stream
+
+| Clase | `operator<<` | `operator>>` |
+|-------|-------------|--------------|
+| `VectorNode` | imprime `(data, ref)` | — |
+| `Vector` | imprime `[n0, n1, ...]` | — |
+| `LinkedList::Node` | imprime `(data, ref)` | — |
+| `LinkedList` | llama `toString()` | `push_back` desde stream |
+| `DoubleLinkedList` | hereda `LinkedList::operator<<` | hereda `LinkedList::operator>>` |
+| `BinaryTree::Node` | imprime `Nodo(dato: X, ref: Y)` | lee `dato ref` por línea |
+| `BinaryTree` | escribe `n` + nodos en preorden (`dato ref\n`) | lee conteo + `dato ref` → `insert()` |
+
+---
+
+## Concurrencia
+
+Todos los contenedores usan `std::mutex m_mtx` (en `protected` de `LinkedList`, heredado por `DoubleLinkedList` / `mutable` en `BinaryTree`).
+
+| Operación | Mecanismo |
+|-----------|-----------|
+| `push_front / push_back` | `scoped_lock<mutex>` |
+| `pop_front / pop_back` | `scoped_lock<mutex>` |
+| `insert` (LinkedList) | sin lock en entrada — `insertar_interno` privado sin lock |
+| `insert` (DoubleLinkedList) | `scoped_lock<mutex>` en override |
+| `toString` (LinkedList) | sin lock — uso interno |
+| `ForEach` (LinkedList) | `unique_lock<mutex>` |
+| `ForEach` (DoubleLinkedList) | `unique_lock<mutex>` |
+| `BinaryTree::insert` | `scoped_lock<mutex>` |
+| `BinaryTree::ForEach` / variantes | `scoped_lock<mutex>` |
+| `BinaryTree::FirstThat` / `ReverseFirstThat` | `scoped_lock<mutex>` |
+| `BinaryTree::toString` | `scoped_lock<mutex>` |
+| `BinaryTree::operator<<` | `scoped_lock<mutex>` |
+| `BinaryTree` copy/move constructors | `scoped_lock<mutex>` sobre `other.m_mtx` |
+| `BinaryTree` destructor | `scoped_lock<mutex>` |
+
+> `insertar_interno`, `copiar_interno`, `escribir_interno` no adquieren lock propio — siempre llamados bajo lock del método público.
 
 ---
 
@@ -627,8 +555,8 @@ sequenceDiagram
 | Patrón | Dónde |
 |--------|-------|
 | **CRTP** (Curiously Recurring Template Pattern) | `general_iterator<Container, IteratorBase>` |
-| **Traits** | `AscendingLinkedListTrait`, `VectorTraits`, etc. |
-| **NVI** (Non-Virtual Interface) | `insert` → `internal_insert` virtual |
+| **Nodo anidado** (nested Node) | `struct Node` dentro de `LinkedList`, `DoubleLinkedList`, `BinaryTree` |
+| **Traits** | solo `Vector` y `Heap` — LL/DLL/BT usan `template<T, Comp>` directo |
 | **RAII** | `scoped_lock<mutex>` en todas las operaciones mutantes |
 | **Move semantics** | constructores y operadores de movimiento en `LinkedList`, `BinaryTree` |
 | **Variadic templates** | `ForEach`, `FirstThat` con `Args&&...` |
