@@ -153,22 +153,15 @@ protected:
                          const value_type& value,
                          Ref ref,
                          Node* pPrev = nullptr) override {
-
         if(!pNode || this->m_comp(value, pNode->getDataRef())){
-
             Node* pNew = new Node(value, ref, pNode, pPrev);
-
             if(pNode)
                 pNode->setPrev(pNew);
-
             pNode = pNew;
-
             if(!pPrev)
                 this->m_pRoot = pNew;
-
             if(!pNew->getNext())
                 this->m_pTail = pNew;
-
             ++this->m_size;
             return;
         }
