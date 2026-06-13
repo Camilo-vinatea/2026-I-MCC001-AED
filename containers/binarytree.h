@@ -192,20 +192,35 @@ public:
 };
 
 // ============================================================
+// Traits helper
+// ============================================================
+template <typename T, typename C = less<T>>
+struct BinaryTreeTraits {
+    using value_type = T;
+    using Comp       = C;
+};
+
+// ============================================================
 // Árbol binario de búsqueda (BST) genérico con nodo dentro de container
 // ============================================================
-template <typename T, typename Comp = less<T>>
+template <typename Traits>
 class BinaryTree {
 public:
+    using value_type = typename Traits::value_type;
+    using Comp       = typename Traits::Comp;
+    struct Node;
+    using NodePtr    = Node*;
+    using MySelf     = BinaryTree<Traits>;
+
     // Nodo anidado dentro del contenedor
     struct Node {
-        using value_type = T;
-        T       m_data;
-        Ref     m_ref;
-        Node*   m_pChild[2];
-        Node*   m_pParent;
+        using value_type = typename Traits::value_type;
+        value_type m_data;
+        Ref        m_ref;
+        Node*      m_pChild[2];
+        Node*      m_pParent;
 
-        Node(const T& data, const Ref& ref,
+        Node(const value_type& data, const Ref& ref,
              Node* izq = nullptr, Node* der = nullptr)
             : m_data(data), m_ref(ref), m_pParent(nullptr)
         { m_pChild[0] = izq; m_pChild[1] = der; }
@@ -231,9 +246,9 @@ public:
         // Destructor en cascada: delete de un hijo dispara el suyo, eliminando todo el subárbol
         ~Node() { delete m_pChild[0]; delete m_pChild[1]; }
 
-        T      getData()    const { return m_data; }
-        T&     getDataRef()       { return m_data; }
-        void   setData(const T& d) { m_data = d; }
+        value_type  getData()    const { return m_data; }
+        value_type& getDataRef()       { return m_data; }
+        void        setData(const value_type& d) { m_data = d; }
         Ref    getRef()     const { return m_ref; }
         Ref&   getRefRef()        { return m_ref; }
         void   setRef(Ref r)      { m_ref = r; }
@@ -265,9 +280,6 @@ public:
         }
     };
 
-    using value_type = T;
-    using NodePtr    = Node*;
-    using MySelf     = BinaryTree<T, Comp>;
 
     using forward_inorder_iterator    = BinaryTreeForwardInorderIterator<MySelf>;
     using backward_inorder_iterator   = BinaryTreeBackwardInorderIterator<MySelf>;
@@ -404,7 +416,7 @@ public:
         is >> n;
         is.ignore();
         for (size_t i = 0; i < n; ++i) {
-            T data; Ref ref;
+            value_type data; Ref ref;
             is >> data >> ref;
             is.ignore();
             bt.insert(data, ref);

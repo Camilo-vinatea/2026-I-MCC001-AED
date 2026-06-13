@@ -8,7 +8,7 @@ void DemoBinaryTree() {
     cout << "\n=== DemoBinaryTree ===" << endl;
 
     // --- Construcción BST ascendente ---
-    BinaryTree<TI> bt;
+    BinaryTree<BinaryTreeTraits<TI>> bt;
     bt.insert(50, 0);
     bt.insert(30, 1);
     bt.insert(70, 2);
@@ -56,13 +56,13 @@ void DemoBinaryTree() {
         cout << "\nPrimero con dato > 35: " << (*encontrado).getData() << endl;
 
     // --- Copy constructor ---
-    BinaryTree<TI> bt2(bt);
+    BinaryTree<BinaryTreeTraits<TI>> bt2(bt);
     cout << "\nCopia (inorden): ";
     bt2.ForEach(imprimirNodo);
     cout << endl;
 
     // --- Move constructor ---
-    BinaryTree<TI> bt3(move(bt2));
+    BinaryTree<BinaryTreeTraits<TI>> bt3(move(bt2));
     cout << "Movimiento (inorden, origen vacio=" << bt2.empty() << "): ";
     bt3.ForEach(imprimirNodo);
     cout << endl;
@@ -76,7 +76,7 @@ void DemoBinaryTree() {
 
     // --- Lectura desde archivo ---
     {
-        BinaryTree<TI> bt4;
+        BinaryTree<BinaryTreeTraits<TI>> bt4;
         ifstream archivo("binarytree.txt");
         archivo >> bt4;
         cout << "Leido desde disco (inorden): ";
@@ -85,7 +85,7 @@ void DemoBinaryTree() {
     }
 
     // --- Árbol descendente ---
-    BinaryTree<TI, greater<TI>> btDesc;
+    BinaryTree<BinaryTreeTraits<TI, greater<TI>>> btDesc;
     btDesc.insert(50, 0);
     btDesc.insert(30, 1);
     btDesc.insert(70, 2);
