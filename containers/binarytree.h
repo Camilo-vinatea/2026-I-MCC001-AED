@@ -10,6 +10,7 @@
 #include <functional>
 #include <utility>
 #include "general_iterator.h"
+#include "basetrait.h"
 #include "../foreach.h"
 #include "../types.h"
 
@@ -134,10 +135,9 @@ public:
 // ============================================================
 // Traits helper
 // ============================================================
-template <typename T, typename C = less<T>>
-struct BinaryTreeTraits {
+template <typename T, typename CompTrait = AscendingTrait<T>>
+struct BinaryTreeTraits : CompTrait {
     using value_type = T;
-    using Comp       = C;
 };
 
 // ============================================================

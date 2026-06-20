@@ -85,7 +85,7 @@ void DemoBinaryTree() {
     }
 
     // --- Árbol descendente ---
-    BinaryTree<BinaryTreeTraits<TI, greater<TI>>> btDesc;
+    BinaryTree<BinaryTreeTraits<TI, DescendingTrait<TI>>> btDesc;
     btDesc.insert(50, 0);
     btDesc.insert(30, 1);
     btDesc.insert(70, 2);
