@@ -4,57 +4,103 @@
 
 using namespace std;
 
+// Imprime una linea separadora
+static void separador(char c = '-', int n = 40) {
+    cout << string(n, c) << "\n";
+}
+
 void DemoAVL() {
-    cout << "\n=== DemoAVL ===" << endl;
+    separador('=');
+    cout << "  DEMO AVL - Arbol Binario Balanceado\n";
+    separador('=');
 
-    // Insertar 1..7 en orden ascendente — caso degenerado para BST puro (altura=7)
-    // AVL debe rebalancear a altura=3 (árbol perfecto para 7 nodos)
+    // ----------------------------------------------------------------
+    // Parte 1: insercion paso a paso 1..7 en orden ascendente
+    // Un BST puro degeneraria en lista (altura 7).
+    // El AVL rebalancea automaticamente via rotaciones.
+    // ----------------------------------------------------------------
+    cout << "\n[1] Insercion 1..7 en orden ascendente\n";
+    cout << "    (caso degenerado para BST puro => altura 7)\n";
+    cout << "    El AVL debe mantener altura 3 (log2(7)+1)\n\n";
+    cout << "  Vista: derecha=arriba, izquierda=abajo, cada nivel = 4 espacios\n\n";
+
     AVL<BinaryTreeTraits<TI>> avl;
-    for (int i = 1; i <= 7; ++i)
+    for (int i = 1; i <= 7; ++i) {
         avl.insert(i, (Ref)(i - 1));
+        cout << "  -- Despues de insertar " << i << " --\n";
+        avl.print_tree();
+        cout << "  Altura raiz: " << avl.tree_height()
+             << "  |  Nodos: " << avl.size() << "\n\n";
+    }
 
-    // --- Verificar tamaño ---
+    // ----------------------------------------------------------------
+    // Parte 2: verificaciones de correctitud
+    // ----------------------------------------------------------------
+    separador();
+    cout << "[2] Verificaciones\n\n";
+
     assert(avl.size() == 7);
-    cout << "OK: size == 7" << endl;
+    cout << "  Tamanio: " << avl.size() << "  OK\n";
 
-    // --- Verificar propiedad BST: inorden ascendente ---
-    cout << "Inorden: ";
-    TI prev = 0;
-    bool sorted = true;
+    size_t h = avl.tree_height();
+    assert(h == 3);
+    cout << "  Altura:  " << h << "  OK (optimo para 7 nodos)\n";
+
+    cout << "  Inorden (LNR, debe ser 1..7 ordenado): ";
+    TI prev = 0; bool sorted = true;
     for (auto& nodo : avl.inorder()) {
         cout << nodo.getData() << " ";
         if (nodo.getData() <= prev) sorted = false;
         prev = nodo.getData();
     }
-    cout << endl;
+    cout << "\n";
     assert(sorted);
-    cout << "OK: inorden ascendente" << endl;
+    cout << "  Propiedad BST: OK\n";
 
-    // --- Verificar balance: altura raiz == 3 ---
-    // 7 nodos balanceados perfectamente => floor(log2(7))+1 = 3
-    size_t h = avl.tree_height();
-    cout << "Altura raiz: " << h << endl;
-    assert(h == 3);
-    cout << "OK: altura == 3 (balanceado)" << endl;
+    // ----------------------------------------------------------------
+    // Parte 3: recorridos heredados de BinaryTree
+    // ----------------------------------------------------------------
+    separador();
+    cout << "[3] Recorridos heredados de BinaryTree\n\n";
 
-    // --- Iteradores heredados funcionan sobre AVL ---
-    cout << "Preorden (NLR): ";
-    for (auto& nodo : avl.preorder()) cout << nodo.getData() << " ";
-    cout << endl;
+    cout << "  Inorden   (LNR): ";
+    for (auto& n : avl.inorder())          cout << n.getData() << " ";
+    cout << "\n";
 
-    cout << "Postorden (LRN): ";
-    for (auto& nodo : avl.postorder()) cout << nodo.getData() << " ";
-    cout << endl;
+    cout << "  Preorden  (NLR): ";
+    for (auto& n : avl.preorder())         cout << n.getData() << " ";
+    cout << "\n";
 
-    // --- AVL descendente ---
+    cout << "  Postorden (LRN): ";
+    for (auto& n : avl.postorder())        cout << n.getData() << " ";
+    cout << "\n";
+
+    cout << "  Rev.Inorden    : ";
+    for (auto& n : avl.reverse_inorder())  cout << n.getData() << " ";
+    cout << "\n";
+
+    // ----------------------------------------------------------------
+    // Parte 4: AVL descendente
+    // ----------------------------------------------------------------
+    separador();
+    cout << "[4] AVL con comparador Descendente (1..5)\n\n";
+
     AVL<BinaryTreeTraits<TI, DescendingTrait<TI>>> avlDesc;
     for (int i = 1; i <= 5; ++i)
         avlDesc.insert(i, (Ref)(i - 1));
-    cout << "Descendente inorden (5..1): ";
-    for (auto& nodo : avlDesc.inorder()) cout << nodo.getData() << " ";
-    cout << endl;
-    assert(avlDesc.size() == 5);
-    cout << "OK: AVL descendente size == 5" << endl;
 
-    cout << "=== DemoAVL OK ===" << endl;
+    cout << "  Arbol (valores mayores a la izquierda):\n";
+    avlDesc.print_tree();
+    cout << "\n";
+
+    cout << "  Inorden descendente: ";
+    for (auto& n : avlDesc.inorder()) cout << n.getData() << " ";
+    cout << "\n";
+    assert(avlDesc.size() == 5);
+    cout << "  Tamanio: " << avlDesc.size() << "  OK\n";
+
+    separador('=');
+    cout << "  DEMO AVL - Todas las verificaciones OK\n";
+    separador('=');
+    cout << "\n";
 }

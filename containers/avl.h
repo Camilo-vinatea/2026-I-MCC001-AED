@@ -115,6 +115,22 @@ public:
         scoped_lock<mutex> lock(this->m_mtx);
         return height(this->m_pRoot);
     }
+
+    // Imprime el árbol girado 90°: derecha arriba, izquierda abajo
+    void print_tree() const {
+        scoped_lock<mutex> lock(this->m_mtx);
+        if (!this->m_pRoot) { cout << "  (vacio)\n"; return; }
+        print_interno(this->m_pRoot, 0);
+    }
+
+private:
+    static void print_interno(NodePtr n, int nivel) {
+        if (!n) return;
+        print_interno(n->getChild(1), nivel + 1);
+        cout << string(nivel * 4, ' ')
+             << n->getData() << "  (h=" << avl(n)->m_height << ")\n";
+        print_interno(n->getChild(0), nivel + 1);
+    }
 };
 
 void DemoAVL();
