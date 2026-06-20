@@ -3,6 +3,7 @@
 #include "lists.h"
 // #include "containers/vector.h"
 #include "containers/binarytree.h"
+#include "containers/avl.h"
 
 using namespace std;
 
@@ -17,5 +18,6 @@ int main() {
     // DemoConcurrentVector();
     // ListsDemo();
     DemoBinaryTree();
+    DemoAVL();
     return 0;
 }
