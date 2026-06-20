@@ -373,7 +373,7 @@ public:
         return is;
     }
 
-private:
+protected:
     void insertar_interno(NodePtr& pNodo, const value_type& value, Ref ref) {
         if (!pNodo) {
             pNodo = new Node(value, ref);
