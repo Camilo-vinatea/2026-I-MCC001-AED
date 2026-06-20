@@ -16,179 +16,119 @@
 using namespace std;
 
 // ============================================================
-// Iteradores de recorrido
-// Todos siguen el mismo patrón:
-//   - Constructor (Container*, raíz) construye la deque y llama advance()
-//   - Constructor (Container*, nullptr) produce el iterador end() (deque vacía)
-//   - operator++ avanza la deque
+// BuildPolicy structs — definen el orden de recorrido
+// Cada uno: template<Node> static void construir(deque<Node*>&, Node*)
 // ============================================================
 
-// --- Inorden forward: LNR (izquierda -> nodo -> derecha) ---
-template <typename Container>
-class BinaryTreeForwardInorderIterator
-    : public general_iterator<Container, BinaryTreeForwardInorderIterator<Container>> {
-    using MySelf = BinaryTreeForwardInorderIterator<Container>;
+struct BinaryTreeForwardInorderPolicy {
+    template <typename Node>
+    static void construir(deque<Node*>& cola, Node* n) {
+        if (!n) return;
+        construir(cola, n->getChild(0));
+        cola.push_back(n);
+        construir(cola, n->getChild(1));
+    }
+};
+
+struct BinaryTreeBackwardInorderPolicy {
+    template <typename Node>
+    static void construir(deque<Node*>& cola, Node* n) {
+        if (!n) return;
+        construir(cola, n->getChild(1));
+        cola.push_back(n);
+        construir(cola, n->getChild(0));
+    }
+};
+
+struct BinaryTreeForwardPreorderPolicy {
+    template <typename Node>
+    static void construir(deque<Node*>& cola, Node* n) {
+        if (!n) return;
+        cola.push_back(n);
+        construir(cola, n->getChild(0));
+        construir(cola, n->getChild(1));
+    }
+};
+
+struct BinaryTreeBackwardPreorderPolicy {
+    template <typename Node>
+    static void construir(deque<Node*>& cola, Node* n) {
+        if (!n) return;
+        cola.push_back(n);
+        construir(cola, n->getChild(1));
+        construir(cola, n->getChild(0));
+    }
+};
+
+struct BinaryTreeForwardPostorderPolicy {
+    template <typename Node>
+    static void construir(deque<Node*>& cola, Node* n) {
+        if (!n) return;
+        construir(cola, n->getChild(0));
+        construir(cola, n->getChild(1));
+        cola.push_back(n);
+    }
+};
+
+struct BinaryTreeBackwardPostorderPolicy {
+    template <typename Node>
+    static void construir(deque<Node*>& cola, Node* n) {
+        if (!n) return;
+        construir(cola, n->getChild(1));
+        construir(cola, n->getChild(0));
+        cola.push_back(n);
+    }
+};
+
+// ============================================================
+// Iterador unificado — reemplaza los 6 anteriores
+// Policy::construir() llena la deque según el recorrido
+// ============================================================
+template <typename Container, typename Policy>
+class BinaryTreeIterator
+    : public general_iterator<Container, BinaryTreeIterator<Container, Policy>> {
+    using MySelf = BinaryTreeIterator<Container, Policy>;
     using Parent = general_iterator<Container, MySelf>;
 public:
     using Node = typename Container::Node;
 private:
     deque<Node*> m_cola;
 
-    void construir(Node* n) {
-        if (!n) return;
-        construir(n->getChild(0));
-        m_cola.push_back(n);
-        construir(n->getChild(1));
-    }
     void avanzar() {
         if (!m_cola.empty()) { this->m_pNode = m_cola.front(); m_cola.pop_front(); }
         else                  { this->m_pNode = nullptr; }
     }
 public:
-    BinaryTreeForwardInorderIterator(Container* pC, Node* pRaiz)
-        : Parent(pC, nullptr) { construir(pRaiz); avanzar(); }
+    BinaryTreeIterator(Container* pC, Node* pRaiz)
+        : Parent(pC, nullptr) { Policy::construir(m_cola, pRaiz); avanzar(); }
 
     MySelf& operator++() { avanzar(); return *this; }
 };
 
-// --- Inorden backward: RNL (derecha -> nodo -> izquierda) ---
-template <typename Container>
-class BinaryTreeBackwardInorderIterator
-    : public general_iterator<Container, BinaryTreeBackwardInorderIterator<Container>> {
-    using MySelf = BinaryTreeBackwardInorderIterator<Container>;
-    using Parent = general_iterator<Container, MySelf>;
+// ============================================================
+// Rango iterable — habilita for(auto& n : bt.inorder())
+// Adquiere unique_lock<mutex> durante toda la iteracion
+// IMPORTANTE: no usar dentro de metodos que ya tengan scoped_lock
+//             (mutex no reentrante) — ver toString() en BinaryTree
+// ============================================================
+template <typename Container, typename Policy>
+class BinaryTreeRange {
+    using Iter = BinaryTreeIterator<Container, Policy>;
+    unique_lock<mutex> m_lock;
+    Iter               m_begin;
+    Iter               m_end;
 public:
-    using Node = typename Container::Node;
-private:
-    deque<Node*> m_cola;
+    BinaryTreeRange(Container* pC, typename Container::Node* pRoot, mutex& mtx)
+        : m_lock(mtx)
+        , m_begin(pC, pRoot)
+        , m_end(pC, nullptr)
+    {}
+    BinaryTreeRange(BinaryTreeRange&&)            = default;
+    BinaryTreeRange(const BinaryTreeRange&)       = delete;
+    BinaryTreeRange& operator=(BinaryTreeRange&&) = delete;
 
-    void construir(Node* n) {
-        if (!n) return;
-        construir(n->getChild(1));
-        m_cola.push_back(n);
-        construir(n->getChild(0));
-    }
-    void avanzar() {
-        if (!m_cola.empty()) { this->m_pNode = m_cola.front(); m_cola.pop_front(); }
-        else                  { this->m_pNode = nullptr; }
-    }
-public:
-    BinaryTreeBackwardInorderIterator(Container* pC, Node* pRaiz)
-        : Parent(pC, nullptr) { construir(pRaiz); avanzar(); }
-
-    MySelf& operator++() { avanzar(); return *this; }
-};
-
-// --- Preorden forward: NLR (nodo -> izquierda -> derecha) ---
-template <typename Container>
-class BinaryTreeForwardPreorderIterator
-    : public general_iterator<Container, BinaryTreeForwardPreorderIterator<Container>> {
-    using MySelf = BinaryTreeForwardPreorderIterator<Container>;
-    using Parent = general_iterator<Container, MySelf>;
-public:
-    using Node = typename Container::Node;
-private:
-    deque<Node*> m_cola;
-
-    void construir(Node* n) {
-        if (!n) return;
-        m_cola.push_back(n);
-        construir(n->getChild(0));
-        construir(n->getChild(1));
-    }
-    void avanzar() {
-        if (!m_cola.empty()) { this->m_pNode = m_cola.front(); m_cola.pop_front(); }
-        else                  { this->m_pNode = nullptr; }
-    }
-public:
-    BinaryTreeForwardPreorderIterator(Container* pC, Node* pRaiz)
-        : Parent(pC, nullptr) { construir(pRaiz); avanzar(); }
-
-    MySelf& operator++() { avanzar(); return *this; }
-};
-
-// --- Preorden backward: NRL (nodo -> derecha -> izquierda) ---
-template <typename Container>
-class BinaryTreeBackwardPreorderIterator
-    : public general_iterator<Container, BinaryTreeBackwardPreorderIterator<Container>> {
-    using MySelf = BinaryTreeBackwardPreorderIterator<Container>;
-    using Parent = general_iterator<Container, MySelf>;
-public:
-    using Node = typename Container::Node;
-private:
-    deque<Node*> m_cola;
-
-    void construir(Node* n) {
-        if (!n) return;
-        m_cola.push_back(n);
-        construir(n->getChild(1));
-        construir(n->getChild(0));
-    }
-    void avanzar() {
-        if (!m_cola.empty()) { this->m_pNode = m_cola.front(); m_cola.pop_front(); }
-        else                  { this->m_pNode = nullptr; }
-    }
-public:
-    BinaryTreeBackwardPreorderIterator(Container* pC, Node* pRaiz)
-        : Parent(pC, nullptr) { construir(pRaiz); avanzar(); }
-
-    MySelf& operator++() { avanzar(); return *this; }
-};
-
-// --- Postorden forward: LRN (izquierda -> derecha -> nodo) ---
-template <typename Container>
-class BinaryTreeForwardPostorderIterator
-    : public general_iterator<Container, BinaryTreeForwardPostorderIterator<Container>> {
-    using MySelf = BinaryTreeForwardPostorderIterator<Container>;
-    using Parent = general_iterator<Container, MySelf>;
-public:
-    using Node = typename Container::Node;
-private:
-    deque<Node*> m_cola;
-
-    void construir(Node* n) {
-        if (!n) return;
-        construir(n->getChild(0));
-        construir(n->getChild(1));
-        m_cola.push_back(n);
-    }
-    void avanzar() {
-        if (!m_cola.empty()) { this->m_pNode = m_cola.front(); m_cola.pop_front(); }
-        else                  { this->m_pNode = nullptr; }
-    }
-public:
-    BinaryTreeForwardPostorderIterator(Container* pC, Node* pRaiz)
-        : Parent(pC, nullptr) { construir(pRaiz); avanzar(); }
-
-    MySelf& operator++() { avanzar(); return *this; }
-};
-
-// --- Postorden backward: RLN (derecha -> izquierda -> nodo) ---
-template <typename Container>
-class BinaryTreeBackwardPostorderIterator
-    : public general_iterator<Container, BinaryTreeBackwardPostorderIterator<Container>> {
-    using MySelf = BinaryTreeBackwardPostorderIterator<Container>;
-    using Parent = general_iterator<Container, MySelf>;
-public:
-    using Node = typename Container::Node;
-private:
-    deque<Node*> m_cola;
-
-    void construir(Node* n) {
-        if (!n) return;
-        construir(n->getChild(1));
-        construir(n->getChild(0));
-        m_cola.push_back(n);
-    }
-    void avanzar() {
-        if (!m_cola.empty()) { this->m_pNode = m_cola.front(); m_cola.pop_front(); }
-        else                  { this->m_pNode = nullptr; }
-    }
-public:
-    BinaryTreeBackwardPostorderIterator(Container* pC, Node* pRaiz)
-        : Parent(pC, nullptr) { construir(pRaiz); avanzar(); }
-
-    MySelf& operator++() { avanzar(); return *this; }
+    Iter begin() { return m_begin; }
+    Iter end()   { return m_end;   }
 };
 
 // ============================================================
@@ -211,6 +151,7 @@ public:
     struct Node;
     using NodePtr    = Node*;
     using MySelf     = BinaryTree<Traits>;
+    template <typename, typename> friend class BinaryTreeRange;
 
     // Nodo anidado dentro del contenedor
     struct Node {
@@ -281,12 +222,12 @@ public:
     };
 
 
-    using forward_inorder_iterator    = BinaryTreeForwardInorderIterator<MySelf>;
-    using backward_inorder_iterator   = BinaryTreeBackwardInorderIterator<MySelf>;
-    using forward_preorder_iterator   = BinaryTreeForwardPreorderIterator<MySelf>;
-    using backward_preorder_iterator  = BinaryTreeBackwardPreorderIterator<MySelf>;
-    using forward_postorder_iterator  = BinaryTreeForwardPostorderIterator<MySelf>;
-    using backward_postorder_iterator = BinaryTreeBackwardPostorderIterator<MySelf>;
+    using forward_inorder_iterator    = BinaryTreeIterator<MySelf, BinaryTreeForwardInorderPolicy>;
+    using backward_inorder_iterator   = BinaryTreeIterator<MySelf, BinaryTreeBackwardInorderPolicy>;
+    using forward_preorder_iterator   = BinaryTreeIterator<MySelf, BinaryTreeForwardPreorderPolicy>;
+    using backward_preorder_iterator  = BinaryTreeIterator<MySelf, BinaryTreeBackwardPreorderPolicy>;
+    using forward_postorder_iterator  = BinaryTreeIterator<MySelf, BinaryTreeForwardPostorderPolicy>;
+    using backward_postorder_iterator = BinaryTreeIterator<MySelf, BinaryTreeBackwardPostorderPolicy>;
 
 protected:
     NodePtr        m_pRoot = nullptr;
@@ -343,6 +284,14 @@ public:
     forward_postorder_iterator  post_end()     { return {this, nullptr}; }
     backward_postorder_iterator rpost_begin()  { return {this, m_pRoot}; }
     backward_postorder_iterator rpost_end()    { return {this, nullptr}; }
+
+    // --- Rangos nativos: for(auto& n : bt.inorder()) ---
+    auto inorder()          { return BinaryTreeRange<MySelf, BinaryTreeForwardInorderPolicy   >(this, m_pRoot, m_mtx); }
+    auto reverse_inorder()  { return BinaryTreeRange<MySelf, BinaryTreeBackwardInorderPolicy  >(this, m_pRoot, m_mtx); }
+    auto preorder()         { return BinaryTreeRange<MySelf, BinaryTreeForwardPreorderPolicy  >(this, m_pRoot, m_mtx); }
+    auto reverse_preorder() { return BinaryTreeRange<MySelf, BinaryTreeBackwardPreorderPolicy >(this, m_pRoot, m_mtx); }
+    auto postorder()        { return BinaryTreeRange<MySelf, BinaryTreeForwardPostorderPolicy >(this, m_pRoot, m_mtx); }
+    auto reverse_postorder(){ return BinaryTreeRange<MySelf, BinaryTreeBackwardPostorderPolicy>(this, m_pRoot, m_mtx); }
 
     // --- Recorridos completos ---
     template <typename Func, typename... Args>

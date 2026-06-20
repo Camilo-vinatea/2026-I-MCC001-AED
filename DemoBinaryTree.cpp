@@ -25,27 +25,27 @@ void DemoBinaryTree() {
     };
 
     cout << "\nInorden Adelante  (LNR): ";
-    bt.ForEach(imprimirNodo);
+    for (auto& nodo : bt.inorder())           cout << nodo.getData() << " ";
     cout << endl;
 
     cout << "Inorden Reverso   (RNL): ";
-    bt.ReverseForEach(imprimirNodo);
+    for (auto& nodo : bt.reverse_inorder())   cout << nodo.getData() << " ";
     cout << endl;
 
     cout << "Preorden Adelante  (NLR): ";
-    bt.ForEachPreorder(imprimirNodo);
+    for (auto& nodo : bt.preorder())          cout << nodo.getData() << " ";
     cout << endl;
 
     cout << "Preorden Reverso   (NRL): ";
-    bt.ForEachReversePreorder(imprimirNodo);
+    for (auto& nodo : bt.reverse_preorder())  cout << nodo.getData() << " ";
     cout << endl;
 
     cout << "Postorden Adelante (LRN): ";
-    bt.ForEachPostorder(imprimirNodo);
+    for (auto& nodo : bt.postorder())         cout << nodo.getData() << " ";
     cout << endl;
 
     cout << "Postorden Reverso  (RLN): ";
-    bt.ForEachReversePostorder(imprimirNodo);
+    for (auto& nodo : bt.reverse_postorder()) cout << nodo.getData() << " ";
     cout << endl;
 
     // --- Búsqueda condicional ---
