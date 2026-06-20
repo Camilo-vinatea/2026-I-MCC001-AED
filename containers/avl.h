@@ -4,7 +4,7 @@
 #include "binarytree.h"
 
 // ============================================================
-// AVLNode — extiende BinaryTree::Node con campo de altura
+// AVLNode — extiende BinaryTree::Node con campo de altura m_heigth
 // ============================================================
 template <typename Traits>
 struct AVLNode : BinaryTree<Traits>::Node {
@@ -19,9 +19,6 @@ struct AVLNode : BinaryTree<Traits>::Node {
 
 // ============================================================
 // AVL — árbol AVL-balanceado heredando de BinaryTree
-// Override solo: insert()
-// Hereda: todos los iteradores, ForEach, FirstThat, toString,
-//         operator<<, operator>>, size, empty, copy/move/dtor
 // ============================================================
 template <typename Traits>
 class AVL : public BinaryTree<Traits> {
@@ -90,24 +87,16 @@ class AVL : public BinaryTree<Traits> {
         }
     }
 
-    // ── inserción BST + rebalanceo ────────────────────────────────
-    void avl_insertar_interno(NodePtr& p, const value_type& v, Ref ref) {
-        if (!p) {
-            p = new MyNode(v, ref);
-            ++this->m_size;
-            return;
-        }
-        size_t pos = !this->m_comp(v, p->getDataRef());  // misma lógica que BST
-        avl_insertar_interno(p->getChildRef(pos), v, ref);
-        rebalance(p);
-    }
+protected:
+    NodePtr make_node(const value_type& v, Ref ref) override { return new MyNode(v, ref); }
+    void post_insert(NodePtr& p) override { rebalance(p); }
 
 public:
     AVL() = default;
 
     void insert(const value_type& v, Ref ref) {
         scoped_lock<mutex> lock(this->m_mtx);
-        avl_insertar_interno(this->m_pRoot, v, ref);
+        this->insertar_interno(this->m_pRoot, v, ref);
     }
 
     // Altura del árbol (para verificación y debug)

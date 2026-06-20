@@ -87,7 +87,7 @@ classDiagram
         -heapify_down(index)
     }
 
-    class BinaryTree~T,Comp~ {
+    class BinaryTree~Traits~ {
         #Node* m_pRoot
         #size_t m_size
         #Comp m_comp
@@ -101,7 +101,19 @@ classDiagram
         +rbegin() backward_inorder_iterator
         +rend() backward_inorder_iterator
         +pre_begin() forward_preorder_iterator
+        +pre_end() forward_preorder_iterator
+        +rpre_begin() backward_preorder_iterator
+        +rpre_end() backward_preorder_iterator
         +post_begin() forward_postorder_iterator
+        +post_end() forward_postorder_iterator
+        +rpost_begin() backward_postorder_iterator
+        +rpost_end() backward_postorder_iterator
+        +inorder() BinaryTreeRange
+        +reverse_inorder() BinaryTreeRange
+        +preorder() BinaryTreeRange
+        +reverse_preorder() BinaryTreeRange
+        +postorder() BinaryTreeRange
+        +reverse_postorder() BinaryTreeRange
         +ForEach(func, args)
         +ReverseForEach(func, args)
         +ForEachPreorder(func, args)
@@ -110,14 +122,31 @@ classDiagram
         +ForEachReversePostorder(func, args)
         +FirstThat(func, args) forward_inorder_iterator
         +ReverseFirstThat(func, args) backward_inorder_iterator
-        -insertar_interno(pNode&, value, ref)
+        #insertar_interno(pNode&, value, ref)
+        #make_node(v, ref) NodePtr
+        #post_insert(p&)
         -copiar_interno(dst&, src)
         -escribir_interno(os, node)
+    }
+
+    class AVL~Traits~ {
+        +insert(value, ref)
+        +tree_height() size_t
+        +print_tree()
+        #make_node(v, ref) NodePtr
+        #post_insert(p&)
+        -rebalance(p&)
+        -rotate_left(p&)
+        -rotate_right(p&)
+        -height(n) size_t
+        -update_height(n)
+        -bf(n) ptrdiff_t
     }
 
     LinkedList <|-- DoubleLinkedList : hereda
     LinkedList <|-- CircularLinkedList : hereda
     DoubleLinkedList <|-- CircularDoubleLinkedList : hereda
+    BinaryTree <|-- AVL : hereda
 ```
 
 ---
@@ -152,19 +181,28 @@ classDiagram
     }
     note for DoubleLinkedListNode "struct Node anidado en DoubleLinkedList"
 
-    class BinaryTreeNode~T~ {
-        +T m_data
+    class BinaryTreeNode~Traits~ {
+        +value_type m_data
         +Ref m_ref
         +Node* m_pChild[2]
         +Node* m_pParent
-        +getData() T
-        +getDataRef() T&
+        +getData() value_type
+        +getDataRef() value_type&
         +getChild(pos) Node*
         +getChildRef(pos) Node*&
+        +getParent() Node*
+        +setParent(Node*)
         +to_string() string
         +~Node()
     }
     note for BinaryTreeNode "struct Node anidado en BinaryTree — destructor en cascada"
+
+    class AVLNode~Traits~ {
+        +size_t m_height
+    }
+    note for AVLNode "struct fuera de AVL — hereda BinaryTree::Node, agrega m_height"
+
+    AVLNode --|> BinaryTreeNode : hereda
 
     class VectorNode~Traits~ {
         +value_type m_data
@@ -193,6 +231,7 @@ classDiagram
         +operator->() Node*
         +getNode() Node*
         +operator==(a, b) bool
+        +operator!=(a, b) bool
     }
 
     class LinkedListForwardIterator~Container~ {
@@ -223,30 +262,20 @@ classDiagram
         +operator++() MySelf&
     }
 
-    class BinaryTreeForwardInorderIterator~Container~ {
+    class BinaryTreeIterator~Container_Policy~ {
         -deque~Node*~ m_cola
         +operator++() MySelf&
     }
-    class BinaryTreeBackwardInorderIterator~Container~ {
-        -deque~Node*~ m_cola
-        +operator++() MySelf&
+    note for BinaryTreeIterator "Iterador unificado. Policy::construir() llena la deque\nsegún el orden: Inorder/Preorder/Postorder × Forward/Backward"
+
+    class BinaryTreeRange~Container_Policy~ {
+        -unique_lock~mutex~ m_lock
+        -Iter m_begin
+        -Iter m_end
+        +begin() Iter
+        +end() Iter
     }
-    class BinaryTreeForwardPreorderIterator~Container~ {
-        -deque~Node*~ m_cola
-        +operator++() MySelf&
-    }
-    class BinaryTreeBackwardPreorderIterator~Container~ {
-        -deque~Node*~ m_cola
-        +operator++() MySelf&
-    }
-    class BinaryTreeForwardPostorderIterator~Container~ {
-        -deque~Node*~ m_cola
-        +operator++() MySelf&
-    }
-    class BinaryTreeBackwardPostorderIterator~Container~ {
-        -deque~Node*~ m_cola
-        +operator++() MySelf&
-    }
+    note for BinaryTreeRange "Rango iterable para range-for.\nAdquiere unique_lock durante toda la iteración.\nMovible, no copiable."
 
     general_iterator <|-- LinkedListForwardIterator : hereda
     general_iterator <|-- DoubleLinkedListBackwardIterator : hereda
@@ -255,21 +284,18 @@ classDiagram
     general_iterator <|-- CircularDoubleLinkedListBackwardIterator : hereda
     general_iterator <|-- vector_forward_iterator : hereda
     general_iterator <|-- vector_backward_iterator : hereda
-    general_iterator <|-- BinaryTreeForwardInorderIterator : hereda
-    general_iterator <|-- BinaryTreeBackwardInorderIterator : hereda
-    general_iterator <|-- BinaryTreeForwardPreorderIterator : hereda
-    general_iterator <|-- BinaryTreeBackwardPreorderIterator : hereda
-    general_iterator <|-- BinaryTreeForwardPostorderIterator : hereda
-    general_iterator <|-- BinaryTreeBackwardPostorderIterator : hereda
+    general_iterator <|-- BinaryTreeIterator : hereda
+    BinaryTreeRange --> BinaryTreeIterator : produce
 ```
 
 > `LinkedListForwardIterator` es reutilizado por `DoubleLinkedList` como `forward_iterator`.
+> `BinaryTreeIterator` reemplaza las 6 clases anteriores — la Policy en el parámetro de template selecciona el orden de recorrido.
 
 ---
 
-## Traits (solo Vector y Heap)
+## Traits (Vector, Heap y BinaryTree)
 
-`LinkedList`, `DoubleLinkedList` y `BinaryTree` ya **no** usan traits — se parametrizan directamente con `template<T, Comp = less<T>>` y definen su nodo internamente. `Vector` y `Heap` mantienen el patrón Traits.
+`LinkedList` y `DoubleLinkedList` se parametrizan directamente con `template<T, Comp = less<T>>`. `Vector`, `Heap` y **`BinaryTree`** usan el patrón Traits.
 
 ```mermaid
 classDiagram
@@ -295,11 +321,18 @@ classDiagram
     class DescendingHeapTrait~T~ {
     }
 
+    class BinaryTreeTraits~T_CompTrait~ {
+        +value_type = T
+        +Comp = CompTrait::Comp
+    }
+    note for BinaryTreeTraits "CompTrait = AscendingTrait~T~ por defecto\nUso: BinaryTreeTraits~int~ → ascendente\n      BinaryTreeTraits~int,DescendingTrait~int~~ → descendente"
+
     BaseContainerTrait <|-- VectorTraits : hereda
     BaseContainerTrait <|-- AscendingHeapTrait : hereda
     BaseContainerTrait <|-- DescendingHeapTrait : hereda
     AscendingTrait <|-- AscendingHeapTrait : hereda
     DescendingTrait <|-- DescendingHeapTrait : hereda
+    AscendingTrait <|-- BinaryTreeTraits : hereda por defecto
 ```
 
 ---
@@ -336,19 +369,34 @@ classDiagram
     DoubleLinkedList --> LinkedListForwardIterator : begin/end
     DoubleLinkedList --> DoubleLinkedListBackwardIterator : rbegin/rend
 
-    class BinaryTree~T_Comp~ {
+    class BinaryTree~Traits~ {
         struct Node nested
-        Comp = less~T~ por defecto
+        Traits = BinaryTreeTraits~T,CompTrait~
     }
-    class BinaryTreeNode~T~ {
-        m_data, m_ref, m_pChild[2]
+    class BinaryTreeNode~Traits~ {
+        value_type m_data, Ref m_ref
+        Node* m_pChild[2], Node* m_pParent
     }
-    class BTFwdInorder~Container~
-    class BTBwdInorder~Container~
+    class BTIter~Container_Policy~
+    class BTRange~Container_Policy~
 
     BinaryTree *-- BinaryTreeNode : contiene
-    BinaryTree --> BTFwdInorder : begin/end
-    BinaryTree --> BTBwdInorder : rbegin/rend
+    BinaryTree --> BTIter : begin/end/rbegin/rend
+    BinaryTree --> BTRange : inorder/preorder/postorder
+
+    class AVL~Traits~ {
+        hereda BinaryTree~Traits~
+        override insert()
+        agrega tree_height(), print_tree()
+    }
+    class AVLNode~Traits~ {
+        hereda BinaryTree_Node
+        size_t m_height
+    }
+
+    AVL --|> BinaryTree : hereda
+    AVL *-- AVLNode : crea
+    AVLNode --|> BinaryTreeNode : hereda
 ```
 
 ---
@@ -412,26 +460,31 @@ graph TD
     cll["containers/circularlinkedlist.h<br/>CircularLinkedList"]
     cdll["containers/circulardoublelinkedlist.h<br/>CircularDoubleLinkedList"]
     heap["containers/heap.h<br/>Heap + HeapNode + Traits"]
-    bt["containers/binarytree.h<br/>BinaryTree + struct Node anidado"]
+    bt["containers/binarytree.h<br/>BinaryTree + BinaryTreeIterator + BinaryTreeRange<br/>BinaryTreeTraits + 6 Policies"]
+    avl["containers/avl.h<br/>AVL + AVLNode"]
 
     DemoLL["DoubleLinkedListDemo.cpp"]
     DemoCLL["CircularLinkedListDemo.cpp"]
     DemoCDLL["CircularDoubleLinkedListDemo.cpp"]
     DemoHeap["HeapDemo.cpp"]
     DemoBT["DemoBinaryTree.cpp"]
+    DemoAVL["DemoAVL.cpp"]
 
     main --> lists
     main --> macros
     main --> bt
+    main --> avl
     DemoLL --> dll
     DemoCLL --> cll
     DemoCDLL --> cdll
     DemoHeap --> heap
     DemoBT --> bt
+    DemoAVL --> avl
 
     dll --> ll
     cll --> ll
     cdll --> dll
+    avl --> bt
 
     ll --> geniter
     ll --> types
@@ -445,6 +498,7 @@ graph TD
     bt --> geniter
     bt --> types
     bt --> foreach
+    bt --> basetrait
 ```
 
 ---
@@ -464,11 +518,12 @@ sequenceDiagram
     loop Descenso recursivo BST
         insertar_interno->>insertar_interno: ¿pNode == nullptr?
         alt Sí: posición encontrada
-            insertar_interno->>insertar_interno: pNode = new Node(value, ref)
+            insertar_interno->>insertar_interno: pNode = make_node(value, ref)
             insertar_interno->>insertar_interno: ++m_size
         else No: elegir hijo
             insertar_interno->>insertar_interno: pos = !comp(value, pNode->data)
             insertar_interno->>insertar_interno: insertar_interno(pNode->getChildRef(pos), value, ref)
+            insertar_interno->>insertar_interno: post_insert(pNode)
         end
     end
 ```
@@ -477,16 +532,53 @@ sequenceDiagram
 
 ## Iteradores de BinaryTree — Órdenes de recorrido
 
-| Clase | Orden | Resultado en BST ascendente |
-|---|---|---|
-| `BinaryTreeForwardInorderIterator` | LNR (izq → nodo → der) | ascendente |
-| `BinaryTreeBackwardInorderIterator` | RNL (der → nodo → izq) | descendente |
-| `BinaryTreeForwardPreorderIterator` | NLR (nodo → izq → der) | raíz primero |
-| `BinaryTreeBackwardPreorderIterator` | NRL (nodo → der → izq) | raíz primero, der antes izq |
-| `BinaryTreeForwardPostorderIterator` | LRN (izq → der → nodo) | raíz al final |
-| `BinaryTreeBackwardPostorderIterator` | RLN (der → izq → nodo) | raíz al final, der antes izq |
+Todos usan la clase unificada `BinaryTreeIterator<Container, Policy>`. La `Policy` selecciona el orden:
 
-> Todos usan `deque<Node*>` pre-construida en el constructor (`construir()` recursivo). `operator++` solo avanza la deque. Coste: O(n) tiempo y espacio. Compatible con `general_iterator` CRTP sin modificar la clase base.
+| Policy | Orden | Método de acceso directo | Método range-for |
+|---|---|---|---|
+| `BinaryTreeForwardInorderPolicy` | LNR (izq → nodo → der) | `begin()` / `end()` | `inorder()` |
+| `BinaryTreeBackwardInorderPolicy` | RNL (der → nodo → izq) | `rbegin()` / `rend()` | `reverse_inorder()` |
+| `BinaryTreeForwardPreorderPolicy` | NLR (nodo → izq → der) | `pre_begin()` / `pre_end()` | `preorder()` |
+| `BinaryTreeBackwardPreorderPolicy` | NRL (nodo → der → izq) | `rpre_begin()` / `rpre_end()` | `reverse_preorder()` |
+| `BinaryTreeForwardPostorderPolicy` | LRN (izq → der → nodo) | `post_begin()` / `post_end()` | `postorder()` |
+| `BinaryTreeBackwardPostorderPolicy` | RLN (der → izq → nodo) | `rpost_begin()` / `rpost_end()` | `reverse_postorder()` |
+
+> `deque<Node*>` pre-construida en constructor (`Policy::construir()` recursivo). `operator++` solo avanza la deque. Coste: O(n) tiempo y espacio.
+>
+> Los métodos `inorder()` / `preorder()` / etc. devuelven `BinaryTreeRange` — adquieren `unique_lock<mutex>` durante toda la iteración, habilitando `for(auto& n : bt.inorder())`.
+>
+> **Advertencia:** no llamar `.inorder()` dentro de un método que ya tenga `scoped_lock` sobre el mismo mutex — `BinaryTree::mutex` no es reentrante. Ver `toString()` que usa iterador directo sin lock.
+
+---
+
+## AVL — árbol balanceado
+
+`AVL<Traits>` hereda todo de `BinaryTree<Traits>`. Usa el patrón **Template Method**: `BinaryTree::insertar_interno` deja dos hooks virtuales que AVL sobreescribe — `make_node()` crea `AVLNode` en vez de `Node`, y `post_insert()` llama `rebalance()` al volver de cada nivel recursivo. No duplica la lógica de descenso BST.
+
+### Nodo AVL
+
+`AVLNode<Traits>` extiende `BinaryTree<Traits>::Node` con un campo `size_t m_height`. El árbol AVL solo crea nodos de tipo `AVLNode` y usa `static_cast` interno para acceder a `m_height`.
+
+### Factor de balance y rotaciones
+
+| Factor de balance `bf = h(izq) - h(der)` | Caso | Acción |
+|---|---|---|
+| `bf > 1` y `bf(izq) >= 0` | LL | `rotate_right(p)` |
+| `bf > 1` y `bf(izq) < 0` | LR | `rotate_left(izq)` → `rotate_right(p)` |
+| `bf < -1` y `bf(der) <= 0` | RR | `rotate_left(p)` |
+| `bf < -1` y `bf(der) > 0` | RL | `rotate_right(der)` → `rotate_left(p)` |
+
+### API exclusiva de AVL
+
+| Método | Descripción |
+|--------|-------------|
+| `insert(value, ref)` | Llama `BinaryTree::insertar_interno` — hooks `make_node`/`post_insert` inyectan `AVLNode` y `rebalance()` |
+| `tree_height()` | Altura del árbol (O(1) — lee `m_height` de la raíz) |
+| `print_tree()` | Árbol girado 90°: rama derecha arriba, izquierda abajo, muestra `dato (h=N)` |
+
+### Herencia completa desde BinaryTree
+
+AVL reutiliza sin cambios: todos los iteradores, `ForEach` / variantes, `FirstThat`, `toString`, `operator<<`, `operator>>`, `size()`, `empty()`, constructores de copia/movimiento, destructor.
 
 ---
 
@@ -545,8 +637,12 @@ Todos los contenedores usan `std::mutex m_mtx` (en `protected` de `LinkedList`, 
 | `BinaryTree::operator<<` | `scoped_lock<mutex>` |
 | `BinaryTree` copy/move constructors | `scoped_lock<mutex>` sobre `other.m_mtx` |
 | `BinaryTree` destructor | `scoped_lock<mutex>` |
+| `BinaryTree::inorder()` / variantes range-for | `unique_lock<mutex>` — mantenido durante toda la iteración |
+| `AVL::insert` | `scoped_lock<mutex>` (override de BinaryTree::insert) |
+| `AVL::tree_height` | `scoped_lock<mutex>` |
+| `AVL::print_tree` | `scoped_lock<mutex>` |
 
-> `insertar_interno`, `copiar_interno`, `escribir_interno` no adquieren lock propio — siempre llamados bajo lock del método público.
+> `insertar_interno`, `make_node`, `post_insert`, `copiar_interno`, `escribir_interno`, `rebalance`, rotaciones — no adquieren lock propio, siempre llamados bajo lock del método público.
 
 ---
 
@@ -556,8 +652,11 @@ Todos los contenedores usan `std::mutex m_mtx` (en `protected` de `LinkedList`, 
 |--------|-------|
 | **CRTP** (Curiously Recurring Template Pattern) | `general_iterator<Container, IteratorBase>` |
 | **Nodo anidado** (nested Node) | `struct Node` dentro de `LinkedList`, `DoubleLinkedList`, `BinaryTree` |
-| **Traits** | solo `Vector` y `Heap` — LL/DLL/BT usan `template<T, Comp>` directo |
-| **RAII** | `scoped_lock<mutex>` en todas las operaciones mutantes |
-| **Move semantics** | constructores y operadores de movimiento en `LinkedList`, `BinaryTree` |
+| **Traits** | `Vector`, `Heap`, `BinaryTree` (via `BinaryTreeTraits<T, CompTrait>`) |
+| **Policy** | `BinaryTreeIterator<Container, Policy>` — 6 policies seleccionan el orden de recorrido |
+| **RAII** | `scoped_lock<mutex>` en todas las operaciones mutantes; `unique_lock` en `BinaryTreeRange` |
+| **Move semantics** | constructores y operadores de movimiento en `LinkedList`, `BinaryTree`; `BinaryTreeRange` movible |
 | **Variadic templates** | `ForEach`, `FirstThat` con `Args&&...` |
 | **Perfect forwarding** | `std::forward<Args>(args)...` en ForEach/FirstThat |
+| **Template Method** | `BinaryTree::insertar_interno` define el esqueleto BST; hooks virtuales `make_node` y `post_insert` permiten que `AVL` cambie tipo de nodo y añada rebalanceo sin duplicar lógica |
+| **Herencia de template** | `AVL<Traits>` extiende `BinaryTree<Traits>`; `AVLNode` extiende `Node` |

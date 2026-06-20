@@ -374,14 +374,18 @@ public:
     }
 
 protected:
+    virtual NodePtr make_node(const value_type& v, Ref ref) { return new Node(v, ref); }
+    virtual void post_insert(NodePtr&) {}
+
     void insertar_interno(NodePtr& pNodo, const value_type& value, Ref ref) {
         if (!pNodo) {
-            pNodo = new Node(value, ref);
+            pNodo = make_node(value, ref);
             ++m_size;
             return;
         }
         size_t pos = !m_comp(value, pNodo->getDataRef());
         insertar_interno(pNodo->getChildRef(pos), value, ref);
+        post_insert(pNodo);
     }
 
     void copiar_interno(NodePtr& dst, const NodePtr src) {

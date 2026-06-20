@@ -17,7 +17,7 @@ int main() {
     //DemoVector();
     // DemoConcurrentVector();
     // ListsDemo();
-    DemoBinaryTree();
+    //DemoBinaryTree();
     DemoAVL();
     return 0;
 }
