@@ -130,6 +130,13 @@ Reuses `m_mtx` from base. Pattern identical to `BinaryTree::insert`.
 
 ---
 
+## Known Limitations (out of scope)
+
+- **Copy/move constructor**: `BinaryTree`'s copy constructor calls `copiar_interno` which creates base `Node` objects (no `m_height`). Copying an `AVL` would produce a structurally broken tree (nodes without height). Future fix: override copy/move constructor in `AVL` to create `AVLNode` objects.
+- **No `remove`**: Deletion with rebalancing not implemented.
+
+---
+
 ## Files Changed
 
 | File | Change |
