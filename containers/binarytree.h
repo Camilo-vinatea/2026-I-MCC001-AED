@@ -16,8 +16,8 @@
 using namespace std;
 
 // ============================================================
-// BuildPolicy structs — definen el orden de recorrido
-// Cada uno: template<Node> static void construir(deque<Node*>&, Node*)
+// "Políticas" que definen el orden de recorrido
+// Cada una es un template<Node> static void construir(deque<Node*>&, Node*)
 // ============================================================
 
 struct BinaryTreeForwardInorderPolicy {
@@ -285,7 +285,7 @@ public:
     backward_postorder_iterator rpost_begin()  { return {this, m_pRoot}; }
     backward_postorder_iterator rpost_end()    { return {this, nullptr}; }
 
-    // --- Rangos nativos: for(auto& n : bt.inorder()) ---
+    // --- metodos para: for(auto& n : bt.inorder()) ---
     auto inorder()          { return BinaryTreeRange<MySelf, BinaryTreeForwardInorderPolicy   >(this, m_pRoot, m_mtx); }
     auto reverse_inorder()  { return BinaryTreeRange<MySelf, BinaryTreeBackwardInorderPolicy  >(this, m_pRoot, m_mtx); }
     auto preorder()         { return BinaryTreeRange<MySelf, BinaryTreeForwardPreorderPolicy  >(this, m_pRoot, m_mtx); }
