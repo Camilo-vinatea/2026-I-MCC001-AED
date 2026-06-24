@@ -13,17 +13,11 @@ const char * keys3 = "DYZakHIUwxVJ203ejOP9Qc8AdtuEop1XvTRghSNbW567BfiCqrs4FGMyzK
 const int BTreeSize = 3;
 
 void BTreeDemo(){
-
         int i;
         BTree <char> bt (BTreeSize);
-        for (i = 0; keys1[i]; i++)
-        {
-               //cout<<"Inserting "<<keys1[i]<<endl;
+        for (i = 0; keys1[i]; i++){
+               cout<<"Inserting "<<keys1[i]<<endl;
                bt.Insert(keys1[i], i*i);
-               //bt.Print(cout);
         }
-        //std::cout << "Keys inserted: " << bt.size() << std::endl;
-        //std::cout << "Height: " << bt.height() << std::endl;
         bt.Print(cout);
-
 }
