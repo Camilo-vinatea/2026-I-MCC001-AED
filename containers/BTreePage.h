@@ -50,9 +50,8 @@ void remove(Container& container, int pos)
                container[i-1] = container[i];
 }
 
-template <typename keyType, typename ObjIDType>
+template <typename Traits>
 class BTree;
-
 
 using namespace std;
 enum bt_ErrorCode {bt_ok, bt_overflow, bt_underflow, bt_duplicate, bt_nofound, bt_rootmerged};
@@ -83,7 +82,7 @@ template <typename keyType, typename ObjIDType>
 class CBTreePage 
 // this is the in-memory version of the CBTreePage
 {
-       friend class BTree<keyType, ObjIDType>;
+       template <typename T> friend class BTree;
 
        typedef CBTreePage<keyType, ObjIDType>    BTPage;         // useful shorthand
        typedef tagNode<keyType, ObjIDType> Node;

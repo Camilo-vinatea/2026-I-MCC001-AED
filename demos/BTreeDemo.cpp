@@ -14,9 +14,9 @@ const int BTreeSize = 3;
 
 void BTreeDemo(){
         int i;
-        BTree <char> bt (BTreeSize);
+        BTree<BTreeTraits<char>> bt(BTreeSize);
         for (i = 0; keys1[i]; i++){
-               cout<<"Inserting "<<keys1[i]<<endl;
+               //cout<<"Inserting "<<keys1[i]<<endl;
                bt.Insert(keys1[i], i*i);
         }
         bt.Print(cout);
