@@ -21,4 +21,13 @@ using TS = string;
 
 using Ref = long;
 
+/// TIPOS PARA BTREE ///
+
+using obj_id_t      =   long;
+using tree_order_t  =   int;
+using tree_height_t =   int;
+using btree_key_t   =   int;
+
+
+
 #endif // __TYPES_H__
