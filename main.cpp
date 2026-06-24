@@ -4,6 +4,7 @@
 // #include "containers/vector.h"
 #include "containers/binarytree.h"
 #include "containers/avl.h"
+#include "containers/Btree.h"
 
 using namespace std;
 
@@ -14,10 +15,11 @@ size_t size1() { return 0; }
 unsigned char size2() { return 0; }
 int main() {
     // DemoMacros();
-    //DemoVector();
+    // DemoVector();
     // DemoConcurrentVector();
     // ListsDemo();
-    //DemoBinaryTree();
-    DemoAVL();
+    // DemoBinaryTree();
+    // DemoAVL();
+    BTreeDemo();
     return 0;
 }

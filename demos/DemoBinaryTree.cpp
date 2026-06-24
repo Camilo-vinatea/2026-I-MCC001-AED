@@ -1,6 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include "containers/binarytree.h"
+#include "../containers/binarytree.h"
 
 using namespace std;
 

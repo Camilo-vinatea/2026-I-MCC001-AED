@@ -4,9 +4,10 @@ LDFLAGS = -pthread # Añadido -pthread
 
 TARGET = main
 SRCS = main.cpp \
-	   ListsDemo.cpp \
-	   DemoBinaryTree.cpp \
-	   DemoAVL.cpp
+	   demos/ListsDemo.cpp \
+	   demos/DemoBinaryTree.cpp \
+	   demos/DemoAVL.cpp \
+	   demos/BTreeDemo.cpp
 # 	   DemoVector.cpp
 # macros.cpp vector.cpp
 
@@ -17,7 +18,7 @@ all: $(TARGET)
 $(TARGET): $(OBJS)
 	$(CXX) $(LDFLAGS) $^ -o $@
 
-%.o: %.cpp
+demos/%.o: demos/%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:

@@ -59,10 +59,10 @@ protected:
 const int MaxHeight = 5;
 template <typename keyType, typename ObjIDType>
 BTree<keyType, ObjIDType>::BTree(int order, bool unique)
-                               : m_Unique(unique),
+                               : m_Root(2 * order  + 1, unique),
                                  m_Order(order),
-                                 m_Root(2 * order  + 1, unique),
-                                 m_NumKeys(0)
+                                 m_NumKeys(0),
+                                 m_Unique(unique)
 {
        m_Root.SetMaxKeysForChilds(order);
        m_Height = 1;
@@ -141,7 +141,7 @@ void BTree<keyType, ObjIDType>::Print(ostream &os){
        m_Root.Print(os);
 }
 
-
+void BTreeDemo();
 
 
 
