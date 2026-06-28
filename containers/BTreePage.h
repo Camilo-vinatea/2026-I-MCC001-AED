@@ -47,7 +47,7 @@ template <typename Container>
 void remove(Container& container, btree_pos_t pos)
 {
        bree_size_t size = container.size();
-       for(auto i = pos+1 ; i < size ; i++)
+       for(auto i = pos+1 ; i < size ; ++i)
                container[i-1] = container[i];
 }
 
@@ -402,7 +402,7 @@ void CBTreePage<Traits>::SplitPageInto3(vector<Node>& tmpKeys,
        pChild1->clear();
        btree_pos_t nKeys = (tmpKeys.size()-2)/3;
        btree_pos_t i = 0;
-       for( ; i < nKeys; i++ )
+       for( ; i < nKeys; ++i )
        {
                pChild1->m_Keys    [i] = tmpKeys    [i];
                pChild1->m_SubPages[i] = tmpSubPages[i];
@@ -419,7 +419,7 @@ void CBTreePage<Traits>::SplitPageInto3(vector<Node>& tmpKeys,
        // copy 1/3 to the second child
        nKeys += (tmpKeys.size()-2)/3 + 1;
        btree_pos_t j = 0;
-       for(; i < nKeys; i++, j++ )
+       for(; i < nKeys; ++i, ++j )
        {
                pChild2->m_Keys    [j] = tmpKeys    [i];
                pChild2->m_SubPages[j] = tmpSubPages[i];
@@ -435,7 +435,7 @@ void CBTreePage<Traits>::SplitPageInto3(vector<Node>& tmpKeys,
                pChild3 = new BTPage(m_MaxKeysForChilds, m_Unique);
        pChild3->clear();
        nKeys = (btree_pos_t)tmpKeys.size();
-       for(j = 0; i < nKeys; i++, j++)
+       for(j = 0; i < nKeys; ++i, ++j)
        {
                pChild3->m_Keys    [j] = tmpKeys    [i];
                pChild3->m_SubPages[j] = tmpSubPages[i];
@@ -605,7 +605,7 @@ bt_ErrorCode CBTreePage<Traits>::Merge(btree_pos_t pos)
        // Move 1/2 elements to pChild1
        btree_pos_t nKeys = pChild1->GetFreeCells();
        btree_pos_t i = 0;
-       for( ; i < nKeys ; i++ )
+       for( ; i < nKeys ; ++i )
        {
                pChild1->m_Keys    [i] = tmpKeys    [i];
                pChild1->m_SubPages[i] = tmpSubPages[i];
@@ -622,7 +622,7 @@ bt_ErrorCode CBTreePage<Traits>::Merge(btree_pos_t pos)
 
        nKeys = pChild2->GetFreeCells();
        btree_pos_t j = ++i;
-       for(i = 0 ; i < nKeys ; i++, j++ )
+       for(i = 0 ; i < nKeys ; ++i, ++j )
        {
                pChild2->m_Keys    [i] = tmpKeys    [j];
                pChild2->m_SubPages[i] = tmpSubPages[j];
@@ -661,7 +661,7 @@ bt_ErrorCode CBTreePage<Traits>::MergeRoot()
 
        clear();
        btree_pos_t i = 0;
-       for( ; i < nKeys ; i++ ){
+       for( ; i < nKeys ; ++i ){
                m_Keys    [i] = tmpKeys    [i];
                m_SubPages[i] = tmpSubPages[i];
                NumberOfKeys()++;
@@ -731,7 +731,7 @@ void CBTreePage<Traits>::MovePage(BTPage *pChildPage, vector<Node> &tmpKeys,vect
 {
        btree_pos_t nKeys = pChildPage->GetNumberOfKeys();
        btree_pos_t i = 0;
-       for( ; i < nKeys; i++ )
+       for( ; i < nKeys; ++i )
        {
                tmpKeys    .push_back(pChildPage->m_Keys[i]);
                tmpSubPages.push_back(pChildPage->m_SubPages[i]);
