@@ -32,11 +32,6 @@ class BTree
        };*/
 
 public:
-       //typedef Node iterator;
-       typedef typename BTNode::lpfnForEach2    lpfnForEach2;
-       typedef typename BTNode::lpfnForEach3    lpfnForEach3;
-       typedef typename BTNode::lpfnFirstThat2  lpfnFirstThat2;
-       typedef typename BTNode::lpfnFirstThat3  lpfnFirstThat3;
        typedef typename BTNode::Node            Node;
 
 public:

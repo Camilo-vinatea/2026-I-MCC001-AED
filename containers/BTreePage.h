@@ -88,11 +88,6 @@ class CBTreePage
        typedef CBTreePage<keyType, ObjIDType>    BTPage;         // useful shorthand
        typedef tagNode<keyType, ObjIDType> Node;
 
-       typedef void (*lpfnForEach2)(Node &info, int level, void *pExtra1);
-       typedef void (*lpfnForEach3)(Node &info, int level, void *pExtra1, void *pExtra2);
-
-       typedef Node *(*lpfnFirstThat2)(Node &info, int level, void *pExtra1);
-       typedef Node *(*lpfnFirstThat3)(Node &info, int level, void *pExtra1, void *pExtra2);
  public:
        CBTreePage(int maxKeys, bool unique = true);
        virtual ~CBTreePage();
@@ -105,8 +100,6 @@ class CBTreePage
        template <typename Func, typename ...Args> void ForEach(Func func, tree_height_t level, Args&&... args);
        template <typename Func, typename ...Args> Node* FirstThat(Func func, tree_height_t level, Args&&... args);
 
-       Node*     FirstThat(lpfnFirstThat2 lpfn, int level, void *pExtra1);
-       Node*     FirstThat(lpfnFirstThat3 lpfn, int level, void *pExtra1, void *pExtra2);
 
 protected:
        int  m_MinKeys; // minimum number of keys in a node
@@ -708,19 +701,11 @@ CBTreePage<keyType, ObjIDType>::GetFirstNode()
 
 // Deben eliminarlo e imprimir con un ForEach
 template <typename keyType, typename ObjIDType>
-void Print(tagNode<keyType, ObjIDType> &info, int level, void *pExtra)
-{
-        ostream &os = *(ostream *)pExtra;
-        for( int i = 0; i < level ; i++)
-                os << "\t";
-        os << info.key << "->" << info.ObjID << "\n";
-}
-
-template <typename keyType, typename ObjIDType>
-void CBTreePage<keyType, ObjIDType>::Print(ostream & os)
-{
-       lpfnForEach2 func = &::Print<keyType, ObjIDType>;
-       ForEach(func, 0, &os);
+void CBTreePage<keyType, ObjIDType>::Print(ostream & os) {
+    ForEach([&os](Node& n, tree_height_t level) {
+        for (int i = 0; i < level; i++) os << "\t";
+        os << n.key << "->" << n.ObjID << "\n";
+    }, 0);
 }
 
 template <typename keyType, typename ObjIDType>
