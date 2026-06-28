@@ -23,7 +23,7 @@ class BTree
 {
        using keyType = typename Traits::KeyType;
        using ObjIDType = typename Traits::ObjIDType;
-       typedef CBTreePage <keyType, ObjIDType> BTNode;// useful shorthand
+       typedef CBTreePage<Traits> BTNode;
        /*struct Node
        {
                keyType first;
