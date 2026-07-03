@@ -67,6 +67,8 @@ void DemoAVL() {
     for (auto& n : avl.inorder())          cout << n.getData() << " ";
     cout << "\n";
 
+    // ::ForEach(avl.inorder().begin(), avl.inorder().end(), [](Node& n){cout << n.getData() << " ";});
+
     cout << "  Preorden  (NLR): ";
     for (auto& n : avl.preorder())         cout << n.getData() << " ";
     cout << "\n";
