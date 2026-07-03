@@ -4,6 +4,7 @@
 #define BTREE_H
 
 #include <iostream>
+#include <shared_mutex>
 #include "../types.h"
 #include "BTreePage.h"
 
@@ -57,6 +58,7 @@ protected:
        tree_order_t    m_Order;   // order of tree
        size_t          m_NumKeys; // number of keys
        bool            m_Unique;  // Accept the elements only once ?
+       mutable std::shared_mutex m_Mutex;
 };
 
 const tree_height_t MaxHeight = 5;
@@ -79,6 +81,7 @@ BTree<Traits>::~BTree()
 template <typename Traits>
 bool BTree<Traits>::Insert(const keyType key, ObjIDType ObjID)
 {
+       std::unique_lock lock(m_Mutex);
        bt_ErrorCode error = m_Root.Insert(key, ObjID);
        if( error == bt_duplicate )
                return false;
@@ -94,6 +97,7 @@ bool BTree<Traits>::Insert(const keyType key, ObjIDType ObjID)
 template <typename Traits>
 bool BTree<Traits>::Remove (const keyType key, ObjIDType ObjID)
 {
+       std::unique_lock lock(m_Mutex);
        bt_ErrorCode error = m_Root.Remove(key, ObjID);
        if( error == bt_duplicate || error == bt_nofound )
                return false;
@@ -107,6 +111,7 @@ bool BTree<Traits>::Remove (const keyType key, ObjIDType ObjID)
 template <typename Traits>
 typename BTree<Traits>::ObjIDType BTree<Traits>::Search (const keyType key)
 {
+       std::shared_lock lock(m_Mutex);
        ObjIDType ObjID = -1;
        m_Root.Search(key, ObjID);
        return ObjID;
@@ -116,6 +121,7 @@ template <typename Traits>
 template <typename Func, typename... Args>
 void BTree<Traits>::ForEach(Func func, Args&&... args)
 {
+       std::shared_lock lock(m_Mutex);
        m_Root.ForEach(func, 0, std::forward<Args>(args)...);
 }
 
@@ -124,11 +130,13 @@ template <typename Func, typename... Args>
 typename BTree<Traits>::Node *
 BTree<Traits>::FirstThat(Func func, Args&&... args)
 {
+       std::shared_lock lock(m_Mutex);
        return m_Root.FirstThat(func, 0, std::forward<Args>(args)...);
 }
 
 template <typename Traits>
 void BTree<Traits>::Print(ostream &os){
+       std::shared_lock lock(m_Mutex);
        m_Root.Print(os);
 }
 
