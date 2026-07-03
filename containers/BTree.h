@@ -190,7 +190,10 @@ BTree<Traits>::FirstThat(Func func, Args&&... args)
 template <typename Traits>
 void BTree<Traits>::Print(ostream &os){
        std::shared_lock lock(m_Mutex);
-       m_Root.Print(os);
+       m_Root.ForEach([&os](Node& n, tree_height_t level) {
+              for (auto i = 0; i < level; ++i) os << "\t";
+              os << n.key << "->" << n.ObjID << "\n";
+       }, 0);
 }
 
 void BTreeDemo();
