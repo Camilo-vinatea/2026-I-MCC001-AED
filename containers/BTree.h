@@ -1,15 +1,59 @@
 // btree.h
 
-#ifndef BTREE_H
-#define BTREE_H
+#ifndef __BTREE_H__
+#define __BTREE_H__
 
 #include <iostream>
 #include <mutex>
 #include <shared_mutex>
+#include <deque>
+#include <algorithm>
 #include "../types.h"
+#include "../foreach.h"
 #include "BTreePage.h"
+#include "general_iterator.h"
 
 #define DEFAULT_BTREE_ORDER 3
+
+struct BTreeForwardInorderPolicy {
+    template <typename Page, typename Node>
+    static void construir(std::deque<Node*>& cola, Page* p) {
+        if (!p) return;
+        p->ForEach([&cola](Node& n, tree_height_t){ cola.push_back(&n); }, 0);
+    }
+};
+
+struct BTreeBackwardInorderPolicy {
+    template <typename Page, typename Node>
+    static void construir(std::deque<Node*>& cola, Page* p) {
+        BTreeForwardInorderPolicy::construir(cola, p);
+        std::reverse(cola.begin(), cola.end());
+    }
+};
+
+template <typename Container, typename Policy>
+class BTreeIterator: public general_iterator<Container, BTreeIterator<Container, Policy>> {
+    using MySelf = BTreeIterator<Container, Policy>;
+    using Parent = general_iterator<Container, MySelf>;
+
+public:
+    using Node = typename Container::Node;
+
+    template <typename Page>
+    BTreeIterator(Container* pC, Page* pRaiz)
+        : Parent(pC, nullptr) { Policy::construir(m_cola, pRaiz); avanzar(); }
+    BTreeIterator(Container* pC, std::nullptr_t)
+        : Parent(pC, nullptr) {}
+    MySelf& operator++() { avanzar(); return *this; }
+
+private:
+    std::deque<Node*> m_cola;
+    void avanzar() {
+        if (!m_cola.empty()) { this->m_pNode = m_cola.front(); m_cola.pop_front(); }
+        else                  { this->m_pNode = nullptr; }
+    }
+};
+
 
 template <typename K, typename V = obj_id_t>
 struct BTreeTraits{
@@ -36,6 +80,14 @@ class BTree
 public:
        typedef typename BTNode::Node            Node;
 
+       using forward_iterator  = BTreeIterator<BTree<Traits>, BTreeForwardInorderPolicy>;
+       using backward_iterator = BTreeIterator<BTree<Traits>, BTreeBackwardInorderPolicy>;
+
+       forward_iterator  begin()  { return {this, &m_Root}; }
+       forward_iterator  end()    { return {this, nullptr}; }
+       backward_iterator rbegin() { return {this, &m_Root}; }
+       backward_iterator rend()   { return {this, nullptr}; }
+
 public:
        BTree(tree_order_t order = DEFAULT_BTREE_ORDER, bool unique = true);
        ~BTree();
@@ -49,7 +101,7 @@ public:
        tree_height_t   height() { return m_Height;      }
        tree_order_t    GetOrder() { return m_Order;     }
        void            Print (ostream &os);
-       template <typename Func, typename ...Args> void ForEach(Func func, Args&&... args);
+       template <typename Func, typename ...Args> void ForEachInternal(Func func, Args&&... args);
        template <typename Func, typename ...Args> Node* FirstThat(Func func, Args&&... args);
        //typedef               Node iterator;
 
@@ -120,7 +172,7 @@ typename BTree<Traits>::ObjIDType BTree<Traits>::Search (const keyType key)
 
 template <typename Traits>
 template <typename Func, typename... Args>
-void BTree<Traits>::ForEach(Func func, Args&&... args)
+void BTree<Traits>::ForEachInternal(Func func, Args&&... args)
 {
        std::shared_lock lock(m_Mutex);
        m_Root.ForEach(func, 0, std::forward<Args>(args)...);
@@ -143,4 +195,4 @@ void BTree<Traits>::Print(ostream &os){
 
 void BTreeDemo();
 
-#endif
+#endif //__BTREE_H__
