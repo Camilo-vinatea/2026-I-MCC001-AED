@@ -4,6 +4,7 @@
 #define BTREE_H
 
 #include <iostream>
+#include <mutex>
 #include <shared_mutex>
 #include "../types.h"
 #include "BTreePage.h"
