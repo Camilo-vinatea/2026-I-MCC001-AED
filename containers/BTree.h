@@ -83,8 +83,8 @@ public:
        using forward_iterator  = BTreeIterator<BTree<Traits>, BTreeForwardInorderPolicy>;
        using backward_iterator = BTreeIterator<BTree<Traits>, BTreeBackwardInorderPolicy>;
 
-       forward_iterator  begin()  { return {this, &m_Root}; }
-       forward_iterator  end()    { return {this, nullptr}; }
+       forward_iterator  begin()  {  std::shared_lock lock(m_Mutex); return {this, &m_Root}; }
+       forward_iterator  end()    {  std::shared_lock lock(m_Mutex); return {this, nullptr}; }
        backward_iterator rbegin() { return {this, &m_Root}; }
        backward_iterator rend()   { return {this, nullptr}; }
 
