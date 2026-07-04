@@ -83,8 +83,8 @@ public:
        using forward_iterator  = BTreeIterator<BTree<Traits>, BTreeForwardInorderPolicy>;
        using backward_iterator = BTreeIterator<BTree<Traits>, BTreeBackwardInorderPolicy>;
 
-       forward_iterator  begin()  {  std::shared_lock lock(m_Mutex); return {this, &m_Root}; }
-       forward_iterator  end()    {  std::shared_lock lock(m_Mutex); return {this, nullptr}; }
+       forward_iterator  begin()  {  std::scoped_lock lock(m_Mutex); return {this, &m_Root}; }
+       forward_iterator  end()    {  std::scoped_lock lock(m_Mutex); return {this, nullptr}; }
        backward_iterator rbegin() { return {this, &m_Root}; }
        backward_iterator rend()   { return {this, nullptr}; }
 
@@ -134,7 +134,7 @@ BTree<Traits>::~BTree()
 template <typename Traits>
 bool BTree<Traits>::Insert(const keyType key, ObjIDType ObjID)
 {
-       std::unique_lock lock(m_Mutex);
+       std::scoped_lock lock(m_Mutex);
        bt_ErrorCode error = m_Root.Insert(key, ObjID);
        if( error == bt_duplicate )
                return false;
@@ -150,7 +150,7 @@ bool BTree<Traits>::Insert(const keyType key, ObjIDType ObjID)
 template <typename Traits>
 bool BTree<Traits>::Remove (const keyType key, ObjIDType ObjID)
 {
-       std::unique_lock lock(m_Mutex);
+       std::scoped_lock lock(m_Mutex);
        bt_ErrorCode error = m_Root.Remove(key, ObjID);
        if( error == bt_duplicate || error == bt_nofound )
                return false;
@@ -164,7 +164,7 @@ bool BTree<Traits>::Remove (const keyType key, ObjIDType ObjID)
 template <typename Traits>
 typename BTree<Traits>::ObjIDType BTree<Traits>::Search (const keyType key)
 {
-       std::shared_lock lock(m_Mutex);
+       std::scoped_lock lock(m_Mutex);
        ObjIDType ObjID = -1;
        m_Root.Search(key, ObjID);
        return ObjID;
@@ -174,7 +174,7 @@ template <typename Traits>
 template <typename Func, typename... Args>
 void BTree<Traits>::ForEachInternal(Func func, Args&&... args)
 {
-       std::shared_lock lock(m_Mutex);
+       std::scoped_lock lock(m_Mutex);
        m_Root.ForEach(func, 0, std::forward<Args>(args)...);
 }
 
@@ -183,13 +183,13 @@ template <typename Func, typename... Args>
 typename BTree<Traits>::Node *
 BTree<Traits>::FirstThat(Func func, Args&&... args)
 {
-       std::shared_lock lock(m_Mutex);
+       std::scoped_lock lock(m_Mutex);
        return m_Root.FirstThat(func, 0, std::forward<Args>(args)...);
 }
 
 template <typename Traits>
 void BTree<Traits>::Print(ostream &os){
-       std::shared_lock lock(m_Mutex);
+       std::scoped_lock lock(m_Mutex);
        m_Root.ForEach([&os](Node& n, tree_height_t level) {
               for (auto i = 0; i < level; ++i) os << "\t";
               os << n.key << "->" << n.ObjID << "\n";
