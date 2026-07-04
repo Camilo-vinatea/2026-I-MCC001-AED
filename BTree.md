@@ -15,6 +15,7 @@ classDiagram
         #m_Order : tree_order_t
         #m_NumKeys : size_t
         #m_Unique : bool
+        #m_Mutex : shared_mutex
         +BTree(order, unique)
         +Insert(key, ObjID) bool
         +Remove(key, ObjID) bool
@@ -23,8 +24,30 @@ classDiagram
         +height() tree_height_t
         +GetOrder() tree_order_t
         +Print(os) void
-        +ForEach(func, args) void
+        +ForEachInternal(func, args) void
         +FirstThat(func, args) Node*
+        +begin() forward_iterator
+        +end() forward_iterator
+        +rbegin() backward_iterator
+        +rend() backward_iterator
+    }
+
+    class BTreeIterator~Container Policy~ {
+        -m_cola : deque~Node*~
+        +BTreeIterator(pC, pRaiz)
+        +BTreeIterator(pC, nullptr)
+        +operator++() MySelf&
+        -avanzar() void
+    }
+
+    class BTreeForwardInorderPolicy {
+        <<policy>>
+        +construir(cola, p)$ void
+    }
+
+    class BTreeBackwardInorderPolicy {
+        <<policy>>
+        +construir(cola, p)$ void
     }
 
     class tagNode~keyType ObjIDType~ {
@@ -62,6 +85,7 @@ classDiagram
         +Print(os) void
         +ForEach(func, level, args) void
         +FirstThat(func, level, args) Node*
+        -Call(func, level, args) Node*
         #Overflow() bool
         #Underflow() bool
         #IsFull() bool
@@ -86,6 +110,44 @@ classDiagram
     CBTreePage o-- CBTreePage : m_SubPages
     CBTreePage ..> bt_ErrorCode : retorna
     BTree ..> bt_ErrorCode : usa
+    BTree ..> BTreeIterator : crea (begin/end/rbegin/rend)
+    BTreeIterator ..> BTreeForwardInorderPolicy : Policy
+    BTreeIterator ..> BTreeBackwardInorderPolicy : Policy
+    BTreeIterator --> tagNode : itera sobre Node*
+```
+
+---
+
+## Iteradores forward/backward (BTree.h)
+
+`BTreeIterator<Container, Policy>` hereda de `general_iterator` y recorre el
+árbol en orden usando una cola (`deque<Node*>`) llenada de una sola vez por
+la `Policy` en el constructor.
+
+- **BTreeForwardInorderPolicy::construir** — llama `p->ForEach(...)` sobre la raíz,
+  empujando cada `Node*` a la cola en orden ascendente (in-order).
+- **BTreeBackwardInorderPolicy::construir** — reusa `BTreeForwardInorderPolicy::construir`
+  y luego hace `std::reverse` sobre la cola. No existe un `ForEachReverse` propio:
+  el recorrido inverso se logra invirtiendo el resultado forward.
+- `operator++` (`avanzar()`) hace `pop_front()` de la cola; al vaciarse, `m_pNode = nullptr` (fin).
+
+`BTree` expone los alias `forward_iterator` / `backward_iterator` y los métodos
+`begin()/end()` (con `shared_lock`) y `rbegin()/rend()`, habilitando range-for:
+
+```cpp
+for (auto& node : miBTree)        { /* forward, in-order */ }
+for (auto& node : reverse(miBTree)) { /* backward */ } // via foreach.h
+```
+
+```mermaid
+flowchart TD
+    A["BTree::begin()"] --> B["BTreeIterator(this, &m_Root)"]
+    B --> C["Policy::construir(m_cola, pRaiz)"]
+    C --> D["m_Root.ForEach(lambda push_back, 0)"]
+    D --> E{Policy == Backward?}
+    E -->|sí| F["std::reverse(m_cola)"]
+    E -->|no| G["avanzar(): pop_front → m_pNode"]
+    F --> G
 ```
 
 ---
@@ -147,6 +209,34 @@ flowchart TD
     M --> R["BTree: m_Height--\nreturn true"]
     J --> S["BTree: m_NumKeys--\nreturn true"]
     P --> T["BTree: return false"]
+```
+
+---
+
+## Call: motor único de ForEach/FirstThat (BTreePage.h)
+
+`CBTreePage::Call` es privado y hace todo el recorrido recursivo real.
+`ForEach` y `FirstThat` son wrappers públicos de una línea que delegan en él.
+El modo (void = visita todos / bool = busca primero que cumpla) se decide en
+tiempo de compilación con `if constexpr (is_void_v<Result>)`, según el tipo de
+retorno de `Func`. No hay branching en runtime por nodo.
+
+```mermaid
+flowchart TD
+    A["ForEach(func, level, args)"] --> C["Call(func, level, args)"]
+    B["FirstThat(func, level, args)"] --> C
+    C --> D["for i in [0, m_KeyCount)"]
+    D --> E["m_SubPages[i]->Call(...) recursivo"]
+    E --> F{pTmp != nullptr?}
+    F -->|sí| G[return pTmp]
+    F -->|no| H{"Result == void?"}
+    H -->|sí| I["func(m_Keys[i], level, args)"]
+    H -->|no| J{"func(m_Keys[i], level, args)?"}
+    J -->|sí| K["return &m_Keys[i]"]
+    J -->|no| D
+    I --> D
+    D -->|fin loop| L["m_SubPages[m_KeyCount]->Call(...) recursivo"]
+    L --> M["return pTmp o nullptr"]
 ```
 
 ---
