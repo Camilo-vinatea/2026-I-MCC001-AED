@@ -155,7 +155,7 @@ private:
                                                Node        & oi1,
                                                Node        & oi2);
        void MovePage(BTPage *  pChildPage,vector<Node> & tmpKeys,vector<BTPage *> & tmpSubPages);
-       template <typename Func, typename ...Args> Node* Traverse(Func func, tree_height_t level, Args&&... args);
+       template <typename Func, typename ...Args> Node* Call(Func func, tree_height_t level, Args&&... args);
 };
 
 template <typename Traits>
@@ -493,14 +493,14 @@ bool CBTreePage<Traits>::Search(const keyType &key, obj_id_t &ObjID)
 template <typename Traits>
 template <typename Func, typename... Args>
 typename CBTreePage<Traits>::Node *
-CBTreePage<Traits>::Traverse(Func func, tree_height_t level, Args&&... args)
+CBTreePage<Traits>::Call(Func func, tree_height_t level, Args&&... args)
 {
     using Result = invoke_result_t<Func, Node&, tree_height_t, Args...>;
     Node *pTmp;
     for (auto i = 0; i < m_KeyCount; ++i)
     {
         if (m_SubPages[i]) {
-            pTmp = m_SubPages[i]->Traverse(func, level+1, std::forward<Args>(args)...);
+            pTmp = m_SubPages[i]->Call(func, level+1, std::forward<Args>(args)...);
             if (pTmp) return pTmp;
         }
         if constexpr (is_void_v<Result>)
@@ -509,7 +509,7 @@ CBTreePage<Traits>::Traverse(Func func, tree_height_t level, Args&&... args)
             return &m_Keys[i];
     }
     if (m_SubPages[m_KeyCount]) {
-        pTmp = m_SubPages[m_KeyCount]->Traverse(func, level+1, std::forward<Args>(args)...);
+        pTmp = m_SubPages[m_KeyCount]->Call(func, level+1, std::forward<Args>(args)...);
         if (pTmp) return pTmp;
     }
     return nullptr;
@@ -519,7 +519,7 @@ template <typename Traits>
 template <typename Func, typename... Args>
 void CBTreePage<Traits>::ForEach(Func func, tree_height_t level, Args&&... args)
 {
-    Traverse(func, level, std::forward<Args>(args)...);
+    Call(func, level, std::forward<Args>(args)...);
 }
 
 template <typename Traits>
@@ -527,7 +527,7 @@ template <typename Func, typename... Args>
 typename CBTreePage<Traits>::Node *
 CBTreePage<Traits>::FirstThat(Func func, tree_height_t level, Args&&... args)
 {
-    return Traverse(func, level, std::forward<Args>(args)...);
+    return Call(func, level, std::forward<Args>(args)...);
 }
 
 template <typename Traits>
