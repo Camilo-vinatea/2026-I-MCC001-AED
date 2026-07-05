@@ -24,6 +24,7 @@ classDiagram
         +height() tree_height_t
         +GetOrder() tree_order_t
         +Print(os) void
+        +ForEach(lpfn, args) void
         +ForEachInternal(func, args) void
         +FirstThat(func, args) Node*
         +begin() forward_iterator
@@ -33,21 +34,23 @@ classDiagram
     }
 
     class BTreeIterator~Container Policy~ {
-        -m_cola : deque~Node*~
-        +BTreeIterator(pC, pRaiz)
+        -m_cola : deque~pair~Node*, tree_height_t~~
+        -m_nivel : tree_height_t
+        +BTreeIterator(pC, pRaiz, nivel = 0)
         +BTreeIterator(pC, nullptr)
         +operator++() MySelf&
+        +level() tree_height_t
         -avanzar() void
     }
 
     class BTreeForwardInorderPolicy {
         <<policy>>
-        +construir(cola, p)$ void
+        +construir(cola, p, nivel)$ void
     }
 
     class BTreeBackwardInorderPolicy {
         <<policy>>
-        +construir(cola, p)$ void
+        +construir(cola, p, nivel)$ void
     }
 
     class tagNode~keyType ObjIDType~ {
@@ -114,39 +117,52 @@ classDiagram
     BTreeIterator ..> BTreeForwardInorderPolicy : Policy
     BTreeIterator ..> BTreeBackwardInorderPolicy : Policy
     BTreeIterator --> tagNode : itera sobre Node*
+    BTreeForwardInorderPolicy ..> CBTreePage : friend, recorre m_Keys/m_SubPages
+    CBTreePage ..> BTreeIterator : Call itera con él
 ```
 
 ---
 
-## Iteradores forward/backward (BTree.h)
+## Iteradores forward/backward (BTreePage.h)
 
-`BTreeIterator<Container, Policy>` hereda de `general_iterator` y recorre el
-árbol en orden usando una cola (`deque<Node*>`) llenada de una sola vez por
-la `Policy` en el constructor.
+`BTreeIterator<Container, Policy>` y las policies viven en `BTreePage.h`
+(se movieron desde `BTree.h` para que `CBTreePage::Call` pueda usarlos).
+El iterador hereda de `general_iterator` y recorre el árbol en orden usando
+una cola (`deque<pair<Node*, tree_height_t>>`) llenada de una sola vez por
+la `Policy` en el constructor. Cada entrada guarda el nodo y su nivel de
+profundidad, expuesto vía `level()`.
 
-- **BTreeForwardInorderPolicy::construir** — llama `p->ForEach(...)` sobre la raíz,
-  empujando cada `Node*` a la cola en orden ascendente (in-order).
+- **BTreeForwardInorderPolicy::construir** — recorre la página directamente
+  (recursión in-order sobre `m_Keys`/`m_SubPages`, es `friend` de `CBTreePage`),
+  empujando cada `(Node*, nivel)` a la cola en orden ascendente. No usa
+  `ForEach`: eso crearía dependencia circular con `Call`, que ahora consume
+  el iterador.
 - **BTreeBackwardInorderPolicy::construir** — reusa `BTreeForwardInorderPolicy::construir`
   y luego hace `std::reverse` sobre la cola. No existe un `ForEachReverse` propio:
   el recorrido inverso se logra invirtiendo el resultado forward.
 - `operator++` (`avanzar()`) hace `pop_front()` de la cola; al vaciarse, `m_pNode = nullptr` (fin).
 
 `BTree` expone los alias `forward_iterator` / `backward_iterator` y los métodos
-`begin()/end()` (con `shared_lock`) y `rbegin()/rend()`, habilitando range-for:
+`begin()/end()` (con `scoped_lock`) y `rbegin()/rend()`, habilitando range-for.
+Además, `BTree::ForEach(lpfn, args...)` delega en el `::ForEach` externo de
+`foreach.h` construyendo los iteradores directamente (no vía `begin()/end()`,
+que re-tomarían el mutex); a diferencia de `::ForEach(bt.begin(), bt.end(), ...)`,
+el mutex queda tomado durante todo el recorrido.
 
 ```cpp
 for (auto& node : miBTree)        { /* forward, in-order */ }
-for (auto& node : reverse(miBTree)) { /* backward */ } // via foreach.h
+for (auto it = bt.rbegin(); it != bt.rend(); ++it) { /* backward */ }
+bt.ForEach([](Node& n){ ... });   // ::ForEach externo, mutex sostenido
 ```
 
 ```mermaid
 flowchart TD
     A["BTree::begin()"] --> B["BTreeIterator(this, &m_Root)"]
-    B --> C["Policy::construir(m_cola, pRaiz)"]
-    C --> D["m_Root.ForEach(lambda push_back, 0)"]
+    B --> C["Policy::construir(m_cola, pRaiz, nivel=0)"]
+    C --> D["recursión in-order directa sobre\nm_Keys / m_SubPages (friend)"]
     D --> E{Policy == Backward?}
     E -->|sí| F["std::reverse(m_cola)"]
-    E -->|no| G["avanzar(): pop_front → m_pNode"]
+    E -->|no| G["avanzar(): pop_front → m_pNode, m_nivel"]
     F --> G
 ```
 
@@ -215,28 +231,32 @@ flowchart TD
 
 ## Call: motor único de ForEach/FirstThat (BTreePage.h)
 
-`CBTreePage::Call` es privado y hace todo el recorrido recursivo real.
-`ForEach` y `FirstThat` son wrappers públicos de una línea que delegan en él.
+`CBTreePage::Call` es privado y hace el recorrido real. `ForEach` y `FirstThat`
+son wrappers públicos de una línea que delegan en él. Ya no es recursivo:
+construye un `BTreeIterator` forward sobre `this` (la recursión in-order vive
+en la policy, que materializa la cola completa) y hace un loop lineal sobre él,
+recuperando el nivel de cada nodo con `it.level()`.
 El modo (void = visita todos / bool = busca primero que cumpla) se decide en
 tiempo de compilación con `if constexpr (is_void_v<Result>)`, según el tipo de
 retorno de `Func`. No hay branching en runtime por nodo.
+
+Costo: materializar la cola es O(N) en memoria por recorrido, frente al O(altura)
+de la versión recursiva anterior; se acepta como precio de unificar el recorrido
+sobre el iterador.
 
 ```mermaid
 flowchart TD
     A["ForEach(func, level, args)"] --> C["Call(func, level, args)"]
     B["FirstThat(func, level, args)"] --> C
-    C --> D["for i in [0, m_KeyCount)"]
-    D --> E["m_SubPages[i]->Call(...) recursivo"]
-    E --> F{pTmp != nullptr?}
-    F -->|sí| G[return pTmp]
-    F -->|no| H{"Result == void?"}
-    H -->|sí| I["func(m_Keys[i], level, args)"]
-    H -->|no| J{"func(m_Keys[i], level, args)?"}
-    J -->|sí| K["return &m_Keys[i]"]
-    J -->|no| D
-    I --> D
-    D -->|fin loop| L["m_SubPages[m_KeyCount]->Call(...) recursivo"]
-    L --> M["return pTmp o nullptr"]
+    C --> D["BTreeIterator forward(nullptr, this, level)\n(policy llena la cola in-order con niveles)"]
+    D --> E["for it != fin; ++it"]
+    E --> F{"Result == void?"}
+    F -->|sí| G["func(*it, it.level(), args)"]
+    F -->|no| H{"func(*it, it.level(), args)?"}
+    H -->|sí| I["return it.getNode()"]
+    H -->|no| E
+    G --> E
+    E -->|cola vacía| J["return nullptr"]
 ```
 
 ---
