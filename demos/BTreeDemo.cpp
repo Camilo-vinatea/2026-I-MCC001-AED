@@ -55,4 +55,10 @@ void BTreeDemo(){
         cout << "\n5) Funcion generica ForEach() de foreach.h, de mayor a menor:\n";
         ::ForEach(bt.rbegin(), bt.rend(), [](Node &n){ cout << n.key << " "; });
         cout << "\n";
+
+        // 6) Mismo recorrido que el punto 4, pero con el metodo ForEach de
+        //    BTree, que delega en ::ForEach (externo)
+        cout << "\n6) Metodo ForEach de BTree (usa ::ForEach con mutex sostenido):\n";
+        bt.ForEach([](Node &n){ cout << n.key << " "; });
+        cout << "\n";
 }

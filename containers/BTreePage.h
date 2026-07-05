@@ -11,7 +11,10 @@
 #include <iostream>
 #include <assert.h>
 #include <type_traits>
+#include <deque>
+#include <algorithm>
 #include "../types.h"
+#include "general_iterator.h"
 
 // Si no lo encuentra, deberia decirme:
 // cual es la posicion donde deberia estar
@@ -55,6 +58,59 @@ void remove(Container& container, btree_pos_t pos)
 template <typename Traits>
 class BTree;
 
+struct BTreeForwardInorderPolicy {
+    template <typename Page, typename Node>
+    static void construir(std::deque<std::pair<Node*, tree_height_t>>& cola,
+                          Page* p, tree_height_t nivel = 0) {
+        if (!p) return;
+        for (btree_pos_t i = 0; i < p->m_KeyCount; ++i) {
+            construir<Page, Node>(cola, p->m_SubPages[i], nivel + 1);
+            cola.push_back({&p->m_Keys[i], nivel});
+        }
+        construir<Page, Node>(cola, p->m_SubPages[p->m_KeyCount], nivel + 1);
+    }
+};
+
+struct BTreeBackwardInorderPolicy {
+    template <typename Page, typename Node>
+    static void construir(std::deque<std::pair<Node*, tree_height_t>>& cola,
+                          Page* p, tree_height_t nivel = 0) {
+        BTreeForwardInorderPolicy::construir<Page, Node>(cola, p, nivel);
+        std::reverse(cola.begin(), cola.end());
+    }
+};
+
+template <typename Container, typename Policy>
+class BTreeIterator : public general_iterator<Container, BTreeIterator<Container, Policy>> {
+    using MySelf = BTreeIterator<Container, Policy>;
+    using Parent = general_iterator<Container, MySelf>;
+
+public:
+    using Node = typename Container::Node;
+
+    template <typename Page>
+    BTreeIterator(Container* pC, Page* pRaiz, tree_height_t nivel = 0)
+        : Parent(pC, nullptr) { Policy::template construir<Page, Node>(m_cola, pRaiz, nivel); avanzar(); }
+    BTreeIterator(Container* pC, std::nullptr_t)
+        : Parent(pC, nullptr) {}
+
+    MySelf& operator++() { avanzar(); return *this; }
+    tree_height_t level() const { return m_nivel; }
+
+private:
+    std::deque<std::pair<Node*, tree_height_t>> m_cola;
+    tree_height_t m_nivel = 0;
+    void avanzar() {
+        if (!m_cola.empty()) {
+            this->m_pNode = m_cola.front().first;
+            m_nivel       = m_cola.front().second;
+            m_cola.pop_front();
+        }
+        else
+            this->m_pNode = nullptr;
+    }
+};
+
 using namespace std;
 enum bt_ErrorCode {bt_ok, bt_overflow, bt_underflow, bt_duplicate, bt_nofound, bt_rootmerged};
 
@@ -86,6 +142,7 @@ class CBTreePage
 // this is the in-memory version of the CBTreePage
 {
        template <typename T> friend class BTree;
+       friend struct BTreeForwardInorderPolicy;
 
        using keyType   = typename Traits::KeyType;
        using ObjIDType = typename Traits::ObjIDType;
@@ -495,22 +552,16 @@ template <typename Func, typename... Args>
 typename CBTreePage<Traits>::Node *
 CBTreePage<Traits>::Call(Func func, tree_height_t level, Args&&... args)
 {
-    using Result = invoke_result_t<Func, Node&, tree_height_t, Args...>;
-    Node *pTmp;
-    for (auto i = 0; i < m_KeyCount; ++i)
+    using Result   = invoke_result_t<Func, Node&, tree_height_t, Args...>;
+    using iterator = BTreeIterator<BTree<Traits>, BTreeForwardInorderPolicy>;
+
+    iterator it(nullptr, this, level), fin(nullptr, nullptr);
+    for (; it != fin; ++it)
     {
-        if (m_SubPages[i]) {
-            pTmp = m_SubPages[i]->Call(func, level+1, std::forward<Args>(args)...);
-            if (pTmp) return pTmp;
-        }
         if constexpr (is_void_v<Result>)
-            func(m_Keys[i], level, std::forward<Args>(args)...);
-        else if (func(m_Keys[i], level, std::forward<Args>(args)...))
-            return &m_Keys[i];
-    }
-    if (m_SubPages[m_KeyCount]) {
-        pTmp = m_SubPages[m_KeyCount]->Call(func, level+1, std::forward<Args>(args)...);
-        if (pTmp) return pTmp;
+            func(*it, it.level(), std::forward<Args>(args)...);
+        else if (func(*it, it.level(), std::forward<Args>(args)...))
+            return it.getNode();
     }
     return nullptr;
 }
