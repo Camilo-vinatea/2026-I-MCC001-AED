@@ -5,6 +5,7 @@
 #include "containers/binarytree.h"
 #include "containers/avl.h"
 #include "containers/Btree.h"
+#include "containers/mapDemo.h"
 
 using namespace std;
 
@@ -20,6 +21,7 @@ int main() {
     // ListsDemo();
     // DemoBinaryTree();
     // DemoAVL();
-    BTreeDemo();
+    // BTreeDemo();
+    stdmapDemo();
     return 0;
 }

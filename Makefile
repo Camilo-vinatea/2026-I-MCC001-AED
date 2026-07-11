@@ -7,7 +7,8 @@ SRCS = main.cpp \
 	   demos/ListsDemo.cpp \
 	   demos/DemoBinaryTree.cpp \
 	   demos/DemoAVL.cpp \
-	   demos/BTreeDemo.cpp
+	   demos/BTreeDemo.cpp \
+	   demos/stdmapDemo.cpp
 # 	   DemoVector.cpp
 # macros.cpp vector.cpp
 
