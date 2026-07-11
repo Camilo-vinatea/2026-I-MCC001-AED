@@ -1,0 +1,9 @@
+<map id="vector_backward_iterator&lt; Container &gt;" name="vector_backward_iterator&lt; Container &gt;">
+<area shape="rect" id="Node000001" title="Iterador hacia atrás para Vector (decrementa el puntero)." alt="" coords="13,271,180,313"/>
+<area shape="rect" id="Node000004" href="$classvector__backward__iterator.html" title=" " alt="" coords="13,385,180,428"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="99,327,99,386,94,384,94,331"/>
+<area shape="rect" id="Node000002" href="$classgeneral__iterator.html" title=" " alt="" coords="5,163,188,221"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,234,99,271,94,270,96,239"/>
+<area shape="rect" id="Node000003" href="$classgeneral__iterator.html" title="Plantilla CRTP para iteradores uniformes en todos los contenedores." alt="" coords="5,5,188,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="97,61,99,162,94,162,96,66"/>
+</map>

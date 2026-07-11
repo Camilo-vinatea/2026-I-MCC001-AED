@@ -1,0 +1,7 @@
+<map id="linkedlist.h" name="linkedlist.h">
+<area shape="rect" id="Node000001" title="Lista enlazada simple ordenada con nodo anidado y concurrencia." alt="" coords="88,5,171,32"/>
+<area shape="rect" id="Node000002" href="$_lists_demo_8cpp.html" title="Demo de LinkedList: inserciones, ForEach, FirstThat, push/pop front/back, copy/move,..." alt="" coords="5,80,115,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="110,43,74,82,70,78,104,44"/>
+<area shape="rect" id="Node000003" href="$doublelinkedlist_8h.html" title="Lista doblemente enlazada ordenada que hereda de LinkedList." alt="" coords="139,80,261,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="153,41,190,80,185,80,151,46"/>
+</map>

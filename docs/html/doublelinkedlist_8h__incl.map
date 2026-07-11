@@ -1,0 +1,31 @@
+<map id="doublelinkedlist.h" name="doublelinkedlist.h">
+<area shape="rect" id="Node000001" title="Lista doblemente enlazada ordenada que hereda de LinkedList." alt="" coords="351,5,472,32"/>
+<area shape="rect" id="Node000002" href="$linkedlist_8h.html" title="Lista enlazada simple ordenada con nodo anidado y concurrencia." alt="" coords="370,80,453,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="413,30,414,66,409,63,410,35"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="537,229,608,256"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="438,105,474,125,511,153,539,184,561,217,556,215,534,187,507,157,472,130,437,110"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="106,155,170,181"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="368,108,186,157,184,152,371,104"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="100,229,153,256"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="367,105,304,126,234,157,188,188,150,221,147,217,185,184,232,152,303,121,372,103"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="245,155,314,181"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="391,106,317,149,314,145,386,108"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="338,155,395,181"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="406,106,384,143,380,139,401,109"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="420,155,497,181"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="421,105,445,142,439,141,419,110"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="671,229,723,256"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="454,97,576,116,634,132,657,142,673,153,684,166,691,182,698,215,694,212,686,184,679,169,670,157,655,147,633,137,575,122,454,102"/>
+<area shape="rect" id="Node000010" href="$general__iterator_8h.html" title="Iterador genérico base (CRTP) usado por todos los contenedores." alt="" coords="735,155,856,181"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="454,100,722,152,717,153,454,105"/>
+<area shape="rect" id="Node000012" href="$types_8h.html" title="Aliases de tipos y tamaños portables para toda la librería." alt="" coords="5,155,82,181"/>
+<area shape="poly" id="edge12_Node000002_Node000012" title=" " alt="" coords="369,105,98,157,96,152,369,99"/>
+<area shape="rect" id="Node000013" href="$foreach_8h.html" title="Algoritmos genéricos ForEach y FirstThat sobre iteradores." alt="" coords="572,155,659,181"/>
+<area shape="poly" id="edge14_Node000002_Node000013" title=" " alt="" coords="447,105,568,149,563,149,447,110"/>
+<area shape="poly" id="edge11_Node000010_Node000009" title=" " alt="" coords="781,181,727,223,725,218,776,183"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="758,229,833,256"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="797,180,798,215,793,212,794,184"/>
+<area shape="poly" id="edge13_Node000012_Node000005" title=" " alt="" coords="59,179,103,218,98,220,57,184"/>
+<area shape="poly" id="edge15_Node000013_Node000003" title=" " alt="" coords="610,181,589,218,586,214,606,183"/>
+<area shape="poly" id="edge16_Node000013_Node000009" title=" " alt="" coords="631,179,674,220,669,218,629,184"/>
+</map>

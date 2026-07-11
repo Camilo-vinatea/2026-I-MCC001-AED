@@ -1,0 +1,7 @@
+<map id="VectorTraits&lt; T &gt;" name="VectorTraits&lt; T &gt;">
+<area shape="rect" id="Node000001" title="Trait listo&#45;para&#45;usar que combina BaseContainerTrait y un nodo." alt="" coords="23,212,146,239"/>
+<area shape="rect" id="Node000002" href="$struct_base_container_trait.html" title=" " alt="" coords="5,120,164,163"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="86,176,87,213,82,211,83,180"/>
+<area shape="rect" id="Node000003" href="$struct_base_container_trait.html" title="Trait base que mapea un valor T a su tipo de Node." alt="" coords="18,5,151,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="86,61,87,120,82,119,83,66"/>
+</map>

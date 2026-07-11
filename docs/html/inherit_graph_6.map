@@ -1,0 +1,5 @@
+<map id="Gráfico de jerarquía de clases" name="Gráfico de jerarquía de clases">
+<area shape="rect" id="Node000000" href="$struct_binary_tree_1_1_node.html" title="Nodo del BST: dato, Ref, dos hijos y puntero al padre." alt="" coords="5,5,134,48"/>
+<area shape="rect" id="Node000001" href="$struct_a_v_l_node.html" title="Nodo AVL: añade m_height al nodo del BST." alt="" coords="182,13,314,40"/>
+<area shape="poly" id="edge8_Node000000_Node000001" title=" " alt="" coords="149,24,184,26,179,27,149,29"/>
+</map>

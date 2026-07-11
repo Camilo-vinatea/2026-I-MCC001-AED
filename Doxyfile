@@ -1,0 +1,162 @@
+#---------------------------------------------------------------------------
+# Doxyfile - Configuración para generar documentación HTML en español
+# Proyecto: EST-DATOS-MCC-001 (Estructuras de Datos - MCC)
+# Ejecutar con: doxygen Doxyfile
+#---------------------------------------------------------------------------
+
+PROJECT_NAME           = "Estructuras de Datos - MCC"
+PROJECT_NUMBER         = "0.1.0"
+PROJECT_BRIEF          = "Colección pedagógica de contenedores en C++ (Lista, Heap, Vector, BST, AVL, B-Tree)"
+PROJECT_LOGO           =
+OUTPUT_DIRECTORY       = docs
+CREATE_SUBDIRS         = NO
+OUTPUT_LANGUAGE        = Spanish
+BRIEF_MEMBER_DESC      = YES
+REPEAT_BRIEF           = YES
+ALWAYS_DETAILED_SEC    = NO
+INLINE_INHERITED_MEMB  = NO
+FULL_PATH_NAMES        = NO
+SHORT_NAMES            = NO
+JAVADOC_AUTOBRIEF      = NO
+QT_AUTOBRIEF           = NO
+MULTILINE_TAB_STOPS    = YES
+TAB_SIZE               = 4
+MARKDOWN_SUPPORT       = YES
+AUTOLINK_SUPPORT       = YES
+DISTRIBUTE_GROUP_DOC   = NO
+GROUP_NESTED_COMPOUNDS = NO
+SUBGROUPING            = YES
+INLINE_GROUPED_CLASSES = NO
+INLINE_SIMPLE_STRUCTS  = NO
+TYPEDEF_HIDES_STRUCT   = NO
+
+# --- Archivos de entrada -------------------------------------------------
+INPUT                  = . \
+                        types.h \
+                        foreach.h \
+                        macros.h \
+                        macros.cpp \
+                        main.cpp \
+                        ArbollBinarioMalHecho.cpp \
+                        containers/vector.h \
+                        containers/heap.h \
+                        containers/linkedlist.h \
+                        containers/doublelinkedlist.h \
+                        containers/general_iterator.h \
+                        containers/basetrait.h \
+                        containers/binarytree.h \
+                        containers/avl.h \
+                        containers/BTreePage.h \
+                        containers/BTree.h \
+                        demos/DemoVector.cpp \
+                        demos/ListsDemo.cpp \
+                        demos/DemoBinaryTree.cpp \
+                        demos/DemoAVL.cpp \
+                        demos/BTreeDemo.cpp
+INPUT_ENCODING         = UTF-8
+FILE_PATTERNS          = *.h *.hpp *.cpp *.cc *.cxx
+RECURSIVE              = YES
+EXCLUDE                =
+EXCLUDE_SYMLINKS       = NO
+EXCLUDE_PATTERNS       =
+EXCLUDE_SYMBOLS        =
+EXAMPLE_PATH           =
+EXAMPLE_PATTERNS       = *
+EXAMPLE_RECURSIVE      = NO
+
+# --- Filtrado ------------------------------------------------------------
+FILTER_PATTERNS        =
+FILTER_SOURCE_FILES    = NO
+FILTER_SOURCE_PATTERNS =
+USE_MDFILE_AS_MAINPAGE =
+
+# --- Generación de salida ------------------------------------------------
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+HTML_FILE_EXTENSION    = .html
+HTML_HEADER            =
+HTML_FOOTER            =
+HTML_STYLESHEET        =
+HTML_EXTRA_STYLESHEET  =
+HTML_EXTRA_FILES       =
+HTML_COLORSTYLE_HUE    = 220
+HTML_COLORSTYLE_SAT    = 100
+HTML_COLORSTYLE_GAMMA  = 80
+HTML_TIMESTAMP         = NO
+HTML_DYNAMIC_MENUS    = YES
+HTML_DYNAMIC_SECTIONS  = NO
+HTML_INDEX_NUM_ENTRIES = 100
+GENERATE_DOCSET        = NO
+GENERATE_HTMLHELP      = NO
+GENERATE_QHP           = NO
+GENERATE_ECLIPSEHELP   = NO
+GENERATE_LATEX         = NO
+GENERATE_RTF           = NO
+GENERATE_MAN           = NO
+GENERATE_XML           = NO
+GENERATE_DOCBOOK       = NO
+GENERATE_AUTOGEN_DEF   = NO
+GENERATE_PERLMOD       = NO
+
+# --- Diagramas (Graphviz) ------------------------------------------------
+# Requiere Graphviz en PATH (o DOXYGEN_DOT_PATH apuntando a dot.exe).
+# Si no hay dot instalado, Doxygen usa su renderer interno y aún produce
+# páginas de jerarquía, colaboración e includes interactivos en HTML.
+HAVE_DOT               = YES
+DOT_GRAPH_MAX_NODES    = 1000
+
+# --- Warnings ------------------------------------------------------------
+QUIET                  = NO
+WARNINGS               = YES
+WARN_IF_UNDOCUMENTED   = YES
+WARN_IF_DOC_ERROR      = YES
+WARN_NO_PARAMDOC       = NO
+WARN_AS_ERROR          = NO
+WARN_FORMAT            = "$file:$line: $text"
+
+# --- Extract -------------------------------------------------------------
+EXTRACT_ALL            = NO
+EXTRACT_PRIVATE        = NO
+EXTRACT_PACKAGE        = NO
+EXTRACT_STATIC         = NO
+EXTRACT_LOCAL_CLASSES  = YES
+EXTRACT_LOCAL_METHODS  = NO
+EXTRACT_ANON_NSPACES   = NO
+
+# --- Look-and-feel de las listas -----------------------------------------
+CLASS_GRAPH            = YES
+COLLABORATION_GRAPH    = YES
+GROUP_GRAPHS           = YES
+UML_LOOK               = NO
+TEMPLATE_RELATIONS     = YES
+INCLUDE_GRAPH          = YES
+INCLUDED_BY_GRAPH      = YES
+CALL_GRAPH             = NO
+CALLER_GRAPH           = NO
+# Jerarquía gráfica interactiva: clic en cada clase navega a su página.
+GRAPHICAL_HIERARCHY    = YES
+DIRECTORY_GRAPH        = YES
+# En Doxygen 1.15 los grafos se generan embebidos como SVG dentro del HTML.
+# El parámetro DOT_IMAGE_FORMAT ya no controla el archivo de salida, sino el inline.
+DOT_IMAGE_FORMAT       = svg
+DOT_INLINE             = YES
+INTERACTIVE_SVG        = YES
+DOT_CLEANUP            = YES
+DOT_FONTNAME           = Helvetica
+DOT_FONTSIZE           = 10
+
+# --- Referencia y secciones ----------------------------------------------
+REFERENCES_LINK_SOURCE = YES
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = NO
+STRIP_CODE_COMMENTS    = YES
+REFERENCED_BY_RELATION = YES
+REFERENCES_RELATION    = YES
+
+# --- Mathjax -------------------------------------------------------------
+USE_MATHJAX            = NO
+
+# --- Search --------------------------------------------------------------
+SEARCHENGINE           = YES
+SERVER_BASED_SEARCH    = NO
+EXTERNAL_SEARCH        = NO

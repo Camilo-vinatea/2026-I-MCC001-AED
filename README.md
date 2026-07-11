@@ -2,6 +2,9 @@
 
 Documentación de todas las clases, jerarquías y relaciones del repositorio.
 
+> **Diagrama unificado interactivo:** [`docs/jerarquia_clases.md`](docs/jerarquia_clases.md) consolida en un único `classDiagram` Mermaid las 6 jerarquías siguientes (mismas vistas, en un solo grafo navegable).
+> **Documentación HTML Doxygen:** ejecutar `doxygen Doxyfile` → `docs/html/inherits.html` (jerarquía gráfica SVG interactiva de toda la librería), `docs/html/classes.html` (índice de clases), `docs/html/graph_legend.html` (leyenda de los grafos).
+
 ---
 
 ## Jerarquía de contenedores

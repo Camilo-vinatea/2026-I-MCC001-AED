@@ -1,0 +1,348 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Estructuras de Datos - MCC: Referencia del archivo BTreePage.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Estructuras de Datos - MCC<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">Colección pedagógica de contenedores en C++ (Lista, Heap, Vector, BST, AVL, B-Tree)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('_b_tree_page_8h.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referencia del archivo BTreePage.h</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Página del B-Tree (<span class="tt"><a class="el" href="class_c_b_tree_page.html" title="Página (nodo) del B-Tree con split en 3 vías, redistribuciones y fusión (Merge).">CBTreePage</a></span>), políticas, iterador y algoritmos auxiliares (búsqueda binaria, inserción/remoción en arreglos).  
+<a href="#details">Más...</a></p>
+<div class="textblock"><code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;assert.h&gt;</code><br />
+<code>#include &lt;type_traits&gt;</code><br />
+<code>#include &lt;deque&gt;</code><br />
+<code>#include &lt;algorithm&gt;</code><br />
+<code>#include &quot;<a class="el" href="types_8h_source.html">../types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="general__iterator_8h_source.html">general_iterator.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Gráfico de dependencias incluidas en BTreePage.h:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="_b_tree_page_8h__incl.svg" width="100%" height="440"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Gráfico de los archivos que directa o indirectamente incluyen a este archivo:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="_b_tree_page_8h__dep__incl.svg" width="227" height="187"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<p><a href="_b_tree_page_8h_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Clases</h2></td></tr>
+<tr class="memitem:BTreeForwardInorderPolicy" id="r_BTreeForwardInorderPolicy"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_b_tree_forward_inorder_policy.html">BTreeForwardInorderPolicy</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recorre el B-Tree en in-order ascendente, almacenando <span class="tt">(Node*, nivel)</span> en una cola.  <a href="struct_b_tree_forward_inorder_policy.html#details">Más...</a><br /></td></tr>
+<tr class="memitem:BTreeBackwardInorderPolicy" id="r_BTreeBackwardInorderPolicy"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_b_tree_backward_inorder_policy.html">BTreeBackwardInorderPolicy</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Igual que la forward, pero invierte la cola para ir descendente.  <a href="struct_b_tree_backward_inorder_policy.html#details">Más...</a><br /></td></tr>
+<tr class="memitem:BTreeIterator_3C_20Container_2C_20Policy_20_3E" id="r_BTreeIterator_3C_20Container_2C_20Policy_20_3E"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_b_tree_iterator.html">BTreeIterator&lt; Container, Policy &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterador uniforme para el B-Tree que expone además <span class="tt"><a class="el" href="class_b_tree_iterator.html#a55d49dd2022f46c01994775f81032875" title="Devuelve el nivel (altura/profundidad) del nodo actual.">level()</a></span>.  <a href="class_b_tree_iterator.html#details">Más...</a><br /></td></tr>
+<tr class="memitem:tagNode_3C_20keyType_2C_20ObjIDType_20_3E" id="r_tagNode_3C_20keyType_2C_20ObjIDType_20_3E"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtag_node.html">tagNode&lt; keyType, ObjIDType &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Elemento almacenado en un B-Tree: clave, <span class="tt"><a class="el" href="structtag_node.html#a9b6ce6161482764bd0c0feca94b2a43f" title="ID del objeto asociado.">ObjID</a></span> y contador de uso.  <a href="structtag_node.html#details">Más...</a><br /></td></tr>
+<tr class="memitem:CBTreePage_3C_20Traits_20_3E" id="r_CBTreePage_3C_20Traits_20_3E"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_b_tree_page.html">CBTreePage&lt; Traits &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Página (nodo) del B-Tree con split en 3 vías, redistribuciones y fusión (<span class="tt"><a class="el" href="class_c_b_tree_page.html#ae6f9fd110d53177a6cfc3299e2d93aa5" title="Fusiona tres páginas adyacentes en una.">Merge</a></span>).  <a href="class_c_b_tree_page.html#details">Más...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-enum-members" class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumeraciones</h2></td></tr>
+<tr class="memitem:a58732915d1f3b97c501b684138dfd4e0" id="r_a58732915d1f3b97c501b684138dfd4e0"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a58732915d1f3b97c501b684138dfd4e0">bt_ErrorCode</a> { <br />
+&#160;&#160;<b>bt_ok</b>
+, <b>bt_overflow</b>
+, <b>bt_underflow</b>
+, <b>bt_duplicate</b>
+, <br />
+&#160;&#160;<b>bt_nofound</b>
+, <b>bt_rootmerged</b>
+<br />
+ }</td></tr>
+<tr class="memdesc:a58732915d1f3b97c501b684138dfd4e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Códigos retornados por las operaciones de <span class="tt"><a class="el" href="class_c_b_tree_page.html" title="Página (nodo) del B-Tree con split en 3 vías, redistribuciones y fusión (Merge).">CBTreePage</a></span>.  <a href="#a58732915d1f3b97c501b684138dfd4e0">Más...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:aa9229de5af23a5a4a6226bc5b7b816c4" id="r_aa9229de5af23a5a4a6226bc5b7b816c4"><td class="memTemplParams" colspan="2">template&lt;typename Container, typename ObjType&gt; </td></tr>
+<tr class="memitem:aa9229de5af23a5a4a6226bc5b7b816c4 template"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa9229de5af23a5a4a6226bc5b7b816c4">binary_search</a> (Container &amp;container, <a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a> first, <a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a> last, ObjType &amp;object)</td></tr>
+<tr class="memdesc:aa9229de5af23a5a4a6226bc5b7b816c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Búsqueda binaria en un arreglo cualquiera (<span class="tt">first</span> incluido, <span class="tt">last</span> excluido). Devuelve la posición donde debería ir <span class="tt">object</span>.  <br /></td></tr>
+<tr class="memitem:af8771702919e3213d7b5366d454d943e" id="r_af8771702919e3213d7b5366d454d943e"><td class="memTemplParams" colspan="2">template&lt;typename Container, typename ObjType&gt; </td></tr>
+<tr class="memitem:af8771702919e3213d7b5366d454d943e template"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af8771702919e3213d7b5366d454d943e">insert_at</a> (Container &amp;container, const ObjType &amp;object, <a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a> pos)</td></tr>
+<tr class="memdesc:af8771702919e3213d7b5366d454d943e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserta <span class="tt">object</span> en <span class="tt">container[pos]</span> desplazando los siguientes hacia la derecha.  <br /></td></tr>
+<tr class="memitem:a38c3a2ad4ebbe56377006913bdd305b2" id="r_a38c3a2ad4ebbe56377006913bdd305b2"><td class="memTemplParams" colspan="2">template&lt;typename Container&gt; </td></tr>
+<tr class="memitem:a38c3a2ad4ebbe56377006913bdd305b2 template"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38c3a2ad4ebbe56377006913bdd305b2">remove</a> (Container &amp;container, <a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a> pos)</td></tr>
+<tr class="memdesc:a38c3a2ad4ebbe56377006913bdd305b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Quita el elemento en <span class="tt">container[pos]</span> desplazando a la izquierda.  <br /></td></tr>
+<tr class="memitem:a88dacfa5af322addc0476b0c7d87b225" id="r_a88dacfa5af322addc0476b0c7d87b225"><td class="memTemplParams" colspan="2">template&lt;typename Traits&gt; </td></tr>
+<tr class="memitem:a88dacfa5af322addc0476b0c7d87b225 template"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a88dacfa5af322addc0476b0c7d87b225">CreateBTreeNode</a> (<a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a> maxKeys, bool unique)</td></tr>
+<tr class="memdesc:a88dacfa5af322addc0476b0c7d87b225"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crea dinámicamente una página (factory usado por clientes externos).  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Página del B-Tree (<span class="tt"><a class="el" href="class_c_b_tree_page.html" title="Página (nodo) del B-Tree con split en 3 vías, redistribuciones y fusión (Merge).">CBTreePage</a></span>), políticas, iterador y algoritmos auxiliares (búsqueda binaria, inserción/remoción en arreglos). </p>
+<p>Contiene:</p><ul>
+<li><span class="tt"><a class="el" href="#aa9229de5af23a5a4a6226bc5b7b816c4" title="Búsqueda binaria en un arreglo cualquiera (first incluido, last excluido). Devuelve la posición donde...">binary_search</a></span>, <span class="tt"><a class="el" href="#af8771702919e3213d7b5366d454d943e" title="Inserta object en container[pos] desplazando los siguientes hacia la derecha.">insert_at</a></span>, <span class="tt"><a class="el" href="#a38c3a2ad4ebbe56377006913bdd305b2" title="Quita el elemento en container[pos] desplazando a la izquierda.">remove</a></span> (helpers sobre arreglos).</li>
+<li><span class="tt"><a class="el" href="struct_b_tree_forward_inorder_policy.html" title="Recorre el B-Tree en in-order ascendente, almacenando (Node*, nivel) en una cola.">BTreeForwardInorderPolicy</a></span> / <span class="tt"><a class="el" href="struct_b_tree_backward_inorder_policy.html" title="Igual que la forward, pero invierte la cola para ir descendente.">BTreeBackwardInorderPolicy</a></span>: políticas de recorrido que delegan la iteración al árbol.</li>
+<li><span class="tt"><a class="el" href="class_b_tree_iterator.html" title="Iterador uniforme para el B-Tree que expone además level().">BTreeIterator</a>&lt;Container, Policy&gt;</span>: iterador con metadato de nivel; consume la cola materializada por la política.</li>
+<li><span class="tt"><a class="el" href="structtag_node.html" title="Elemento almacenado en un B-Tree: clave, ObjID y contador de uso.">tagNode</a>&lt;K,V&gt;</span>: nodo con clave, <span class="tt">ObjID</span> y contador de uso.</li>
+<li><span class="tt"><a class="el" href="class_c_b_tree_page.html" title="Página (nodo) del B-Tree con split en 3 vías, redistribuciones y fusión (Merge).">CBTreePage</a>&lt;Traits&gt;</span>: página del B-Tree con <span class="tt">Insert</span>, <span class="tt">Remove</span>, <span class="tt">Search</span>, <span class="tt">SplitRoot/SplitChild</span>, redistribuciones (<span class="tt">RedistributeL2R</span>/<span class="tt">R2L</span>), <span class="tt">Merge</span>/<span class="tt">MergeRoot</span>, <span class="tt"><a class="el" href="_demo_vector_8cpp.html#aec4da34f6ea38e1810412405c596f483" title="Lambda: imprime el nodo seguido de coma.">Print</a></span> y los motores de recorrido <span class="tt"><a class="el" href="foreach_8h.html#a045c9fe8e32cda728ac5f61ae1f68c14" title="Aplica la función func a cada elemento en el rango [begin, end), reenviando los argumentos extra args...">ForEach</a></span>/<span class="tt"><a class="el" href="foreach_8h.html#a74788599090eff20158143cdd3fe05e9" title="Recorre el rango y devuelve el primer iterador cuya función devuelve true. Si ninguno coincide,...">FirstThat</a></span> que delegan en un único <span class="tt">Call</span> que consume el iterador.</li>
+<li><span class="tt">enum <a class="el" href="#a58732915d1f3b97c501b684138dfd4e0" title="Códigos retornados por las operaciones de CBTreePage.">bt_ErrorCode</a></span>: códigos retornados por las operaciones. <dl class="section author"><dt>Autor</dt><dd>Equipo MCC </dd></dl>
+</li>
+</ul>
+
+<p class="definition">Definición en el archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+</div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Documentación de enumeraciones</h2>
+<a id="a58732915d1f3b97c501b684138dfd4e0" name="a58732915d1f3b97c501b684138dfd4e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58732915d1f3b97c501b684138dfd4e0">&#9670;&#160;</a></span>bt_ErrorCode</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="#a58732915d1f3b97c501b684138dfd4e0">bt_ErrorCode</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Códigos retornados por las operaciones de <span class="tt"><a class="el" href="class_c_b_tree_page.html" title="Página (nodo) del B-Tree con split en 3 vías, redistribuciones y fusión (Merge).">CBTreePage</a></span>. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00167">167</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentación de funciones</h2>
+<a id="aa9229de5af23a5a4a6226bc5b7b816c4" name="aa9229de5af23a5a4a6226bc5b7b816c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9229de5af23a5a4a6226bc5b7b816c4">&#9670;&#160;</a></span>binary_search()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Container, typename ObjType&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a> binary_search </td>
+          <td>(</td>
+          <td class="paramtype">Container &amp;</td>          <td class="paramname"><span class="paramname"><em>container</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a></td>          <td class="paramname"><span class="paramname"><em>first</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a></td>          <td class="paramname"><span class="paramname"><em>last</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ObjType &amp;</td>          <td class="paramname"><span class="paramname"><em>object</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Búsqueda binaria en un arreglo cualquiera (<span class="tt">first</span> incluido, <span class="tt">last</span> excluido). Devuelve la posición donde debería ir <span class="tt">object</span>. </p>
+<dl class="tparams"><dt>Parámetros de plantilla</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Container</td><td>Contenedor con <span class="tt">operator[]</span> (p.ej. <span class="tt">std::vector</span>). </td></tr>
+    <tr><td class="paramname">ObjType</td><td>Tipo comparable con el contenido. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00035">35</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_page_8h_source.html#l00332">CBTreePage&lt; Traits &gt;::Insert()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00642">CBTreePage&lt; Traits &gt;::Remove()</a> y <a class="el" href="_b_tree_page_8h_source.html#l00579">CBTreePage&lt; Traits &gt;::Search()</a>.</p>
+
+</div>
+</div>
+<a id="a88dacfa5af322addc0476b0c7d87b225" name="a88dacfa5af322addc0476b0c7d87b225"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88dacfa5af322addc0476b0c7d87b225">&#9670;&#160;</a></span>CreateBTreeNode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt; * CreateBTreeNode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a></td>          <td class="paramname"><span class="paramname"><em>maxKeys</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>unique</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Crea dinámicamente una página (factory usado por clientes externos). </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00812">812</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+</div>
+</div>
+<a id="af8771702919e3213d7b5366d454d943e" name="af8771702919e3213d7b5366d454d943e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8771702919e3213d7b5366d454d943e">&#9670;&#160;</a></span>insert_at()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Container, typename ObjType&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void insert_at </td>
+          <td>(</td>
+          <td class="paramtype">Container &amp;</td>          <td class="paramname"><span class="paramname"><em>container</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const ObjType &amp;</td>          <td class="paramname"><span class="paramname"><em>object</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a></td>          <td class="paramname"><span class="paramname"><em>pos</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inserta <span class="tt">object</span> en <span class="tt">container[pos]</span> desplazando los siguientes hacia la derecha. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00057">57</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_page_8h_source.html#l00332">CBTreePage&lt; Traits &gt;::Insert()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00455">CBTreePage&lt; Traits &gt;::RedistributeL2R()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00436">CBTreePage&lt; Traits &gt;::RedistributeR2L()</a> y <a class="el" href="_b_tree_page_8h_source.html#l00472">CBTreePage&lt; Traits &gt;::SplitChild()</a>.</p>
+
+</div>
+</div>
+<a id="a38c3a2ad4ebbe56377006913bdd305b2" name="a38c3a2ad4ebbe56377006913bdd305b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38c3a2ad4ebbe56377006913bdd305b2">&#9670;&#160;</a></span>remove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Container&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void remove </td>
+          <td>(</td>
+          <td class="paramtype">Container &amp;</td>          <td class="paramname"><span class="paramname"><em>container</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a></td>          <td class="paramname"><span class="paramname"><em>pos</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Quita el elemento en <span class="tt">container[pos]</span> desplazando a la izquierda. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00067">67</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_page_8h_source.html#l00683">CBTreePage&lt; Traits &gt;::Merge()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00436">CBTreePage&lt; Traits &gt;::RedistributeR2L()</a> y <a class="el" href="_b_tree_page_8h_source.html#l00642">CBTreePage&lt; Traits &gt;::Remove()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>containers</b></li><li class="navelem"><a href="_b_tree_page_8h.html">BTreePage.h</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

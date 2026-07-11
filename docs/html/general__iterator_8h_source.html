@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Estructuras de Datos - MCC: Archivo de código fuente general_iterator.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Estructuras de Datos - MCC<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">Colección pedagógica de contenedores en C++ (Lista, Heap, Vector, BST, AVL, B-Tree)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('general__iterator_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">general_iterator.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="general__iterator_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#ifndef __ITERATOR_H__</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#define __ITERATOR_H__</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;utility&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">using namespace </span>std;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Container, <span class="keyword">class</span> IteratorBase&gt;</div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="};">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="classgeneral__iterator.html">   22</a></span><span class="keyword">class </span><a class="code hl_function" href="classgeneral__iterator.html#a14b696a42ecf1cb1d4e74a8ebd4d5617">general_iterator</a></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>{</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classgeneral__iterator.html#a8dd77a98611e3709da97543b3cfa4249">   27</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="classgeneral__iterator.html#a8dd77a98611e3709da97543b3cfa4249">Node</a>   = <span class="keyword">typename</span> Container::Node;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classgeneral__iterator.html#ae15c82428a99bb806d234a4d900583a9">   30</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="classgeneral__iterator.html#ae15c82428a99bb806d234a4d900583a9">Myself</a> = <a class="code hl_function" href="classgeneral__iterator.html#a14b696a42ecf1cb1d4e74a8ebd4d5617">general_iterator&lt;Container, IteratorBase&gt;</a>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classgeneral__iterator.html#a64e4e24b3d40eb9aae014680eedc8efa">   33</a></span>    Container *<a class="code hl_variable" href="classgeneral__iterator.html#a64e4e24b3d40eb9aae014680eedc8efa">m_pContainer</a>; </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classgeneral__iterator.html#ad014839b3798336c6ea88ddd00c62014">   34</a></span>    <a class="code hl_typedef" href="classgeneral__iterator.html#a8dd77a98611e3709da97543b3cfa4249">Node</a>      *<a class="code hl_variable" href="classgeneral__iterator.html#ad014839b3798336c6ea88ddd00c62014">m_pNode</a>;      </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00040" data-start="{" data-end="}">
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classgeneral__iterator.html#a14b696a42ecf1cb1d4e74a8ebd4d5617">   40</a></span>    <a class="code hl_function" href="classgeneral__iterator.html#a14b696a42ecf1cb1d4e74a8ebd4d5617">general_iterator</a>(Container *pContainer, <a class="code hl_typedef" href="classgeneral__iterator.html#a8dd77a98611e3709da97543b3cfa4249">Node</a> *pNode)</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        : <a class="code hl_variable" href="classgeneral__iterator.html#a64e4e24b3d40eb9aae014680eedc8efa">m_pContainer</a>(pContainer), <a class="code hl_variable" href="classgeneral__iterator.html#ad014839b3798336c6ea88ddd00c62014">m_pNode</a>(pNode) {}</div>
+</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span></div>
+<div class="foldopen" id="foldopen00044" data-start="{" data-end="}">
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classgeneral__iterator.html#a2bd66a2b7630300b80ff3c580aebc9b9">   44</a></span>    <a class="code hl_function" href="classgeneral__iterator.html#a2bd66a2b7630300b80ff3c580aebc9b9">general_iterator</a>(<a class="code hl_typedef" href="classgeneral__iterator.html#ae15c82428a99bb806d234a4d900583a9">Myself</a> &amp;other)</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        : <a class="code hl_variable" href="classgeneral__iterator.html#a64e4e24b3d40eb9aae014680eedc8efa">m_pContainer</a>(other.<a class="code hl_variable" href="classgeneral__iterator.html#a64e4e24b3d40eb9aae014680eedc8efa">m_pContainer</a>), <a class="code hl_variable" href="classgeneral__iterator.html#ad014839b3798336c6ea88ddd00c62014">m_pNode</a>(other.<a class="code hl_variable" href="classgeneral__iterator.html#ad014839b3798336c6ea88ddd00c62014">m_pNode</a>) {}</div>
+</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span></div>
+<div class="foldopen" id="foldopen00048" data-start="{" data-end="}">
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classgeneral__iterator.html#aa55141ea90be8b71929e79bdf4d812af">   48</a></span>    <a class="code hl_function" href="classgeneral__iterator.html#aa55141ea90be8b71929e79bdf4d812af">general_iterator</a>(<a class="code hl_typedef" href="classgeneral__iterator.html#ae15c82428a99bb806d234a4d900583a9">Myself</a> &amp;&amp;other)</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    {</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <a class="code hl_variable" href="classgeneral__iterator.html#a64e4e24b3d40eb9aae014680eedc8efa">m_pContainer</a> = move(other.m_pContainer);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <a class="code hl_variable" href="classgeneral__iterator.html#ad014839b3798336c6ea88ddd00c62014">m_pNode</a>      = move(other.m_pNode);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    }</div>
+</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span></div>
+<div class="foldopen" id="foldopen00056" data-start="{" data-end="}">
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classgeneral__iterator.html#a524135b752d2dc8458733d5406967304">   56</a></span>    IteratorBase <a class="code hl_function" href="classgeneral__iterator.html#a524135b752d2dc8458733d5406967304">operator=</a>(IteratorBase &amp;iter)</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    {</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <a class="code hl_variable" href="classgeneral__iterator.html#a64e4e24b3d40eb9aae014680eedc8efa">m_pContainer</a> = move(iter.m_pContainer);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <a class="code hl_variable" href="classgeneral__iterator.html#ad014839b3798336c6ea88ddd00c62014">m_pNode</a>      = move(iter.m_pNode);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="keywordflow">return</span> *(IteratorBase *)<span class="keyword">this</span>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    }</div>
+</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classgeneral__iterator.html#a91b5ef41c275d27ebe89c70d1c69eee4">   64</a></span>    <a class="code hl_typedef" href="classgeneral__iterator.html#a8dd77a98611e3709da97543b3cfa4249">Node</a> *<a class="code hl_function" href="classgeneral__iterator.html#a91b5ef41c275d27ebe89c70d1c69eee4">getNode</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classgeneral__iterator.html#ad014839b3798336c6ea88ddd00c62014">m_pNode</a>; }</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span></div>
+<div class="foldopen" id="foldopen00067" data-start="{" data-end="}">
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classgeneral__iterator.html#a1e23638992d2f34c18271e6bcf3f9188">   67</a></span>    <span class="keyword">friend</span> <span class="keywordtype">bool</span> <a class="code hl_friend" href="classgeneral__iterator.html#a1e23638992d2f34c18271e6bcf3f9188">operator==</a>(<span class="keyword">const</span> IteratorBase &amp;a, <span class="keyword">const</span> IteratorBase &amp;b)</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    { <span class="keywordflow">return</span> a.getNode() == b.getNode(); }</div>
+</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span></div>
+<div class="foldopen" id="foldopen00071" data-start="{" data-end="}">
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classgeneral__iterator.html#ad7678ea0944c59840c2f24f4495f5f9d">   71</a></span>    <span class="keyword">friend</span> <span class="keywordtype">bool</span> <a class="code hl_friend" href="classgeneral__iterator.html#ad7678ea0944c59840c2f24f4495f5f9d">operator!=</a>(<span class="keyword">const</span> IteratorBase &amp;a, <span class="keyword">const</span> IteratorBase &amp;b)</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    { <span class="keywordflow">return</span> !(a == b); }</div>
+</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="classgeneral__iterator.html#abda6322f19be14bd3f5db8d5f82f7f7b">   75</a></span>    <a class="code hl_typedef" href="classgeneral__iterator.html#a8dd77a98611e3709da97543b3cfa4249">Node</a> &amp;<a class="code hl_function" href="classgeneral__iterator.html#abda6322f19be14bd3f5db8d5f82f7f7b">operator*</a>()        { <span class="keywordflow">return</span> *<a class="code hl_variable" href="classgeneral__iterator.html#ad014839b3798336c6ea88ddd00c62014">m_pNode</a>; }</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="classgeneral__iterator.html#afec34009694fea6b9012b1a7c86070a6">   77</a></span>    <a class="code hl_typedef" href="classgeneral__iterator.html#a8dd77a98611e3709da97543b3cfa4249">Node</a>* <a class="code hl_function" href="classgeneral__iterator.html#afec34009694fea6b9012b1a7c86070a6">operator-&gt;</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classgeneral__iterator.html#ad014839b3798336c6ea88ddd00c62014">m_pNode</a>; }</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>};</div>
+</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclassgeneral__iterator_html_a14b696a42ecf1cb1d4e74a8ebd4d5617"><div class="ttname"><a href="classgeneral__iterator.html#a14b696a42ecf1cb1d4e74a8ebd4d5617">general_iterator::general_iterator</a></div><div class="ttdeci">general_iterator(Container *pContainer, Node *pNode)</div><div class="ttdoc">Constructor principal.</div><div class="ttdef"><b>Definition</b> <a href="#l00040">general_iterator.h:40</a></div></div>
+<div class="ttc" id="aclassgeneral__iterator_html_a1e23638992d2f34c18271e6bcf3f9188"><div class="ttname"><a href="classgeneral__iterator.html#a1e23638992d2f34c18271e6bcf3f9188">general_iterator::operator==</a></div><div class="ttdeci">friend bool operator==(const IteratorBase &amp;a, const IteratorBase &amp;b)</div><div class="ttdoc">Compara dos iteradores por la dirección del nodo.</div><div class="ttdef"><b>Definition</b> <a href="#l00067">general_iterator.h:67</a></div></div>
+<div class="ttc" id="aclassgeneral__iterator_html_a2bd66a2b7630300b80ff3c580aebc9b9"><div class="ttname"><a href="classgeneral__iterator.html#a2bd66a2b7630300b80ff3c580aebc9b9">general_iterator::general_iterator</a></div><div class="ttdeci">general_iterator(Myself &amp;other)</div><div class="ttdoc">Constructor de copia.</div><div class="ttdef"><b>Definition</b> <a href="#l00044">general_iterator.h:44</a></div></div>
+<div class="ttc" id="aclassgeneral__iterator_html_a524135b752d2dc8458733d5406967304"><div class="ttname"><a href="classgeneral__iterator.html#a524135b752d2dc8458733d5406967304">general_iterator::operator=</a></div><div class="ttdeci">IteratorBase operator=(IteratorBase &amp;iter)</div><div class="ttdoc">Operador de asignación: copia/mueve desde otra instancia derivada. Devuelve la referencia a IteratorB...</div><div class="ttdef"><b>Definition</b> <a href="#l00056">general_iterator.h:56</a></div></div>
+<div class="ttc" id="aclassgeneral__iterator_html_a64e4e24b3d40eb9aae014680eedc8efa"><div class="ttname"><a href="classgeneral__iterator.html#a64e4e24b3d40eb9aae014680eedc8efa">general_iterator&lt; Container, MySelf &gt;::m_pContainer</a></div><div class="ttdeci">Container * m_pContainer</div><div class="ttdef"><b>Definition</b> <a href="#l00033">general_iterator.h:33</a></div></div>
+<div class="ttc" id="aclassgeneral__iterator_html_a8dd77a98611e3709da97543b3cfa4249"><div class="ttname"><a href="classgeneral__iterator.html#a8dd77a98611e3709da97543b3cfa4249">general_iterator&lt; Container, MySelf &gt;::Node</a></div><div class="ttdeci">typename Container::Node Node</div><div class="ttdef"><b>Definition</b> <a href="#l00027">general_iterator.h:27</a></div></div>
+<div class="ttc" id="aclassgeneral__iterator_html_a91b5ef41c275d27ebe89c70d1c69eee4"><div class="ttname"><a href="classgeneral__iterator.html#a91b5ef41c275d27ebe89c70d1c69eee4">general_iterator::getNode</a></div><div class="ttdeci">Node * getNode() const</div><div class="ttdoc">Devuelve el puntero al nodo actual.</div><div class="ttdef"><b>Definition</b> <a href="#l00064">general_iterator.h:64</a></div></div>
+<div class="ttc" id="aclassgeneral__iterator_html_aa55141ea90be8b71929e79bdf4d812af"><div class="ttname"><a href="classgeneral__iterator.html#aa55141ea90be8b71929e79bdf4d812af">general_iterator::general_iterator</a></div><div class="ttdeci">general_iterator(Myself &amp;&amp;other)</div><div class="ttdoc">Constructor de movimiento.</div><div class="ttdef"><b>Definition</b> <a href="#l00048">general_iterator.h:48</a></div></div>
+<div class="ttc" id="aclassgeneral__iterator_html_abda6322f19be14bd3f5db8d5f82f7f7b"><div class="ttname"><a href="classgeneral__iterator.html#abda6322f19be14bd3f5db8d5f82f7f7b">general_iterator::operator*</a></div><div class="ttdeci">Node &amp; operator*()</div><div class="ttdoc">Desreferencia (referencia mutable al nodo).</div><div class="ttdef"><b>Definition</b> <a href="#l00075">general_iterator.h:75</a></div></div>
+<div class="ttc" id="aclassgeneral__iterator_html_ad014839b3798336c6ea88ddd00c62014"><div class="ttname"><a href="classgeneral__iterator.html#ad014839b3798336c6ea88ddd00c62014">general_iterator&lt; Container, MySelf &gt;::m_pNode</a></div><div class="ttdeci">Node * m_pNode</div><div class="ttdef"><b>Definition</b> <a href="#l00034">general_iterator.h:34</a></div></div>
+<div class="ttc" id="aclassgeneral__iterator_html_ad7678ea0944c59840c2f24f4495f5f9d"><div class="ttname"><a href="classgeneral__iterator.html#ad7678ea0944c59840c2f24f4495f5f9d">general_iterator::operator!=</a></div><div class="ttdeci">friend bool operator!=(const IteratorBase &amp;a, const IteratorBase &amp;b)</div><div class="ttdoc">Negación de la igualdad.</div><div class="ttdef"><b>Definition</b> <a href="#l00071">general_iterator.h:71</a></div></div>
+<div class="ttc" id="aclassgeneral__iterator_html_ae15c82428a99bb806d234a4d900583a9"><div class="ttname"><a href="classgeneral__iterator.html#ae15c82428a99bb806d234a4d900583a9">general_iterator&lt; Container, MySelf &gt;::Myself</a></div><div class="ttdeci">general_iterator&lt; Container, MySelf &gt; Myself</div><div class="ttdef"><b>Definition</b> <a href="#l00030">general_iterator.h:30</a></div></div>
+<div class="ttc" id="aclassgeneral__iterator_html_afec34009694fea6b9012b1a7c86070a6"><div class="ttname"><a href="classgeneral__iterator.html#afec34009694fea6b9012b1a7c86070a6">general_iterator::operator-&gt;</a></div><div class="ttdeci">Node * operator-&gt;() const</div><div class="ttdoc">Acceso a miembro del nodo a través del iterador.</div><div class="ttdef"><b>Definition</b> <a href="#l00077">general_iterator.h:77</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>containers</b></li><li class="navelem"><a href="general__iterator_8h.html">general_iterator.h</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

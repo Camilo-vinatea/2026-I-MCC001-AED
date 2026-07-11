@@ -1,0 +1,9 @@
+<map id="AscendingTrait&lt; _T &gt;" name="AscendingTrait&lt; _T &gt;">
+<area shape="rect" id="Node000001" title="Trait que aporta el comparador ascendente (std::less&lt;T&gt;)." alt="" coords="23,5,170,32"/>
+<area shape="rect" id="Node000002" href="$struct_binary_tree_traits.html" title="Combina el tipo de valor y el comparador (asc/desc)." alt="" coords="5,104,145,147"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,45,82,104,77,103,89,50"/>
+<area shape="rect" id="Node000003" href="$struct_ascending_trait.html" title=" " alt="" coords="169,112,309,139"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="126,39,224,110,219,112,125,44"/>
+<area shape="rect" id="Node000004" href="$struct_ascending_heap_trait.html" title="Trait para heap ascendente (min&#45;heap en el tope)." alt="" coords="154,196,324,223"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="241,152,241,197,237,194,237,156"/>
+</map>

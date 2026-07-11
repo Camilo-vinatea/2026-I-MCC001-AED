@@ -1,0 +1,31 @@
+<map id="foreach.h" name="foreach.h">
+<area shape="rect" id="Node000001" title="Algoritmos genéricos ForEach y FirstThat sobre iteradores." alt="" coords="450,5,525,32"/>
+<area shape="rect" id="Node000002" href="$_b_tree_8h.html" title="Contenedor B&#45;Tree con split en 3 vías, iteradores y concurrencia." alt="" coords="126,80,193,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="433,34,194,87,193,82,435,29"/>
+<area shape="rect" id="Node000005" href="$binarytree_8h.html" title="Árbol binario de búsqueda (BST) genérico basado en políticas." alt="" coords="331,80,420,107"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="458,39,396,82,394,77,453,42"/>
+<area shape="rect" id="Node000009" href="$linkedlist_8h.html" title="Lista enlazada simple ordenada con nodo anidado y concurrencia." alt="" coords="503,80,586,107"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="508,42,538,80,532,79,506,47"/>
+<area shape="rect" id="Node000012" href="$vector_8h.html" title="Contenedor Vector&lt;Traits&gt; (almacenamiento contiguo dinámico)." alt="" coords="795,80,863,107"/>
+<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="540,28,797,84,792,85,540,34"/>
+<area shape="rect" id="Node000003" href="$_b_tree_demo_8cpp.html" title="Demostración del B&#45;Tree: insertar, imprimir y recorrer." alt="" coords="5,155,122,181"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="129,118,82,156,78,152,133,114"/>
+<area shape="rect" id="Node000004" href="$main_8cpp_source.html" title=" " alt="" coords="173,229,247,256"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="171,119,209,229,203,229,167,123"/>
+<area shape="poly" id="edge9_Node000005_Node000004" title=" " alt="" coords="313,109,274,128,255,141,238,156,226,174,219,194,213,231,208,228,214,192,221,172,233,153,251,137,272,123,318,107"/>
+<area shape="rect" id="Node000006" href="$_demo_binary_tree_8cpp.html" title="Demo del BST: inserciones, 6 recorridos, copia/movimiento, persistencia y comparador descendente." alt="" coords="247,155,392,181"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="359,118,331,156,327,152,354,120"/>
+<area shape="rect" id="Node000007" href="$avl_8h.html" title="Árbol AVL (BST auto&#45;balanceado) basado en BinaryTree (Template Method)." alt="" coords="416,155,466,181"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="398,116,432,155,427,154,396,121"/>
+<area shape="poly" id="edge8_Node000007_Node000004" title=" " alt="" coords="404,182,249,232,247,227,398,182"/>
+<area shape="rect" id="Node000008" href="$_demo_a_v_l_8cpp.html" title="Demo del AVL: inserción 1..7 (caso degenerado), asserts y comparador descendente." alt="" coords="388,229,494,256"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="443,195,443,231,439,227,439,199"/>
+<area shape="rect" id="Node000010" href="$_lists_demo_8cpp.html" title="Demo de LinkedList: inserciones, ForEach, FirstThat, push/pop front/back, copy/move,..." alt="" coords="490,155,600,181"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="547,120,547,156,543,153,543,124"/>
+<area shape="rect" id="Node000011" href="$doublelinkedlist_8h.html" title="Lista doblemente enlazada ordenada que hereda de LinkedList." alt="" coords="624,155,746,181"/>
+<area shape="poly" id="edge12_Node000009_Node000011" title=" " alt="" coords="583,112,663,154,658,154,582,117"/>
+<area shape="rect" id="Node000013" href="$_demo_vector_8cpp.html" title="Demos del Vector: secuencial y concurrente." alt="" coords="770,155,888,181"/>
+<area shape="poly" id="edge14_Node000012_Node000013" title=" " alt="" coords="831,121,831,156,827,153,827,124"/>
+<area shape="rect" id="Node000014" href="$heap_8h.html" title="Implementación de un Heap (min&#45;heap/max&#45;heap) sobre std::vector." alt="" coords="912,155,972,181"/>
+<area shape="poly" id="edge15_Node000012_Node000014" title=" " alt="" coords="862,113,925,154,920,154,861,118"/>
+</map>

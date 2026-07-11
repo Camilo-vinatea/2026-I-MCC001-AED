@@ -1,0 +1,5 @@
+<map id="Gráfico de jerarquía de clases" name="Gráfico de jerarquía de clases">
+<area shape="rect" id="Node000000" href="$class_binary_tree.html" title="Árbol binario de búsqueda con nodo anidado dentro del contenedor." alt="" coords="5,5,146,32"/>
+<area shape="rect" id="Node000001" href="$class_a_v_l.html" title="Árbol AVL: BST que se reequilibra tras cada inserción." alt="" coords="194,5,295,32"/>
+<area shape="poly" id="edge7_Node000000_Node000001" title=" " alt="" coords="161,16,196,19,191,19,161,21"/>
+</map>

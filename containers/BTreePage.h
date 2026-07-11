@@ -1,10 +1,21 @@
+//! @file BTreePage.h
+//! @brief Página del B-Tree (`CBTreePage`), políticas, iterador y algoritmos
+//!        auxiliares (búsqueda binaria, inserción/remoción en arreglos).
+//! @details Contiene:
+//!          - `binary_search`, `insert_at`, `remove` (helpers sobre arreglos).
+//!          - `BTreeForwardInorderPolicy` / `BTreeBackwardInorderPolicy`:
+//!            políticas de recorrido que delegan la iteración al árbol.
+//!          - `BTreeIterator<Container, Policy>`: iterador con metadato
+//!            de nivel; consume la cola materializada por la política.
+//!          - `tagNode<K,V>`: nodo con clave, `ObjID` y contador de uso.
+//!          - `CBTreePage<Traits>`: página del B-Tree con `Insert`,
+//!            `Remove`, `Search`, `SplitRoot/SplitChild`, redistribuciones
+//!            (`RedistributeL2R`/`R2L`), `Merge`/`MergeRoot`, `Print`
+//!            y los motores de recorrido `ForEach`/`FirstThat` que
+//!            delegan en un único `Call` que consume el iterador.
+//!          - `enum bt_ErrorCode`: códigos retornados por las operaciones.
+//! @author Equipo MCC
 
-//CBTreePage.h
-
-/*************************
-#ifndef BTPage_H
-#define BTPage_H
-***************************/
 #ifndef CBTreePage_H
 #define CBTreePage_H
 #include <vector>
@@ -16,49 +27,63 @@
 #include "../types.h"
 #include "general_iterator.h"
 
-// Si no lo encuentra, deberia decirme:
-// cual es la posicion donde deberia estar
+//! @brief Búsqueda binaria en un arreglo cualquiera (`first` incluido,
+//!        `last` excluido). Devuelve la posición donde debería ir `object`.
+//! @tparam Container Contenedor con `operator[]` (p.ej. `std::vector`).
+//! @tparam ObjType   Tipo comparable con el contenido.
 template <typename Container, typename ObjType>
 btree_pos_t binary_search(Container& container, btree_pos_t first, btree_pos_t last, ObjType &object)
 {
-       if( first >= last )
-               return first;
-       while( first < last )
-       {
-               btree_pos_t mid = (first+last)/2;
-               if( object == (ObjType)container[mid ] )
-                       return mid;
-               if( object > (ObjType)container[mid ] )
-                       first = mid+1;
-               else
-                       last  = mid;
-       }
-       if( object <= (ObjType)container[first] )
-               return first;
-       return last;
+    if( first >= last )
+        return first;
+    while( first < last )
+    {
+        btree_pos_t mid = (first+last)/2;
+        if( object == (ObjType)container[mid] )
+            return mid;
+        if( object > (ObjType)container[mid] )
+            first = mid+1;
+        else
+            last  = mid;
+    }
+    if( object <= (ObjType)container[first] )
+        return first;
+    return last;
 }
 
+//! @brief Inserta `object` en `container[pos]` desplazando los siguientes
+//!        hacia la derecha.
 template <typename Container, typename ObjType>
 void insert_at(Container& container, const ObjType &object, btree_pos_t pos)
 {
-       bree_size_t size = container.size();
-       for(auto i = size-2 ; i >= pos ; i--)
-               container[i+1] = container[i];
-       container[pos] =  object;
+    bree_size_t size = container.size();
+    for(auto i = size-2 ; i >= pos ; i--)
+        container[i+1] = container[i];
+    container[pos] = object;
 }
 
+//! @brief Quita el elemento en `container[pos]` desplazando a la izquierda.
 template <typename Container>
 void remove(Container& container, btree_pos_t pos)
 {
-       bree_size_t size = container.size();
-       for(auto i = pos+1 ; i < size ; ++i)
-               container[i-1] = container[i];
+    bree_size_t size = container.size();
+    for(auto i = pos+1 ; i < size ; ++i)
+        container[i-1] = container[i];
 }
 
+/* ======================== Forward declaration ======================= */
+//! @brief Declaración adelantada de `BTree` (usa `CBTreePage`).
 template <typename Traits>
 class BTree;
 
+/* ==================== Políticas de recorrido ======================== */
+//! @struct BTreeForwardInorderPolicy
+//! @brief Recorre el B-Tree en in-order ascendente, almacenando
+//!        `(Node*, nivel)` en una cola.
+//! @note Es amiga de `CBTreePage` para acceder directamente a `m_Keys`
+//!       y `m_SubPages` sin pasar por `ForEach` (rompe la circularidad).
 struct BTreeForwardInorderPolicy {
+    //! @brief Llena `cola` con `(nodo, nivel)` en orden ascendente.
     template <typename Page, typename Node>
     static void construir(std::deque<std::pair<Node*, tree_height_t>>& cola,
                           Page* p, tree_height_t nivel = 0) {
@@ -71,7 +96,10 @@ struct BTreeForwardInorderPolicy {
     }
 };
 
+//! @struct BTreeBackwardInorderPolicy
+//! @brief Igual que la forward, pero invierte la cola para ir descendente.
 struct BTreeBackwardInorderPolicy {
+    //! @brief Llena la cola y la invierte con `std::reverse`.
     template <typename Page, typename Node>
     static void construir(std::deque<std::pair<Node*, tree_height_t>>& cola,
                           Page* p, tree_height_t nivel = 0) {
@@ -80,6 +108,11 @@ struct BTreeBackwardInorderPolicy {
     }
 };
 
+/* ======================== Iterador ================================== */
+//! @class BTreeIterator
+//! @brief Iterador uniforme para el B-Tree que expone además `level()`.
+//! @tparam Container `BTree<Traits>`.
+//! @tparam Policy    `BTreeForwardInorderPolicy` o `Backward...`.
 template <typename Container, typename Policy>
 class BTreeIterator : public general_iterator<Container, BTreeIterator<Container, Policy>> {
     using MySelf = BTreeIterator<Container, Policy>;
@@ -88,18 +121,28 @@ class BTreeIterator : public general_iterator<Container, BTreeIterator<Container
 public:
     using Node = typename Container::Node;
 
+    //! @brief Construye materializando la cola en orden `Policy`.
     template <typename Page>
     BTreeIterator(Container* pC, Page* pRaiz, tree_height_t nivel = 0)
-        : Parent(pC, nullptr) { Policy::template construir<Page, Node>(m_cola, pRaiz, nivel); avanzar(); }
+        : Parent(pC, nullptr) {
+        Policy::template construir<Page, Node>(m_cola, pRaiz, nivel);
+        avanzar();
+    }
+    //! @brief Constructor "fin" (cola vacía).
     BTreeIterator(Container* pC, std::nullptr_t)
         : Parent(pC, nullptr) {}
 
+    //! @brief Avanza al siguiente nodo.
     MySelf& operator++() { avanzar(); return *this; }
+
+    //! @brief Devuelve el nivel (altura/profundidad) del nodo actual.
     tree_height_t level() const { return m_nivel; }
 
 private:
-    std::deque<std::pair<Node*, tree_height_t>> m_cola;
-    tree_height_t m_nivel = 0;
+    std::deque<std::pair<Node*, tree_height_t>> m_cola; //!< Cola materializada.
+    tree_height_t m_nivel = 0;                          //!< Nivel del nodo actual.
+
+    //! @brief Saca el siguiente par `(nodo, nivel)`.
     void avanzar() {
         if (!m_cola.empty()) {
             this->m_pNode = m_cola.front().first;
@@ -112,441 +155,452 @@ private:
 };
 
 using namespace std;
-enum bt_ErrorCode {bt_ok, bt_overflow, bt_underflow, bt_duplicate, bt_nofound, bt_rootmerged};
 
-/*template <typename keyType>
-bool operator>=(const _Node<keyType>& object1, const _Node<keyType>& object2)
-{ return object1.key >= object2.key;    }
+//! @enum bt_ErrorCode
+//! @brief Códigos retornados por las operaciones de `CBTreePage`.
+//! @var bt_ok          Operación exitosa.
+//! @var bt_overflow    Nodo saturado (se debe dividir/propagar).
+//! @var bt_underflow   Nodo por debajo del mínimo (redistribuir/fusionar).
+//! @var bt_duplicate   Inserción duplicada con `m_Unique == true`.
+//! @var bt_nofound     Clave inexistente.
+//! @var bt_rootmerged  Se fusionaron páginas bajando la altura del árbol.
+enum bt_ErrorCode { bt_ok, bt_overflow, bt_underflow, bt_duplicate, bt_nofound, bt_rootmerged };
 
-template <typename keyType>
-bool operator<=(const _Node<keyType>& object1, const _Node<keyType>& object2)
-{ return object1.key <= object2.key;    }*/
-
+/* ============================ tagNode ================================ */
+//! @struct tagNode
+//! @brief Elemento almacenado en un B-Tree: clave, `ObjID` y contador de uso.
+//! @tparam keyType    Tipo de la clave.
+//! @tparam ObjIDType  Tipo del identificador del objeto.
 template <typename keyType, typename ObjIDType>
 struct tagNode
 {
-       keyType                 key;
-       ObjIDType               ObjID;
-       use_count_t             UseCounter;
-       tagNode
-       (const keyType &_key, ObjIDType _ObjID)
-               : key(_key), ObjID(_ObjID), UseCounter(0) {}
-       tagNode()               {}
-       operator keyType        ()     { return key; }
-       use_count_t             GetUseCounter() { return UseCounter;    }
+    keyType                 key;        //!< Clave de búsqueda.
+    ObjIDType               ObjID;      //!< ID del objeto asociado.
+    use_count_t             UseCounter; //!< Veces consultada la clave.
+
+    //! @brief Constructor.
+    tagNode(const keyType &_key, ObjIDType _ObjID)
+        : key(_key), ObjID(_ObjID), UseCounter(0) {}
+    //! @brief Constructor por defecto.
+    tagNode()               {}
+
+    //! @brief Conversión implícita a `keyType` para comparaciones.
+    operator keyType        ()     { return key; }
+    //! @brief Devuelve el contador de uso.
+    use_count_t             GetUseCounter() { return UseCounter; }
 };
 
-
+/* ========================== CBTreePage =============================== */
+//! @class CBTreePage
+//! @brief Página (nodo) del B-Tree con split en 3 vías, redistribuciones
+//!        y fusión (`Merge`).
+//! @tparam Traits Debe exponer `KeyType` y `ObjIDType`.
 template <typename Traits>
 class CBTreePage
-// this is the in-memory version of the CBTreePage
 {
-       template <typename T> friend class BTree;
-       friend struct BTreeForwardInorderPolicy;
+    template <typename T> friend class BTree;
+    friend struct BTreeForwardInorderPolicy;
 
-       using keyType   = typename Traits::KeyType;
-       using ObjIDType = typename Traits::ObjIDType;
-       typedef CBTreePage<Traits>          BTPage;
-       typedef tagNode<keyType, ObjIDType> Node;
+    using keyType   = typename Traits::KeyType;
+    using ObjIDType = typename Traits::ObjIDType;
+    typedef CBTreePage<Traits>          BTPage;
+    typedef tagNode<keyType, ObjIDType> Node;
 
- public:
-       CBTreePage(btree_pos_t maxKeys, bool unique = true);
-       virtual ~CBTreePage();
+public:
+    //! @brief Constructor: inicializa con `maxKeys` y modo de unicidad.
+    CBTreePage(btree_pos_t maxKeys, bool unique = true);
+    //! @brief Destructor; libera los sub-páginas en cascada.
+    virtual ~CBTreePage();
 
-       bt_ErrorCode    Insert (const keyType &key, const ObjIDType ObjID);
-       bt_ErrorCode    Remove (const keyType &key, const ObjIDType ObjID);
-       bool            Search (const keyType &key, obj_id_t &ObjID);
-       void            Print  (ostream &os);
+    //! @brief Inserta un par `(key, ObjID)` en la página (recursivo).
+    //! @return `bt_duplicate`, `bt_overflow` o `bt_ok`.
+    bt_ErrorCode Insert(const keyType &key, const ObjIDType ObjID);
+    //! @brief Elimina una clave; retorna `bt_underflow`, `bt_rootmerged`,
+    //!        `bt_nofound` o `bt_ok`.
+    bt_ErrorCode Remove(const keyType &key, const ObjIDType ObjID);
+    //! @brief Busca `key` y devuelve su `ObjID` (incrementa `UseCounter`).
+    bool         Search(const keyType &key, obj_id_t &ObjID);
+    //! @brief Impresión recursiva de claves e IDs.
+    void         Print(ostream &os);
 
-       template <typename Func, typename ...Args> void ForEach(Func func, tree_height_t level, Args&&... args);
-       template <typename Func, typename ...Args> Node* FirstThat(Func func, tree_height_t level, Args&&... args);
-
+    //! @brief Recorre la página aplicando `func(node, level, args...)`.
+    template <typename Func, typename ...Args> void ForEach(Func func, tree_height_t level, Args&&... args);
+    //! @brief Primera página cuyo predicado es verdadero.
+    template <typename Func, typename ...Args> Node* FirstThat(Func func, tree_height_t level, Args&&... args);
 
 protected:
-       btree_pos_t  m_MinKeys; // minimum number of keys in a node
-       btree_pos_t  m_MaxKeys; // maximum number of keys in a node
-       tree_order_t m_MaxKeysForChilds; // just to distinguish the root
-       bool m_Unique;
-       bool m_isRoot;
-       vector<Node>       m_Keys;
-       vector<BTPage *>   m_SubPages;
-       btree_pos_t  m_KeyCount;
-       void  Create();
-       void  Reset ();
-       void  Destroy () {   Reset(); delete this;}
-       void  clear ();
+    btree_pos_t  m_MinKeys;              //!< Mínimo de claves permitido.
+    btree_pos_t  m_MaxKeys;              //!< Máximo de claves permitido.
+    tree_order_t m_MaxKeysForChilds;     //!< Máximo para los hijos (≠ raíz).
+    bool         m_Unique;               //!< ¿Acepta duplicados?
+    bool         m_isRoot;               //!< ¿Es la raíz?
+    vector<Node>       m_Keys;            //!< Claves de la página.
+    vector<BTPage *>   m_SubPages;        //!< Páginas hijas.
+    btree_pos_t  m_KeyCount;             //!< Número de claves usadas.
 
-       bool  Redistribute1   (btree_pos_t &pos);
-       bool  Redistribute2   (btree_pos_t pos);
-       void  RedistributeR2L (btree_pos_t pos);
-       void  RedistributeL2R (btree_pos_t pos);
+    //! @brief Inicializa los vectores `m_Keys` y `m_SubPages`.
+    void  Create();
+    //! @brief Borra recursivamente todas las sub-páginas.
+    void  Reset();
+    //! @brief `Reset()` + `delete this` (usado en fusiones).
+    void  Destroy() { Reset(); delete this; }
+    //! @brief Reinicia `m_KeyCount` a 0 sin tocar memoria.
+    void  clear();
 
-       bool    TreatUnderflow  (btree_pos_t &pos)
-       {       return Redistribute1(pos) || Redistribute2(pos);}
+    //! @brief Redistribución: elige hermano más rico y mueve claves.
+    bool  Redistribute1(btree_pos_t &pos);
+    //! @brief Redistribución entre tres vecinos tras verificar bajo flujo.
+    bool  Redistribute2(btree_pos_t pos);
+    //! @brief Mueve claves de derecha a izquierda.
+    void  RedistributeR2L(btree_pos_t pos);
+    //! @brief Mueve claves de izquierda a derecha.
+    void  RedistributeL2R(btree_pos_t pos);
 
-       bt_ErrorCode    Merge  (btree_pos_t pos);
-       bt_ErrorCode    MergeRoot ();
-       void  SplitChild (btree_pos_t pos);
+    //! @brief Aplica `Redistribute1` o, si falla, `Redistribute2`.
+    bool  TreatUnderflow(btree_pos_t &pos)
+    {     return Redistribute1(pos) || Redistribute2(pos); }
 
-       Node &GetFirstNode();
+    //! @brief Fusiona tres páginas adyacentes en una.
+    bt_ErrorCode Merge(btree_pos_t pos);
+    //! @brief Fusiona las páginas de la raíz bajando la altura.
+    bt_ErrorCode MergeRoot();
+    //! @brief Divide la página (`pos`) en dos mitades; sube la mediana.
+    void  SplitChild(btree_pos_t pos);
 
-       bool Overflow()  { return m_KeyCount > m_MaxKeys; }
-       bool Underflow() { return m_KeyCount < MinNumberOfKeys(); }
-       bool IsFull()    { return m_KeyCount >= m_MaxKeys; }
-       btree_pos_t  MinNumberOfKeys()  { return 2*m_MaxKeys/3.0; }
-       btree_pos_t  GetFreeCells()  { return m_MaxKeys - m_KeyCount; }
-       btree_pos_t& NumberOfKeys()  { return m_KeyCount; }
-       btree_pos_t  GetNumberOfKeys()  { return m_KeyCount; }
-       bool IsRoot()  { return m_MaxKeysForChilds != m_MaxKeys; }
-       void SetMaxKeysForChilds(tree_order_t orderforchilds){ m_MaxKeysForChilds = orderforchilds;}
-       btree_pos_t GetFreeCellsOnLeft(btree_pos_t pos);
-       btree_pos_t GetFreeCellsOnRight(btree_pos_t pos);
+    //! @brief Devuelve el primer nodo hoja (recursivo).
+    Node &GetFirstNode();
+
+    //! @brief `true` si excede `m_MaxKeys`.
+    bool Overflow()  { return m_KeyCount > m_MaxKeys; }
+    //! @brief `true` si está por debajo del mínimo.
+    bool Underflow() { return m_KeyCount < MinNumberOfKeys(); }
+    //! @brief `true` si llegó al máximo (`>=`).
+    bool IsFull()    { return m_KeyCount >= m_MaxKeys; }
+    //! @brief Mínimo de claves que debe tener un nodo (≈ 2·max/3).
+    btree_pos_t  MinNumberOfKeys()  { return 2*m_MaxKeys/3.0; }
+    //! @brief Celdas libres = máximo - usadas.
+    btree_pos_t  GetFreeCells()  { return m_MaxKeys - m_KeyCount; }
+    //! @brief Referencia al contador (necesario para `++`).
+    btree_pos_t& NumberOfKeys()  { return m_KeyCount; }
+    //! @brief Lectura del contador.
+    btree_pos_t  GetNumberOfKeys()  { return m_KeyCount; }
+    //! @brief `true` si esta página es la raíz.
+    bool IsRoot()  { return m_MaxKeysForChilds != m_MaxKeys; }
+    //! @brief Ajusta `m_MaxKeysForChilds` (marca como raíz).
+    void SetMaxKeysForChilds(tree_order_t orderforchilds){ m_MaxKeysForChilds = orderforchilds;}
+    //! @brief Celdas libres del subárbol izquierdo a `pos`.
+    btree_pos_t GetFreeCellsOnLeft(btree_pos_t pos);
+    //! @brief Celdas libres del subárbol derecho a `pos`.
+    btree_pos_t GetFreeCellsOnRight(btree_pos_t pos);
 
 private:
-       bool SplitRoot();
-       void SplitPageInto3(vector<Node>   & tmpKeys,
-                                               vector<BTPage *>  & SubPages,
-                                               BTPage           *& pChild1,
-                                               BTPage           *& pChild2,
-                                               BTPage           *& pChild3,
-                                               Node        & oi1,
-                                               Node        & oi2);
-       void MovePage(BTPage *  pChildPage,vector<Node> & tmpKeys,vector<BTPage *> & tmpSubPages);
-       template <typename Func, typename ...Args> Node* Call(Func func, tree_height_t level, Args&&... args);
+    //! @brief Divide la raíz en tres sub-páginas (`SplitRoot`).
+    bool SplitRoot();
+    //! @brief Divide un vector temporal en tres páginas equilibradas.
+    void SplitPageInto3(vector<Node>   & tmpKeys,
+                        vector<BTPage *>  & SubPages,
+                        BTPage           *& pChild1,
+                        BTPage           *& pChild2,
+                        BTPage           *& pChild3,
+                        Node        & oi1,
+                        Node        & oi2);
+    //! @brief Mueve las claves/hijos de `pChildPage` a vectores auxiliares.
+    void MovePage(BTPage *  pChildPage, vector<Node> &tmpKeys, vector<BTPage *> &tmpSubPages);
+    //! @brief Motor único que recorre la página consumiendo un iterador
+    //!        materializado; usado tanto por `ForEach` como por `FirstThat`.
+    template <typename Func, typename ...Args> Node* Call(Func func, tree_height_t level, Args&&... args);
 };
 
+//! @brief Construye la página reservando `m_MaxKeys+1` slots.
 template <typename Traits>
 CBTreePage<Traits>::CBTreePage(btree_pos_t maxKeys, bool unique)
-                                       : m_MaxKeys(maxKeys), m_Unique(unique), m_KeyCount(0)
+    : m_MaxKeys(maxKeys), m_Unique(unique), m_KeyCount(0)
 {
-       Create();
-       SetMaxKeysForChilds(m_MaxKeys);
+    Create();
+    SetMaxKeysForChilds(m_MaxKeys);
 }
 
+//! @brief Destructor: libera todas las sub-páginas.
 template <typename Traits>
 CBTreePage<Traits>::~CBTreePage()
 {
-       Reset();
+    Reset();
 }
 
+//! @brief Inserción: si es hoja `insert_at`; si no, recursión + manejo de overflow.
 template <typename Traits>
 bt_ErrorCode CBTreePage<Traits>::Insert(const keyType& key, const ObjIDType ObjID)
 {
-       btree_pos_t pos = binary_search(m_Keys, 0, m_KeyCount, key);
-       bt_ErrorCode error = bt_ok;
+    btree_pos_t pos = binary_search(m_Keys, 0, m_KeyCount, key);
+    bt_ErrorCode error = bt_ok;
 
-       if( pos < m_KeyCount && (keyType)m_Keys[pos] == key && m_Unique)
-               return bt_duplicate; // this key is duplicate
+    if( pos < m_KeyCount && (keyType)m_Keys[pos] == key && m_Unique)
+        return bt_duplicate;
 
-       if( !m_SubPages[pos] ) // this is a leave
-       {
-               ::insert_at(m_Keys, Node(key, ObjID), pos);
-               NumberOfKeys()++;
-               if( Overflow() )
-                       return bt_overflow;
-               return bt_ok;
-       }
-        // recursive insertion
-        error = m_SubPages[pos]->Insert(key, ObjID);
-        if( error == bt_overflow )
-        {
-                if( !Redistribute1(pos) )
-                        SplitChild(pos);
-                if( Overflow() )          // Propagate overflow
-                        return bt_overflow;
-                return bt_ok;
-        }
-       return bt_ok;
+    if( !m_SubPages[pos] ) // hoja
+    {
+        ::insert_at(m_Keys, Node(key, ObjID), pos);
+        NumberOfKeys()++;
+        if( Overflow() )
+            return bt_overflow;
+        return bt_ok;
+    }
+    // recursión + propagación de overflow
+    error = m_SubPages[pos]->Insert(key, ObjID);
+    if( error == bt_overflow )
+    {
+        if( !Redistribute1(pos) )
+            SplitChild(pos);
+        if( Overflow() )
+            return bt_overflow;
+        return bt_ok;
+    }
+    return bt_ok;
 }
 
+//! @brief Redistribución elegida entre hermanos cuando hay overflow o underflow.
+//! @return `true` si pudo redistribuir, `false` si requiere split/merge.
 template <typename Traits>
 bool CBTreePage<Traits>::Redistribute1(btree_pos_t &pos)
 {
-       if( m_SubPages[pos]->Underflow() )
-       {       // nkol = Number of keys on left brother, nkor = Number of keys on right brother
-               btree_pos_t nkol = 0,
-                   nkor = 0;
-               // is this the first element or there are more elements on right brother
-               if( pos > 0 )
-                       nkol = m_SubPages[pos-1]->NumberOfKeys();
-               if( pos < NumberOfKeys() )
-                       nkor = m_SubPages[pos+1]->NumberOfKeys();
+    if( m_SubPages[pos]->Underflow() )
+    {
+        btree_pos_t nkol = 0, nkor = 0;
+        if( pos > 0 ) nkol = m_SubPages[pos-1]->NumberOfKeys();
+        if( pos < NumberOfKeys() ) nkor = m_SubPages[pos+1]->NumberOfKeys();
 
-               if( nkol > nkor ){
-                       if( m_SubPages[pos-1]->NumberOfKeys() > m_SubPages[pos-1]->MinNumberOfKeys() )
-                               RedistributeL2R(pos-1); // bring elements from left brother
-                       else{
-                               if( pos == NumberOfKeys() )
-                                        --pos;
-                                return false;
-                       }
-                }
-               else //nkol < nkor )
-                       if( m_SubPages[pos+1]->NumberOfKeys() > m_SubPages[pos+1]->MinNumberOfKeys() )
-                               RedistributeR2L(pos+1); // bring elements from right brother
-                       else{
-                               if( pos == 0 )
-                                       ++pos;
-                               return false;
-                       }
-       }
-       else // it is due to overflow
-       {
-               btree_pos_t fcol = GetFreeCellsOnLeft(pos),   // Free Cells On Left
-                           fcor = GetFreeCellsOnRight(pos);  // Free Cells On Right
+        if( nkol > nkor ){
+            if( m_SubPages[pos-1]->NumberOfKeys() > m_SubPages[pos-1]->MinNumberOfKeys() )
+                RedistributeL2R(pos-1);
+            else {
+                if( pos == NumberOfKeys() ) --pos;
+                return false;
+            }
+        } else {
+            if( m_SubPages[pos+1]->NumberOfKeys() > m_SubPages[pos+1]->MinNumberOfKeys() )
+                RedistributeR2L(pos+1);
+            else {
+                if( pos == 0 ) ++pos;
+                return false;
+            }
+        }
+    }
+    else // overflow
+    {
+        btree_pos_t fcol = GetFreeCellsOnLeft(pos);
+        btree_pos_t fcor = GetFreeCellsOnRight(pos);
 
-               if( !fcol && !fcor && m_SubPages[pos]->IsFull() )
-                       return false;
-               if( fcol > fcor ) // There is more space on left
-                       RedistributeR2L(pos);
-               else
-                       RedistributeL2R(pos);
-
-       }
-       return true;
+        if( !fcol && !fcor && m_SubPages[pos]->IsFull() )
+            return false;
+        if( fcol > fcor )
+            RedistributeR2L(pos);
+        else
+            RedistributeL2R(pos);
+    }
+    return true;
 }
 
-// Redistribute2 function
-// it considers two brothers m_SubPages[pos-1] && m_SubPages[pos+1]
-// if it fails the only way is merge !
+//! @brief Redistribución entre tres vecinos cuando uno queda bajo mínimo.
 template <typename Traits>
 bool CBTreePage<Traits>::Redistribute2(btree_pos_t pos)
 {
-       assert( pos > 0 && pos < NumberOfKeys()  );
-       assert( m_SubPages[pos-1] != 0 && m_SubPages[pos] != 0 && m_SubPages[pos+1] != 0 );
-       assert( m_SubPages[pos-1]->Underflow() ||
-                       m_SubPages[ pos ]->Underflow() ||
-                       m_SubPages[pos+1]->Underflow() );
+    assert( pos > 0 && pos < NumberOfKeys()  );
+    assert( m_SubPages[pos-1] != 0 && m_SubPages[pos] != 0 && m_SubPages[pos+1] != 0 );
+    assert( m_SubPages[pos-1]->Underflow() ||
+            m_SubPages[ pos ]->Underflow() ||
+            m_SubPages[pos+1]->Underflow() );
 
-       if( m_SubPages[pos-1]->Underflow() )
-       {       // Rotate R2L
-               RedistributeR2L(pos+1);
-               RedistributeR2L(pos);
-               if( m_SubPages[pos-1]->Underflow() )
-                       return false;
-       }
-       else if( m_SubPages[pos+1]->Underflow() )
-       {       // Rotate L2R
-               RedistributeL2R(pos-1);
-               RedistributeL2R(pos);
-               if( m_SubPages[pos+1]->Underflow() )
-                       return false;
-       }
-       else // The problem is exactly at pos !
-       {
-               // Rotate L2R
-               RedistributeL2R(pos-1);
-               RedistributeR2L(pos+1);
-               if( m_SubPages[pos]->Underflow() )
-                       return false;
-       }
-       return true;
+    if( m_SubPages[pos-1]->Underflow() )
+    {
+        RedistributeR2L(pos+1);
+        RedistributeR2L(pos);
+        if( m_SubPages[pos-1]->Underflow() ) return false;
+    }
+    else if( m_SubPages[pos+1]->Underflow() )
+    {
+        RedistributeL2R(pos-1);
+        RedistributeL2R(pos);
+        if( m_SubPages[pos+1]->Underflow() ) return false;
+    }
+    else
+    {
+        RedistributeL2R(pos-1);
+        RedistributeR2L(pos+1);
+        if( m_SubPages[pos]->Underflow() ) return false;
+    }
+    return true;
 }
 
+//! @brief Mueve claves de la página `pos` (derecha) a `pos-1` (izquierda).
 template <typename Traits>
-void CBTreePage<Traits>::RedistributeR2L(btree_pos_t pos)  
+void CBTreePage<Traits>::RedistributeR2L(btree_pos_t pos)
 {
-       BTPage  *pSource = m_SubPages[ pos ],
-                       *pTarget = m_SubPages[pos-1];
+    BTPage  *pSource = m_SubPages[pos],
+            *pTarget = m_SubPages[pos-1];
 
-       while(pSource->GetNumberOfKeys() > pSource->MinNumberOfKeys() &&
-             pTarget->GetNumberOfKeys() < pSource->GetNumberOfKeys() )
-       {
-               // Move from this page to the down-left page \/
-               ::insert_at(pTarget->m_Keys, m_Keys[pos-1], pTarget->NumberOfKeys()++);
-               // Move the pointer leftest pointer to the rightest position
-               ::insert_at(pTarget->m_SubPages, pSource->m_SubPages[0], pTarget->NumberOfKeys());
-
-               // Move the leftest element to the root
-               m_Keys[pos-1] = pSource->m_Keys[0];
-
-               // Remove the leftest element from rigth page
-               ::remove(pSource->m_Keys    , 0);
-               ::remove(pSource->m_SubPages, 0);
-               pSource->NumberOfKeys()--;
-       }
+    while(pSource->GetNumberOfKeys() > pSource->MinNumberOfKeys() &&
+          pTarget->GetNumberOfKeys() < pSource->GetNumberOfKeys() )
+    {
+        ::insert_at(pTarget->m_Keys, m_Keys[pos-1], pTarget->NumberOfKeys()++);
+        ::insert_at(pTarget->m_SubPages, pSource->m_SubPages[0], pTarget->NumberOfKeys());
+        m_Keys[pos-1] = pSource->m_Keys[0];
+        ::remove(pSource->m_Keys    , 0);
+        ::remove(pSource->m_SubPages, 0);
+        pSource->NumberOfKeys()--;
+    }
 }
 
+//! @brief Mueve claves de la página `pos` (izquierda) a `pos+1` (derecha).
 template <typename Traits>
 void CBTreePage<Traits>::RedistributeL2R(btree_pos_t pos)
 {
-       BTPage  *pSource = m_SubPages[pos],
-                       *pTarget = m_SubPages[pos+1];
-       while(pSource->GetNumberOfKeys() > pSource->MinNumberOfKeys() &&
-                 pTarget->GetNumberOfKeys() < pSource->GetNumberOfKeys() )
-       {
-               // Move from this page to the down-RIGHT page \/
-               ::insert_at(pTarget->m_Keys, m_Keys[pos], 0);
-               // Move the pointer rightest pointer to the leftest position
-               ::insert_at(pTarget->m_SubPages, pSource->m_SubPages[pSource->NumberOfKeys()], 0);
-               pTarget->NumberOfKeys()++;
-
-               // Move the rightest element to the root
-               m_Keys[pos] = pSource->m_Keys[pSource->NumberOfKeys()-1];
-
-               // Remove the leftest element from rigth page
-               // it is not necessary erase because m_KeyCount controls
-               pSource->NumberOfKeys()--;
-       }
+    BTPage  *pSource = m_SubPages[pos],
+            *pTarget = m_SubPages[pos+1];
+    while(pSource->GetNumberOfKeys() > pSource->MinNumberOfKeys() &&
+          pTarget->GetNumberOfKeys() < pSource->GetNumberOfKeys() )
+    {
+        ::insert_at(pTarget->m_Keys, m_Keys[pos], 0);
+        ::insert_at(pTarget->m_SubPages, pSource->m_SubPages[pSource->NumberOfKeys()], 0);
+        pTarget->NumberOfKeys()++;
+        m_Keys[pos] = pSource->m_Keys[pSource->NumberOfKeys()-1];
+        pSource->NumberOfKeys()--;
+    }
 }
 
+//! @brief Divide la página `pos` en dos mitades; sube la mediana a `m_Keys[pos]`.
 template <typename Traits>
 void CBTreePage<Traits>::SplitChild(btree_pos_t pos)
 {
-       // FIRST: deciding the second page to split
-       BTPage  *pChild1 = 0, *pChild2 = 0;
-       if( pos > 0 )                                   // is left page full ?
-               if( m_SubPages[pos-1]->IsFull() )
-               {
-                       pChild1 = m_SubPages[pos-1];
-                       pChild2 = m_SubPages[pos--];
-               }
-       if( pos < GetNumberOfKeys() )   // is right page full ?
-               if( m_SubPages[pos+1]->IsFull() )
-               {
-                       pChild1 = m_SubPages[pos];
-                       pChild2 = m_SubPages[pos+1];
-               }
+    BTPage  *pChild1 = 0, *pChild2 = 0;
+    if( pos > 0 )
+        if( m_SubPages[pos-1]->IsFull() )
+        { pChild1 = m_SubPages[pos-1]; pChild2 = m_SubPages[pos--]; }
+    if( pos < GetNumberOfKeys() )
+        if( m_SubPages[pos+1]->IsFull() )
+        { pChild1 = m_SubPages[pos]; pChild2 = m_SubPages[pos+1]; }
 
-       //int nKeys = pChild1->GetNumberOfKeys() + pChild2->GetNumberOfKeys() + 1;
+    vector<Node> tmpKeys;
+    vector<BTPage *> tmpSubPages;
 
-       // SECOND: copy both pages to a temporal one
-       // Create two tmp vector
-       vector<Node> tmpKeys;
-       //tmpKeys.resize(nKeys);
-       vector<BTPage *>   tmpSubPages;
-       //tmpKeys.resize(nKeys+1);
+    MovePage(pChild1, tmpKeys, tmpSubPages);
+    tmpKeys.push_back(m_Keys[pos]);
+    MovePage(pChild2, tmpKeys, tmpSubPages);
 
-       // Prepara el vectpor unificado de las 2 paginas a ser divididas en 3
-       // copy from left child
-       MovePage(pChild1, tmpKeys, tmpSubPages);
-       // copy a key from parent
-       tmpKeys    .push_back(m_Keys[pos]);
+    BTPage *pChild3 = 0;
+    Node oi1, oi2;
+    SplitPageInto3(tmpKeys, tmpSubPages, pChild1, pChild2, pChild3, oi1, oi2);
 
-       // copy from right child
-       MovePage(pChild2, tmpKeys, tmpSubPages);
+    m_Keys[pos]    = oi1;
+    m_SubPages[pos] = pChild1;
+    ::insert_at(m_Keys, oi2, pos+1);
+    ::insert_at(m_SubPages, pChild2, pos+1);
+    NumberOfKeys()++;
 
-       BTPage *pChild3 = 0;
-       Node oi1, oi2;
-       SplitPageInto3(tmpKeys, tmpSubPages, pChild1, pChild2, pChild3, oi1, oi2);
-
-       // copy the first element to the root
-       m_Keys    [pos] = oi1;
-       m_SubPages[pos] = pChild1;
-
-       // copy the second element to the root
-       ::insert_at(m_Keys, oi2, pos+1);
-       ::insert_at(m_SubPages, pChild2, pos+1);
-       NumberOfKeys()++;
-
-       m_SubPages[pos+2] = pChild3;
+    m_SubPages[pos+2] = pChild3;
 }
 
+//! @brief Divide el vector temporal en 3 páginas nuevas y devuelve las dos
+//!        claves que subirán al padre.
 template <typename Traits>
 void CBTreePage<Traits>::SplitPageInto3(vector<Node>& tmpKeys,
-                                                vector<BTPage *>  & tmpSubPages,
-                                                BTPage*                   &     pChild1,
-                                                BTPage*                   &     pChild2,
-                                                BTPage*                   &     pChild3,
-                                                Node                & oi1,
-                                                Node                & oi2)
+                                        vector<BTPage *>  & tmpSubPages,
+                                        BTPage*                   &     pChild1,
+                                        BTPage*                   &     pChild2,
+                                        BTPage*                   &     pChild3,
+                                        Node                & oi1,
+                                        Node                & oi2)
 {
-       assert(tmpKeys.size() >= 8);
-       assert(tmpSubPages.size() >= 9);
-       if( !pChild1 )
-               pChild1 = new BTPage(m_MaxKeysForChilds, m_Unique);
+    assert(tmpKeys.size() >= 8);
+    assert(tmpSubPages.size() >= 9);
+    if( !pChild1 )
+        pChild1 = new BTPage(m_MaxKeysForChilds, m_Unique);
 
-       // Split tmpKeys page into 3 pages
-       // copy 1/3 elements to the first child
-       pChild1->clear();
-       btree_pos_t nKeys = (tmpKeys.size()-2)/3;
-       btree_pos_t i = 0;
-       for( ; i < nKeys; ++i )
-       {
-               pChild1->m_Keys    [i] = tmpKeys    [i];
-               pChild1->m_SubPages[i] = tmpSubPages[i];
-               pChild1->NumberOfKeys()++;
-       }
-       pChild1->m_SubPages[i] = tmpSubPages[i];
+    pChild1->clear();
+    btree_pos_t nKeys = (tmpKeys.size()-2)/3;
+    btree_pos_t i = 0;
+    for( ; i < nKeys; ++i ) {
+        pChild1->m_Keys[i] = tmpKeys[i];
+        pChild1->m_SubPages[i] = tmpSubPages[i];
+        pChild1->NumberOfKeys()++;
+    }
+    pChild1->m_SubPages[i] = tmpSubPages[i];
 
-       // first element to go up !
-       oi1 = tmpKeys[i++];
+    oi1 = tmpKeys[i++];
 
-       if( !pChild2 )
-               pChild2 = new BTPage(m_MaxKeysForChilds, m_Unique);
-       pChild2->clear();
-       // copy 1/3 to the second child
-       nKeys += (tmpKeys.size()-2)/3 + 1;
-       btree_pos_t j = 0;
-       for(; i < nKeys; ++i, ++j )
-       {
-               pChild2->m_Keys    [j] = tmpKeys    [i];
-               pChild2->m_SubPages[j] = tmpSubPages[i];
-               pChild2->NumberOfKeys()++;
-       }
-       pChild2->m_SubPages[j] = tmpSubPages[i];
+    if( !pChild2 )
+        pChild2 = new BTPage(m_MaxKeysForChilds, m_Unique);
+    pChild2->clear();
+    nKeys += (tmpKeys.size()-2)/3 + 1;
+    btree_pos_t j = 0;
+    for(; i < nKeys; ++i, ++j ) {
+        pChild2->m_Keys[j] = tmpKeys[i];
+        pChild2->m_SubPages[j] = tmpSubPages[i];
+        pChild2->NumberOfKeys()++;
+    }
+    pChild2->m_SubPages[j] = tmpSubPages[i];
 
-       // copy the second element to the root
-       oi2 = tmpKeys[i++];
+    oi2 = tmpKeys[i++];
 
-       // copy 1/3 to the third child
-       if( !pChild3 )
-               pChild3 = new BTPage(m_MaxKeysForChilds, m_Unique);
-       pChild3->clear();
-       nKeys = (btree_pos_t)tmpKeys.size();
-       for(j = 0; i < nKeys; ++i, ++j)
-       {
-               pChild3->m_Keys    [j] = tmpKeys    [i];
-               pChild3->m_SubPages[j] = tmpSubPages[i];
-               pChild3->NumberOfKeys()++;
-       }
-       pChild3->m_SubPages[j] = tmpSubPages[i];
+    if( !pChild3 )
+        pChild3 = new BTPage(m_MaxKeysForChilds, m_Unique);
+    pChild3->clear();
+    nKeys = (btree_pos_t)tmpKeys.size();
+    for(j = 0; i < nKeys; ++i, ++j) {
+        pChild3->m_Keys[j] = tmpKeys[i];
+        pChild3->m_SubPages[j] = tmpSubPages[i];
+        pChild3->NumberOfKeys()++;
+    }
+    pChild3->m_SubPages[j] = tmpSubPages[i];
 }
 
+//! @brief Divide la raíz cuando se desborda la primera vez.
 template <typename Traits>
 bool CBTreePage<Traits>::SplitRoot()
 {
-       BTPage  *pChild1 = 0, *pChild2 = 0, *pChild3 = 0;
-       Node oi1, oi2;
-       SplitPageInto3( m_Keys,m_SubPages,pChild1, pChild2, pChild3, oi1, oi2);
-       clear();
+    BTPage  *pChild1 = 0, *pChild2 = 0, *pChild3 = 0;
+    Node oi1, oi2;
+    SplitPageInto3( m_Keys, m_SubPages, pChild1, pChild2, pChild3, oi1, oi2);
+    clear();
 
-       // copy the first element to the root
-       m_Keys    [0] = oi1;
-       m_SubPages[0] = pChild1;
-       NumberOfKeys()++;
+    m_Keys[0]    = oi1;
+    m_SubPages[0] = pChild1;
+    NumberOfKeys()++;
 
-       // copy the second element to the root
-       m_Keys    [1] = oi2;
-       m_SubPages[1] = pChild2;
-       NumberOfKeys()++;
+    m_Keys[1]    = oi2;
+    m_SubPages[1] = pChild2;
+    NumberOfKeys()++;
 
-       m_SubPages[2] = pChild3;
-       return true;
+    m_SubPages[2] = pChild3;
+    return true;
 }
 
+//! @brief Búsqueda binaria + recursión; en caso de éxito incrementa `UseCounter`.
 template <typename Traits>
 bool CBTreePage<Traits>::Search(const keyType &key, obj_id_t &ObjID)
 {
-       btree_pos_t pos = binary_search(m_Keys, 0, m_KeyCount, key);
-       if( pos >= m_KeyCount ){
-               if( m_SubPages[pos] )
-                       return m_SubPages[pos]->Search(key, ObjID);
-               else
-                       return false;
-       }
-       if( key == m_Keys[pos].key )
-       {
-               ObjID = m_Keys[pos].ObjID;
-               m_Keys[pos].UseCounter++;
-               return true;
-       }
-       if( key < m_Keys[pos].key )
-               if( m_SubPages[pos] )
-                       return m_SubPages[pos]->Search(key, ObjID);
-       return false;
+    btree_pos_t pos = binary_search(m_Keys, 0, m_KeyCount, key);
+    if( pos >= m_KeyCount ){
+        if( m_SubPages[pos] )
+            return m_SubPages[pos]->Search(key, ObjID);
+        else
+            return false;
+    }
+    if( key == m_Keys[pos].key ) {
+        ObjID = m_Keys[pos].ObjID;
+        m_Keys[pos].UseCounter++;
+        return true;
+    }
+    if( key < m_Keys[pos].key )
+        if( m_SubPages[pos] )
+            return m_SubPages[pos]->Search(key, ObjID);
+    return false;
 }
 
+//! @brief Motor de recorrido único: consume el iterador materializado por
+//!        la política y delega en `func(nodo, nivel, args...)`.
+//! @details Si `func` devuelve `void`, se sigue hasta el final (modo
+//!          `ForEach`); si devuelve convertible a `bool`, el primer
+//!          `true` detiene y devuelve el nodo (modo `FirstThat`).
 template <typename Traits>
 template <typename Func, typename... Args>
 typename CBTreePage<Traits>::Node *
@@ -566,6 +620,7 @@ CBTreePage<Traits>::Call(Func func, tree_height_t level, Args&&... args)
     return nullptr;
 }
 
+//! @brief Llama a `Call` ignorando el valor de retorno (recorrido total).
 template <typename Traits>
 template <typename Func, typename... Args>
 void CBTreePage<Traits>::ForEach(Func func, tree_height_t level, Args&&... args)
@@ -573,6 +628,7 @@ void CBTreePage<Traits>::ForEach(Func func, tree_height_t level, Args&&... args)
     Call(func, level, std::forward<Args>(args)...);
 }
 
+//! @brief Llama a `Call` devolviendo el primer nodo que cumple el predicado.
 template <typename Traits>
 template <typename Func, typename... Args>
 typename CBTreePage<Traits>::Node *
@@ -581,225 +637,211 @@ CBTreePage<Traits>::FirstThat(Func func, tree_height_t level, Args&&... args)
     return Call(func, level, std::forward<Args>(args)...);
 }
 
+//! @brief Eliminación: cuatro casos (hoja, no-hoja, underflow, raíz).
 template <typename Traits>
 bt_ErrorCode CBTreePage<Traits>::Remove(const keyType &key, const ObjIDType ObjID)
 {
-       bt_ErrorCode error = bt_ok;
-       btree_pos_t pos = binary_search(m_Keys, 0, m_KeyCount, key);
-       if( pos < NumberOfKeys() && key == m_Keys[pos].key /*&& m_Keys[pos].m_ObjID == ObjID*/) // We found it !
-       {
-               // This is a leave: First
-               if( !m_SubPages[pos+1] )  // This is a leave ? FIRST CASE !
-               {
-                       ::remove(m_Keys, pos);
-                       NumberOfKeys()--;
-                       if( Underflow() )
-                               return bt_underflow;
-                       return bt_ok;
-               }
-
-               // We FOUND IT BUT it is NOT a leave ? SECOND CASE !
-               {
-                       // Get the first element from right branch
-                       Node &rFirstFromRight = m_SubPages[pos+1]->GetFirstNode();
-                       // change with a leave
-                       swap(m_Keys[pos], rFirstFromRight);
-                       // Remove it from this leave
-
-                       //Print(cout);
-                       error = m_SubPages[++pos]->Remove(key, ObjID);
-               }
-       }
-       else if( pos == NumberOfKeys() ) // it is not here, go by the last branch
-               error = m_SubPages[pos]->Remove(key, ObjID);
-       else if( key <= m_Keys[pos].key ){ // = is because identical keys are inserted on left (see Insert)
-               if( m_SubPages[pos] )
-                       error = m_SubPages[pos]->Remove(key, ObjID);
-               else
-                       return bt_nofound;
-       }
-       if( error == bt_underflow ){
-               // THIRD CASE: After removing the element we have an underflow
-               //Print(cout);
-               if( TreatUnderflow(pos) )
-                       return bt_ok;
-               // FOURTH CASE: it was not possible to redistribute -> Merge
-               if( IsRoot() && NumberOfKeys() == 2 )
-                       return MergeRoot();
-               return Merge(pos);
-       }
-       if( error == bt_nofound )
-               return bt_nofound;
-       return bt_ok;
+    bt_ErrorCode error = bt_ok;
+    btree_pos_t pos = binary_search(m_Keys, 0, m_KeyCount, key);
+    if( pos < NumberOfKeys() && key == m_Keys[pos].key )
+    {
+        if( !m_SubPages[pos+1] )
+        {
+            ::remove(m_Keys, pos);
+            NumberOfKeys()--;
+            if( Underflow() ) return bt_underflow;
+            return bt_ok;
+        }
+        {
+            Node &rFirstFromRight = m_SubPages[pos+1]->GetFirstNode();
+            swap(m_Keys[pos], rFirstFromRight);
+            error = m_SubPages[++pos]->Remove(key, ObjID);
+        }
+    }
+    else if( pos == NumberOfKeys() )
+        error = m_SubPages[pos]->Remove(key, ObjID);
+    else if( key <= m_Keys[pos].key ){
+        if( m_SubPages[pos] )
+            error = m_SubPages[pos]->Remove(key, ObjID);
+        else
+            return bt_nofound;
+    }
+    if( error == bt_underflow ){
+        if( TreatUnderflow(pos) )
+            return bt_ok;
+        if( IsRoot() && NumberOfKeys() == 2 )
+            return MergeRoot();
+        return Merge(pos);
+    }
+    if( error == bt_nofound )
+        return bt_nofound;
+    return bt_ok;
 }
 
-
+//! @brief Fusiona tres páginas adyacentes equilibrando `pChild1` y `pChild2`.
 template <typename Traits>
 bt_ErrorCode CBTreePage<Traits>::Merge(btree_pos_t pos)
 {
-       assert( m_SubPages[pos-1]->NumberOfKeys() +
-                m_SubPages[ pos ]->NumberOfKeys() +
-                m_SubPages[pos+1]->NumberOfKeys() ==
-                3*m_SubPages[ pos ]->MinNumberOfKeys() - 1);
+    assert( m_SubPages[pos-1]->NumberOfKeys() +
+            m_SubPages[ pos ]->NumberOfKeys() +
+            m_SubPages[pos+1]->NumberOfKeys() ==
+            3*m_SubPages[ pos ]->MinNumberOfKeys() - 1);
 
-       // FIRST: Put all the elements into a vector
-       vector<Node> tmpKeys;
-       //tmpKeys.resize(nKeys);
-       vector<BTPage *>   tmpSubPages;
+    vector<Node> tmpKeys;
+    vector<BTPage *> tmpSubPages;
 
-       BTPage  *pChild1 = m_SubPages[pos-1],
-                       *pChild2 = m_SubPages[ pos ],
-                       *pChild3 = m_SubPages[pos+1];
-       MovePage(pChild1, tmpKeys, tmpSubPages);
-       tmpKeys    .push_back(m_Keys[pos-1]);
-       MovePage(pChild2, tmpKeys, tmpSubPages);
-       tmpKeys    .push_back(m_Keys[ pos ]);
-       MovePage(pChild3, tmpKeys, tmpSubPages);
-       pChild3->Destroy();;
+    BTPage *pChild1 = m_SubPages[pos-1],
+           *pChild2 = m_SubPages[ pos ],
+           *pChild3 = m_SubPages[pos+1];
+    MovePage(pChild1, tmpKeys, tmpSubPages);
+    tmpKeys.push_back(m_Keys[pos-1]);
+    MovePage(pChild2, tmpKeys, tmpSubPages);
+    tmpKeys.push_back(m_Keys[ pos ]);
+    MovePage(pChild3, tmpKeys, tmpSubPages);
+    pChild3->Destroy();
 
-       // Move 1/2 elements to pChild1
-       btree_pos_t nKeys = pChild1->GetFreeCells();
-       btree_pos_t i = 0;
-       for( ; i < nKeys ; ++i )
-       {
-               pChild1->m_Keys    [i] = tmpKeys    [i];
-               pChild1->m_SubPages[i] = tmpSubPages[i];
-               pChild1->NumberOfKeys()++;
-       }
-       pChild1->m_SubPages[i] = tmpSubPages[i];
+    btree_pos_t nKeys = pChild1->GetFreeCells();
+    btree_pos_t i = 0;
+    for( ; i < nKeys ; ++i ) {
+        pChild1->m_Keys[i] = tmpKeys[i];
+        pChild1->m_SubPages[i] = tmpSubPages[i];
+        pChild1->NumberOfKeys()++;
+    }
+    pChild1->m_SubPages[i] = tmpSubPages[i];
 
-       m_Keys    [pos-1] = tmpKeys[i];
-       m_SubPages[pos-1] = pChild1;
+    m_Keys[pos-1] = tmpKeys[i];
+    m_SubPages[pos-1] = pChild1;
 
-       ::remove(m_Keys    , pos);
-       ::remove(m_SubPages, pos);
-       NumberOfKeys()--;
+    ::remove(m_Keys, pos);
+    ::remove(m_SubPages, pos);
+    NumberOfKeys()--;
 
-       nKeys = pChild2->GetFreeCells();
-       btree_pos_t j = ++i;
-       for(i = 0 ; i < nKeys ; ++i, ++j )
-       {
-               pChild2->m_Keys    [i] = tmpKeys    [j];
-               pChild2->m_SubPages[i] = tmpSubPages[j];
-               pChild2->NumberOfKeys()++;
-       }
-       pChild2->m_SubPages[i] = tmpSubPages[j];
-       m_SubPages[ pos ]          = pChild2;
+    nKeys = pChild2->GetFreeCells();
+    btree_pos_t j = ++i;
+    for(i = 0 ; i < nKeys ; ++i, ++j ) {
+        pChild2->m_Keys[i] = tmpKeys[j];
+        pChild2->m_SubPages[i] = tmpSubPages[j];
+        pChild2->NumberOfKeys()++;
+    }
+    pChild2->m_SubPages[i] = tmpSubPages[j];
+    m_SubPages[pos] = pChild2;
 
-       if( Underflow() )
-               return bt_underflow;
-       return bt_ok;
+    if( Underflow() ) return bt_underflow;
+    return bt_ok;
 }
 
+//! @brief Fusiona las tres páginas de la raíz, bajando la altura total.
 template <typename Traits>
 bt_ErrorCode CBTreePage<Traits>::MergeRoot()
 {
-       btree_pos_t pos = 1;
-       assert( m_SubPages[pos-1]->NumberOfKeys() +
-                       m_SubPages[ pos ]->NumberOfKeys() +
-                       m_SubPages[pos+1]->NumberOfKeys() ==
-                       3*m_SubPages[ pos ]->MinNumberOfKeys() - 1);
+    btree_pos_t pos = 1;
+    assert( m_SubPages[pos-1]->NumberOfKeys() +
+            m_SubPages[ pos ]->NumberOfKeys() +
+            m_SubPages[pos+1]->NumberOfKeys() ==
+            3*m_SubPages[ pos ]->MinNumberOfKeys() - 1);
 
-       BTPage  *pChild1 = m_SubPages[pos-1], *pChild2 = m_SubPages[ pos ], *pChild3 = m_SubPages[pos+1];
-       btree_pos_t nKeys = pChild1->NumberOfKeys() + pChild2->NumberOfKeys() + pChild3->NumberOfKeys() + 2;
+    BTPage *pChild1 = m_SubPages[pos-1],
+           *pChild2 = m_SubPages[ pos ],
+           *pChild3 = m_SubPages[pos+1];
+    btree_pos_t nKeys = pChild1->NumberOfKeys() + pChild2->NumberOfKeys() + pChild3->NumberOfKeys() + 2;
 
-       // FIRST: Put all the elements into a vector
-       vector<Node> tmpKeys;
-       //tmpKeys.resize(nKeys);
-       vector<BTPage *>   tmpSubPages;
+    vector<Node> tmpKeys;
+    vector<BTPage *> tmpSubPages;
 
-       MovePage(pChild1, tmpKeys, tmpSubPages);
-       tmpKeys    .push_back(m_Keys[pos-1]);
-       MovePage(pChild2, tmpKeys, tmpSubPages);
-       tmpKeys    .push_back(m_Keys[ pos ]);
-       MovePage(pChild3, tmpKeys, tmpSubPages);
+    MovePage(pChild1, tmpKeys, tmpSubPages);
+    tmpKeys.push_back(m_Keys[pos-1]);
+    MovePage(pChild2, tmpKeys, tmpSubPages);
+    tmpKeys.push_back(m_Keys[ pos ]);
+    MovePage(pChild3, tmpKeys, tmpSubPages);
 
-       clear();
-       btree_pos_t i = 0;
-       for( ; i < nKeys ; ++i ){
-               m_Keys    [i] = tmpKeys    [i];
-               m_SubPages[i] = tmpSubPages[i];
-               NumberOfKeys()++;
-       }
-       m_SubPages[i] = tmpSubPages[i];
+    clear();
+    btree_pos_t i = 0;
+    for( ; i < nKeys ; ++i ){
+        m_Keys[i] = tmpKeys[i];
+        m_SubPages[i] = tmpSubPages[i];
+        NumberOfKeys()++;
+    }
+    m_SubPages[i] = tmpSubPages[i];
 
-       //Print(cout);
-       pChild1->Destroy();
-       pChild2->Destroy();
-       pChild3->Destroy();
+    pChild1->Destroy();
+    pChild2->Destroy();
+    pChild3->Destroy();
 
-       return bt_rootmerged;
+    return bt_rootmerged;
 }
 
+//! @brief Devuelve el nodo más a la izquierda (primera hoja accesible).
 template <typename Traits>
 typename CBTreePage<Traits>::Node &
 CBTreePage<Traits>::GetFirstNode()
 {
-       if( m_SubPages[0] )
-               return m_SubPages[0]->GetFirstNode();
-       return m_Keys[0];
+    if( m_SubPages[0] )
+        return m_SubPages[0]->GetFirstNode();
+    return m_Keys[0];
 }
 
+//! @brief Inicializa los vectores con tamaño `m_MaxKeys+1`.
 template <typename Traits>
 void CBTreePage<Traits>::Create()
 {
-       Reset();
-       m_Keys.resize(m_MaxKeys+1);
-       m_SubPages.resize(m_MaxKeys+2, NULL);
-       m_KeyCount = 0;
-       m_MinKeys  = 2 * m_MaxKeys/3;
+    Reset();
+    m_Keys.resize(m_MaxKeys+1);
+    m_SubPages.resize(m_MaxKeys+2, NULL);
+    m_KeyCount = 0;
+    m_MinKeys  = 2 * m_MaxKeys/3;
 }
 
+//! @brief Libera recursivamente todas las sub-páginas.
 template <typename Traits>
 void CBTreePage<Traits>::Reset()
 {
-       for( auto i = 0 ; i < m_KeyCount ; ++i )
-               delete m_SubPages[i];
-       clear();
+    for( auto i = 0 ; i < m_KeyCount ; ++i )
+        delete m_SubPages[i];
+    clear();
 }
 
+//! @brief Reinicia el contador de claves sin tocar memoria.
 template <typename Traits>
 void CBTreePage<Traits>::clear()
 {
-       //m_Keys.clear();
-       //m_SubPages.clear();
-       m_KeyCount = 0;
+    m_KeyCount = 0;
 }
 
+//! @brief Crea dinámicamente una página (factory usado por clientes externos).
 template <typename Traits>
 CBTreePage<Traits> * CreateBTreeNode (btree_pos_t maxKeys, bool unique)
 {
-       return new CBTreePage<Traits> (maxKeys, unique);
+    return new CBTreePage<Traits> (maxKeys, unique);
 }
 
+//! @brief Mueve todas las claves/hijos de `pChildPage` a los vectores aux.
 template <typename Traits>
-void CBTreePage<Traits>::MovePage(BTPage *pChildPage, vector<Node> &tmpKeys,vector<BTPage *> &tmpSubPages)
+void CBTreePage<Traits>::MovePage(BTPage *pChildPage, vector<Node> &tmpKeys, vector<BTPage *> &tmpSubPages)
 {
-       btree_pos_t nKeys = pChildPage->GetNumberOfKeys();
-       btree_pos_t i = 0;
-       for( ; i < nKeys; ++i )
-       {
-               tmpKeys    .push_back(pChildPage->m_Keys[i]);
-               tmpSubPages.push_back(pChildPage->m_SubPages[i]);
-       }
-       tmpSubPages.push_back(pChildPage->m_SubPages[i]);
-       pChildPage->clear();
+    btree_pos_t nKeys = pChildPage->GetNumberOfKeys();
+    btree_pos_t i = 0;
+    for( ; i < nKeys; ++i ) {
+        tmpKeys.push_back(pChildPage->m_Keys[i]);
+        tmpSubPages.push_back(pChildPage->m_SubPages[i]);
+    }
+    tmpSubPages.push_back(pChildPage->m_SubPages[i]);
+    pChildPage->clear();
 }
 
+//! @brief Celdas libres en la página a la izquierda de `pos` (0 si no existe).
 template <typename Traits>
 btree_pos_t CBTreePage<Traits>::GetFreeCellsOnLeft(btree_pos_t pos)
 {
-       if( pos > 0 )                                   // there is some page on left ?
-               return m_SubPages[pos-1]->GetFreeCells();
-       return 0;
+    if( pos > 0 ) return m_SubPages[pos-1]->GetFreeCells();
+    return 0;
 }
 
+//! @brief Celdas libres en la página a la derecha de `pos` (0 si no existe).
 template <typename Traits>
 btree_pos_t CBTreePage<Traits>::GetFreeCellsOnRight(btree_pos_t pos)
 {
-       if( pos < GetNumberOfKeys() )   // there is some page on right ?
-               return m_SubPages[pos+1]->GetFreeCells();
-       return 0;
+    if( pos < GetNumberOfKeys() ) return m_SubPages[pos+1]->GetFreeCells();
+    return 0;
 }
 
 #endif

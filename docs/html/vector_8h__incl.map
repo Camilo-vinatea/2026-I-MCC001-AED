@@ -1,0 +1,28 @@
+<map id="vector.h" name="vector.h">
+<area shape="rect" id="Node000001" title="Contenedor Vector&lt;Traits&gt; (almacenamiento contiguo dinámico)." alt="" coords="271,5,340,32"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,80,70,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="271,32,86,82,84,77,271,27"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="94,80,162,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="272,34,174,76,172,71,277,31"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="186,80,244,107"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="292,31,244,73,241,68,287,34"/>
+<area shape="rect" id="Node000005" href="$general__iterator_8h.html" title="Iterador genérico base (CRTP) usado por todos los contenedores." alt="" coords="368,80,489,107"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="327,30,396,71,391,72,326,35"/>
+<area shape="rect" id="Node000008" href="$types_8h.html" title="Aliases de tipos y tamaños portables para toda la librería." alt="" coords="267,80,344,107"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="307,30,308,66,303,63,304,35"/>
+<area shape="rect" id="Node000010" href="$foreach_8h.html" title="Algoritmos genéricos ForEach y FirstThat sobre iteradores." alt="" coords="512,80,600,107"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="340,27,500,74,495,76,340,33"/>
+<area shape="rect" id="Node000012" href="$basetrait_8h.html" title="Traits base (politics para comparadores y contenedor genérico)." alt="" coords="624,80,707,107"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="340,24,612,78,607,81,340,29"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="356,155,431,181"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="424,106,408,143,404,138,420,109"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="455,155,508,181"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="439,105,466,143,461,141,436,110"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="279,155,332,181"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="307,105,308,141,303,137,304,109"/>
+<area shape="poly" id="edge11_Node000010_Node000007" title=" " alt="" coords="546,106,506,146,504,142,541,108"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="531,155,602,181"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="560,105,565,141,561,138,556,109"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="627,155,704,181"/>
+<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="667,105,668,141,663,137,664,109"/>
+</map>

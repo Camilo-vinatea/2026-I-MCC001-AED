@@ -1,0 +1,951 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Estructuras de Datos - MCC: Referencia de la plantilla de la clase BTree&lt; Traits &gt;</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Estructuras de Datos - MCC<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">Colección pedagógica de contenedores en C++ (Lista, Heap, Vector, BST, AVL, B-Tree)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('class_b_tree.html','','class_b_tree-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referencia de la plantilla de la clase BTree&lt; Traits &gt;</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Declaración adelantada de <span class="tt"><a class="el" href="class_b_tree.html" title="Declaración adelantada de BTree (usa CBTreePage).">BTree</a></span> (usa <span class="tt"><a class="el" href="class_c_b_tree_page.html" title="Página (nodo) del B-Tree con split en 3 vías, redistribuciones y fusión (Merge).">CBTreePage</a></span>).  
+ <a href="#details">Más...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_b_tree_8h_source.html">BTree.h</a>&gt;</code></p>
+<div class="dynheader">
+Diagrama de colaboración de BTree&lt; Traits &gt;:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="class_b_tree__coll__graph.svg" width="258" height="235"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">leyenda</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
+Tipos públicos</h2></td></tr>
+<tr class="memitem:a38860a89d049b9a98afe7ef45a612077" id="r_a38860a89d049b9a98afe7ef45a612077"><td class="memItemLeft" align="right" valign="top">typedef BTNode::Node&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38860a89d049b9a98afe7ef45a612077">Node</a></td></tr>
+<tr class="memdesc:a38860a89d049b9a98afe7ef45a612077"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_nodo.html">Nodo</a> del árbol (<span class="tt"><a class="el" href="structtag_node.html" title="Elemento almacenado en un B-Tree: clave, ObjID y contador de uso.">tagNode</a>&lt;keyType, ObjIDType&gt;</span>).  <br /></td></tr>
+<tr class="memitem:a19a7638298f20cfcf4d905e619f8d9c5" id="r_a19a7638298f20cfcf4d905e619f8d9c5"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a19a7638298f20cfcf4d905e619f8d9c5">forward_iterator</a> = <a class="el" href="class_b_tree_iterator.html">BTreeIterator</a>&lt;<a class="el" href="class_b_tree.html">BTree</a>&lt;Traits&gt;, <a class="el" href="struct_b_tree_forward_inorder_policy.html">BTreeForwardInorderPolicy</a>&gt;</td></tr>
+<tr class="memdesc:a19a7638298f20cfcf4d905e619f8d9c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterador forward (in-order ascendente).  <br /></td></tr>
+<tr class="memitem:a817fb0597a1b88632a9b12014cd84f9f" id="r_a817fb0597a1b88632a9b12014cd84f9f"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a817fb0597a1b88632a9b12014cd84f9f">backward_iterator</a> = <a class="el" href="class_b_tree_iterator.html">BTreeIterator</a>&lt;<a class="el" href="class_b_tree.html">BTree</a>&lt;Traits&gt;, <a class="el" href="struct_b_tree_backward_inorder_policy.html">BTreeBackwardInorderPolicy</a>&gt;</td></tr>
+<tr class="memdesc:a817fb0597a1b88632a9b12014cd84f9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterador backward (in-order descendente).  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Métodos públicos</h2></td></tr>
+<tr class="memitem:a516a56138b4fc331b7c0d4a65fb84708" id="r_a516a56138b4fc331b7c0d4a65fb84708"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a19a7638298f20cfcf4d905e619f8d9c5">forward_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a516a56138b4fc331b7c0d4a65fb84708">begin</a> ()</td></tr>
+<tr class="memdesc:a516a56138b4fc331b7c0d4a65fb84708"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterador al primer nodo en orden ascendente (con lock).  <br /></td></tr>
+<tr class="memitem:aafd5883d22d85e55282d464554642815" id="r_aafd5883d22d85e55282d464554642815"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a19a7638298f20cfcf4d905e619f8d9c5">forward_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aafd5883d22d85e55282d464554642815">end</a> ()</td></tr>
+<tr class="memdesc:aafd5883d22d85e55282d464554642815"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterador "uno más allá" del último.  <br /></td></tr>
+<tr class="memitem:acc5518c914aac1d35c090797449ae56c" id="r_acc5518c914aac1d35c090797449ae56c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a817fb0597a1b88632a9b12014cd84f9f">backward_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acc5518c914aac1d35c090797449ae56c">rbegin</a> ()</td></tr>
+<tr class="memdesc:acc5518c914aac1d35c090797449ae56c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterador al primer nodo en orden descendente.  <br /></td></tr>
+<tr class="memitem:a1f9a519e27f6b476d3194f4ebe8b31d9" id="r_a1f9a519e27f6b476d3194f4ebe8b31d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a817fb0597a1b88632a9b12014cd84f9f">backward_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f9a519e27f6b476d3194f4ebe8b31d9">rend</a> ()</td></tr>
+<tr class="memdesc:a1f9a519e27f6b476d3194f4ebe8b31d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterador inverso al "previo al primero".  <br /></td></tr>
+<tr class="memitem:a98faf117156166b4062f557a96e89038" id="r_a98faf117156166b4062f557a96e89038"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a98faf117156166b4062f557a96e89038">BTree</a> (<a class="el" href="types_8h.html#abd2baa408fdba1e77be947143d0859df">tree_order_t</a> order=<a class="el" href="_b_tree_8h.html#aa21b97d3b10863baf13d5e480f76b6a0">DEFAULT_BTREE_ORDER</a>, bool unique=true)</td></tr>
+<tr class="memdesc:a98faf117156166b4062f557a96e89038"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construye un B-Tree con el orden dado y modo de unicidad.  <br /></td></tr>
+<tr class="memitem:ad7afe7ca1018d79b7113611f76081b25" id="r_ad7afe7ca1018d79b7113611f76081b25"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad7afe7ca1018d79b7113611f76081b25">~BTree</a> ()</td></tr>
+<tr class="memdesc:ad7afe7ca1018d79b7113611f76081b25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor por defecto.  <br /></td></tr>
+<tr class="memitem:afb3f504310e0c4d75a523063e964124f" id="r_afb3f504310e0c4d75a523063e964124f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb3f504310e0c4d75a523063e964124f">Insert</a> (const keyType key, const ObjIDType ObjID)</td></tr>
+<tr class="memdesc:afb3f504310e0c4d75a523063e964124f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserta <span class="tt">(key, ObjID)</span>. <span class="tt">false</span> si la clave es duplicada.  <br /></td></tr>
+<tr class="memitem:a23264f7fa42141e6c225404d731dae86" id="r_a23264f7fa42141e6c225404d731dae86"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a23264f7fa42141e6c225404d731dae86">Remove</a> (const keyType key, const ObjIDType ObjID)</td></tr>
+<tr class="memdesc:a23264f7fa42141e6c225404d731dae86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Elimina la clave. <span class="tt">false</span> si duplicado o no encontrado.  <br /></td></tr>
+<tr class="memitem:aa297c79c8d3707684cbe03b2e37bb04c" id="r_aa297c79c8d3707684cbe03b2e37bb04c"><td class="memItemLeft" align="right" valign="top">ObjIDType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa297c79c8d3707684cbe03b2e37bb04c">Search</a> (const keyType key)</td></tr>
+<tr class="memdesc:aa297c79c8d3707684cbe03b2e37bb04c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Busca y devuelve el <span class="tt">ObjID</span> o -1 si no existe.  <br /></td></tr>
+<tr class="memitem:ac147910467dafa0e68a9d722a47d77b0" id="r_ac147910467dafa0e68a9d722a47d77b0"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac147910467dafa0e68a9d722a47d77b0">size</a> ()</td></tr>
+<tr class="memdesc:ac147910467dafa0e68a9d722a47d77b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Número total de claves insertadas.  <br /></td></tr>
+<tr class="memitem:ad93f1ae0b4beedf752e44361ea71cf11" id="r_ad93f1ae0b4beedf752e44361ea71cf11"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ae83c03c4d2b4b1a047f8882dc13cc49c">tree_height_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad93f1ae0b4beedf752e44361ea71cf11">height</a> ()</td></tr>
+<tr class="memdesc:ad93f1ae0b4beedf752e44361ea71cf11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Altura del árbol.  <br /></td></tr>
+<tr class="memitem:a2c346fb6ec699bd106abcfa15807a73b" id="r_a2c346fb6ec699bd106abcfa15807a73b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#abd2baa408fdba1e77be947143d0859df">tree_order_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c346fb6ec699bd106abcfa15807a73b">GetOrder</a> ()</td></tr>
+<tr class="memdesc:a2c346fb6ec699bd106abcfa15807a73b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Orden con el que se construyó el árbol.  <br /></td></tr>
+<tr class="memitem:ae42bf72c61387fbe14204b875119ebeb" id="r_ae42bf72c61387fbe14204b875119ebeb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae42bf72c61387fbe14204b875119ebeb">Print</a> (ostream &amp;os)</td></tr>
+<tr class="memdesc:ae42bf72c61387fbe14204b875119ebeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Impresión con sangrado por nivel.  <br /></td></tr>
+<tr class="memitem:a5199492b7dc40d10570d8f23c9d178be" id="r_a5199492b7dc40d10570d8f23c9d178be"><td class="memTemplParams" colspan="2">template&lt;typename Func, typename ... Args&gt; </td></tr>
+<tr class="memitem:a5199492b7dc40d10570d8f23c9d178be template"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5199492b7dc40d10570d8f23c9d178be">ForEach</a> (Func lpfn, Args &amp;&amp;... args)</td></tr>
+<tr class="memdesc:a5199492b7dc40d10570d8f23c9d178be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recorre todos los nodos aplicando <span class="tt">func(nodo, args...)</span>.  <br /></td></tr>
+<tr class="memitem:ad5e648c7e195f30a5b865036d1569764" id="r_ad5e648c7e195f30a5b865036d1569764"><td class="memTemplParams" colspan="2">template&lt;typename Func, typename ... Args&gt; </td></tr>
+<tr class="memitem:ad5e648c7e195f30a5b865036d1569764 template"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad5e648c7e195f30a5b865036d1569764">ForEachInternal</a> (Func func, Args &amp;&amp;... args)</td></tr>
+<tr class="memdesc:ad5e648c7e195f30a5b865036d1569764"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recorrido interno que recibe el nivel como segundo parámetro.  <br /></td></tr>
+<tr class="memitem:a8d14fd445b74140c135e46bee867eb2e" id="r_a8d14fd445b74140c135e46bee867eb2e"><td class="memTemplParams" colspan="2">template&lt;typename Func, typename ... Args&gt; </td></tr>
+<tr class="memitem:a8d14fd445b74140c135e46bee867eb2e template"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a38860a89d049b9a98afe7ef45a612077">Node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d14fd445b74140c135e46bee867eb2e">FirstThat</a> (Func func, Args &amp;&amp;... args)</td></tr>
+<tr class="memdesc:a8d14fd445b74140c135e46bee867eb2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Primer nodo cuyo predicado devuelve <span class="tt">true</span> (devuelve puntero).  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pro-attribs" class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Atributos protegidos</h2></td></tr>
+<tr class="memitem:afc39b56a1d0cf77e10f242979a6ff1b2" id="r_afc39b56a1d0cf77e10f242979a6ff1b2"><td class="memItemLeft" align="right" valign="top">BTNode&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc39b56a1d0cf77e10f242979a6ff1b2">m_Root</a></td></tr>
+<tr class="memdesc:afc39b56a1d0cf77e10f242979a6ff1b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Página raíz del B-Tree.  <br /></td></tr>
+<tr class="memitem:a044048566ac1a07e57cb070cd505ed76" id="r_a044048566ac1a07e57cb070cd505ed76"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ae83c03c4d2b4b1a047f8882dc13cc49c">tree_height_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a044048566ac1a07e57cb070cd505ed76">m_Height</a></td></tr>
+<tr class="memdesc:a044048566ac1a07e57cb070cd505ed76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Altura (raíz = 1).  <br /></td></tr>
+<tr class="memitem:a4cba7cca31180357203c5585a282dbe8" id="r_a4cba7cca31180357203c5585a282dbe8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#abd2baa408fdba1e77be947143d0859df">tree_order_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4cba7cca31180357203c5585a282dbe8">m_Order</a></td></tr>
+<tr class="memdesc:a4cba7cca31180357203c5585a282dbe8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Orden del árbol.  <br /></td></tr>
+<tr class="memitem:a93e69409edd064b8f170b4209f70ccd9" id="r_a93e69409edd064b8f170b4209f70ccd9"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a93e69409edd064b8f170b4209f70ccd9">m_NumKeys</a></td></tr>
+<tr class="memdesc:a93e69409edd064b8f170b4209f70ccd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total de claves.  <br /></td></tr>
+<tr class="memitem:a7486bdcde51a8bba501f7a5f8ec6af94" id="r_a7486bdcde51a8bba501f7a5f8ec6af94"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7486bdcde51a8bba501f7a5f8ec6af94">m_Unique</a></td></tr>
+<tr class="memdesc:a7486bdcde51a8bba501f7a5f8ec6af94"><td class="mdescLeft">&#160;</td><td class="mdescRight">¿Acepta duplicados?  <br /></td></tr>
+<tr class="memitem:ad357c5fc312dca15161cfe9b1046a5e9" id="r_ad357c5fc312dca15161cfe9b1046a5e9"><td class="memItemLeft" align="right" valign="top">std::shared_mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad357c5fc312dca15161cfe9b1046a5e9">m_Mutex</a></td></tr>
+<tr class="memdesc:ad357c5fc312dca15161cfe9b1046a5e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mutex (lecturas compartidas posibles).  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename Traits = BTreeTraitDefault&gt;<br />
+class BTree&lt; Traits &gt;</div><p>Declaración adelantada de <span class="tt"><a class="el" href="class_b_tree.html" title="Declaración adelantada de BTree (usa CBTreePage).">BTree</a></span> (usa <span class="tt"><a class="el" href="class_c_b_tree_page.html" title="Página (nodo) del B-Tree con split en 3 vías, redistribuciones y fusión (Merge).">CBTreePage</a></span>). </p>
+<p>B-Tree completo: combina <span class="tt"><a class="el" href="class_c_b_tree_page.html" title="Página (nodo) del B-Tree con split en 3 vías, redistribuciones y fusión (Merge).">CBTreePage</a></span> raíz, mutex, e iteradores.</p>
+<dl class="tparams"><dt>Parámetros de plantilla</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Traits</td><td>Default = <span class="tt"><a class="el" href="_b_tree_8h.html#a2eda5cb7a31d5f7fa5d3af65fcc83318" title="Trait por defecto con btree_key_t (definido en types.h).">BTreeTraitDefault</a></span>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_8h_source.html#l00047">47</a> del archivo <a class="el" href="_b_tree_8h_source.html">BTree.h</a>.</p>
+</div><a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Documentación de los «Typedef» miembros de la clase</h2>
+<a id="a817fb0597a1b88632a9b12014cd84f9f" name="a817fb0597a1b88632a9b12014cd84f9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a817fb0597a1b88632a9b12014cd84f9f">&#9670;&#160;</a></span>backward_iterator</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits = BTreeTraitDefault&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_b_tree.html">BTree</a>&lt; Traits &gt;::backward_iterator = <a class="el" href="class_b_tree_iterator.html">BTreeIterator</a>&lt;<a class="el" href="class_b_tree.html">BTree</a>&lt;Traits&gt;, <a class="el" href="struct_b_tree_backward_inorder_policy.html">BTreeBackwardInorderPolicy</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Iterador backward (in-order descendente). </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_8h_source.html#l00060">60</a> del archivo <a class="el" href="_b_tree_8h_source.html">BTree.h</a>.</p>
+
+</div>
+</div>
+<a id="a19a7638298f20cfcf4d905e619f8d9c5" name="a19a7638298f20cfcf4d905e619f8d9c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19a7638298f20cfcf4d905e619f8d9c5">&#9670;&#160;</a></span>forward_iterator</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits = BTreeTraitDefault&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_b_tree.html">BTree</a>&lt; Traits &gt;::forward_iterator = <a class="el" href="class_b_tree_iterator.html">BTreeIterator</a>&lt;<a class="el" href="class_b_tree.html">BTree</a>&lt;Traits&gt;, <a class="el" href="struct_b_tree_forward_inorder_policy.html">BTreeForwardInorderPolicy</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Iterador forward (in-order ascendente). </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_8h_source.html#l00058">58</a> del archivo <a class="el" href="_b_tree_8h_source.html">BTree.h</a>.</p>
+
+</div>
+</div>
+<a id="a38860a89d049b9a98afe7ef45a612077" name="a38860a89d049b9a98afe7ef45a612077"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38860a89d049b9a98afe7ef45a612077">&#9670;&#160;</a></span>Node</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits = BTreeTraitDefault&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef BTNode::Node <a class="el" href="class_b_tree.html">BTree</a>&lt; Traits &gt;::Node</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="struct_nodo.html">Nodo</a> del árbol (<span class="tt"><a class="el" href="structtag_node.html" title="Elemento almacenado en un B-Tree: clave, ObjID y contador de uso.">tagNode</a>&lt;keyType, ObjIDType&gt;</span>). </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_8h_source.html#l00055">55</a> del archivo <a class="el" href="_b_tree_8h_source.html">BTree.h</a>.</p>
+
+</div>
+</div>
+<a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Documentación de constructores y destructores</h2>
+<a id="a98faf117156166b4062f557a96e89038" name="a98faf117156166b4062f557a96e89038"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98faf117156166b4062f557a96e89038">&#9670;&#160;</a></span>BTree()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_b_tree.html">BTree</a>&lt; Traits &gt;::BTree </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="types_8h.html#abd2baa408fdba1e77be947143d0859df">tree_order_t</a></td>          <td class="paramname"><span class="paramname"><em>order</em></span><span class="paramdefsep"> = </span><span class="paramdefval"><a class="el" href="_b_tree_8h.html#aa21b97d3b10863baf13d5e480f76b6a0">DEFAULT_BTREE_ORDER</a></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>unique</em></span><span class="paramdefsep"> = </span><span class="paramdefval">true</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construye un B-Tree con el orden dado y modo de unicidad. </p>
+<p>Constructor: crea la raíz con <span class="tt">2·order+1</span> slots. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_8h_source.html#l00113">113</a> del archivo <a class="el" href="_b_tree_8h_source.html">BTree.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_8h_source.html#l00101">m_Height</a>, <a class="el" href="_b_tree_8h_source.html#l00103">m_NumKeys</a>, <a class="el" href="_b_tree_8h_source.html#l00102">m_Order</a>, <a class="el" href="_b_tree_8h_source.html#l00100">m_Root</a> y <a class="el" href="_b_tree_8h_source.html#l00104">m_Unique</a>.</p>
+
+</div>
+</div>
+<a id="ad7afe7ca1018d79b7113611f76081b25" name="ad7afe7ca1018d79b7113611f76081b25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7afe7ca1018d79b7113611f76081b25">&#9670;&#160;</a></span>~BTree()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_b_tree.html">BTree</a>&lt; Traits &gt;::~<a class="el" href="class_b_tree.html">BTree</a> </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Destructor por defecto. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_8h_source.html#l00124">124</a> del archivo <a class="el" href="_b_tree_8h_source.html">BTree.h</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentación de funciones miembro</h2>
+<a id="a516a56138b4fc331b7c0d4a65fb84708" name="a516a56138b4fc331b7c0d4a65fb84708"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a516a56138b4fc331b7c0d4a65fb84708">&#9670;&#160;</a></span>begin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits = BTreeTraitDefault&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a19a7638298f20cfcf4d905e619f8d9c5">forward_iterator</a> <a class="el" href="class_b_tree.html">BTree</a>&lt; Traits &gt;::begin </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Iterador al primer nodo en orden ascendente (con lock). </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_8h_source.html#l00063">63</a> del archivo <a class="el" href="_b_tree_8h_source.html">BTree.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_8h_source.html#l00105">m_Mutex</a> y <a class="el" href="_b_tree_8h_source.html#l00100">m_Root</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_demo_8cpp_source.html#l00036">BTreeDemo()</a>.</p>
+
+</div>
+</div>
+<a id="aafd5883d22d85e55282d464554642815" name="aafd5883d22d85e55282d464554642815"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafd5883d22d85e55282d464554642815">&#9670;&#160;</a></span>end()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits = BTreeTraitDefault&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a19a7638298f20cfcf4d905e619f8d9c5">forward_iterator</a> <a class="el" href="class_b_tree.html">BTree</a>&lt; Traits &gt;::end </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Iterador "uno más allá" del último. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_8h_source.html#l00065">65</a> del archivo <a class="el" href="_b_tree_8h_source.html">BTree.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_8h_source.html#l00105">m_Mutex</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_demo_8cpp_source.html#l00036">BTreeDemo()</a>.</p>
+
+</div>
+</div>
+<a id="a8d14fd445b74140c135e46bee867eb2e" name="a8d14fd445b74140c135e46bee867eb2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d14fd445b74140c135e46bee867eb2e">&#9670;&#160;</a></span>FirstThat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<div class="memtemplate">
+template&lt;typename Func, typename... Args&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_b_tree.html">BTree</a>&lt; Traits &gt;<a class="el" href="#a38860a89d049b9a98afe7ef45a612077">::Node</a> * <a class="el" href="class_b_tree.html">BTree</a>&lt; Traits &gt;::FirstThat </td>
+          <td>(</td>
+          <td class="paramtype">Func</td>          <td class="paramname"><span class="paramname"><em>func</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Args &amp;&amp;...</td>          <td class="paramname"><span class="paramname"><em>args</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Primer nodo cuyo predicado devuelve <span class="tt">true</span> (devuelve puntero). </p>
+<p>Primer nodo que cumple el predicado. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_8h_source.html#l00191">191</a> del archivo <a class="el" href="_b_tree_8h_source.html">BTree.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_8h_source.html#l00105">m_Mutex</a> y <a class="el" href="_b_tree_8h_source.html#l00100">m_Root</a>.</p>
+
+</div>
+</div>
+<a id="a5199492b7dc40d10570d8f23c9d178be" name="a5199492b7dc40d10570d8f23c9d178be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5199492b7dc40d10570d8f23c9d178be">&#9670;&#160;</a></span>ForEach()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<div class="memtemplate">
+template&lt;typename Func, typename... Args&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_b_tree.html">BTree</a>&lt; Traits &gt;::ForEach </td>
+          <td>(</td>
+          <td class="paramtype">Func</td>          <td class="paramname"><span class="paramname"><em>lpfn</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Args &amp;&amp;...</td>          <td class="paramname"><span class="paramname"><em>args</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Recorre todos los nodos aplicando <span class="tt">func(nodo, args...)</span>. </p>
+<p>Recorre todo el árbol llamando <span class="tt">func(nodo, args...)</span> con lock. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_8h_source.html#l00171">171</a> del archivo <a class="el" href="_b_tree_8h_source.html">BTree.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="foreach_8h_source.html#l00026">ForEach()</a>, <a class="el" href="_b_tree_8h_source.html#l00105">m_Mutex</a> y <a class="el" href="_b_tree_8h_source.html#l00100">m_Root</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_demo_8cpp_source.html#l00036">BTreeDemo()</a>.</p>
+
+</div>
+</div>
+<a id="ad5e648c7e195f30a5b865036d1569764" name="ad5e648c7e195f30a5b865036d1569764"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5e648c7e195f30a5b865036d1569764">&#9670;&#160;</a></span>ForEachInternal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<div class="memtemplate">
+template&lt;typename Func, typename... Args&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_b_tree.html">BTree</a>&lt; Traits &gt;::ForEachInternal </td>
+          <td>(</td>
+          <td class="paramtype">Func</td>          <td class="paramname"><span class="paramname"><em>func</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Args &amp;&amp;...</td>          <td class="paramname"><span class="paramname"><em>args</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Recorrido interno que recibe el nivel como segundo parámetro. </p>
+<p>Recorrido interno: <span class="tt">func(nodo, nivel, args...)</span>. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_8h_source.html#l00181">181</a> del archivo <a class="el" href="_b_tree_8h_source.html">BTree.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_8h_source.html#l00105">m_Mutex</a> y <a class="el" href="_b_tree_8h_source.html#l00100">m_Root</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_demo_8cpp_source.html#l00036">BTreeDemo()</a>.</p>
+
+</div>
+</div>
+<a id="a2c346fb6ec699bd106abcfa15807a73b" name="a2c346fb6ec699bd106abcfa15807a73b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c346fb6ec699bd106abcfa15807a73b">&#9670;&#160;</a></span>GetOrder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits = BTreeTraitDefault&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#abd2baa408fdba1e77be947143d0859df">tree_order_t</a> <a class="el" href="class_b_tree.html">BTree</a>&lt; Traits &gt;::GetOrder </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Orden con el que se construyó el árbol. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_8h_source.html#l00088">88</a> del archivo <a class="el" href="_b_tree_8h_source.html">BTree.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_8h_source.html#l00102">m_Order</a>.</p>
+
+</div>
+</div>
+<a id="ad93f1ae0b4beedf752e44361ea71cf11" name="ad93f1ae0b4beedf752e44361ea71cf11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad93f1ae0b4beedf752e44361ea71cf11">&#9670;&#160;</a></span>height()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits = BTreeTraitDefault&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#ae83c03c4d2b4b1a047f8882dc13cc49c">tree_height_t</a> <a class="el" href="class_b_tree.html">BTree</a>&lt; Traits &gt;::height </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Altura del árbol. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_8h_source.html#l00086">86</a> del archivo <a class="el" href="_b_tree_8h_source.html">BTree.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_8h_source.html#l00101">m_Height</a>.</p>
+
+</div>
+</div>
+<a id="afb3f504310e0c4d75a523063e964124f" name="afb3f504310e0c4d75a523063e964124f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb3f504310e0c4d75a523063e964124f">&#9670;&#160;</a></span>Insert()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_b_tree.html">BTree</a>&lt; Traits &gt;::Insert </td>
+          <td>(</td>
+          <td class="paramtype">const keyType</td>          <td class="paramname"><span class="paramname"><em>key</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const ObjIDType</td>          <td class="paramname"><span class="paramname"><em>ObjID</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inserta <span class="tt">(key, ObjID)</span>. <span class="tt">false</span> si la clave es duplicada. </p>
+<p>Inserta <span class="tt">(key, ObjID)</span>; <span class="tt">false</span> si la clave estaba duplicada. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_8h_source.html#l00130">130</a> del archivo <a class="el" href="_b_tree_8h_source.html">BTree.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_8h_source.html#l00101">m_Height</a>, <a class="el" href="_b_tree_8h_source.html#l00105">m_Mutex</a>, <a class="el" href="_b_tree_8h_source.html#l00103">m_NumKeys</a> y <a class="el" href="_b_tree_8h_source.html#l00100">m_Root</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_demo_8cpp_source.html#l00036">BTreeDemo()</a>.</p>
+
+</div>
+</div>
+<a id="ae42bf72c61387fbe14204b875119ebeb" name="ae42bf72c61387fbe14204b875119ebeb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae42bf72c61387fbe14204b875119ebeb">&#9670;&#160;</a></span>Print()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_b_tree.html">BTree</a>&lt; Traits &gt;::Print </td>
+          <td>(</td>
+          <td class="paramtype">ostream &amp;</td>          <td class="paramname"><span class="paramname"><em>os</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Impresión con sangrado por nivel. </p>
+<p>Imprime el árbol con sangrado por nivel (usa <span class="tt"><a class="el" href="#ad5e648c7e195f30a5b865036d1569764" title="Recorrido interno que recibe el nivel como segundo parámetro.">ForEachInternal</a></span>). </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_8h_source.html#l00199">199</a> del archivo <a class="el" href="_b_tree_8h_source.html">BTree.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_page_8h_source.html#l00177">tagNode&lt; keyType, ObjIDType &gt;::key</a>, <a class="el" href="_b_tree_8h_source.html#l00105">m_Mutex</a>, <a class="el" href="_b_tree_8h_source.html#l00100">m_Root</a> y <a class="el" href="_b_tree_page_8h_source.html#l00178">tagNode&lt; keyType, ObjIDType &gt;::ObjID</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_demo_8cpp_source.html#l00036">BTreeDemo()</a>.</p>
+
+</div>
+</div>
+<a id="acc5518c914aac1d35c090797449ae56c" name="acc5518c914aac1d35c090797449ae56c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc5518c914aac1d35c090797449ae56c">&#9670;&#160;</a></span>rbegin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits = BTreeTraitDefault&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a817fb0597a1b88632a9b12014cd84f9f">backward_iterator</a> <a class="el" href="class_b_tree.html">BTree</a>&lt; Traits &gt;::rbegin </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Iterador al primer nodo en orden descendente. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_8h_source.html#l00067">67</a> del archivo <a class="el" href="_b_tree_8h_source.html">BTree.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_8h_source.html#l00100">m_Root</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_demo_8cpp_source.html#l00036">BTreeDemo()</a>.</p>
+
+</div>
+</div>
+<a id="a23264f7fa42141e6c225404d731dae86" name="a23264f7fa42141e6c225404d731dae86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23264f7fa42141e6c225404d731dae86">&#9670;&#160;</a></span>Remove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_b_tree.html">BTree</a>&lt; Traits &gt;::Remove </td>
+          <td>(</td>
+          <td class="paramtype">const keyType</td>          <td class="paramname"><span class="paramname"><em>key</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const ObjIDType</td>          <td class="paramname"><span class="paramname"><em>ObjID</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Elimina la clave. <span class="tt">false</span> si duplicado o no encontrado. </p>
+<p>Elimina la clave; <span class="tt">false</span> si duplicado/no encontrado. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_8h_source.html#l00146">146</a> del archivo <a class="el" href="_b_tree_8h_source.html">BTree.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_8h_source.html#l00101">m_Height</a>, <a class="el" href="_b_tree_8h_source.html#l00105">m_Mutex</a>, <a class="el" href="_b_tree_8h_source.html#l00103">m_NumKeys</a> y <a class="el" href="_b_tree_8h_source.html#l00100">m_Root</a>.</p>
+
+</div>
+</div>
+<a id="a1f9a519e27f6b476d3194f4ebe8b31d9" name="a1f9a519e27f6b476d3194f4ebe8b31d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f9a519e27f6b476d3194f4ebe8b31d9">&#9670;&#160;</a></span>rend()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits = BTreeTraitDefault&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a817fb0597a1b88632a9b12014cd84f9f">backward_iterator</a> <a class="el" href="class_b_tree.html">BTree</a>&lt; Traits &gt;::rend </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Iterador inverso al "previo al primero". </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_8h_source.html#l00069">69</a> del archivo <a class="el" href="_b_tree_8h_source.html">BTree.h</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_demo_8cpp_source.html#l00036">BTreeDemo()</a>.</p>
+
+</div>
+</div>
+<a id="aa297c79c8d3707684cbe03b2e37bb04c" name="aa297c79c8d3707684cbe03b2e37bb04c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa297c79c8d3707684cbe03b2e37bb04c">&#9670;&#160;</a></span>Search()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_b_tree.html">BTree</a>&lt; Traits &gt;::ObjIDType <a class="el" href="class_b_tree.html">BTree</a>&lt; Traits &gt;::Search </td>
+          <td>(</td>
+          <td class="paramtype">const keyType</td>          <td class="paramname"><span class="paramname"><em>key</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Busca y devuelve el <span class="tt">ObjID</span> o -1 si no existe. </p>
+<p>Busca la clave y devuelve su <span class="tt">ObjID</span> (o -1). </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_8h_source.html#l00160">160</a> del archivo <a class="el" href="_b_tree_8h_source.html">BTree.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_8h_source.html#l00105">m_Mutex</a> y <a class="el" href="_b_tree_8h_source.html#l00100">m_Root</a>.</p>
+
+</div>
+</div>
+<a id="ac147910467dafa0e68a9d722a47d77b0" name="ac147910467dafa0e68a9d722a47d77b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac147910467dafa0e68a9d722a47d77b0">&#9670;&#160;</a></span>size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits = BTreeTraitDefault&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t <a class="el" href="class_b_tree.html">BTree</a>&lt; Traits &gt;::size </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Número total de claves insertadas. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_8h_source.html#l00084">84</a> del archivo <a class="el" href="_b_tree_8h_source.html">BTree.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_8h_source.html#l00103">m_NumKeys</a>.</p>
+
+</div>
+</div>
+<a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Documentación de datos miembro</h2>
+<a id="a044048566ac1a07e57cb070cd505ed76" name="a044048566ac1a07e57cb070cd505ed76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a044048566ac1a07e57cb070cd505ed76">&#9670;&#160;</a></span>m_Height</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits = BTreeTraitDefault&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#ae83c03c4d2b4b1a047f8882dc13cc49c">tree_height_t</a> <a class="el" href="class_b_tree.html">BTree</a>&lt; Traits &gt;::m_Height</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Altura (raíz = 1). </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_8h_source.html#l00101">101</a> del archivo <a class="el" href="_b_tree_8h_source.html">BTree.h</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_8h_source.html#l00113">BTree()</a>, <a class="el" href="_b_tree_8h_source.html#l00086">height()</a>, <a class="el" href="_b_tree_8h_source.html#l00130">Insert()</a> y <a class="el" href="_b_tree_8h_source.html#l00146">Remove()</a>.</p>
+
+</div>
+</div>
+<a id="ad357c5fc312dca15161cfe9b1046a5e9" name="ad357c5fc312dca15161cfe9b1046a5e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad357c5fc312dca15161cfe9b1046a5e9">&#9670;&#160;</a></span>m_Mutex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits = BTreeTraitDefault&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_mutex <a class="el" href="class_b_tree.html">BTree</a>&lt; Traits &gt;::m_Mutex</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel mutable">mutable</span><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Mutex (lecturas compartidas posibles). </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_8h_source.html#l00105">105</a> del archivo <a class="el" href="_b_tree_8h_source.html">BTree.h</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_8h_source.html#l00063">begin()</a>, <a class="el" href="_b_tree_8h_source.html#l00065">end()</a>, <a class="el" href="_b_tree_8h_source.html#l00191">FirstThat()</a>, <a class="el" href="_b_tree_8h_source.html#l00171">ForEach()</a>, <a class="el" href="_b_tree_8h_source.html#l00181">ForEachInternal()</a>, <a class="el" href="_b_tree_8h_source.html#l00130">Insert()</a>, <a class="el" href="_b_tree_8h_source.html#l00199">Print()</a>, <a class="el" href="_b_tree_8h_source.html#l00146">Remove()</a> y <a class="el" href="_b_tree_8h_source.html#l00160">Search()</a>.</p>
+
+</div>
+</div>
+<a id="a93e69409edd064b8f170b4209f70ccd9" name="a93e69409edd064b8f170b4209f70ccd9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93e69409edd064b8f170b4209f70ccd9">&#9670;&#160;</a></span>m_NumKeys</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits = BTreeTraitDefault&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t <a class="el" href="class_b_tree.html">BTree</a>&lt; Traits &gt;::m_NumKeys</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Total de claves. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_8h_source.html#l00103">103</a> del archivo <a class="el" href="_b_tree_8h_source.html">BTree.h</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_8h_source.html#l00113">BTree()</a>, <a class="el" href="_b_tree_8h_source.html#l00130">Insert()</a>, <a class="el" href="_b_tree_8h_source.html#l00146">Remove()</a> y <a class="el" href="_b_tree_8h_source.html#l00084">size()</a>.</p>
+
+</div>
+</div>
+<a id="a4cba7cca31180357203c5585a282dbe8" name="a4cba7cca31180357203c5585a282dbe8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4cba7cca31180357203c5585a282dbe8">&#9670;&#160;</a></span>m_Order</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits = BTreeTraitDefault&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#abd2baa408fdba1e77be947143d0859df">tree_order_t</a> <a class="el" href="class_b_tree.html">BTree</a>&lt; Traits &gt;::m_Order</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Orden del árbol. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_8h_source.html#l00102">102</a> del archivo <a class="el" href="_b_tree_8h_source.html">BTree.h</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_8h_source.html#l00113">BTree()</a> y <a class="el" href="_b_tree_8h_source.html#l00088">GetOrder()</a>.</p>
+
+</div>
+</div>
+<a id="afc39b56a1d0cf77e10f242979a6ff1b2" name="afc39b56a1d0cf77e10f242979a6ff1b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc39b56a1d0cf77e10f242979a6ff1b2">&#9670;&#160;</a></span>m_Root</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits = BTreeTraitDefault&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">BTNode <a class="el" href="class_b_tree.html">BTree</a>&lt; Traits &gt;::m_Root</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Página raíz del B-Tree. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_8h_source.html#l00100">100</a> del archivo <a class="el" href="_b_tree_8h_source.html">BTree.h</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_8h_source.html#l00063">begin()</a>, <a class="el" href="_b_tree_8h_source.html#l00113">BTree()</a>, <a class="el" href="_b_tree_8h_source.html#l00191">FirstThat()</a>, <a class="el" href="_b_tree_8h_source.html#l00171">ForEach()</a>, <a class="el" href="_b_tree_8h_source.html#l00181">ForEachInternal()</a>, <a class="el" href="_b_tree_8h_source.html#l00130">Insert()</a>, <a class="el" href="_b_tree_8h_source.html#l00199">Print()</a>, <a class="el" href="_b_tree_8h_source.html#l00067">rbegin()</a>, <a class="el" href="_b_tree_8h_source.html#l00146">Remove()</a> y <a class="el" href="_b_tree_8h_source.html#l00160">Search()</a>.</p>
+
+</div>
+</div>
+<a id="a7486bdcde51a8bba501f7a5f8ec6af94" name="a7486bdcde51a8bba501f7a5f8ec6af94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7486bdcde51a8bba501f7a5f8ec6af94">&#9670;&#160;</a></span>m_Unique</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits = BTreeTraitDefault&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_b_tree.html">BTree</a>&lt; Traits &gt;::m_Unique</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>¿Acepta duplicados? </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_8h_source.html#l00104">104</a> del archivo <a class="el" href="_b_tree_8h_source.html">BTree.h</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_8h_source.html#l00113">BTree()</a>.</p>
+
+</div>
+</div>
+<hr/>La documentación de esta clase está generada del siguiente archivo:<ul>
+<li><a class="el" href="_b_tree_8h_source.html">BTree.h</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="class_b_tree.html">BTree</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

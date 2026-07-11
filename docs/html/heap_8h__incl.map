@@ -1,0 +1,33 @@
+<map id="heap.h" name="heap.h">
+<area shape="rect" id="Node000001" title="Implementación de un Heap (min&#45;heap/max&#45;heap) sobre std::vector." alt="" coords="121,5,182,32"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="56,80,113,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="138,35,108,70,104,67,141,30"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,155,63,181"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="151,30,146,68,138,89,127,108,104,131,78,149,74,145,100,127,123,105,133,87,140,67,149,35"/>
+<area shape="rect" id="Node000004" href="$vector_8h.html" title="Contenedor Vector&lt;Traits&gt; (almacenamiento contiguo dinámico)." alt="" coords="244,80,312,107"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="173,30,245,71,240,73,173,35"/>
+<area shape="poly" id="edge6_Node000004_Node000003" title=" " alt="" coords="243,107,79,156,77,151,244,102"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="642,155,706,181"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="313,97,447,117,629,154,624,155,446,123,313,102"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="86,155,155,181"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="248,109,163,150,161,145,253,106"/>
+<area shape="rect" id="Node000007" href="$general__iterator_8h.html" title="Iterador genérico base (CRTP) usado por todos los contenedores." alt="" coords="279,155,400,181"/>
+<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="290,105,322,143,316,143,288,110"/>
+<area shape="rect" id="Node000010" href="$types_8h.html" title="Aliases de tipos y tamaños portables para toda la librería." alt="" coords="178,155,255,181"/>
+<area shape="poly" id="edge10_Node000004_Node000010" title=" " alt="" coords="269,106,239,145,235,141,265,109"/>
+<area shape="rect" id="Node000012" href="$foreach_8h.html" title="Algoritmos genéricos ForEach y FirstThat sobre iteradores." alt="" coords="424,155,511,181"/>
+<area shape="poly" id="edge12_Node000004_Node000012" title=" " alt="" coords="311,105,422,148,417,149,311,110"/>
+<area shape="rect" id="Node000014" href="$basetrait_8h.html" title="Traits base (politics para comparadores y contenedor genérico)." alt="" coords="536,155,618,181"/>
+<area shape="poly" id="edge15_Node000004_Node000014" title=" " alt="" coords="312,100,523,152,518,154,312,106"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="268,229,342,256"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="336,180,319,217,315,213,331,183"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="366,229,419,256"/>
+<area shape="poly" id="edge9_Node000007_Node000009" title=" " alt="" coords="350,179,377,218,372,216,347,184"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="190,229,243,256"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="219,180,219,215,214,212,215,184"/>
+<area shape="poly" id="edge14_Node000012_Node000009" title=" " alt="" coords="457,181,417,221,415,216,452,183"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="442,229,514,256"/>
+<area shape="poly" id="edge13_Node000012_Node000013" title=" " alt="" coords="471,180,476,216,472,213,467,184"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="538,229,615,256"/>
+<area shape="poly" id="edge16_Node000014_Node000015" title=" " alt="" coords="579,180,579,215,575,212,575,184"/>
+</map>

@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Estructuras de Datos - MCC: Archivo de código fuente avl.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Estructuras de Datos - MCC<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">Colección pedagógica de contenedores en C++ (Lista, Heap, Vector, BST, AVL, B-Tree)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('avl_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">avl.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="avl_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#ifndef __AVL_H__</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#define __AVL_H__</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;<a class="code" href="binarytree_8h.html">binarytree.h</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">/* ===================== AVLNode ====================================== */</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Traits&gt;</div>
+<div class="foldopen" id="foldopen00019" data-start="{" data-end="};">
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="struct_a_v_l_node.html">   19</a></span><span class="keyword">struct </span><a class="code hl_function" href="struct_a_v_l_node.html#a0c7a9e927ffec7315453ee40c64a5a21">AVLNode</a> : <a class="code hl_class" href="class_binary_tree.html">BinaryTree</a>&lt;Traits&gt;<a class="code hl_function" href="struct_binary_tree_1_1_node.html#ac8e948d7a3c6877595fd8968e53ee60c">::Node</a> {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">using </span>Base       = <span class="keyword">typename</span> <a class="code hl_struct" href="struct_binary_tree_1_1_node.html">BinaryTree&lt;Traits&gt;::Node</a>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">using </span>value_type = <span class="keyword">typename</span> Traits::value_type;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="struct_a_v_l_node.html#ab81a9f886421c59b94c734851ab2b953">   24</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_variable" href="struct_a_v_l_node.html#ab81a9f886421c59b94c734851ab2b953">m_height</a> = 1;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span></div>
+<div class="foldopen" id="foldopen00027" data-start="{" data-end="}">
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="struct_a_v_l_node.html#a0c7a9e927ffec7315453ee40c64a5a21">   27</a></span>    <a class="code hl_function" href="struct_a_v_l_node.html#a0c7a9e927ffec7315453ee40c64a5a21">AVLNode</a>(<span class="keyword">const</span> value_type&amp; data, <a class="code hl_typedef" href="types_8h.html#adc90a1f57313299de575a8b66526a96a">Ref</a> ref)</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        : Base(data, ref) {}</div>
+</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>};</div>
+</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">/* =========================== AVL ==================================== */</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Traits&gt;</div>
+<div class="foldopen" id="foldopen00036" data-start="{" data-end="};">
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="class_a_v_l.html">   36</a></span><span class="keyword">class </span><a class="code hl_function" href="class_a_v_l.html#a1a7bf0ff528754c54e2d8970a6b608e3">AVL</a> : <span class="keyword">public</span> <a class="code hl_function" href="class_binary_tree.html#a6fb2a083736de079d446c66a1864e85b">BinaryTree</a>&lt;Traits&gt; {</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keyword">using </span>Base       = <a class="code hl_function" href="class_binary_tree.html#a6fb2a083736de079d446c66a1864e85b">BinaryTree&lt;Traits&gt;</a>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keyword">using </span>MyNode     = <a class="code hl_struct" href="struct_a_v_l_node.html">AVLNode&lt;Traits&gt;</a>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keyword">using </span>NodePtr    = <span class="keyword">typename</span> <a class="code hl_typedef" href="class_binary_tree.html#a4cfdb06f49b6bb2e6169f1600fa62678">Base::NodePtr</a>;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keyword">using </span>value_type = <span class="keyword">typename</span> Traits::value_type;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="comment">/* ----------------- helpers de altura y balanceo ---------------- */</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keyword">static</span> MyNode* avl(NodePtr n) {</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>MyNode*<span class="keyword">&gt;</span>(n);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    }</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keyword">static</span> <span class="keywordtype">size_t</span> height(NodePtr n) {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keywordflow">return</span> n ? avl(n)-&gt;m_height : 0;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    }</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> update_height(NodePtr n) {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keywordflow">if</span> (n)</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            avl(n)-&gt;m_height = 1 + max(height(n-&gt;getChild(0)),</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                                       height(n-&gt;getChild(1)));</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    }</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keyword">static</span> ptrdiff_t bf(NodePtr n) {</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>ptrdiff_t<span class="keyword">&gt;</span>(height(n-&gt;getChild(0)))</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>             - <span class="keyword">static_cast&lt;</span>ptrdiff_t<span class="keyword">&gt;</span>(height(n-&gt;getChild(1)));</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    }</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="comment">/* ----------------------- rotaciones ----------------------------- */</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordtype">void</span> rotate_right(NodePtr&amp; y_ref) {</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keyword">auto</span>* y = avl(y_ref);</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keyword">auto</span>* x = avl(y-&gt;getChild(0));</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        y-&gt;setChild(0, x-&gt;getChild(1));</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        x-&gt;setChild(1, y);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        update_height(y);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        update_height(x);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        y_ref = x;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    }</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keywordtype">void</span> rotate_left(NodePtr&amp; x_ref) {</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keyword">auto</span>* x = avl(x_ref);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="keyword">auto</span>* y = avl(x-&gt;getChild(1));</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        x-&gt;setChild(1, y-&gt;getChild(0));</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        y-&gt;setChild(0, x);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        update_height(x);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        update_height(y);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        x_ref = y;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    }</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="comment">/* ---------------- rebalanceo post-inserción --------------------- */</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keywordtype">void</span> rebalance(NodePtr&amp; p) {</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        update_height(p);</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        ptrdiff_t b = bf(p);</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="keywordflow">if</span> (b &gt; 1) {</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>            <span class="keywordflow">if</span> (bf(p-&gt;getChild(0)) &lt; 0)</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                rotate_left(p-&gt;getChildRef(0));  <span class="comment">// LR → convierte a LL</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            rotate_right(p);                      <span class="comment">// LL</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (b &lt; -1) {</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            <span class="keywordflow">if</span> (bf(p-&gt;getChild(1)) &gt; 0)</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>                rotate_right(p-&gt;getChildRef(1)); <span class="comment">// RL → convierte a RR</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>            rotate_left(p);                       <span class="comment">// RR</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        }</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    }</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="keyword">protected</span>:</div>
+<div class="foldopen" id="foldopen00109" data-start="{" data-end="}">
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="class_a_v_l.html#af657788b639e3a7365cb15d2ba469006">  109</a></span>    NodePtr <a class="code hl_function" href="class_a_v_l.html#af657788b639e3a7365cb15d2ba469006">make_node</a>(<span class="keyword">const</span> value_type&amp; v, <a class="code hl_typedef" href="types_8h.html#adc90a1f57313299de575a8b66526a96a">Ref</a> ref)<span class="keyword"> override </span>{</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        <span class="keywordflow">return</span> <span class="keyword">new</span> MyNode(v, ref);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    }</div>
+</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno"><a class="line" href="class_a_v_l.html#a60a9e806946f0337f2a54b6a7b28f9f7">  113</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_a_v_l.html#a60a9e806946f0337f2a54b6a7b28f9f7">post_insert</a>(NodePtr&amp; p)<span class="keyword"> override </span>{ rebalance(p); }</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="class_a_v_l.html#a1a7bf0ff528754c54e2d8970a6b608e3">  117</a></span>    <a class="code hl_function" href="class_a_v_l.html#a1a7bf0ff528754c54e2d8970a6b608e3">AVL</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span></div>
+<div class="foldopen" id="foldopen00120" data-start="{" data-end="}">
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="class_a_v_l.html#acc18d84b6326b3a5542acfadc63bfcfc">  120</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_a_v_l.html#acc18d84b6326b3a5542acfadc63bfcfc">insert</a>(<span class="keyword">const</span> value_type&amp; v, <a class="code hl_typedef" href="types_8h.html#adc90a1f57313299de575a8b66526a96a">Ref</a> ref) {</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        scoped_lock&lt;mutex&gt; lock(this-&gt;<a class="code hl_variable" href="class_binary_tree.html#a7e18cfe92ccd697e648b89fcfc0d40a7">m_mtx</a>);</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        this-&gt;<a class="code hl_function" href="class_binary_tree.html#a30db3bff0837fb97e3beee67fd2d145f">insertar_interno</a>(this-&gt;<a class="code hl_variable" href="class_binary_tree.html#a4061d85b5ff012ab42a19e3c96625a60">m_pRoot</a>, v, ref);</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    }</div>
+</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span></div>
+<div class="foldopen" id="foldopen00126" data-start="{" data-end="}">
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno"><a class="line" href="class_a_v_l.html#a00c3cc4abe7a18ea1b3725f685245657">  126</a></span>    <span class="keywordtype">size_t</span> <a class="code hl_function" href="class_a_v_l.html#a00c3cc4abe7a18ea1b3725f685245657">tree_height</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        scoped_lock&lt;mutex&gt; lock(this-&gt;<a class="code hl_variable" href="class_binary_tree.html#a7e18cfe92ccd697e648b89fcfc0d40a7">m_mtx</a>);</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        <span class="keywordflow">return</span> height(this-&gt;<a class="code hl_variable" href="class_binary_tree.html#a4061d85b5ff012ab42a19e3c96625a60">m_pRoot</a>);</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    }</div>
+</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span></div>
+<div class="foldopen" id="foldopen00132" data-start="{" data-end="}">
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno"><a class="line" href="class_a_v_l.html#a66d1b8bd9e16d6f49439d8a39f896cb9">  132</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_a_v_l.html#a66d1b8bd9e16d6f49439d8a39f896cb9">print_tree</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        scoped_lock&lt;mutex&gt; lock(this-&gt;<a class="code hl_variable" href="class_binary_tree.html#a7e18cfe92ccd697e648b89fcfc0d40a7">m_mtx</a>);</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        <span class="keywordflow">if</span> (!this-&gt;<a class="code hl_variable" href="class_binary_tree.html#a4061d85b5ff012ab42a19e3c96625a60">m_pRoot</a>) { cout &lt;&lt; <span class="stringliteral">&quot;  (vacio)\n&quot;</span>; <span class="keywordflow">return</span>; }</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        print_interno(this-&gt;<a class="code hl_variable" href="class_binary_tree.html#a4061d85b5ff012ab42a19e3c96625a60">m_pRoot</a>, 0);</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    }</div>
+</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> print_interno(<a class="code hl_typedef" href="class_binary_tree.html#a4cfdb06f49b6bb2e6169f1600fa62678">NodePtr</a> n, <span class="keywordtype">int</span> nivel) {</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>        <span class="keywordflow">if</span> (!n) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        print_interno(n-&gt;getChild(1), nivel + 1);</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        cout &lt;&lt; string(nivel * 4, <span class="charliteral">&#39; &#39;</span>)</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>             &lt;&lt; n-&gt;getData() &lt;&lt; <span class="stringliteral">&quot;  (h=&quot;</span> &lt;&lt; avl(n)-&gt;<a class="code hl_variable" href="struct_a_v_l_node.html#ab81a9f886421c59b94c734851ab2b953">m_height</a> &lt;&lt; <span class="stringliteral">&quot;)\n&quot;</span>;</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>        print_interno(n-&gt;getChild(0), nivel + 1);</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    }</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>};</div>
+</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span></div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="keywordtype">void</span> <a class="code hl_function" href="avl_8h.html#a3ceec80f351861521dc61c9665f56c98">DemoAVL</a>();</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span><span class="preprocessor">#endif </span><span class="comment">// __AVL_H__</span></div>
+<div class="ttc" id="aavl_8h_html_a3ceec80f351861521dc61c9665f56c98"><div class="ttname"><a href="avl_8h.html#a3ceec80f351861521dc61c9665f56c98">DemoAVL</a></div><div class="ttdeci">void DemoAVL()</div><div class="ttdoc">Demo del AVL: inserciones, balanceo automático, comparador descendente.</div><div class="ttdef"><b>Definition</b> <a href="_demo_a_v_l_8cpp_source.html#l00024">DemoAVL.cpp:24</a></div></div>
+<div class="ttc" id="abinarytree_8h_html"><div class="ttname"><a href="binarytree_8h.html">binarytree.h</a></div><div class="ttdoc">Árbol binario de búsqueda (BST) genérico basado en políticas.</div></div>
+<div class="ttc" id="aclass_a_v_l_html_a00c3cc4abe7a18ea1b3725f685245657"><div class="ttname"><a href="class_a_v_l.html#a00c3cc4abe7a18ea1b3725f685245657">AVL::tree_height</a></div><div class="ttdeci">size_t tree_height() const</div><div class="ttdoc">Altura del árbol entero (para verificación).</div><div class="ttdef"><b>Definition</b> <a href="#l00126">avl.h:126</a></div></div>
+<div class="ttc" id="aclass_a_v_l_html_a1a7bf0ff528754c54e2d8970a6b608e3"><div class="ttname"><a href="class_a_v_l.html#a1a7bf0ff528754c54e2d8970a6b608e3">AVL::AVL</a></div><div class="ttdeci">AVL()=default</div><div class="ttdoc">Constructor por defecto.</div></div>
+<div class="ttc" id="aclass_a_v_l_html_a60a9e806946f0337f2a54b6a7b28f9f7"><div class="ttname"><a href="class_a_v_l.html#a60a9e806946f0337f2a54b6a7b28f9f7">AVL::post_insert</a></div><div class="ttdeci">void post_insert(NodePtr &amp;p) override</div><div class="ttdoc">Hook de post-inserción: dispara el rebalanceo.</div><div class="ttdef"><b>Definition</b> <a href="#l00113">avl.h:113</a></div></div>
+<div class="ttc" id="aclass_a_v_l_html_a66d1b8bd9e16d6f49439d8a39f896cb9"><div class="ttname"><a href="class_a_v_l.html#a66d1b8bd9e16d6f49439d8a39f896cb9">AVL::print_tree</a></div><div class="ttdeci">void print_tree() const</div><div class="ttdoc">Imprime el árbol girado 90° (derecha arriba, izquierda abajo).</div><div class="ttdef"><b>Definition</b> <a href="#l00132">avl.h:132</a></div></div>
+<div class="ttc" id="aclass_a_v_l_html_acc18d84b6326b3a5542acfadc63bfcfc"><div class="ttname"><a href="class_a_v_l.html#acc18d84b6326b3a5542acfadc63bfcfc">AVL::insert</a></div><div class="ttdeci">void insert(const value_type &amp;v, Ref ref)</div><div class="ttdoc">Inserta (v, ref) con scoped_lock del BST padre.</div><div class="ttdef"><b>Definition</b> <a href="#l00120">avl.h:120</a></div></div>
+<div class="ttc" id="aclass_a_v_l_html_af657788b639e3a7365cb15d2ba469006"><div class="ttname"><a href="class_a_v_l.html#af657788b639e3a7365cb15d2ba469006">AVL::make_node</a></div><div class="ttdeci">NodePtr make_node(const value_type &amp;v, Ref ref) override</div><div class="ttdoc">Construye un AVLNode en vez del Node del padre.</div><div class="ttdef"><b>Definition</b> <a href="#l00109">avl.h:109</a></div></div>
+<div class="ttc" id="aclass_binary_tree_html"><div class="ttname"><a href="class_binary_tree.html">BinaryTree</a></div><div class="ttdoc">Árbol binario de búsqueda con nodo anidado dentro del contenedor.</div><div class="ttdef"><b>Definition</b> <a href="binarytree_8h_source.html#l00189">binarytree.h:189</a></div></div>
+<div class="ttc" id="aclass_binary_tree_html_a30db3bff0837fb97e3beee67fd2d145f"><div class="ttname"><a href="class_binary_tree.html#a30db3bff0837fb97e3beee67fd2d145f">BinaryTree::insertar_interno</a></div><div class="ttdeci">void insertar_interno(NodePtr &amp;pNodo, const value_type &amp;value, Ref ref)</div><div class="ttdoc">Inserción recursiva; usa make_node y post_insert.</div><div class="ttdef"><b>Definition</b> <a href="binarytree_8h_source.html#l00455">binarytree.h:455</a></div></div>
+<div class="ttc" id="aclass_binary_tree_html_a4061d85b5ff012ab42a19e3c96625a60"><div class="ttname"><a href="class_binary_tree.html#a4061d85b5ff012ab42a19e3c96625a60">BinaryTree::m_pRoot</a></div><div class="ttdeci">NodePtr m_pRoot</div><div class="ttdoc">Raíz del BST.</div><div class="ttdef"><b>Definition</b> <a href="binarytree_8h_source.html#l00287">binarytree.h:287</a></div></div>
+<div class="ttc" id="aclass_binary_tree_html_a4cfdb06f49b6bb2e6169f1600fa62678"><div class="ttname"><a href="class_binary_tree.html#a4cfdb06f49b6bb2e6169f1600fa62678">BinaryTree::NodePtr</a></div><div class="ttdeci">Node * NodePtr</div><div class="ttdoc">Forward del nodo.</div><div class="ttdef"><b>Definition</b> <a href="binarytree_8h_source.html#l00194">binarytree.h:194</a></div></div>
+<div class="ttc" id="aclass_binary_tree_html_a6fb2a083736de079d446c66a1864e85b"><div class="ttname"><a href="class_binary_tree.html#a6fb2a083736de079d446c66a1864e85b">BinaryTree::BinaryTree</a></div><div class="ttdeci">BinaryTree()=default</div><div class="ttdoc">Constructor por defecto.</div></div>
+<div class="ttc" id="aclass_binary_tree_html_a7e18cfe92ccd697e648b89fcfc0d40a7"><div class="ttname"><a href="class_binary_tree.html#a7e18cfe92ccd697e648b89fcfc0d40a7">BinaryTree::m_mtx</a></div><div class="ttdeci">mutex m_mtx</div><div class="ttdoc">Mutex para concurrencia.</div><div class="ttdef"><b>Definition</b> <a href="binarytree_8h_source.html#l00290">binarytree.h:290</a></div></div>
+<div class="ttc" id="astruct_a_v_l_node_html"><div class="ttname"><a href="struct_a_v_l_node.html">AVLNode</a></div><div class="ttdoc">Nodo AVL: añade m_height al nodo del BST.</div><div class="ttdef"><b>Definition</b> <a href="#l00019">avl.h:19</a></div></div>
+<div class="ttc" id="astruct_a_v_l_node_html_a0c7a9e927ffec7315453ee40c64a5a21"><div class="ttname"><a href="struct_a_v_l_node.html#a0c7a9e927ffec7315453ee40c64a5a21">AVLNode::AVLNode</a></div><div class="ttdeci">AVLNode(const value_type &amp;data, Ref ref)</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition</b> <a href="#l00027">avl.h:27</a></div></div>
+<div class="ttc" id="astruct_a_v_l_node_html_ab81a9f886421c59b94c734851ab2b953"><div class="ttname"><a href="struct_a_v_l_node.html#ab81a9f886421c59b94c734851ab2b953">AVLNode::m_height</a></div><div class="ttdeci">size_t m_height</div><div class="ttdoc">Altura del subárbol cuya raíz es este nodo.</div><div class="ttdef"><b>Definition</b> <a href="#l00024">avl.h:24</a></div></div>
+<div class="ttc" id="astruct_binary_tree_1_1_node_html"><div class="ttname"><a href="struct_binary_tree_1_1_node.html">BinaryTree::Node</a></div><div class="ttdoc">Nodo del BST: dato, Ref, dos hijos y puntero al padre.</div><div class="ttdef"><b>Definition</b> <a href="binarytree_8h_source.html#l00202">binarytree.h:202</a></div></div>
+<div class="ttc" id="astruct_binary_tree_1_1_node_html_ac8e948d7a3c6877595fd8968e53ee60c"><div class="ttname"><a href="struct_binary_tree_1_1_node.html#ac8e948d7a3c6877595fd8968e53ee60c">BinaryTree::Node::Node</a></div><div class="ttdeci">Node(const value_type &amp;data, const Ref &amp;ref, Node *izq=nullptr, Node *der=nullptr)</div><div class="ttdoc">Constructor con dato, ref y dos hijos opcionales.</div><div class="ttdef"><b>Definition</b> <a href="binarytree_8h_source.html#l00210">binarytree.h:210</a></div></div>
+<div class="ttc" id="atypes_8h_html_adc90a1f57313299de575a8b66526a96a"><div class="ttname"><a href="types_8h.html#adc90a1f57313299de575a8b66526a96a">Ref</a></div><div class="ttdeci">long Ref</div><div class="ttdoc">Identificador asociado a un dato (long). Sirve como &quot;puntero&quot; ligero: cada nodo guarda un Ref además ...</div><div class="ttdef"><b>Definition</b> <a href="types_8h_source.html#l00039">types.h:39</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>containers</b></li><li class="navelem"><a href="avl_8h.html">avl.h</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Estructuras de Datos - MCC: Archivo de código fuente BTreeDemo.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Estructuras de Datos - MCC<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">Colección pedagógica de contenedores en C++ (Lista, Heap, Vector, BST, AVL, B-Tree)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('_b_tree_demo_8cpp_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">BTreeDemo.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_b_tree_demo_8cpp.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="_b_tree_8h.html">../containers/BTree.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">using namespace </span>std;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="_b_tree_demo_8cpp.html#aa5f46226f9f7c4541b3986083f3375e3">   18</a></span><span class="keyword">const</span> <span class="keywordtype">char</span> * <a class="code hl_variable" href="_b_tree_demo_8cpp.html#aa5f46226f9f7c4541b3986083f3375e3">keys1</a> = <span class="stringliteral">&quot;D1XJ2xTg8zKL9AhijOPQcEowRSp0NbW567BUfCqrs4FdtYZakHIuvGV3eMylmn&quot;</span>;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="_b_tree_demo_8cpp.html#a00b897aabdee0eb1f63927e32b982332">   20</a></span><span class="keyword">const</span> <span class="keywordtype">char</span> * <a class="code hl_variable" href="_b_tree_demo_8cpp.html#a00b897aabdee0eb1f63927e32b982332">keys2</a> = <span class="stringliteral">&quot;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&quot;</span>;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="_b_tree_demo_8cpp.html#a23b0decf5d575d1d271c64eff50893e9">   22</a></span><span class="keyword">const</span> <span class="keywordtype">char</span> * <a class="code hl_variable" href="_b_tree_demo_8cpp.html#a23b0decf5d575d1d271c64eff50893e9">keys3</a> = <span class="stringliteral">&quot;DYZakHIUwxVJ203ejOP9Qc8AdtuEop1XvTRghSNbW567BfiCqrs4FGMyzKLlmn&quot;</span>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="_b_tree_demo_8cpp.html#adc02299ba91e5db95c256c9d422ccfdb">   25</a></span><span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="_b_tree_demo_8cpp.html#adc02299ba91e5db95c256c9d422ccfdb">BTreeSize</a> = 3;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span></div>
+<div class="foldopen" id="foldopen00036" data-start="{" data-end="}">
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="_b_tree_8h.html#aaba14770daecb4a69ef8e42790f08bd5">   36</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="_b_tree_demo_8cpp.html#aaba14770daecb4a69ef8e42790f08bd5">BTreeDemo</a>(){</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">int</span> i;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keyword">using </span>Node = <a class="code hl_class" href="class_b_tree.html">BTree&lt;BTreeTraits&lt;char&gt;</a>&gt;::Node;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <a class="code hl_class" href="class_b_tree.html">BTree&lt;BTreeTraits&lt;char&gt;</a>&gt; bt(<a class="code hl_variable" href="_b_tree_demo_8cpp.html#adc02299ba91e5db95c256c9d422ccfdb">BTreeSize</a>);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordflow">for</span> (i = 0; <a class="code hl_variable" href="_b_tree_demo_8cpp.html#aa5f46226f9f7c4541b3986083f3375e3">keys1</a>[i]; i++)</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        bt.<a class="code hl_function" href="class_b_tree.html#afb3f504310e0c4d75a523063e964124f">Insert</a>(<a class="code hl_variable" href="_b_tree_demo_8cpp.html#aa5f46226f9f7c4541b3986083f3375e3">keys1</a>[i], i*i);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    bt.<a class="code hl_function" href="class_b_tree.html#ae42bf72c61387fbe14204b875119ebeb">Print</a>(cout);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    cout &lt;&lt; <span class="stringliteral">&quot;\n1) Metodo interno del arbol, con nivel de profundidad:\n&quot;</span>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    bt.<a class="code hl_function" href="class_b_tree.html#ad5e648c7e195f30a5b865036d1569764">ForEachInternal</a>([](Node &amp;n, <a class="code hl_typedef" href="types_8h.html#ae83c03c4d2b4b1a047f8882dc13cc49c">tree_height_t</a> level){</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        cout &lt;&lt; string(level, <span class="charliteral">&#39;\t&#39;</span>) &lt;&lt; n.key &lt;&lt; <span class="stringliteral">&quot;-&gt;&quot;</span> &lt;&lt; n.ObjID &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    });</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    cout &lt;&lt; <span class="stringliteral">&quot;\n2) Iterador hacia adelante (menor a mayor), con range-for:\n&quot;</span>;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;n : bt)</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        cout &lt;&lt; n.key &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    cout &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    cout &lt;&lt; <span class="stringliteral">&quot;\n3) Iterador hacia atras (mayor a menor):\n&quot;</span>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> it = bt.<a class="code hl_function" href="class_b_tree.html#acc5518c914aac1d35c090797449ae56c">rbegin</a>(); it != bt.<a class="code hl_function" href="class_b_tree.html#a1f9a519e27f6b476d3194f4ebe8b31d9">rend</a>(); ++it)</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        cout &lt;&lt; it-&gt;key &lt;&lt; <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    cout &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    cout &lt;&lt; <span class="stringliteral">&quot;\n4) Funcion generica ForEach() de foreach.h, de menor a mayor:\n&quot;</span>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <a class="code hl_function" href="foreach_8h.html#a045c9fe8e32cda728ac5f61ae1f68c14">::ForEach</a>(bt.<a class="code hl_function" href="class_b_tree.html#a516a56138b4fc331b7c0d4a65fb84708">begin</a>(), bt.<a class="code hl_function" href="class_b_tree.html#aafd5883d22d85e55282d464554642815">end</a>(), [](Node &amp;n){ cout &lt;&lt; n.key &lt;&lt; <span class="stringliteral">&quot; &quot;</span>; });</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    cout &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    cout &lt;&lt; <span class="stringliteral">&quot;\n5) Funcion generica ForEach() de foreach.h, de mayor a menor:\n&quot;</span>;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <a class="code hl_function" href="foreach_8h.html#a045c9fe8e32cda728ac5f61ae1f68c14">::ForEach</a>(bt.<a class="code hl_function" href="class_b_tree.html#acc5518c914aac1d35c090797449ae56c">rbegin</a>(), bt.<a class="code hl_function" href="class_b_tree.html#a1f9a519e27f6b476d3194f4ebe8b31d9">rend</a>(), [](Node &amp;n){ cout &lt;&lt; n.key &lt;&lt; <span class="stringliteral">&quot; &quot;</span>; });</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    cout &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    cout &lt;&lt; <span class="stringliteral">&quot;\n6) Metodo ForEach de BTree (usa ::ForEach con mutex sostenido):\n&quot;</span>;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    bt.<a class="code hl_function" href="class_b_tree.html#a5199492b7dc40d10570d8f23c9d178be">ForEach</a>([](Node &amp;n){ cout &lt;&lt; n.key &lt;&lt; <span class="stringliteral">&quot; &quot;</span>; });</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    cout &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>}</div>
+</div>
+<div class="ttc" id="a_b_tree_8h_html"><div class="ttname"><a href="_b_tree_8h.html">BTree.h</a></div><div class="ttdoc">Contenedor B-Tree con split en 3 vías, iteradores y concurrencia.</div></div>
+<div class="ttc" id="a_b_tree_demo_8cpp_html_a00b897aabdee0eb1f63927e32b982332"><div class="ttname"><a href="_b_tree_demo_8cpp.html#a00b897aabdee0eb1f63927e32b982332">keys2</a></div><div class="ttdeci">const char * keys2</div><div class="ttdoc">Set ascendente 0..9A..Za..z (peor caso para el árbol).</div><div class="ttdef"><b>Definition</b> <a href="#l00020">BTreeDemo.cpp:20</a></div></div>
+<div class="ttc" id="a_b_tree_demo_8cpp_html_a23b0decf5d575d1d271c64eff50893e9"><div class="ttname"><a href="_b_tree_demo_8cpp.html#a23b0decf5d575d1d271c64eff50893e9">keys3</a></div><div class="ttdeci">const char * keys3</div><div class="ttdoc">Set aleatorio adicional.</div><div class="ttdef"><b>Definition</b> <a href="#l00022">BTreeDemo.cpp:22</a></div></div>
+<div class="ttc" id="a_b_tree_demo_8cpp_html_aa5f46226f9f7c4541b3986083f3375e3"><div class="ttname"><a href="_b_tree_demo_8cpp.html#aa5f46226f9f7c4541b3986083f3375e3">keys1</a></div><div class="ttdeci">const char * keys1</div><div class="ttdoc">Set de claves para insertar (orden aleatorio, todas distintas).</div><div class="ttdef"><b>Definition</b> <a href="#l00018">BTreeDemo.cpp:18</a></div></div>
+<div class="ttc" id="a_b_tree_demo_8cpp_html_aaba14770daecb4a69ef8e42790f08bd5"><div class="ttname"><a href="_b_tree_demo_8cpp.html#aaba14770daecb4a69ef8e42790f08bd5">BTreeDemo</a></div><div class="ttdeci">void BTreeDemo()</div><div class="ttdoc">Función de demo completa del B-Tree.</div><div class="ttdef"><b>Definition</b> <a href="#l00036">BTreeDemo.cpp:36</a></div></div>
+<div class="ttc" id="a_b_tree_demo_8cpp_html_adc02299ba91e5db95c256c9d422ccfdb"><div class="ttname"><a href="_b_tree_demo_8cpp.html#adc02299ba91e5db95c256c9d422ccfdb">BTreeSize</a></div><div class="ttdeci">const int BTreeSize</div><div class="ttdoc">Orden con el que se construye el B-Tree de demo.</div><div class="ttdef"><b>Definition</b> <a href="#l00025">BTreeDemo.cpp:25</a></div></div>
+<div class="ttc" id="aclass_b_tree_html"><div class="ttname"><a href="class_b_tree.html">BTree</a></div><div class="ttdoc">Declaración adelantada de BTree (usa CBTreePage).</div><div class="ttdef"><b>Definition</b> <a href="_b_tree_8h_source.html#l00047">BTree.h:48</a></div></div>
+<div class="ttc" id="aclass_b_tree_html_a1f9a519e27f6b476d3194f4ebe8b31d9"><div class="ttname"><a href="class_b_tree.html#a1f9a519e27f6b476d3194f4ebe8b31d9">BTree::rend</a></div><div class="ttdeci">backward_iterator rend()</div><div class="ttdoc">Iterador inverso al &quot;previo al primero&quot;.</div><div class="ttdef"><b>Definition</b> <a href="_b_tree_8h_source.html#l00069">BTree.h:69</a></div></div>
+<div class="ttc" id="aclass_b_tree_html_a516a56138b4fc331b7c0d4a65fb84708"><div class="ttname"><a href="class_b_tree.html#a516a56138b4fc331b7c0d4a65fb84708">BTree::begin</a></div><div class="ttdeci">forward_iterator begin()</div><div class="ttdoc">Iterador al primer nodo en orden ascendente (con lock).</div><div class="ttdef"><b>Definition</b> <a href="_b_tree_8h_source.html#l00063">BTree.h:63</a></div></div>
+<div class="ttc" id="aclass_b_tree_html_a5199492b7dc40d10570d8f23c9d178be"><div class="ttname"><a href="class_b_tree.html#a5199492b7dc40d10570d8f23c9d178be">BTree::ForEach</a></div><div class="ttdeci">void ForEach(Func lpfn, Args &amp;&amp;... args)</div><div class="ttdoc">Recorre todos los nodos aplicando func(nodo, args...).</div><div class="ttdef"><b>Definition</b> <a href="_b_tree_8h_source.html#l00171">BTree.h:171</a></div></div>
+<div class="ttc" id="aclass_b_tree_html_aafd5883d22d85e55282d464554642815"><div class="ttname"><a href="class_b_tree.html#aafd5883d22d85e55282d464554642815">BTree::end</a></div><div class="ttdeci">forward_iterator end()</div><div class="ttdoc">Iterador &quot;uno más allá&quot; del último.</div><div class="ttdef"><b>Definition</b> <a href="_b_tree_8h_source.html#l00065">BTree.h:65</a></div></div>
+<div class="ttc" id="aclass_b_tree_html_acc5518c914aac1d35c090797449ae56c"><div class="ttname"><a href="class_b_tree.html#acc5518c914aac1d35c090797449ae56c">BTree::rbegin</a></div><div class="ttdeci">backward_iterator rbegin()</div><div class="ttdoc">Iterador al primer nodo en orden descendente.</div><div class="ttdef"><b>Definition</b> <a href="_b_tree_8h_source.html#l00067">BTree.h:67</a></div></div>
+<div class="ttc" id="aclass_b_tree_html_ad5e648c7e195f30a5b865036d1569764"><div class="ttname"><a href="class_b_tree.html#ad5e648c7e195f30a5b865036d1569764">BTree::ForEachInternal</a></div><div class="ttdeci">void ForEachInternal(Func func, Args &amp;&amp;... args)</div><div class="ttdoc">Recorrido interno que recibe el nivel como segundo parámetro.</div><div class="ttdef"><b>Definition</b> <a href="_b_tree_8h_source.html#l00181">BTree.h:181</a></div></div>
+<div class="ttc" id="aclass_b_tree_html_ae42bf72c61387fbe14204b875119ebeb"><div class="ttname"><a href="class_b_tree.html#ae42bf72c61387fbe14204b875119ebeb">BTree::Print</a></div><div class="ttdeci">void Print(ostream &amp;os)</div><div class="ttdoc">Impresión con sangrado por nivel.</div><div class="ttdef"><b>Definition</b> <a href="_b_tree_8h_source.html#l00199">BTree.h:199</a></div></div>
+<div class="ttc" id="aclass_b_tree_html_afb3f504310e0c4d75a523063e964124f"><div class="ttname"><a href="class_b_tree.html#afb3f504310e0c4d75a523063e964124f">BTree::Insert</a></div><div class="ttdeci">bool Insert(const keyType key, const ObjIDType ObjID)</div><div class="ttdoc">Inserta (key, ObjID). false si la clave es duplicada.</div><div class="ttdef"><b>Definition</b> <a href="_b_tree_8h_source.html#l00130">BTree.h:130</a></div></div>
+<div class="ttc" id="aforeach_8h_html_a045c9fe8e32cda728ac5f61ae1f68c14"><div class="ttname"><a href="foreach_8h.html#a045c9fe8e32cda728ac5f61ae1f68c14">ForEach</a></div><div class="ttdeci">void ForEach(Iterator begin, Iterator end, Func func, Args &amp;&amp;... args)</div><div class="ttdoc">Aplica la función func a cada elemento en el rango [begin, end), reenviando los argumentos extra args...</div><div class="ttdef"><b>Definition</b> <a href="foreach_8h_source.html#l00026">foreach.h:26</a></div></div>
+<div class="ttc" id="atypes_8h_html_ae83c03c4d2b4b1a047f8882dc13cc49c"><div class="ttname"><a href="types_8h.html#ae83c03c4d2b4b1a047f8882dc13cc49c">tree_height_t</a></div><div class="ttdeci">int tree_height_t</div><div class="ttdoc">Altura del B-Tree (int). Nivel de profundidad para impresión.</div><div class="ttdef"><b>Definition</b> <a href="types_8h_source.html#l00060">types.h:60</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>demos</b></li><li class="navelem"><a href="_b_tree_demo_8cpp.html">BTreeDemo.cpp</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

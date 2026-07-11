@@ -1,0 +1,20 @@
+<map id="basetrait.h" name="basetrait.h">
+<area shape="rect" id="Node000001" title="Traits base (politics para comparadores y contenedor genérico)." alt="" coords="236,5,319,32"/>
+<area shape="rect" id="Node000002" href="$binarytree_8h.html" title="Árbol binario de búsqueda (BST) genérico basado en políticas." alt="" coords="182,80,272,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="262,43,238,81,234,78,258,47"/>
+<area shape="rect" id="Node000007" href="$vector_8h.html" title="Contenedor Vector&lt;Traits&gt; (almacenamiento contiguo dinámico)." alt="" coords="323,80,392,107"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="303,40,346,80,341,80,302,45"/>
+<area shape="rect" id="Node000003" href="$_demo_binary_tree_8cpp.html" title="Demo del BST: inserciones, 6 recorridos, copia/movimiento, persistencia y comparador descendente." alt="" coords="5,155,150,181"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="185,116,105,156,102,152,189,112"/>
+<area shape="rect" id="Node000004" href="$avl_8h.html" title="Árbol AVL (BST auto&#45;balanceado) basado en BinaryTree (Template Method)." alt="" coords="174,155,224,181"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="218,119,206,156,202,153,215,123"/>
+<area shape="rect" id="Node000006" href="$main_8cpp_source.html" title=" " alt="" coords="224,229,299,256"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="235,120,261,229,256,228,231,124"/>
+<area shape="rect" id="Node000005" href="$_demo_a_v_l_8cpp.html" title="Demo del AVL: inserción 1..7 (caso degenerado), asserts y comparador descendente." alt="" coords="96,229,201,256"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="184,193,159,231,155,227,179,195"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="221,191,253,229,248,228,219,196"/>
+<area shape="rect" id="Node000008" href="$_demo_vector_8cpp.html" title="Demos del Vector: secuencial y concurrente." alt="" coords="298,155,417,181"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="359,120,360,156,355,153,356,125"/>
+<area shape="rect" id="Node000009" href="$heap_8h.html" title="Implementación de un Heap (min&#45;heap/max&#45;heap) sobre std::vector." alt="" coords="441,155,501,181"/>
+<area shape="poly" id="edge9_Node000007_Node000009" title=" " alt="" coords="391,113,454,154,448,154,389,118"/>
+</map>

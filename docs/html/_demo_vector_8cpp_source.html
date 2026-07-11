@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Estructuras de Datos - MCC: Archivo de código fuente DemoVector.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Estructuras de Datos - MCC<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">Colección pedagógica de contenedores en C++ (Lista, Heap, Vector, BST, AVL, B-Tree)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('_demo_vector_8cpp_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">DemoVector.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_demo_vector_8cpp.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;thread&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;mutex&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="vector_8h.html">containers/vector.h</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">using namespace </span>std;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Node&gt;</div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="}">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="_demo_vector_8cpp.html#aec4da34f6ea38e1810412405c596f483">   14</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="_demo_vector_8cpp.html#aec4da34f6ea38e1810412405c596f483">Print</a>(Node &amp;value, ostream&amp; os){</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    os &lt;&lt; value &lt;&lt; <span class="stringliteral">&quot;,&quot;</span>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>}</div>
+</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Node&gt;</div>
+<div class="foldopen" id="foldopen00020" data-start="{" data-end="}">
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="_demo_vector_8cpp.html#ac63710ccde782fbe11283b4ca774e3aa">   20</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="_demo_vector_8cpp.html#ac63710ccde782fbe11283b4ca774e3aa">AddOne</a>(Node &amp;node){</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">static</span> mutex mtx;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    scoped_lock&lt;mutex&gt; lock(mtx);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    ++node;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>}</div>
+</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00028" data-start="{" data-end="}">
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="_demo_vector_8cpp.html#ac46e1f5e1d4fd56e8f376c8afc15497f">   28</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="_demo_vector_8cpp.html#ac46e1f5e1d4fd56e8f376c8afc15497f">AddX</a>(<a class="code hl_struct" href="struct_vector_node.html">VectorNode&lt;T&gt;</a> &amp;node, T x){</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    node += x;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>}</div>
+</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00034" data-start="{" data-end="}">
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="_demo_vector_8cpp.html#a204ea04e608b2501ca8093b0301f5b5a">   34</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="_demo_vector_8cpp.html#a204ea04e608b2501ca8093b0301f5b5a">IsMultipleOf</a>(<a class="code hl_struct" href="struct_vector_node.html">VectorNode&lt;T&gt;</a> &amp;node, T x){</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordflow">return</span> node.<a class="code hl_function" href="struct_vector_node.html#a80b3974a6ffdfcc375ffe16dca047242">GetDataRef</a>() % x == 0;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>}</div>
+</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00040" data-start="{" data-end="}">
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="_demo_vector_8cpp.html#ad4f2ae937a4e7c32d9484e0b77f00877">   40</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="_demo_vector_8cpp.html#ad4f2ae937a4e7c32d9484e0b77f00877">IsGreaterThan</a>(<a class="code hl_struct" href="struct_vector_node.html">VectorNode&lt;T&gt;</a> &amp;node, T x){</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordflow">return</span> node.<a class="code hl_function" href="struct_vector_node.html#a80b3974a6ffdfcc375ffe16dca047242">GetDataRef</a>() &gt; x;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>}</div>
+</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span></div>
+<div class="foldopen" id="foldopen00045" data-start="{" data-end="}">
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="vector_8h.html#abaa811e0586ae8f0b4d7d804488aab06">   45</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="_demo_vector_8cpp.html#abaa811e0586ae8f0b4d7d804488aab06">DemoVector</a>(){</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <a class="code hl_class" href="class_vector.html">Vector&lt; VectorTraits&lt;TI&gt;</a> &gt; v1;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    v1.<a class="code hl_function" href="class_vector.html#a84e3575a9b72eed581466063e2deedae">push_back</a>(7, 15);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    v1.<a class="code hl_function" href="class_vector.html#a84e3575a9b72eed581466063e2deedae">push_back</a>(5, 10);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    v1.<a class="code hl_function" href="class_vector.html#a84e3575a9b72eed581466063e2deedae">push_back</a>(25, 5);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    v1.<a class="code hl_function" href="class_vector.html#a84e3575a9b72eed581466063e2deedae">push_back</a>(10, 20);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    v1.<a class="code hl_function" href="class_vector.html#a84e3575a9b72eed581466063e2deedae">push_back</a>(13, 25);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    cout &lt;&lt; <span class="stringliteral">&quot;Recorrido con iteradores&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    v1.<a class="code hl_function" href="class_vector.html#ab66d6f398b3f0255f2a6ff4542db087b">ForEach</a>(<a class="code hl_function" href="_demo_vector_8cpp.html#aec4da34f6ea38e1810412405c596f483">Print&lt;TI&gt;</a>, cout);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    cout &lt;&lt; endl;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    v1.<a class="code hl_function" href="class_vector.html#ab66d6f398b3f0255f2a6ff4542db087b">ForEach</a>(<a class="code hl_function" href="_demo_vector_8cpp.html#ac63710ccde782fbe11283b4ca774e3aa">AddOne&lt;TI&gt;</a>);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    v1.<a class="code hl_function" href="class_vector.html#ab66d6f398b3f0255f2a6ff4542db087b">ForEach</a>(<a class="code hl_function" href="_demo_vector_8cpp.html#aec4da34f6ea38e1810412405c596f483">Print&lt;TI&gt;</a>, cout);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    cout &lt;&lt; endl;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    v1.<a class="code hl_function" href="class_vector.html#ab66d6f398b3f0255f2a6ff4542db087b">ForEach</a>(<a class="code hl_function" href="_demo_vector_8cpp.html#ac46e1f5e1d4fd56e8f376c8afc15497f">AddX&lt;TI&gt;</a>, 10);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    v1.<a class="code hl_function" href="class_vector.html#ab66d6f398b3f0255f2a6ff4542db087b">ForEach</a>(<a class="code hl_function" href="_demo_vector_8cpp.html#aec4da34f6ea38e1810412405c596f483">Print&lt;TI&gt;</a>, cout);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    cout &lt;&lt; endl;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordtype">int</span> a = 3;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    v1.<a class="code hl_function" href="class_vector.html#ab66d6f398b3f0255f2a6ff4542db087b">ForEach</a>([a](<span class="keyword">auto</span>&amp; node){   node.GetDataRef() *= a; });</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    v1.<a class="code hl_function" href="class_vector.html#ab66d6f398b3f0255f2a6ff4542db087b">ForEach</a>(<a class="code hl_function" href="_demo_vector_8cpp.html#aec4da34f6ea38e1810412405c596f483">Print&lt;TI&gt;</a>, cout);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    cout &lt;&lt; endl &lt;&lt; a &lt;&lt; endl;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keyword">auto</span> it = v1.<a class="code hl_function" href="class_vector.html#a97f31bfbf3b81013a96ee3a7b885d5bb">FirstThat</a>(<a class="code hl_function" href="_demo_vector_8cpp.html#a204ea04e608b2501ca8093b0301f5b5a">IsMultipleOf&lt;TI&gt;</a>, 21);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordflow">if</span> (it != v1.<a class="code hl_function" href="class_vector.html#a266127da95c290db526cac424ef50dac">end</a>())</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        cout &lt;&lt; <span class="stringliteral">&quot;Primer multiplo de 21: &quot;</span> &lt;&lt; *it &lt;&lt; endl;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keyword">auto</span> it2 = v1.<a class="code hl_function" href="class_vector.html#a680cd073d6967b1aeacb561c9c2b361e">ReverseFirstThat</a>(<a class="code hl_function" href="_demo_vector_8cpp.html#ad4f2ae937a4e7c32d9484e0b77f00877">IsGreaterThan&lt;TI&gt;</a>, 100);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordflow">if</span> (it2 != v1.<a class="code hl_function" href="class_vector.html#ace322121c8c304ac699f50a8e3f03c18">rend</a>())</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        cout &lt;&lt; <span class="stringliteral">&quot;Primer mayor a 100   : &quot;</span> &lt;&lt; *it2 &lt;&lt; endl;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    cout &lt;&lt; <span class="stringliteral">&quot;Fin recorrido con iteradores&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    cout &lt;&lt; v1.<a class="code hl_function" href="class_vector.html#aafa6562b35142ceaa0de1d8b642579d9">ToString</a>() &lt;&lt; endl;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    cout &lt;&lt; <span class="stringliteral">&quot;Vector:&quot;</span> &lt;&lt; v1 &lt;&lt; <span class="stringliteral">&quot; despues&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    cout &lt;&lt; <span class="stringliteral">&quot;Size: &quot;</span> &lt;&lt; v1.<a class="code hl_function" href="class_vector.html#a440a451a7f10dfa6ff48fa6629099631">size</a>() &lt;&lt; endl;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <a class="code hl_class" href="class_vector.html">Vector&lt; VectorTraits&lt;TD&gt;</a> &gt; v2;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    v2.<a class="code hl_function" href="class_vector.html#a84e3575a9b72eed581466063e2deedae">push_back</a>(7.5, 1);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    v2.<a class="code hl_function" href="class_vector.html#a84e3575a9b72eed581466063e2deedae">push_back</a>(5.2, 2);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    v2.<a class="code hl_function" href="class_vector.html#a84e3575a9b72eed581466063e2deedae">push_back</a>(25.1, 3);</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    v2.<a class="code hl_function" href="class_vector.html#a84e3575a9b72eed581466063e2deedae">push_back</a>(10.3, 4);</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    v2.<a class="code hl_function" href="class_vector.html#a84e3575a9b72eed581466063e2deedae">push_back</a>(13.4, 5);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    cout &lt;&lt; v2.<a class="code hl_function" href="class_vector.html#aafa6562b35142ceaa0de1d8b642579d9">ToString</a>() &lt;&lt; endl;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    cout &lt;&lt; <span class="stringliteral">&quot;Size: &quot;</span> &lt;&lt; v2.<a class="code hl_function" href="class_vector.html#a440a451a7f10dfa6ff48fa6629099631">size</a>() &lt;&lt; endl;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <a class="code hl_class" href="class_vector.html">Vector&lt; VectorTraits&lt;TS&gt;</a> &gt; v3;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    v3.<a class="code hl_function" href="class_vector.html#a84e3575a9b72eed581466063e2deedae">push_back</a>(<span class="stringliteral">&quot;Hello&quot;</span>, 5);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    v3.<a class="code hl_function" href="class_vector.html#a84e3575a9b72eed581466063e2deedae">push_back</a>(<span class="stringliteral">&quot;World&quot;</span>, 10);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    v3.<a class="code hl_function" href="class_vector.html#a84e3575a9b72eed581466063e2deedae">push_back</a>(<span class="stringliteral">&quot;AED&quot;</span>, 15);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    cout &lt;&lt; v3.<a class="code hl_function" href="class_vector.html#aafa6562b35142ceaa0de1d8b642579d9">ToString</a>() &lt;&lt; endl;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    v3.<a class="code hl_function" href="class_vector.html#ab66d6f398b3f0255f2a6ff4542db087b">ForEach</a>(<a class="code hl_function" href="_demo_vector_8cpp.html#ac46e1f5e1d4fd56e8f376c8afc15497f">AddX&lt;TS&gt;</a>, <span class="stringliteral">&quot;-X&quot;</span>);</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    cout &lt;&lt; v3.<a class="code hl_function" href="class_vector.html#aafa6562b35142ceaa0de1d8b642579d9">ToString</a>() &lt;&lt; endl;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    v3.<a class="code hl_function" href="class_vector.html#a4ebfd2abd378701af3e08c15204b70b9">ReverseForEach</a>(<a class="code hl_function" href="_demo_vector_8cpp.html#aec4da34f6ea38e1810412405c596f483">Print&lt;TS&gt;</a>, cout);</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    cout &lt;&lt; endl;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    cout &lt;&lt; <span class="stringliteral">&quot;Size: &quot;</span> &lt;&lt; v3.<a class="code hl_function" href="class_vector.html#a440a451a7f10dfa6ff48fa6629099631">size</a>() &lt;&lt; endl;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>}</div>
+</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span></div>
+<div class="foldopen" id="foldopen00111" data-start="{" data-end="}">
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="vector_8h.html#a19cdf5a57d424c5fb8999f2228aa791c">  111</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="_demo_vector_8cpp.html#a19cdf5a57d424c5fb8999f2228aa791c">DemoConcurrentVector</a>(){</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <a class="code hl_class" href="class_vector.html">Vector&lt; VectorTraits&lt;TI&gt;</a> &gt; v(4);</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    v.<a class="code hl_function" href="class_vector.html#a84e3575a9b72eed581466063e2deedae">push_back</a>(0, 0);</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    v.<a class="code hl_function" href="class_vector.html#a84e3575a9b72eed581466063e2deedae">push_back</a>(0, 0);</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    v.<a class="code hl_function" href="class_vector.html#a84e3575a9b72eed581466063e2deedae">push_back</a>(0, 0);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    v.<a class="code hl_function" href="class_vector.html#a84e3575a9b72eed581466063e2deedae">push_back</a>(0, 0);</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keyword">auto</span> worker = [&amp;v](<span class="keywordtype">int</span> thread_id){</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i &lt; 100000; i++)</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>            v.<a class="code hl_function" href="class_vector.html#ab66d6f398b3f0255f2a6ff4542db087b">ForEach</a>(<a class="code hl_function" href="_demo_vector_8cpp.html#ac63710ccde782fbe11283b4ca774e3aa">AddOne&lt;TI&gt;</a>);</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        cout &lt;&lt; <span class="stringliteral">&quot;Thread &quot;</span> &lt;&lt; thread_id &lt;&lt; <span class="stringliteral">&quot; terminado\n&quot;</span>;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    };</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    thread t1(worker, 1);</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    thread t2(worker, 2);</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    thread t3(worker, 3);</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    thread t4(worker, 4);</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    thread t5(worker, 5);</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    t1.join(); t2.join(); t3.join(); t4.join(); t5.join();</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    cout &lt;&lt; <span class="stringliteral">&quot;Resultado (esperado 500000): &quot;</span> &lt;&lt; v &lt;&lt; endl;</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>}</div>
+</div>
+<div class="ttc" id="a_demo_vector_8cpp_html_a19cdf5a57d424c5fb8999f2228aa791c"><div class="ttname"><a href="_demo_vector_8cpp.html#a19cdf5a57d424c5fb8999f2228aa791c">DemoConcurrentVector</a></div><div class="ttdeci">void DemoConcurrentVector()</div><div class="ttdoc">Demo concurrente: 5 hilos incrementan 4 elementos 100.000 veces c/u.</div><div class="ttdef"><b>Definition</b> <a href="#l00111">DemoVector.cpp:111</a></div></div>
+<div class="ttc" id="a_demo_vector_8cpp_html_a204ea04e608b2501ca8093b0301f5b5a"><div class="ttname"><a href="_demo_vector_8cpp.html#a204ea04e608b2501ca8093b0301f5b5a">IsMultipleOf</a></div><div class="ttdeci">bool IsMultipleOf(VectorNode&lt; T &gt; &amp;node, T x)</div><div class="ttdoc">Predicado: ¿es múltiplo de x?</div><div class="ttdef"><b>Definition</b> <a href="#l00034">DemoVector.cpp:34</a></div></div>
+<div class="ttc" id="a_demo_vector_8cpp_html_abaa811e0586ae8f0b4d7d804488aab06"><div class="ttname"><a href="_demo_vector_8cpp.html#abaa811e0586ae8f0b4d7d804488aab06">DemoVector</a></div><div class="ttdeci">void DemoVector()</div><div class="ttdoc">Demo secuencial del Vector con tres tipos (int, double, string).</div><div class="ttdef"><b>Definition</b> <a href="#l00045">DemoVector.cpp:45</a></div></div>
+<div class="ttc" id="a_demo_vector_8cpp_html_ac46e1f5e1d4fd56e8f376c8afc15497f"><div class="ttname"><a href="_demo_vector_8cpp.html#ac46e1f5e1d4fd56e8f376c8afc15497f">AddX</a></div><div class="ttdeci">void AddX(VectorNode&lt; T &gt; &amp;node, T x)</div><div class="ttdoc">Lambda: suma x al dato.</div><div class="ttdef"><b>Definition</b> <a href="#l00028">DemoVector.cpp:28</a></div></div>
+<div class="ttc" id="a_demo_vector_8cpp_html_ac63710ccde782fbe11283b4ca774e3aa"><div class="ttname"><a href="_demo_vector_8cpp.html#ac63710ccde782fbe11283b4ca774e3aa">AddOne</a></div><div class="ttdeci">void AddOne(Node &amp;node)</div><div class="ttdoc">Lambda: incrementa el dato (con mutex interno).</div><div class="ttdef"><b>Definition</b> <a href="#l00020">DemoVector.cpp:20</a></div></div>
+<div class="ttc" id="a_demo_vector_8cpp_html_ad4f2ae937a4e7c32d9484e0b77f00877"><div class="ttname"><a href="_demo_vector_8cpp.html#ad4f2ae937a4e7c32d9484e0b77f00877">IsGreaterThan</a></div><div class="ttdeci">bool IsGreaterThan(VectorNode&lt; T &gt; &amp;node, T x)</div><div class="ttdoc">Predicado: ¿es mayor estricto a x?</div><div class="ttdef"><b>Definition</b> <a href="#l00040">DemoVector.cpp:40</a></div></div>
+<div class="ttc" id="a_demo_vector_8cpp_html_aec4da34f6ea38e1810412405c596f483"><div class="ttname"><a href="_demo_vector_8cpp.html#aec4da34f6ea38e1810412405c596f483">Print</a></div><div class="ttdeci">void Print(Node &amp;value, ostream &amp;os)</div><div class="ttdoc">Lambda: imprime el nodo seguido de coma.</div><div class="ttdef"><b>Definition</b> <a href="#l00014">DemoVector.cpp:14</a></div></div>
+<div class="ttc" id="aclass_vector_html"><div class="ttname"><a href="class_vector.html">Vector</a></div><div class="ttdoc">Vector dinámico genérico con iteradores y recorrido concurrente.</div><div class="ttdef"><b>Definition</b> <a href="vector_8h_source.html#l00096">vector.h:96</a></div></div>
+<div class="ttc" id="aclass_vector_html_a266127da95c290db526cac424ef50dac"><div class="ttname"><a href="class_vector.html#a266127da95c290db526cac424ef50dac">Vector::end</a></div><div class="ttdeci">forward_iterator end()</div><div class="ttdoc">Iterador &quot;uno más allá&quot; del último.</div><div class="ttdef"><b>Definition</b> <a href="vector_8h_source.html#l00134">vector.h:134</a></div></div>
+<div class="ttc" id="aclass_vector_html_a440a451a7f10dfa6ff48fa6629099631"><div class="ttname"><a href="class_vector.html#a440a451a7f10dfa6ff48fa6629099631">Vector::size</a></div><div class="ttdeci">size_t size()</div><div class="ttdoc">Número actual de elementos.</div><div class="ttdef"><b>Definition</b> <a href="vector_8h_source.html#l00204">vector.h:204</a></div></div>
+<div class="ttc" id="aclass_vector_html_a4ebfd2abd378701af3e08c15204b70b9"><div class="ttname"><a href="class_vector.html#a4ebfd2abd378701af3e08c15204b70b9">Vector::ReverseForEach</a></div><div class="ttdeci">void ReverseForEach(Func func, Args &amp;&amp;... args)</div><div class="ttdoc">Recorre el vector hacia atrás aplicando func(elem, args...).</div><div class="ttdef"><b>Definition</b> <a href="vector_8h_source.html#l00148">vector.h:148</a></div></div>
+<div class="ttc" id="aclass_vector_html_a680cd073d6967b1aeacb561c9c2b361e"><div class="ttname"><a href="class_vector.html#a680cd073d6967b1aeacb561c9c2b361e">Vector::ReverseFirstThat</a></div><div class="ttdeci">backward_iterator ReverseFirstThat(Func func, Args &amp;&amp;... args)</div><div class="ttdoc">Primer elemento que cumple (recorrido inverso).</div><div class="ttdef"><b>Definition</b> <a href="vector_8h_source.html#l00160">vector.h:160</a></div></div>
+<div class="ttc" id="aclass_vector_html_a84e3575a9b72eed581466063e2deedae"><div class="ttname"><a href="class_vector.html#a84e3575a9b72eed581466063e2deedae">Vector::push_back</a></div><div class="ttdeci">void push_back(value_type value, Ref ref)</div><div class="ttdoc">Inserta al final; si no hay espacio, llama a resize().</div><div class="ttdef"><b>Definition</b> <a href="vector_8h_source.html#l00182">vector.h:182</a></div></div>
+<div class="ttc" id="aclass_vector_html_a97f31bfbf3b81013a96ee3a7b885d5bb"><div class="ttname"><a href="class_vector.html#a97f31bfbf3b81013a96ee3a7b885d5bb">Vector::FirstThat</a></div><div class="ttdeci">forward_iterator FirstThat(Func func, Args &amp;&amp;... args)</div><div class="ttdoc">Primer elemento que cumple func(elem, args...) (forward).</div><div class="ttdef"><b>Definition</b> <a href="vector_8h_source.html#l00154">vector.h:154</a></div></div>
+<div class="ttc" id="aclass_vector_html_aafa6562b35142ceaa0de1d8b642579d9"><div class="ttname"><a href="class_vector.html#aafa6562b35142ceaa0de1d8b642579d9">Vector::ToString</a></div><div class="ttdeci">string ToString()</div><div class="ttdoc">Representación textual estilo [a,b,c].</div><div class="ttdef"><b>Definition</b> <a href="vector_8h_source.html#l00210">vector.h:210</a></div></div>
+<div class="ttc" id="aclass_vector_html_ab66d6f398b3f0255f2a6ff4542db087b"><div class="ttname"><a href="class_vector.html#ab66d6f398b3f0255f2a6ff4542db087b">Vector::ForEach</a></div><div class="ttdeci">void ForEach(Func func, Args &amp;&amp;... args)</div><div class="ttdoc">Recorre el vector hacia adelante aplicando func(elem, args...).</div><div class="ttdef"><b>Definition</b> <a href="vector_8h_source.html#l00142">vector.h:142</a></div></div>
+<div class="ttc" id="aclass_vector_html_ace322121c8c304ac699f50a8e3f03c18"><div class="ttname"><a href="class_vector.html#ace322121c8c304ac699f50a8e3f03c18">Vector::rend</a></div><div class="ttdeci">backward_iterator rend()</div><div class="ttdoc">Iterador inverso &quot;uno más allá&quot; del principio.</div><div class="ttdef"><b>Definition</b> <a href="vector_8h_source.html#l00138">vector.h:138</a></div></div>
+<div class="ttc" id="astruct_vector_node_html"><div class="ttname"><a href="struct_vector_node.html">VectorNode</a></div><div class="ttdoc">Elemento almacenado: par (value, Ref) con operaciones básicas.</div><div class="ttdef"><b>Definition</b> <a href="vector_8h_source.html#l00052">vector.h:52</a></div></div>
+<div class="ttc" id="astruct_vector_node_html_a80b3974a6ffdfcc375ffe16dca047242"><div class="ttname"><a href="struct_vector_node.html#a80b3974a6ffdfcc375ffe16dca047242">VectorNode::GetDataRef</a></div><div class="ttdeci">value_type &amp; GetDataRef()</div><div class="ttdoc">Acceso por referencia al dato.</div><div class="ttdef"><b>Definition</b> <a href="vector_8h_source.html#l00072">vector.h:72</a></div></div>
+<div class="ttc" id="avector_8h_html"><div class="ttname"><a href="vector_8h.html">vector.h</a></div><div class="ttdoc">Contenedor Vector&lt;Traits&gt; (almacenamiento contiguo dinámico).</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>demos</b></li><li class="navelem"><a href="_demo_vector_8cpp.html">DemoVector.cpp</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

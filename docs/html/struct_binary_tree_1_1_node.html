@@ -1,0 +1,893 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Estructuras de Datos - MCC: Referencia de la estructura BinaryTree&lt; Traits &gt;::Node</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Estructuras de Datos - MCC<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">Colección pedagógica de contenedores en C++ (Lista, Heap, Vector, BST, AVL, B-Tree)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('struct_binary_tree_1_1_node.html','','struct_binary_tree_1_1_node-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referencia de la estructura BinaryTree&lt; Traits &gt;::Node</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><a class="el" href="struct_nodo.html">Nodo</a> del BST: dato, <span class="tt"><a class="el" href="types_8h.html#adc90a1f57313299de575a8b66526a96a" title="Identificador asociado a un dato (long). Sirve como &quot;puntero&quot; ligero: cada nodo guarda un Ref además ...">Ref</a></span>, dos hijos y puntero al padre.  
+ <a href="#details">Más...</a></p>
+
+<p><code>#include &lt;<a class="el" href="binarytree_8h_source.html">binarytree.h</a>&gt;</code></p>
+<div class="dynheader">
+Diagrama de herencia de BinaryTree&lt; Traits &gt;::Node</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="struct_binary_tree_1_1_node__inherit__graph.svg" width="143" height="128"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">leyenda</a>]</span></center></div>
+<div class="dynheader">
+Diagrama de colaboración de BinaryTree&lt; Traits &gt;::Node:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="struct_binary_tree_1_1_node__coll__graph.svg" width="235" height="192"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">leyenda</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
+Tipos públicos</h2></td></tr>
+<tr class="memitem:a20d0c90afdc557a4b6b9f285fe9f1a8f" id="r_a20d0c90afdc557a4b6b9f285fe9f1a8f"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a20d0c90afdc557a4b6b9f285fe9f1a8f">value_type</a> = typename Traits::value_type</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Métodos públicos</h2></td></tr>
+<tr class="memitem:ac8e948d7a3c6877595fd8968e53ee60c" id="r_ac8e948d7a3c6877595fd8968e53ee60c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac8e948d7a3c6877595fd8968e53ee60c">Node</a> (const <a class="el" href="class_binary_tree.html#aa93fcdede5e78d483e4ad70699281fe7">value_type</a> &amp;data, const <a class="el" href="types_8h.html#adc90a1f57313299de575a8b66526a96a">Ref</a> &amp;ref, Node *izq=nullptr, Node *der=nullptr)</td></tr>
+<tr class="memdesc:ac8e948d7a3c6877595fd8968e53ee60c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor con dato, ref y dos hijos opcionales.  <br /></td></tr>
+<tr class="memitem:ab007a1f3c463202c580be806d65e9750" id="r_ab007a1f3c463202c580be806d65e9750"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab007a1f3c463202c580be806d65e9750">Node</a> (const Node &amp;other)</td></tr>
+<tr class="memdesc:ab007a1f3c463202c580be806d65e9750"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor de copia (recursivo, clona subárbol).  <br /></td></tr>
+<tr class="memitem:a7e06800d76e4f888c536caaf313c8354" id="r_a7e06800d76e4f888c536caaf313c8354"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e06800d76e4f888c536caaf313c8354">Node</a> (Node &amp;&amp;other) noexcept</td></tr>
+<tr class="memdesc:a7e06800d76e4f888c536caaf313c8354"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor de movimiento.  <br /></td></tr>
+<tr class="memitem:ada097db20e4023c4580bac8ab12ee284" id="r_ada097db20e4023c4580bac8ab12ee284"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada097db20e4023c4580bac8ab12ee284">~Node</a> ()</td></tr>
+<tr class="memdesc:ada097db20e4023c4580bac8ab12ee284"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor recursivo: borra los hijos (cascada).  <br /></td></tr>
+<tr class="memitem:abf55c7c8764e5c94dedf5a4ca31047b7" id="r_abf55c7c8764e5c94dedf5a4ca31047b7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_binary_tree.html#aa93fcdede5e78d483e4ad70699281fe7">value_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abf55c7c8764e5c94dedf5a4ca31047b7">getData</a> () const</td></tr>
+<tr class="memitem:a0cb781a86c11ece4bb0f121d9df08487" id="r_a0cb781a86c11ece4bb0f121d9df08487"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_binary_tree.html#aa93fcdede5e78d483e4ad70699281fe7">value_type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0cb781a86c11ece4bb0f121d9df08487">getDataRef</a> ()</td></tr>
+<tr class="memitem:ab02e2be86d9a10926d53c01d2c1b7382" id="r_ab02e2be86d9a10926d53c01d2c1b7382"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab02e2be86d9a10926d53c01d2c1b7382">setData</a> (const <a class="el" href="class_binary_tree.html#aa93fcdede5e78d483e4ad70699281fe7">value_type</a> &amp;d)</td></tr>
+<tr class="memitem:a1ff130146c7eea25271662678f588a3a" id="r_a1ff130146c7eea25271662678f588a3a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#adc90a1f57313299de575a8b66526a96a">Ref</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ff130146c7eea25271662678f588a3a">getRef</a> () const</td></tr>
+<tr class="memitem:a7666cd5a54d813f62150875ce8379092" id="r_a7666cd5a54d813f62150875ce8379092"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#adc90a1f57313299de575a8b66526a96a">Ref</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7666cd5a54d813f62150875ce8379092">getRefRef</a> ()</td></tr>
+<tr class="memitem:a115e4cc67262aa01152db99a843bf298" id="r_a115e4cc67262aa01152db99a843bf298"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a115e4cc67262aa01152db99a843bf298">setRef</a> (<a class="el" href="types_8h.html#adc90a1f57313299de575a8b66526a96a">Ref</a> r)</td></tr>
+<tr class="memitem:aadfd5b7c50c4f25e676d8e9cccf5511a" id="r_aadfd5b7c50c4f25e676d8e9cccf5511a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#ac8e948d7a3c6877595fd8968e53ee60c">Node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aadfd5b7c50c4f25e676d8e9cccf5511a">getChild</a> (size_t pos) const</td></tr>
+<tr class="memdesc:aadfd5b7c50c4f25e676d8e9cccf5511a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve el hijo en <span class="tt">pos</span> (0=izq, 1=der).  <br /></td></tr>
+<tr class="memitem:a0800a1c8743e1dfe801f7fe64ba3bc25" id="r_a0800a1c8743e1dfe801f7fe64ba3bc25"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#ac8e948d7a3c6877595fd8968e53ee60c">Node</a> *&amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0800a1c8743e1dfe801f7fe64ba3bc25">getChildRef</a> (size_t pos)</td></tr>
+<tr class="memdesc:a0800a1c8743e1dfe801f7fe64ba3bc25"><td class="mdescLeft">&#160;</td><td class="mdescRight">Referencia mutable al hijo <span class="tt">pos</span>.  <br /></td></tr>
+<tr class="memitem:a94da54affbc51acff01c9a36eb898184" id="r_a94da54affbc51acff01c9a36eb898184"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a94da54affbc51acff01c9a36eb898184">setChild</a> (size_t pos, <a class="el" href="#ac8e948d7a3c6877595fd8968e53ee60c">Node</a> *p)</td></tr>
+<tr class="memdesc:a94da54affbc51acff01c9a36eb898184"><td class="mdescLeft">&#160;</td><td class="mdescRight">Establece el hijo en <span class="tt">pos</span>.  <br /></td></tr>
+<tr class="memitem:a3a9e4d89041283b098a6e07e88e11e33" id="r_a3a9e4d89041283b098a6e07e88e11e33"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#ac8e948d7a3c6877595fd8968e53ee60c">Node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a9e4d89041283b098a6e07e88e11e33">getParent</a> () const</td></tr>
+<tr class="memitem:ae02b183b9f2a6a13e38f2a3bb9b7b118" id="r_ae02b183b9f2a6a13e38f2a3bb9b7b118"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae02b183b9f2a6a13e38f2a3bb9b7b118">setParent</a> (<a class="el" href="#ac8e948d7a3c6877595fd8968e53ee60c">Node</a> *p)</td></tr>
+<tr class="memitem:a49ad6fb1436a639affc70fbba349ef26" id="r_a49ad6fb1436a639affc70fbba349ef26"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49ad6fb1436a639affc70fbba349ef26">to_string</a> () const</td></tr>
+<tr class="memdesc:a49ad6fb1436a639affc70fbba349ef26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Representación textual del nodo.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Atributos públicos</h2></td></tr>
+<tr class="memitem:a765c1f2d87c4192bdc7d1771eb7c517c" id="r_a765c1f2d87c4192bdc7d1771eb7c517c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_binary_tree.html#aa93fcdede5e78d483e4ad70699281fe7">value_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a765c1f2d87c4192bdc7d1771eb7c517c">m_data</a></td></tr>
+<tr class="memdesc:a765c1f2d87c4192bdc7d1771eb7c517c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dato almacenado.  <br /></td></tr>
+<tr class="memitem:a995da70a5dd1a549f6796323f7504fa4" id="r_a995da70a5dd1a549f6796323f7504fa4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#adc90a1f57313299de575a8b66526a96a">Ref</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a995da70a5dd1a549f6796323f7504fa4">m_ref</a></td></tr>
+<tr class="memdesc:a995da70a5dd1a549f6796323f7504fa4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identificador asociado.  <br /></td></tr>
+<tr class="memitem:a0f4133213dd527ccea9fe4a041d33ed8" id="r_a0f4133213dd527ccea9fe4a041d33ed8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#ac8e948d7a3c6877595fd8968e53ee60c">Node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0f4133213dd527ccea9fe4a041d33ed8">m_pChild</a> [2]</td></tr>
+<tr class="memdesc:a0f4133213dd527ccea9fe4a041d33ed8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hijos [0]=izq, [1]=der.  <br /></td></tr>
+<tr class="memitem:a6b1c2bb50d1e41b894d57f5eaf85ffff" id="r_a6b1c2bb50d1e41b894d57f5eaf85ffff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#ac8e948d7a3c6877595fd8968e53ee60c">Node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b1c2bb50d1e41b894d57f5eaf85ffff">m_pParent</a></td></tr>
+<tr class="memdesc:a6b1c2bb50d1e41b894d57f5eaf85ffff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Padre (no usado en todas las ops).  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-friends" class="groupheader"><a id="friends" name="friends"></a>
+Amigas</h2></td></tr>
+<tr class="memitem:a5600a71d74fc411fdc6b07e8eea05021" id="r_a5600a71d74fc411fdc6b07e8eea05021"><td class="memItemLeft" align="right" valign="top">ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5600a71d74fc411fdc6b07e8eea05021">operator&lt;&lt;</a> (ostream &amp;os, const <a class="el" href="#ac8e948d7a3c6877595fd8968e53ee60c">Node</a> &amp;n)</td></tr>
+<tr class="memdesc:a5600a71d74fc411fdc6b07e8eea05021"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operador <span class="tt">&lt;&lt;</span> por stream.  <br /></td></tr>
+<tr class="memitem:a1b979331ec3a0662340935af538d58e4" id="r_a1b979331ec3a0662340935af538d58e4"><td class="memItemLeft" align="right" valign="top">istream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b979331ec3a0662340935af538d58e4">operator&gt;&gt;</a> (istream &amp;is, <a class="el" href="#ac8e948d7a3c6877595fd8968e53ee60c">Node</a> &amp;n)</td></tr>
+<tr class="memdesc:a1b979331ec3a0662340935af538d58e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operador <span class="tt">&gt;&gt;</span> desde stream (formato <span class="tt">dato ref</span> por línea).  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename Traits&gt;<br />
+struct BinaryTree&lt; Traits &gt;::Node</div><p><a class="el" href="struct_nodo.html">Nodo</a> del BST: dato, <span class="tt"><a class="el" href="types_8h.html#adc90a1f57313299de575a8b66526a96a" title="Identificador asociado a un dato (long). Sirve como &quot;puntero&quot; ligero: cada nodo guarda un Ref además ...">Ref</a></span>, dos hijos y puntero al padre. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="binarytree_8h_source.html#l00202">202</a> del archivo <a class="el" href="binarytree_8h_source.html">binarytree.h</a>.</p>
+</div><a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Documentación de los «Typedef» miembros de la clase</h2>
+<a id="a20d0c90afdc557a4b6b9f285fe9f1a8f" name="a20d0c90afdc557a4b6b9f285fe9f1a8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20d0c90afdc557a4b6b9f285fe9f1a8f">&#9670;&#160;</a></span>value_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="class_binary_tree.html">BinaryTree</a>&lt; Traits &gt;::Node::value_type = typename Traits::value_type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="binarytree_8h_source.html#l00203">203</a> del archivo <a class="el" href="binarytree_8h_source.html">binarytree.h</a>.</p>
+
+</div>
+</div>
+<a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Documentación de constructores y destructores</h2>
+<a id="ac8e948d7a3c6877595fd8968e53ee60c" name="ac8e948d7a3c6877595fd8968e53ee60c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8e948d7a3c6877595fd8968e53ee60c">&#9670;&#160;</a></span>Node() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_binary_tree.html">BinaryTree</a>&lt; Traits &gt;::Node::Node </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_binary_tree.html#aa93fcdede5e78d483e4ad70699281fe7">value_type</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>data</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="types_8h.html#adc90a1f57313299de575a8b66526a96a">Ref</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>ref</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Node *</td>          <td class="paramname"><span class="paramname"><em>izq</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Node *</td>          <td class="paramname"><span class="paramname"><em>der</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor con dato, ref y dos hijos opcionales. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="binarytree_8h_source.html#l00210">210</a> del archivo <a class="el" href="binarytree_8h_source.html">binarytree.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="binarytree_8h_source.html#l00204">m_data</a>, <a class="el" href="binarytree_8h_source.html#l00206">m_pChild</a>, <a class="el" href="binarytree_8h_source.html#l00207">m_pParent</a>, <a class="el" href="binarytree_8h_source.html#l00205">m_ref</a> y <a class="el" href="binarytree_8h_source.html#l00210">Node()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="binarytree_8h_source.html#l00244">getChild()</a>, <a class="el" href="binarytree_8h_source.html#l00246">getChildRef()</a>, <a class="el" href="binarytree_8h_source.html#l00216">Node()</a>, <a class="el" href="binarytree_8h_source.html#l00210">Node()</a>, <a class="el" href="binarytree_8h_source.html#l00224">Node()</a>, <a class="el" href="binarytree_8h_source.html#l00261">operator&lt;&lt;</a>, <a class="el" href="binarytree_8h_source.html#l00266">operator&gt;&gt;</a> y <a class="el" href="binarytree_8h_source.html#l00248">setChild()</a>.</p>
+
+</div>
+</div>
+<a id="ab007a1f3c463202c580be806d65e9750" name="ab007a1f3c463202c580be806d65e9750"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab007a1f3c463202c580be806d65e9750">&#9670;&#160;</a></span>Node() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_binary_tree.html">BinaryTree</a>&lt; Traits &gt;::Node::Node </td>
+          <td>(</td>
+          <td class="paramtype">const Node &amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor de copia (recursivo, clona subárbol). </p>
+
+<p class="definition">Definición en la línea <a class="el" href="binarytree_8h_source.html#l00216">216</a> del archivo <a class="el" href="binarytree_8h_source.html">binarytree.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="binarytree_8h_source.html#l00204">m_data</a>, <a class="el" href="binarytree_8h_source.html#l00206">m_pChild</a>, <a class="el" href="binarytree_8h_source.html#l00207">m_pParent</a>, <a class="el" href="binarytree_8h_source.html#l00205">m_ref</a> y <a class="el" href="binarytree_8h_source.html#l00210">Node()</a>.</p>
+
+</div>
+</div>
+<a id="a7e06800d76e4f888c536caaf313c8354" name="a7e06800d76e4f888c536caaf313c8354"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e06800d76e4f888c536caaf313c8354">&#9670;&#160;</a></span>Node() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_binary_tree.html">BinaryTree</a>&lt; Traits &gt;::Node::Node </td>
+          <td>(</td>
+          <td class="paramtype">Node &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel noexcept">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor de movimiento. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="binarytree_8h_source.html#l00224">224</a> del archivo <a class="el" href="binarytree_8h_source.html">binarytree.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="binarytree_8h_source.html#l00206">m_pChild</a> y <a class="el" href="binarytree_8h_source.html#l00210">Node()</a>.</p>
+
+</div>
+</div>
+<a id="ada097db20e4023c4580bac8ab12ee284" name="ada097db20e4023c4580bac8ab12ee284"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada097db20e4023c4580bac8ab12ee284">&#9670;&#160;</a></span>~Node()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_binary_tree.html">BinaryTree</a>&lt; Traits &gt;::Node::~Node </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Destructor recursivo: borra los hijos (cascada). </p>
+
+<p class="definition">Definición en la línea <a class="el" href="binarytree_8h_source.html#l00234">234</a> del archivo <a class="el" href="binarytree_8h_source.html">binarytree.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="binarytree_8h_source.html#l00206">m_pChild</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentación de funciones miembro</h2>
+<a id="aadfd5b7c50c4f25e676d8e9cccf5511a" name="aadfd5b7c50c4f25e676d8e9cccf5511a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aadfd5b7c50c4f25e676d8e9cccf5511a">&#9670;&#160;</a></span>getChild()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#ac8e948d7a3c6877595fd8968e53ee60c">Node</a> * <a class="el" href="class_binary_tree.html">BinaryTree</a>&lt; Traits &gt;::Node::getChild </td>
+          <td>(</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>pos</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Devuelve el hijo en <span class="tt">pos</span> (0=izq, 1=der). </p>
+
+<p class="definition">Definición en la línea <a class="el" href="binarytree_8h_source.html#l00244">244</a> del archivo <a class="el" href="binarytree_8h_source.html">binarytree.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="binarytree_8h_source.html#l00206">m_pChild</a> y <a class="el" href="binarytree_8h_source.html#l00210">Node()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="binarytree_8h_source.html#l00467">BinaryTree&lt; Traits &gt;::copiar_interno()</a> y <a class="el" href="binarytree_8h_source.html#l00475">BinaryTree&lt; Traits &gt;::escribir_interno()</a>.</p>
+
+</div>
+</div>
+<a id="a0800a1c8743e1dfe801f7fe64ba3bc25" name="a0800a1c8743e1dfe801f7fe64ba3bc25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0800a1c8743e1dfe801f7fe64ba3bc25">&#9670;&#160;</a></span>getChildRef()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#ac8e948d7a3c6877595fd8968e53ee60c">Node</a> *&amp; <a class="el" href="class_binary_tree.html">BinaryTree</a>&lt; Traits &gt;::Node::getChildRef </td>
+          <td>(</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>pos</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Referencia mutable al hijo <span class="tt">pos</span>. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="binarytree_8h_source.html#l00246">246</a> del archivo <a class="el" href="binarytree_8h_source.html">binarytree.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="binarytree_8h_source.html#l00206">m_pChild</a> y <a class="el" href="binarytree_8h_source.html#l00210">Node()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="binarytree_8h_source.html#l00467">BinaryTree&lt; Traits &gt;::copiar_interno()</a> y <a class="el" href="binarytree_8h_source.html#l00455">BinaryTree&lt; Traits &gt;::insertar_interno()</a>.</p>
+
+</div>
+</div>
+<a id="abf55c7c8764e5c94dedf5a4ca31047b7" name="abf55c7c8764e5c94dedf5a4ca31047b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf55c7c8764e5c94dedf5a4ca31047b7">&#9670;&#160;</a></span>getData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_binary_tree.html#aa93fcdede5e78d483e4ad70699281fe7">value_type</a> <a class="el" href="class_binary_tree.html">BinaryTree</a>&lt; Traits &gt;::Node::getData </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="binarytree_8h_source.html#l00236">236</a> del archivo <a class="el" href="binarytree_8h_source.html">binarytree.h</a>.</p>
+
+</div>
+</div>
+<a id="a0cb781a86c11ece4bb0f121d9df08487" name="a0cb781a86c11ece4bb0f121d9df08487"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cb781a86c11ece4bb0f121d9df08487">&#9670;&#160;</a></span>getDataRef()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_binary_tree.html#aa93fcdede5e78d483e4ad70699281fe7">value_type</a> &amp; <a class="el" href="class_binary_tree.html">BinaryTree</a>&lt; Traits &gt;::Node::getDataRef </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="binarytree_8h_source.html#l00237">237</a> del archivo <a class="el" href="binarytree_8h_source.html">binarytree.h</a>.</p>
+
+</div>
+</div>
+<a id="a3a9e4d89041283b098a6e07e88e11e33" name="a3a9e4d89041283b098a6e07e88e11e33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a9e4d89041283b098a6e07e88e11e33">&#9670;&#160;</a></span>getParent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#ac8e948d7a3c6877595fd8968e53ee60c">Node</a> * <a class="el" href="class_binary_tree.html">BinaryTree</a>&lt; Traits &gt;::Node::getParent </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="binarytree_8h_source.html#l00250">250</a> del archivo <a class="el" href="binarytree_8h_source.html">binarytree.h</a>.</p>
+
+</div>
+</div>
+<a id="a1ff130146c7eea25271662678f588a3a" name="a1ff130146c7eea25271662678f588a3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ff130146c7eea25271662678f588a3a">&#9670;&#160;</a></span>getRef()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#adc90a1f57313299de575a8b66526a96a">Ref</a> <a class="el" href="class_binary_tree.html">BinaryTree</a>&lt; Traits &gt;::Node::getRef </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="binarytree_8h_source.html#l00239">239</a> del archivo <a class="el" href="binarytree_8h_source.html">binarytree.h</a>.</p>
+
+</div>
+</div>
+<a id="a7666cd5a54d813f62150875ce8379092" name="a7666cd5a54d813f62150875ce8379092"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7666cd5a54d813f62150875ce8379092">&#9670;&#160;</a></span>getRefRef()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#adc90a1f57313299de575a8b66526a96a">Ref</a> &amp; <a class="el" href="class_binary_tree.html">BinaryTree</a>&lt; Traits &gt;::Node::getRefRef </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="binarytree_8h_source.html#l00240">240</a> del archivo <a class="el" href="binarytree_8h_source.html">binarytree.h</a>.</p>
+
+</div>
+</div>
+<a id="a94da54affbc51acff01c9a36eb898184" name="a94da54affbc51acff01c9a36eb898184"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94da54affbc51acff01c9a36eb898184">&#9670;&#160;</a></span>setChild()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_binary_tree.html">BinaryTree</a>&lt; Traits &gt;::Node::setChild </td>
+          <td>(</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>pos</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#ac8e948d7a3c6877595fd8968e53ee60c">Node</a> *</td>          <td class="paramname"><span class="paramname"><em>p</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Establece el hijo en <span class="tt">pos</span>. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="binarytree_8h_source.html#l00248">248</a> del archivo <a class="el" href="binarytree_8h_source.html">binarytree.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="binarytree_8h_source.html#l00206">m_pChild</a> y <a class="el" href="binarytree_8h_source.html#l00210">Node()</a>.</p>
+
+</div>
+</div>
+<a id="ab02e2be86d9a10926d53c01d2c1b7382" name="ab02e2be86d9a10926d53c01d2c1b7382"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab02e2be86d9a10926d53c01d2c1b7382">&#9670;&#160;</a></span>setData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_binary_tree.html">BinaryTree</a>&lt; Traits &gt;::Node::setData </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_binary_tree.html#aa93fcdede5e78d483e4ad70699281fe7">value_type</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>d</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="binarytree_8h_source.html#l00238">238</a> del archivo <a class="el" href="binarytree_8h_source.html">binarytree.h</a>.</p>
+
+</div>
+</div>
+<a id="ae02b183b9f2a6a13e38f2a3bb9b7b118" name="ae02b183b9f2a6a13e38f2a3bb9b7b118"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae02b183b9f2a6a13e38f2a3bb9b7b118">&#9670;&#160;</a></span>setParent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_binary_tree.html">BinaryTree</a>&lt; Traits &gt;::Node::setParent </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#ac8e948d7a3c6877595fd8968e53ee60c">Node</a> *</td>          <td class="paramname"><span class="paramname"><em>p</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="binarytree_8h_source.html#l00251">251</a> del archivo <a class="el" href="binarytree_8h_source.html">binarytree.h</a>.</p>
+
+</div>
+</div>
+<a id="a115e4cc67262aa01152db99a843bf298" name="a115e4cc67262aa01152db99a843bf298"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a115e4cc67262aa01152db99a843bf298">&#9670;&#160;</a></span>setRef()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_binary_tree.html">BinaryTree</a>&lt; Traits &gt;::Node::setRef </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="types_8h.html#adc90a1f57313299de575a8b66526a96a">Ref</a></td>          <td class="paramname"><span class="paramname"><em>r</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="binarytree_8h_source.html#l00241">241</a> del archivo <a class="el" href="binarytree_8h_source.html">binarytree.h</a>.</p>
+
+</div>
+</div>
+<a id="a49ad6fb1436a639affc70fbba349ef26" name="a49ad6fb1436a639affc70fbba349ef26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49ad6fb1436a639affc70fbba349ef26">&#9670;&#160;</a></span>to_string()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string <a class="el" href="class_binary_tree.html">BinaryTree</a>&lt; Traits &gt;::Node::to_string </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Representación textual del nodo. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="binarytree_8h_source.html#l00254">254</a> del archivo <a class="el" href="binarytree_8h_source.html">binarytree.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="binarytree_8h_source.html#l00204">m_data</a> y <a class="el" href="binarytree_8h_source.html#l00205">m_ref</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="binarytree_8h_source.html#l00261">operator&lt;&lt;</a>.</p>
+
+</div>
+</div>
+<a name="doc-related-members" id="doc-related-members"></a><h2 id="header-doc-related-members" class="groupheader">Documentación de símbolos amigos y relacionados</h2>
+<a id="a5600a71d74fc411fdc6b07e8eea05021" name="a5600a71d74fc411fdc6b07e8eea05021"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5600a71d74fc411fdc6b07e8eea05021">&#9670;&#160;</a></span>operator&lt;&lt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ostream &amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">ostream &amp;</td>          <td class="paramname"><span class="paramname"><em>os</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="#ac8e948d7a3c6877595fd8968e53ee60c">Node</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>n</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel friend">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Operador <span class="tt">&lt;&lt;</span> por stream. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="binarytree_8h_source.html#l00261">261</a> del archivo <a class="el" href="binarytree_8h_source.html">binarytree.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="binarytree_8h_source.html#l00210">Node()</a> y <a class="el" href="binarytree_8h_source.html#l00254">to_string()</a>.</p>
+
+</div>
+</div>
+<a id="a1b979331ec3a0662340935af538d58e4" name="a1b979331ec3a0662340935af538d58e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b979331ec3a0662340935af538d58e4">&#9670;&#160;</a></span>operator&gt;&gt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">istream &amp; operator&gt;&gt; </td>
+          <td>(</td>
+          <td class="paramtype">istream &amp;</td>          <td class="paramname"><span class="paramname"><em>is</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#ac8e948d7a3c6877595fd8968e53ee60c">Node</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>n</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel friend">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Operador <span class="tt">&gt;&gt;</span> desde stream (formato <span class="tt">dato ref</span> por línea). </p>
+
+<p class="definition">Definición en la línea <a class="el" href="binarytree_8h_source.html#l00266">266</a> del archivo <a class="el" href="binarytree_8h_source.html">binarytree.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="binarytree_8h_source.html#l00204">m_data</a>, <a class="el" href="binarytree_8h_source.html#l00205">m_ref</a> y <a class="el" href="binarytree_8h_source.html#l00210">Node()</a>.</p>
+
+</div>
+</div>
+<a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Documentación de datos miembro</h2>
+<a id="a765c1f2d87c4192bdc7d1771eb7c517c" name="a765c1f2d87c4192bdc7d1771eb7c517c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a765c1f2d87c4192bdc7d1771eb7c517c">&#9670;&#160;</a></span>m_data</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_binary_tree.html#aa93fcdede5e78d483e4ad70699281fe7">value_type</a> <a class="el" href="class_binary_tree.html">BinaryTree</a>&lt; Traits &gt;::Node::m_data</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Dato almacenado. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="binarytree_8h_source.html#l00204">204</a> del archivo <a class="el" href="binarytree_8h_source.html">binarytree.h</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="binarytree_8h_source.html#l00216">Node()</a>, <a class="el" href="binarytree_8h_source.html#l00210">Node()</a>, <a class="el" href="binarytree_8h_source.html#l00266">operator&gt;&gt;</a> y <a class="el" href="binarytree_8h_source.html#l00254">to_string()</a>.</p>
+
+</div>
+</div>
+<a id="a0f4133213dd527ccea9fe4a041d33ed8" name="a0f4133213dd527ccea9fe4a041d33ed8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f4133213dd527ccea9fe4a041d33ed8">&#9670;&#160;</a></span>m_pChild</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#ac8e948d7a3c6877595fd8968e53ee60c">Node</a>* <a class="el" href="class_binary_tree.html">BinaryTree</a>&lt; Traits &gt;::Node::m_pChild[2]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Hijos [0]=izq, [1]=der. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="binarytree_8h_source.html#l00206">206</a> del archivo <a class="el" href="binarytree_8h_source.html">binarytree.h</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="binarytree_8h_source.html#l00244">getChild()</a>, <a class="el" href="binarytree_8h_source.html#l00246">getChildRef()</a>, <a class="el" href="binarytree_8h_source.html#l00216">Node()</a>, <a class="el" href="binarytree_8h_source.html#l00210">Node()</a>, <a class="el" href="binarytree_8h_source.html#l00224">Node()</a>, <a class="el" href="binarytree_8h_source.html#l00248">setChild()</a> y <a class="el" href="binarytree_8h_source.html#l00234">~Node()</a>.</p>
+
+</div>
+</div>
+<a id="a6b1c2bb50d1e41b894d57f5eaf85ffff" name="a6b1c2bb50d1e41b894d57f5eaf85ffff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b1c2bb50d1e41b894d57f5eaf85ffff">&#9670;&#160;</a></span>m_pParent</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#ac8e948d7a3c6877595fd8968e53ee60c">Node</a>* <a class="el" href="class_binary_tree.html">BinaryTree</a>&lt; Traits &gt;::Node::m_pParent</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Padre (no usado en todas las ops). </p>
+
+<p class="definition">Definición en la línea <a class="el" href="binarytree_8h_source.html#l00207">207</a> del archivo <a class="el" href="binarytree_8h_source.html">binarytree.h</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="binarytree_8h_source.html#l00216">Node()</a> y <a class="el" href="binarytree_8h_source.html#l00210">Node()</a>.</p>
+
+</div>
+</div>
+<a id="a995da70a5dd1a549f6796323f7504fa4" name="a995da70a5dd1a549f6796323f7504fa4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a995da70a5dd1a549f6796323f7504fa4">&#9670;&#160;</a></span>m_ref</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#adc90a1f57313299de575a8b66526a96a">Ref</a> <a class="el" href="class_binary_tree.html">BinaryTree</a>&lt; Traits &gt;::Node::m_ref</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Identificador asociado. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="binarytree_8h_source.html#l00205">205</a> del archivo <a class="el" href="binarytree_8h_source.html">binarytree.h</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="binarytree_8h_source.html#l00216">Node()</a>, <a class="el" href="binarytree_8h_source.html#l00210">Node()</a>, <a class="el" href="binarytree_8h_source.html#l00266">operator&gt;&gt;</a> y <a class="el" href="binarytree_8h_source.html#l00254">to_string()</a>.</p>
+
+</div>
+</div>
+<hr/>La documentación de esta estructura está generada del siguiente archivo:<ul>
+<li><a class="el" href="binarytree_8h_source.html">binarytree.h</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="class_binary_tree.html">BinaryTree</a></li><li class="navelem"><a href="struct_binary_tree_1_1_node.html">Node</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

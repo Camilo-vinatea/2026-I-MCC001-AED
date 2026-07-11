@@ -1,0 +1,12 @@
+<map id="binarytree.h" name="binarytree.h">
+<area shape="rect" id="Node000001" title="Árbol binario de búsqueda (BST) genérico basado en políticas." alt="" coords="154,5,244,32"/>
+<area shape="rect" id="Node000002" href="$_demo_binary_tree_8cpp.html" title="Demo del BST: inserciones, 6 recorridos, copia/movimiento, persistencia y comparador descendente." alt="" coords="5,80,150,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,42,100,82,97,77,166,38"/>
+<area shape="rect" id="Node000003" href="$avl_8h.html" title="Árbol AVL (BST auto&#45;balanceado) basado en BinaryTree (Template Method)." alt="" coords="174,80,224,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="200,46,201,81,196,78,197,50"/>
+<area shape="rect" id="Node000005" href="$main_8cpp_source.html" title=" " alt="" coords="224,155,299,181"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="217,42,239,79,253,120,261,156,257,153,248,121,234,81,215,47"/>
+<area shape="rect" id="Node000004" href="$_demo_a_v_l_8cpp.html" title="Demo del AVL: inserción 1..7 (caso degenerado), asserts y comparador descendente." alt="" coords="96,155,201,181"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="184,118,159,156,155,152,179,121"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="221,116,253,155,248,154,219,121"/>
+</map>

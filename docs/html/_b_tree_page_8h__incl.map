@@ -1,0 +1,24 @@
+<map id="BTreePage.h" name="BTreePage.h">
+<area shape="rect" id="Node000001" title="Página del B&#45;Tree (CBTreePage), políticas, iterador y algoritmos auxiliares (búsqueda binaria,..." alt="" coords="313,5,411,32"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,80,63,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="310,30,209,52,78,82,77,77,208,47,315,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="86,80,158,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="318,34,174,79,172,74,322,31"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="181,80,250,107"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="339,31,256,75,253,70,334,34"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="274,80,356,107"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="356,31,333,69,330,65,352,34"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="380,80,437,107"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="371,30,395,68,390,66,369,35"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="549,155,623,181"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="411,22,446,28,483,39,519,55,552,78,572,107,583,141,579,138,568,110,548,82,517,60,481,44,445,33,411,27"/>
+<area shape="rect" id="Node000008" href="$types_8h.html" title="Aliases de tipos y tamaños portables para toda la librería." alt="" coords="461,80,538,107"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="386,30,465,72,459,72,385,35"/>
+<area shape="rect" id="Node000010" href="$general__iterator_8h.html" title="Iterador genérico base (CRTP) usado por todos los contenedores." alt="" coords="613,80,735,107"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="411,29,607,75,602,77,411,34"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="471,155,525,181"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="501,105,501,141,496,137,497,109"/>
+<area shape="poly" id="edge10_Node000010_Node000007" title=" " alt="" coords="661,106,614,147,612,142,656,108"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="648,155,700,181"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="676,105,676,141,672,137,672,109"/>
+</map>

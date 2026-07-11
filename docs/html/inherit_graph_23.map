@@ -1,0 +1,27 @@
+<map id="Gráfico de jerarquía de clases" name="Gráfico de jerarquía de clases">
+<area shape="rect" id="Node000000" href="$classgeneral__iterator.html" title="Plantilla CRTP para iteradores uniformes en todos los contenedores." alt="" coords="5,468,188,511"/>
+<area shape="rect" id="Node000001" href="$class_b_tree_iterator.html" title=" " alt="" coords="241,5,448,64"/>
+<area shape="poly" id="edge12_Node000000_Node000001" title=" " alt="" coords="97,452,107,375,129,274,146,221,169,168,198,119,234,74,250,62,248,67,238,78,203,122,174,171,151,223,134,276,112,376,103,453"/>
+<area shape="rect" id="Node000002" href="$class_b_tree_iterator.html" title=" " alt="" coords="236,88,454,147"/>
+<area shape="poly" id="edge13_Node000000_Node000002" title=" " alt="" coords="101,452,115,389,140,310,157,269,178,229,204,191,234,157,251,145,248,150,238,161,208,194,183,231,162,271,145,312,120,390,106,453"/>
+<area shape="rect" id="Node000003" href="$class_binary_tree_iterator.html" title=" " alt="" coords="249,171,441,229"/>
+<area shape="poly" id="edge14_Node000000_Node000003" title=" " alt="" coords="106,452,125,405,152,348,188,290,234,239,253,228,250,232,237,243,192,293,156,350,129,407,112,454"/>
+<area shape="rect" id="Node000004" href="$class_binary_tree_iterator.html" title=" " alt="" coords="243,253,446,312"/>
+<area shape="poly" id="edge15_Node000000_Node000004" title=" " alt="" coords="116,454,165,387,198,352,234,322,256,310,253,315,237,326,202,356,170,391,121,456"/>
+<area shape="rect" id="Node000005" href="$class_binary_tree_iterator.html" title=" " alt="" coords="249,336,441,395"/>
+<area shape="poly" id="edge16_Node000000_Node000005" title=" " alt="" coords="141,458,234,404,263,393,259,397,237,409,145,461"/>
+<area shape="rect" id="Node000006" href="$class_binary_tree_iterator.html" title=" " alt="" coords="243,419,446,477"/>
+<area shape="poly" id="edge17_Node000000_Node000006" title=" " alt="" coords="202,469,245,463,241,467,205,474"/>
+<area shape="rect" id="Node000007" href="$class_binary_tree_iterator.html" title=" " alt="" coords="249,501,441,560"/>
+<area shape="poly" id="edge18_Node000000_Node000007" title=" " alt="" coords="202,505,251,513,246,516,204,510"/>
+<area shape="rect" id="Node000008" href="$class_binary_tree_iterator.html" title=" " alt="" coords="243,584,446,643"/>
+<area shape="poly" id="edge19_Node000000_Node000008" title=" " alt="" coords="143,516,237,570,264,583,258,584,234,574,143,522"/>
+<area shape="rect" id="Node000009" href="$class_double_linked_list_backward_iterator.html" title=" " alt="" coords="255,667,434,709"/>
+<area shape="poly" id="edge20_Node000000_Node000009" title=" " alt="" coords="118,521,168,589,201,623,237,652,259,666,254,667,234,657,197,627,164,592,118,526"/>
+<area shape="rect" id="Node000010" href="$class_linked_list_forward_iterator.html" title=" " alt="" coords="261,733,429,776"/>
+<area shape="poly" id="edge21_Node000000_Node000010" title=" " alt="" coords="110,523,131,569,157,622,193,674,237,719,263,736,258,736,234,723,189,678,153,625,126,572,110,528"/>
+<area shape="rect" id="Node000011" href="$classvector__backward__iterator.html" title=" " alt="" coords="261,800,428,843"/>
+<area shape="poly" id="edge22_Node000000_Node000011" title=" " alt="" coords="105,523,122,582,147,653,185,725,209,757,237,786,263,804,258,804,234,790,205,761,181,727,142,655,117,584,104,528"/>
+<area shape="rect" id="Node000012" href="$classvector__forward__iterator.html" title=" " alt="" coords="268,867,422,909"/>
+<area shape="poly" id="edge23_Node000000_Node000012" title=" " alt="" coords="102,523,115,595,138,683,155,729,178,774,205,816,237,853,270,874,265,874,234,857,200,819,173,777,151,731,133,685,110,596,101,529"/>
+</map>

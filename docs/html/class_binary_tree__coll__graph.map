@@ -1,0 +1,6 @@
+<map id="BinaryTree&lt; Traits &gt;" name="BinaryTree&lt; Traits &gt;">
+<area shape="rect" id="Node000001" title="Árbol binario de búsqueda con nodo anidado dentro del contenedor." alt="" coords="5,123,146,149"/>
+<area shape="rect" id="Node000002" href="$struct_binary_tree_1_1_node.html" title="Nodo del BST: dato, Ref, dos hijos y puntero al padre." alt="" coords="11,7,140,49"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="78,63,78,123,73,122,73,66"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="155,17,166,28,158,37,141,41,139,36,156,33,161,28,155,23"/>
+</map>

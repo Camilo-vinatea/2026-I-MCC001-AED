@@ -1,3 +1,7 @@
+//! @file DemoVector.cpp
+//! @brief Demos del Vector: secuencial y concurrente.
+//! @author Equipo MCC
+
 #include <iostream>
 #include <thread>
 #include <mutex>
@@ -5,33 +9,39 @@
 
 using namespace std;
 
+//! @brief Lambda: imprime el nodo seguido de coma.
 template <typename Node>
 void Print(Node &value, ostream& os){
     os << value << ",";
 }
 
+//! @brief Lambda: incrementa el dato (con `mutex` interno).
 template <typename Node>
-void AddOne(Node &node){    
+void AddOne(Node &node){
     static mutex mtx;
     scoped_lock<mutex> lock(mtx);
     ++node;
 }
 
+//! @brief Lambda: suma `x` al dato.
 template <typename T>
 void AddX(VectorNode<T> &node, T x){
     node += x;
 }
 
+//! @brief Predicado: ¿es múltiplo de `x`?
 template <typename T>
 bool IsMultipleOf(VectorNode<T> &node, T x){
     return node.GetDataRef() % x == 0;
 }
 
+//! @brief Predicado: ¿es mayor estricto a `x`?
 template <typename T>
 bool IsGreaterThan(VectorNode<T> &node, T x){
     return node.GetDataRef() > x;
 }
 
+//! @brief Demo secuencial del Vector con tres tipos (int, double, string).
 void DemoVector(){
     Vector< VectorTraits<TI> > v1;
 
@@ -47,7 +57,7 @@ void DemoVector(){
     v1.ForEach(AddOne<TI>);
     v1.ForEach(Print<TI>, cout);
     cout << endl;
-    
+
     v1.ForEach(AddX<TI>, 10);
     v1.ForEach(Print<TI>, cout);
     cout << endl;
@@ -56,11 +66,11 @@ void DemoVector(){
     v1.ForEach(Print<TI>, cout);
     cout << endl << a << endl;
 
-    // Vector<TI>::forward_iterator it = v1.FirstThat(IsMultipleOf<TI>, 21);
+    //! @test `FirstThat` con predicado `IsMultipleOf<TI>` (forward).
     auto it = v1.FirstThat(IsMultipleOf<TI>, 21);
     if (it != v1.end())
         cout << "Primer multiplo de 21: " << *it << endl;
-    // Vector<TI>::backward_iterator it2 = v1.ReverseFirstThat(IsMultipleOf<TI>, 21);
+    //! @test `ReverseFirstThat` con predicado `IsGreaterThan<TI>`.
     auto it2 = v1.ReverseFirstThat(IsGreaterThan<TI>, 100);
     if (it2 != v1.rend())
         cout << "Primer mayor a 100   : " << *it2 << endl;
@@ -68,11 +78,9 @@ void DemoVector(){
 
     cout << v1.ToString() << endl;
     cout << "Vector:" << v1 << " despues" << endl;
-//  cout.operator<<("Vector:");
-//  ==========================
-//               cout << v1 
     cout << "Size: " << v1.size() << endl;
 
+    //! @test Vector<double>.
     Vector< VectorTraits<TD> > v2;
     v2.push_back(7.5, 1);
     v2.push_back(5.2, 2);
@@ -83,6 +91,7 @@ void DemoVector(){
     cout << v2.ToString() << endl;
     cout << "Size: " << v2.size() << endl;
 
+    //! @test Vector<string>.
     Vector< VectorTraits<TS> > v3;
     v3.push_back("Hello", 5);
     v3.push_back("World", 10);
@@ -96,7 +105,9 @@ void DemoVector(){
     cout << "Size: " << v3.size() << endl;
 }
 
-// DemoConcurrentVector
+//! @brief Demo concurrente: 5 hilos incrementan 4 elementos 100.000 veces c/u.
+//! @details Sin sincronización existe race condition en los contadores; el
+//!          resultado esperado con sincronización sería 500.000 por elemento.
 void DemoConcurrentVector(){
     Vector< VectorTraits<TI> > v(4);
     v.push_back(0, 0);
@@ -104,8 +115,6 @@ void DemoConcurrentVector(){
     v.push_back(0, 0);
     v.push_back(0, 0);
 
-    // Cada thread itera el vector 100,000 veces e incrementa cada elemento
-    // Sin sincronizacion → race condition en los contadores
     auto worker = [&v](int thread_id){
         for(int i = 0; i < 100000; i++)
             v.ForEach(AddOne<TI>);
@@ -120,6 +129,5 @@ void DemoConcurrentVector(){
 
     t1.join(); t2.join(); t3.join(); t4.join(); t5.join();
 
-    // Resultado esperado sin race condition: 4 elementos * 100000 * 5 threads = 500000
     cout << "Resultado (esperado 500000): " << v << endl;
 }

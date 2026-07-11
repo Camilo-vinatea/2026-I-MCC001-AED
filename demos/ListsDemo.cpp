@@ -1,28 +1,41 @@
+//! @file ListsDemo.cpp
+//! @brief Demo de `LinkedList`: inserciones, `ForEach`, `FirstThat`,
+//!        push/pop front/back, copy/move, E/S y `operator[]`.
+//! @author Equipo MCC
+
 #include "../containers/linkedlist.h"
 #include <fstream>
 
+using namespace std;
+
+//! @brief Lambda: imprime el nodo seguido de coma.
 template <typename Node>
 void Print(Node &node, ostream& os){
     os << node << ",";
 }
 
+//! @brief Lambda: suma `value` al dato del nodo.
 template <typename Node>
 void AddX(Node &node, typename Node::value_type value){
     node.getDataRef() += value;
 }
 
+//! @brief Lambda: suma `value1 + value2` al dato del nodo.
 template <typename Node>
 void AddY(Node &node, typename Node::value_type value1, typename Node::value_type value2){
     node.getDataRef() += value1 + value2;
 }
 
+//! @brief Predicado: ¿es estrictamente mayor que `x`?
 template <typename Node, typename T>
 bool IsGreaterThan(Node &node, T x){
     return node.getDataRef() > x;
 }
 
+//! @brief Demo completa de la `LinkedList`.
+//! @post "lista1.txt" se crea/sobre-escribe en el directorio actual.
 void LinkedListDemo(){
-    //
+    //! @test Lista descendente (comparador `greater`).
     LinkedList<TI, greater<TI>> list1;
     list1.insert(6, 15);
     list1.insert(2, 25);
@@ -31,6 +44,7 @@ void LinkedListDemo(){
     list1.insert(7, 55);
     cout << "Lista descendente: " << list1 << endl;
 
+    //! @test Lista ascendente.
     LinkedList<TI> list2;
     using LI = LinkedList<TI>::Node;
     list2.insert(6, 15);
@@ -40,6 +54,7 @@ void LinkedListDemo(){
     list2.insert(7, 55);
     cout << "Lista ascendente : " << list2 << endl;
 
+    //! @test `ForEach` con un argumento.
     list2.ForEach(AddX<LI>, 3);
     cout << "Prueba ForEach + 3: " << endl;
     list2.ForEach(Print<LI>, cout);
@@ -47,6 +62,7 @@ void LinkedListDemo(){
     cout << "Prueba ForEach + 10 + 11: " << endl;
     list2.ForEach(Print<LI>, cout);
 
+    //! @test `FirstThat` con predicado.
     cout << "Prueba First That: " << endl;
     auto it = list2.FirstThat(IsGreaterThan<LI, TI>, 6);
     if (it != list2.end())
@@ -86,6 +102,7 @@ void LinkedListDemo(){
     list4.~LinkedList();
     cout << "Lista ascendente 4: " << list4 << endl;
 
+    //! @test Persistencia: escribe y relee.
     cout << "Prueba del operador >>: "<<endl;
     ofstream ofs;
     ofs.open("lista1.txt");
@@ -101,6 +118,7 @@ void LinkedListDemo(){
     cout << "Lista5 [2]: " << list5[2] << endl;
 }
 
+//! @brief Punto de entrada único de los demos de listas.
 void ListsDemo(){
     LinkedListDemo();
 }

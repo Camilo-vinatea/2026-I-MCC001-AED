@@ -1,24 +1,34 @@
+//! @file DemoAVL.cpp
+//! @brief Demo del AVL: inserción 1..7 (caso degenerado), asserts y
+//!        comparador descendente.
+//! @author Equipo MCC
+
 #include <iostream>
 #include <cassert>
 #include "../containers/avl.h"
 
 using namespace std;
 
-// Imprime una linea separadora
+//! @brief Imprime una línea separadora.
+//! @param c Carácter a repetir.
+//! @param n Ancho total.
 static void separador(char c = '-', int n = 40) {
     cout << string(n, c) << "\n";
 }
 
+//! @brief Demo completa del AVL con 4 secciones:
+//!  1. Inserción 1..7 ascendente y verificación de altura óptima (3).
+//!  2. Aserciones de tamaño, altura y propiedad BST.
+//!  3. Recorridos heredados de `BinaryTree` (in/pre/postorder e inverso).
+//!  4. AVL con `DescendingTrait<TI>` para comprobar comparador invertido.
 void DemoAVL() {
     separador('=');
     cout << "  DEMO AVL - Arbol Binario Balanceado\n";
     separador('=');
 
-    // ----------------------------------------------------------------
-    // Parte 1: insercion paso a paso 1..7 en orden ascendente
-    // Un BST puro degeneraria en lista (altura 7).
-    // El AVL rebalancea automaticamente via rotaciones.
-    // ----------------------------------------------------------------
+    //! @test [1] Inserción 1..7 en orden ascendente.
+    //!        BST puro degeneraría en lista (altura 7); el AVL debe
+    //!        mantener altura 3 (⌊log₂(7)⌋+1).
     cout << "\n[1] Insercion 1..7 en orden ascendente\n";
     cout << "    (caso degenerado para BST puro => altura 7)\n";
     cout << "    El AVL debe mantener altura 3 (log2(7)+1)\n\n";
@@ -33,9 +43,7 @@ void DemoAVL() {
              << "  |  Nodos: " << avl.size() << "\n\n";
     }
 
-    // ----------------------------------------------------------------
-    // Parte 2: verificaciones de correctitud
-    // ----------------------------------------------------------------
+    //! @test [2] Verificaciones de correctitud.
     separador();
     cout << "[2] Verificaciones\n\n";
 
@@ -57,17 +65,13 @@ void DemoAVL() {
     assert(sorted);
     cout << "  Propiedad BST: OK\n";
 
-    // ----------------------------------------------------------------
-    // Parte 3: recorridos heredados de BinaryTree
-    // ----------------------------------------------------------------
+    //! @test [3] Recorridos heredados de `BinaryTree`.
     separador();
     cout << "[3] Recorridos heredados de BinaryTree\n\n";
 
     cout << "  Inorden   (LNR): ";
     for (auto& n : avl.inorder())          cout << n.getData() << " ";
     cout << "\n";
-
-    // ::ForEach(avl.inorder().begin(), avl.inorder().end(), [](Node& n){cout << n.getData() << " ";});
 
     cout << "  Preorden  (NLR): ";
     for (auto& n : avl.preorder())         cout << n.getData() << " ";
@@ -81,9 +85,7 @@ void DemoAVL() {
     for (auto& n : avl.reverse_inorder())  cout << n.getData() << " ";
     cout << "\n";
 
-    // ----------------------------------------------------------------
-    // Parte 4: AVL descendente
-    // ----------------------------------------------------------------
+    //! @test [4] AVL con comparador descendente.
     separador();
     cout << "[4] AVL con comparador Descendente (1..5)\n\n";
 

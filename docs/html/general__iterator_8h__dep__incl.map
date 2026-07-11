@@ -1,0 +1,33 @@
+<map id="general_iterator.h" name="general_iterator.h">
+<area shape="rect" id="Node000001" title="Iterador genérico base (CRTP) usado por todos los contenedores." alt="" coords="375,5,496,32"/>
+<area shape="rect" id="Node000002" href="$_b_tree_page_8h.html" title="Página del B&#45;Tree (CBTreePage), políticas, iterador y algoritmos auxiliares (búsqueda binaria,..." alt="" coords="127,80,224,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="374,38,222,82,220,77,378,35"/>
+<area shape="rect" id="Node000006" href="$binarytree_8h.html" title="Árbol binario de búsqueda (BST) genérico basado en políticas." alt="" coords="279,80,368,107"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="406,39,345,82,342,77,401,42"/>
+<area shape="rect" id="Node000010" href="$linkedlist_8h.html" title="Lista enlazada simple ordenada con nodo anidado y concurrencia." alt="" coords="451,80,534,107"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="456,42,486,80,480,79,454,47"/>
+<area shape="rect" id="Node000013" href="$vector_8h.html" title="Contenedor Vector&lt;Traits&gt; (almacenamiento contiguo dinámico)." alt="" coords="743,80,811,107"/>
+<area shape="poly" id="edge14_Node000001_Node000013" title=" " alt="" coords="510,33,745,84,740,85,510,38"/>
+<area shape="rect" id="Node000003" href="$_b_tree_8h.html" title="Contenedor B&#45;Tree con split en 3 vías, iteradores y concurrencia." alt="" coords="54,155,121,181"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="147,119,104,156,101,152,150,115"/>
+<area shape="rect" id="Node000004" href="$_b_tree_demo_8cpp.html" title="Demostración del B&#45;Tree: insertar, imprimir y recorrer." alt="" coords="5,229,122,256"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="81,195,70,230,65,228,76,198"/>
+<area shape="rect" id="Node000005" href="$main_8cpp_source.html" title=" " alt="" coords="146,229,221,256"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="117,188,170,228,164,229,115,193"/>
+<area shape="poly" id="edge10_Node000006_Node000005" title=" " alt="" coords="261,106,221,125,201,139,186,156,178,174,177,193,182,230,177,228,171,194,173,173,181,153,198,135,218,120,266,103"/>
+<area shape="rect" id="Node000007" href="$_demo_binary_tree_8cpp.html" title="Demo del BST: inserciones, 6 recorridos, copia/movimiento, persistencia y comparador descendente." alt="" coords="195,155,340,181"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="307,118,279,156,275,152,302,121"/>
+<area shape="rect" id="Node000008" href="$avl_8h.html" title="Árbol AVL (BST auto&#45;balanceado) basado en BinaryTree (Template Method)." alt="" coords="364,155,414,181"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="346,116,380,155,375,154,344,121"/>
+<area shape="poly" id="edge9_Node000008_Node000005" title=" " alt="" coords="352,183,220,231,219,226,347,183"/>
+<area shape="rect" id="Node000009" href="$_demo_a_v_l_8cpp.html" title="Demo del AVL: inserción 1..7 (caso degenerado), asserts y comparador descendente." alt="" coords="336,229,442,256"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="391,195,391,231,387,227,387,199"/>
+<area shape="rect" id="Node000011" href="$_lists_demo_8cpp.html" title="Demo de LinkedList: inserciones, ForEach, FirstThat, push/pop front/back, copy/move,..." alt="" coords="438,155,548,181"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="495,120,495,156,491,153,491,125"/>
+<area shape="rect" id="Node000012" href="$doublelinkedlist_8h.html" title="Lista doblemente enlazada ordenada que hereda de LinkedList." alt="" coords="572,155,694,181"/>
+<area shape="poly" id="edge13_Node000010_Node000012" title=" " alt="" coords="531,112,611,154,606,154,530,117"/>
+<area shape="rect" id="Node000014" href="$_demo_vector_8cpp.html" title="Demos del Vector: secuencial y concurrente." alt="" coords="718,155,836,181"/>
+<area shape="poly" id="edge15_Node000013_Node000014" title=" " alt="" coords="779,121,779,156,775,153,775,124"/>
+<area shape="rect" id="Node000015" href="$heap_8h.html" title="Implementación de un Heap (min&#45;heap/max&#45;heap) sobre std::vector." alt="" coords="860,155,920,181"/>
+<area shape="poly" id="edge16_Node000013_Node000015" title=" " alt="" coords="810,113,873,154,868,154,809,118"/>
+</map>

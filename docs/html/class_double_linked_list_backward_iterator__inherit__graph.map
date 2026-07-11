@@ -1,0 +1,9 @@
+<map id="DoubleLinkedListBackwardIterator&lt; Container &gt;" name="DoubleLinkedListBackwardIterator&lt; Container &gt;">
+<area shape="rect" id="Node000001" title="Iterador que recorre la DLL usando m_pPrev." alt="" coords="28,249,207,292"/>
+<area shape="rect" id="Node000004" href="$class_double_linked_list_backward_iterator.html" title=" " alt="" coords="28,364,207,407"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="119,306,120,364,115,363,116,309"/>
+<area shape="rect" id="Node000002" href="$classgeneral__iterator.html" title=" " alt="" coords="5,141,230,200"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="118,213,120,250,115,249,117,218"/>
+<area shape="rect" id="Node000003" href="$classgeneral__iterator.html" title="Plantilla CRTP para iteradores uniformes en todos los contenedores." alt="" coords="26,5,209,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="118,61,120,141,115,140,117,66"/>
+</map>

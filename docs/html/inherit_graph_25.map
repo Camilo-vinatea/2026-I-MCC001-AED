@@ -1,0 +1,5 @@
+<map id="Gráfico de jerarquía de clases" name="Gráfico de jerarquía de clases">
+<area shape="rect" id="Node000000" href="$classgeneral__iterator.html" title=" " alt="" coords="5,5,188,64"/>
+<area shape="rect" id="Node000001" href="$classvector__backward__iterator.html" title="Iterador hacia atrás para Vector (decrementa el puntero)." alt="" coords="236,13,403,56"/>
+<area shape="poly" id="edge25_Node000000_Node000001" title=" " alt="" coords="203,32,238,34,232,35,203,37"/>
+</map>

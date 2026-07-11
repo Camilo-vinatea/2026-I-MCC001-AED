@@ -1,0 +1,358 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Estructuras de Datos - MCC: Archivo de código fuente vector.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Estructuras de Datos - MCC<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">Colección pedagógica de contenedores en C++ (Lista, Heap, Vector, BST, AVL, B-Tree)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('vector_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">vector.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="vector_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#ifndef __VECTOR_H__</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#define __VECTOR_H__</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;cstddef&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;mutex&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="general__iterator_8h.html">general_iterator.h</a>&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;<a class="code" href="types_8h.html">../types.h</a>&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="foreach_8h.html">../foreach.h</a>&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="basetrait_8h.html">basetrait.h</a>&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Container&gt;</div>
+<div class="foldopen" id="foldopen00023" data-start="{" data-end="};">
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classvector__forward__iterator.html">   23</a></span><span class="keyword">class </span><a class="code hl_class" href="classvector__forward__iterator.html">vector_forward_iterator</a></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    : <span class="keyword">public</span> <a class="code hl_function" href="classgeneral__iterator.html#a14b696a42ecf1cb1d4e74a8ebd4d5617">general_iterator</a>&lt;Container, vector_forward_iterator&lt;Container&gt;&gt;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>{</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keyword">using </span>MySelf = <a class="code hl_class" href="classvector__forward__iterator.html">vector_forward_iterator&lt;Container&gt;</a>;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">using </span>Parent = <a class="code hl_function" href="classgeneral__iterator.html#a14b696a42ecf1cb1d4e74a8ebd4d5617">general_iterator&lt;Container, MySelf&gt;</a>;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keyword">using </span>Parent::Parent;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classvector__forward__iterator.html#a51b615b7a8f091c26a7c72d51218c1b4">   31</a></span>    MySelf <a class="code hl_function" href="classvector__forward__iterator.html#a51b615b7a8f091c26a7c72d51218c1b4">operator++</a>() { this-&gt;<a class="code hl_variable" href="classgeneral__iterator.html#ad014839b3798336c6ea88ddd00c62014">m_pNode</a>++; <span class="keywordflow">return</span> *<span class="keyword">this</span>; }</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>};</div>
+</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Container&gt;</div>
+<div class="foldopen" id="foldopen00037" data-start="{" data-end="};">
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classvector__backward__iterator.html">   37</a></span><span class="keyword">class </span><a class="code hl_class" href="classvector__backward__iterator.html">vector_backward_iterator</a></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    : <span class="keyword">public</span> <a class="code hl_function" href="classgeneral__iterator.html#a14b696a42ecf1cb1d4e74a8ebd4d5617">general_iterator</a>&lt;Container, vector_backward_iterator&lt;Container&gt;&gt;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>{</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keyword">using </span>MySelf = <a class="code hl_class" href="classvector__backward__iterator.html">vector_backward_iterator&lt;Container&gt;</a>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keyword">using </span>Parent = <a class="code hl_function" href="classgeneral__iterator.html#a14b696a42ecf1cb1d4e74a8ebd4d5617">general_iterator&lt;Container, MySelf&gt;</a>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keyword">using </span>Parent::Parent;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="classvector__backward__iterator.html#a596154a1b55a38b23fa3327362b1479d">   45</a></span>    MySelf <a class="code hl_function" href="classvector__backward__iterator.html#a596154a1b55a38b23fa3327362b1479d">operator++</a>() { this-&gt;<a class="code hl_variable" href="classgeneral__iterator.html#ad014839b3798336c6ea88ddd00c62014">m_pNode</a>--; <span class="keywordflow">return</span> *<span class="keyword">this</span>; }</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>};</div>
+</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Traits&gt;</div>
+<div class="foldopen" id="foldopen00052" data-start="{" data-end="};">
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="struct_vector_node.html">   52</a></span><span class="keyword">struct </span><a class="code hl_function" href="struct_vector_node.html#ad7511b5a0f2d627661b57e392f6dd8bb">VectorNode</a>{</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keyword">using </span>value_type = <span class="keyword">typename</span> Traits::value_type;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="struct_vector_node.html#ae4fb6fc733d87f8d072a039e6f39039d">   55</a></span>    value_type   <a class="code hl_variable" href="struct_vector_node.html#ae4fb6fc733d87f8d072a039e6f39039d">m_data</a>;           </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="struct_vector_node.html#ad393e4c6ee8f3da4396c48f2b082d1d2">   56</a></span>    <a class="code hl_typedef" href="types_8h.html#adc90a1f57313299de575a8b66526a96a">Ref</a>          <a class="code hl_variable" href="struct_vector_node.html#ad393e4c6ee8f3da4396c48f2b082d1d2">m_ref</a>;            </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="struct_vector_node.html#ad7511b5a0f2d627661b57e392f6dd8bb">   59</a></span>    <a class="code hl_function" href="struct_vector_node.html#ad7511b5a0f2d627661b57e392f6dd8bb">VectorNode</a>() : <a class="code hl_variable" href="struct_vector_node.html#ae4fb6fc733d87f8d072a039e6f39039d">m_data</a>(value_type()), <a class="code hl_variable" href="struct_vector_node.html#ad393e4c6ee8f3da4396c48f2b082d1d2">m_ref</a>(<a class="code hl_typedef" href="types_8h.html#adc90a1f57313299de575a8b66526a96a">Ref</a>()) {}</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="struct_vector_node.html#a48d55a0f2d7a0ba5ac149967de31847f">   61</a></span>    <a class="code hl_function" href="struct_vector_node.html#a48d55a0f2d7a0ba5ac149967de31847f">VectorNode</a>(value_type data, <a class="code hl_typedef" href="types_8h.html#adc90a1f57313299de575a8b66526a96a">Ref</a> ref) : <a class="code hl_variable" href="struct_vector_node.html#ae4fb6fc733d87f8d072a039e6f39039d">m_data</a>(data), <a class="code hl_variable" href="struct_vector_node.html#ad393e4c6ee8f3da4396c48f2b082d1d2">m_ref</a>(ref) {}</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span></div>
+<div class="foldopen" id="foldopen00064" data-start="{" data-end="}">
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="struct_vector_node.html#ae56c6dd623d9fa0f67d5bbcb94c52daf">   64</a></span>    <span class="keywordtype">string</span> <a class="code hl_function" href="struct_vector_node.html#ae56c6dd623d9fa0f67d5bbcb94c52daf">ToString</a>(){</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        ostringstream oss;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        oss &lt;&lt; <span class="stringliteral">&quot;(&quot;</span> &lt;&lt; <a class="code hl_variable" href="struct_vector_node.html#ae4fb6fc733d87f8d072a039e6f39039d">m_data</a> &lt;&lt; <span class="stringliteral">&quot;,&quot;</span> &lt;&lt; <a class="code hl_variable" href="struct_vector_node.html#ad393e4c6ee8f3da4396c48f2b082d1d2">m_ref</a> &lt;&lt; <span class="stringliteral">&quot;)&quot;</span>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keywordflow">return</span> oss.str();</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    }</div>
+</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="struct_vector_node.html#a47cc8c6b3b1eec7576c676a0a416d99d">   70</a></span>    value_type  <a class="code hl_function" href="struct_vector_node.html#a47cc8c6b3b1eec7576c676a0a416d99d">GetData</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="struct_vector_node.html#ae4fb6fc733d87f8d072a039e6f39039d">m_data</a>; }</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="struct_vector_node.html#a80b3974a6ffdfcc375ffe16dca047242">   72</a></span>    value_type&amp; <a class="code hl_function" href="struct_vector_node.html#a80b3974a6ffdfcc375ffe16dca047242">GetDataRef</a>()    { <span class="keywordflow">return</span> <a class="code hl_variable" href="struct_vector_node.html#ae4fb6fc733d87f8d072a039e6f39039d">m_data</a>; }</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="struct_vector_node.html#aeadd5ba2f961bd3064b0f23b879ebbfd">   74</a></span>    <a class="code hl_typedef" href="types_8h.html#adc90a1f57313299de575a8b66526a96a">Ref</a> <a class="code hl_function" href="struct_vector_node.html#aeadd5ba2f961bd3064b0f23b879ebbfd">GetRef</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="struct_vector_node.html#ad393e4c6ee8f3da4396c48f2b082d1d2">m_ref</a>; }</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="struct_vector_node.html#a6185a133f3b54a11bfa71e3d3ed947d1">   76</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="struct_vector_node.html#a6185a133f3b54a11bfa71e3d3ed947d1">operator++</a>() { ++<a class="code hl_variable" href="struct_vector_node.html#ae4fb6fc733d87f8d072a039e6f39039d">m_data</a>; }</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="struct_vector_node.html#a2c1da7a6aa159d1fff70feaf88fad782">   78</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="struct_vector_node.html#a2c1da7a6aa159d1fff70feaf88fad782">operator+=</a>(<span class="keyword">const</span> value_type&amp; value) { <a class="code hl_variable" href="struct_vector_node.html#ae4fb6fc733d87f8d072a039e6f39039d">m_data</a> += value; }</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>};</div>
+</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="struct_vector_traits.html">   84</a></span><span class="keyword">struct </span><a class="code hl_struct" href="struct_vector_traits.html">VectorTraits</a> : <span class="keyword">public</span> <a class="code hl_struct" href="struct_base_container_trait.html">BaseContainerTrait</a>&lt;T, VectorNode&lt;T&gt;&gt;{};</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Traits&gt;</div>
+<div class="foldopen" id="foldopen00088" data-start="{" data-end="}">
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="vector_8h.html#a0ee7a99338680f0f6ff5c8e1091b90f6">   88</a></span>ostream&amp; <a class="code hl_function" href="vector_8h.html#a0ee7a99338680f0f6ff5c8e1091b90f6">operator&lt;&lt;</a>(ostream&amp; os, <a class="code hl_struct" href="struct_vector_node.html">VectorNode&lt;Traits&gt;</a>&amp; vn){</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordflow">return</span> os &lt;&lt; vn.<a class="code hl_function" href="struct_vector_node.html#ae56c6dd623d9fa0f67d5bbcb94c52daf">ToString</a>();</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>}</div>
+</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Traits&gt;</div>
+<div class="foldopen" id="foldopen00096" data-start="{" data-end="};">
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="class_vector.html">   96</a></span><span class="keyword">class </span><a class="code hl_function" href="class_vector.html#a22e10b4750d00ac0e36a6ecfdca55c5a">Vector</a>{</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keyword">using </span>value_type        = <span class="keyword">typename</span> Traits::value_type;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keyword">using </span>Node              = <span class="keyword">typename</span> Traits::Node;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keyword">using </span>MySelf            = <a class="code hl_function" href="class_vector.html#a22e10b4750d00ac0e36a6ecfdca55c5a">Vector&lt;Traits&gt;</a>;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keyword">using </span>forward_iterator  = <a class="code hl_class" href="classvector__forward__iterator.html">vector_forward_iterator&lt;MySelf&gt;</a>;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keyword">using </span>backward_iterator = <a class="code hl_class" href="classvector__backward__iterator.html">vector_backward_iterator&lt;MySelf&gt;</a>;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    Node  *m_data;       </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="keywordtype">size_t</span> m_size;       </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="keywordtype">size_t</span> m_capacity;   </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    mutex  m_mtx;        </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keywordtype">void</span> resize();</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    <a class="code hl_function" href="class_vector.html#a22e10b4750d00ac0e36a6ecfdca55c5a">Vector</a>(<span class="keywordtype">size_t</span> capacity = 10);</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <a class="code hl_function" href="class_vector.html#a0eaa6bad1fcc33208dc454d4ebeb9428">~Vector</a>();</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_vector.html#a84e3575a9b72eed581466063e2deedae">push_back</a>(value_type value, <a class="code hl_typedef" href="types_8h.html#adc90a1f57313299de575a8b66526a96a">Ref</a> ref);</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <span class="keywordtype">size_t</span> <a class="code hl_function" href="class_vector.html#a440a451a7f10dfa6ff48fa6629099631">size</a>();</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <span class="keywordtype">string</span> <a class="code hl_function" href="class_vector.html#aafa6562b35142ceaa0de1d8b642579d9">ToString</a>();</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno"><a class="line" href="class_vector.html#a18556f17599b8e6eb8e431dddce73b57">  132</a></span>    forward_iterator  <a class="code hl_function" href="class_vector.html#a18556f17599b8e6eb8e431dddce73b57">begin</a>()  { <span class="keywordflow">return</span> forward_iterator(<span class="keyword">this</span>, m_data); }</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno"><a class="line" href="class_vector.html#a266127da95c290db526cac424ef50dac">  134</a></span>    forward_iterator  <a class="code hl_function" href="class_vector.html#a266127da95c290db526cac424ef50dac">end</a>()    { <span class="keywordflow">return</span> forward_iterator(<span class="keyword">this</span>, m_data + m_size); }</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno"><a class="line" href="class_vector.html#a49a6ec67e141ffcdd04abf27be67f72f">  136</a></span>    backward_iterator <a class="code hl_function" href="class_vector.html#a49a6ec67e141ffcdd04abf27be67f72f">rbegin</a>() { <span class="keywordflow">return</span> backward_iterator(<span class="keyword">this</span>, m_data + m_size - 1); }</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno"><a class="line" href="class_vector.html#ace322121c8c304ac699f50a8e3f03c18">  138</a></span>    backward_iterator <a class="code hl_function" href="class_vector.html#ace322121c8c304ac699f50a8e3f03c18">rend</a>()   { <span class="keywordflow">return</span> backward_iterator(<span class="keyword">this</span>, m_data - 1); }</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span></div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Func, <span class="keyword">typename</span>... Args&gt;</div>
+<div class="foldopen" id="foldopen00142" data-start="{" data-end="}">
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="class_vector.html#ab66d6f398b3f0255f2a6ff4542db087b">  142</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_vector.html#ab66d6f398b3f0255f2a6ff4542db087b">ForEach</a>(Func func, Args &amp;&amp;... args){</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        <a class="code hl_function" href="class_vector.html#ab66d6f398b3f0255f2a6ff4542db087b">::ForEach</a>(<a class="code hl_function" href="class_vector.html#a18556f17599b8e6eb8e431dddce73b57">begin</a>(), <a class="code hl_function" href="class_vector.html#a266127da95c290db526cac424ef50dac">end</a>(), func, forward&lt;Args&gt;(args)...);</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    }</div>
+</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span></div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Func, <span class="keyword">typename</span>... Args&gt;</div>
+<div class="foldopen" id="foldopen00148" data-start="{" data-end="}">
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno"><a class="line" href="class_vector.html#a4ebfd2abd378701af3e08c15204b70b9">  148</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_vector.html#a4ebfd2abd378701af3e08c15204b70b9">ReverseForEach</a>(Func func, Args &amp;&amp;... args){</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        <a class="code hl_function" href="class_vector.html#ab66d6f398b3f0255f2a6ff4542db087b">::ForEach</a>(<a class="code hl_function" href="class_vector.html#a49a6ec67e141ffcdd04abf27be67f72f">rbegin</a>(), <a class="code hl_function" href="class_vector.html#ace322121c8c304ac699f50a8e3f03c18">rend</a>(), func, forward&lt;Args&gt;(args)...);</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    }</div>
+</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span></div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Func, <span class="keyword">typename</span>... Args&gt;</div>
+<div class="foldopen" id="foldopen00154" data-start="{" data-end="}">
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno"><a class="line" href="class_vector.html#a97f31bfbf3b81013a96ee3a7b885d5bb">  154</a></span>    forward_iterator <a class="code hl_function" href="class_vector.html#a97f31bfbf3b81013a96ee3a7b885d5bb">FirstThat</a>(Func func, Args &amp;&amp;... args){</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        return ::FirstThat(<a class="code hl_function" href="class_vector.html#a18556f17599b8e6eb8e431dddce73b57">begin</a>(), <a class="code hl_function" href="class_vector.html#a266127da95c290db526cac424ef50dac">end</a>(), func, forward&lt;Args&gt;(args)...);</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    }</div>
+</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span></div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> Func, <span class="keyword">typename</span>... Args&gt;</div>
+<div class="foldopen" id="foldopen00160" data-start="{" data-end="}">
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno"><a class="line" href="class_vector.html#a680cd073d6967b1aeacb561c9c2b361e">  160</a></span>    backward_iterator <a class="code hl_function" href="class_vector.html#a680cd073d6967b1aeacb561c9c2b361e">ReverseFirstThat</a>(Func func, Args &amp;&amp;... args){</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>        return ::FirstThat(<a class="code hl_function" href="class_vector.html#a49a6ec67e141ffcdd04abf27be67f72f">rbegin</a>(), <a class="code hl_function" href="class_vector.html#ace322121c8c304ac699f50a8e3f03c18">rend</a>(), func, forward&lt;Args&gt;(args)...);</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    }</div>
+</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>};</div>
+</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span></div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Traits&gt;</div>
+<div class="foldopen" id="foldopen00167" data-start="{" data-end="}">
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno"><a class="line" href="class_vector.html#a22e10b4750d00ac0e36a6ecfdca55c5a">  167</a></span><a class="code hl_function" href="class_vector.html#a22e10b4750d00ac0e36a6ecfdca55c5a">Vector&lt;Traits&gt;::Vector</a>(<span class="keywordtype">size_t</span> capacity) {</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    m_data = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    m_size = 0;</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    m_capacity = capacity;</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    m_data = <span class="keyword">new</span> Node[m_capacity];</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>}</div>
+</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span></div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Traits&gt;</div>
+<div class="foldopen" id="foldopen00176" data-start="{" data-end="}">
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno"><a class="line" href="class_vector.html#a0eaa6bad1fcc33208dc454d4ebeb9428">  176</a></span><a class="code hl_function" href="class_vector.html#a0eaa6bad1fcc33208dc454d4ebeb9428">Vector&lt;Traits&gt;::~Vector</a>() {</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    <span class="keyword">delete</span>[] m_data;</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>}</div>
+</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span></div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Traits&gt;</div>
+<div class="foldopen" id="foldopen00182" data-start="{" data-end="}">
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno"><a class="line" href="class_vector.html#a84e3575a9b72eed581466063e2deedae">  182</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_vector.html#a84e3575a9b72eed581466063e2deedae">Vector&lt;Traits&gt;::push_back</a>(value_type value, <a class="code hl_typedef" href="types_8h.html#adc90a1f57313299de575a8b66526a96a">Ref</a> ref) {</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    <span class="keywordflow">if</span> (m_size == m_capacity)</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        resize();</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    scoped_lock&lt;mutex&gt; lock(m_mtx);</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    m_data[m_size] = Node(value, ref);</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    m_size++;</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>}</div>
+</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span></div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Traits&gt;</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span><span class="keywordtype">void</span> Vector&lt;Traits&gt;::resize() {</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>    scoped_lock&lt;mutex&gt; lock(m_mtx);</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    m_capacity = m_capacity &lt; 10 ? 10 : m_capacity * 2;</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    Node *newData = <span class="keyword">new</span> Node[m_capacity];</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; m_size; i++)</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>        newData[i] = m_data[i];</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    <span class="keyword">delete</span>[] m_data;</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    m_data = newData;</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>}</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span></div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Traits&gt;</div>
+<div class="foldopen" id="foldopen00204" data-start="{" data-end="}">
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno"><a class="line" href="class_vector.html#a440a451a7f10dfa6ff48fa6629099631">  204</a></span><span class="keywordtype">size_t</span> <a class="code hl_function" href="class_vector.html#a440a451a7f10dfa6ff48fa6629099631">Vector&lt;Traits&gt;::size</a>() {</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    <span class="keywordflow">return</span> m_size;</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>}</div>
+</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span></div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Traits&gt;</div>
+<div class="foldopen" id="foldopen00210" data-start="{" data-end="}">
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno"><a class="line" href="class_vector.html#aafa6562b35142ceaa0de1d8b642579d9">  210</a></span><span class="keywordtype">string</span> <a class="code hl_function" href="class_vector.html#aafa6562b35142ceaa0de1d8b642579d9">Vector&lt;Traits&gt;::ToString</a>() {</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>    scoped_lock lock(m_mtx);</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>    ostringstream oss;</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    oss &lt;&lt; <span class="stringliteral">&quot;[&quot;</span>;</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; m_size-1; i++)</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>        oss &lt;&lt; m_data[i] &lt;&lt; <span class="stringliteral">&quot;,&quot;</span>;</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>    <span class="keywordflow">if</span> (m_size &gt; 0)</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        oss &lt;&lt; m_data[m_size-1];</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>    oss &lt;&lt; <span class="stringliteral">&quot;]&quot;</span>;</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>    <span class="keywordflow">return</span> oss.str();</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>}</div>
+</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span></div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Traits&gt;</div>
+<div class="foldopen" id="foldopen00224" data-start="{" data-end="}">
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno"><a class="line" href="vector_8h.html#a3131fcb5593151655f58f9084a08fee1">  224</a></span>ostream&amp; <a class="code hl_function" href="vector_8h.html#a0ee7a99338680f0f6ff5c8e1091b90f6">operator&lt;&lt;</a>(ostream&amp; os, <a class="code hl_class" href="class_vector.html">Vector&lt;Traits&gt;</a>&amp; v){</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    <span class="keywordflow">return</span> os &lt;&lt; v.<a class="code hl_function" href="class_vector.html#aafa6562b35142ceaa0de1d8b642579d9">ToString</a>();</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>}</div>
+</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span></div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span><span class="keywordtype">void</span> <a class="code hl_function" href="vector_8h.html#abaa811e0586ae8f0b4d7d804488aab06">DemoVector</a>();</div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span><span class="keywordtype">void</span> <a class="code hl_function" href="vector_8h.html#a19cdf5a57d424c5fb8999f2228aa791c">DemoConcurrentVector</a>();</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span> </div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span><span class="preprocessor">#endif </span><span class="comment">// __VECTOR_H__</span></div>
+<div class="ttc" id="abasetrait_8h_html"><div class="ttname"><a href="basetrait_8h.html">basetrait.h</a></div><div class="ttdoc">Traits base (politics para comparadores y contenedor genérico).</div></div>
+<div class="ttc" id="aclass_vector_html"><div class="ttname"><a href="class_vector.html">Vector</a></div><div class="ttdoc">Vector dinámico genérico con iteradores y recorrido concurrente.</div><div class="ttdef"><b>Definition</b> <a href="#l00096">vector.h:96</a></div></div>
+<div class="ttc" id="aclass_vector_html_a0eaa6bad1fcc33208dc454d4ebeb9428"><div class="ttname"><a href="class_vector.html#a0eaa6bad1fcc33208dc454d4ebeb9428">Vector::~Vector</a></div><div class="ttdeci">~Vector()</div><div class="ttdoc">Destructor; libera la memoria reservada.</div><div class="ttdef"><b>Definition</b> <a href="#l00176">vector.h:176</a></div></div>
+<div class="ttc" id="aclass_vector_html_a18556f17599b8e6eb8e431dddce73b57"><div class="ttname"><a href="class_vector.html#a18556f17599b8e6eb8e431dddce73b57">Vector::begin</a></div><div class="ttdeci">forward_iterator begin()</div><div class="ttdoc">Iterador al primer elemento.</div><div class="ttdef"><b>Definition</b> <a href="#l00132">vector.h:132</a></div></div>
+<div class="ttc" id="aclass_vector_html_a22e10b4750d00ac0e36a6ecfdca55c5a"><div class="ttname"><a href="class_vector.html#a22e10b4750d00ac0e36a6ecfdca55c5a">Vector::Vector</a></div><div class="ttdeci">Vector(size_t capacity=10)</div><div class="ttdoc">Construye un vector con la capacidad inicial indicada.</div><div class="ttdef"><b>Definition</b> <a href="#l00167">vector.h:167</a></div></div>
+<div class="ttc" id="aclass_vector_html_a266127da95c290db526cac424ef50dac"><div class="ttname"><a href="class_vector.html#a266127da95c290db526cac424ef50dac">Vector::end</a></div><div class="ttdeci">forward_iterator end()</div><div class="ttdoc">Iterador &quot;uno más allá&quot; del último.</div><div class="ttdef"><b>Definition</b> <a href="#l00134">vector.h:134</a></div></div>
+<div class="ttc" id="aclass_vector_html_a440a451a7f10dfa6ff48fa6629099631"><div class="ttname"><a href="class_vector.html#a440a451a7f10dfa6ff48fa6629099631">Vector::size</a></div><div class="ttdeci">size_t size()</div><div class="ttdoc">Número actual de elementos.</div><div class="ttdef"><b>Definition</b> <a href="#l00204">vector.h:204</a></div></div>
+<div class="ttc" id="aclass_vector_html_a49a6ec67e141ffcdd04abf27be67f72f"><div class="ttname"><a href="class_vector.html#a49a6ec67e141ffcdd04abf27be67f72f">Vector::rbegin</a></div><div class="ttdeci">backward_iterator rbegin()</div><div class="ttdoc">Iterador inverso al último elemento.</div><div class="ttdef"><b>Definition</b> <a href="#l00136">vector.h:136</a></div></div>
+<div class="ttc" id="aclass_vector_html_a4ebfd2abd378701af3e08c15204b70b9"><div class="ttname"><a href="class_vector.html#a4ebfd2abd378701af3e08c15204b70b9">Vector::ReverseForEach</a></div><div class="ttdeci">void ReverseForEach(Func func, Args &amp;&amp;... args)</div><div class="ttdoc">Recorre el vector hacia atrás aplicando func(elem, args...).</div><div class="ttdef"><b>Definition</b> <a href="#l00148">vector.h:148</a></div></div>
+<div class="ttc" id="aclass_vector_html_a680cd073d6967b1aeacb561c9c2b361e"><div class="ttname"><a href="class_vector.html#a680cd073d6967b1aeacb561c9c2b361e">Vector::ReverseFirstThat</a></div><div class="ttdeci">backward_iterator ReverseFirstThat(Func func, Args &amp;&amp;... args)</div><div class="ttdoc">Primer elemento que cumple (recorrido inverso).</div><div class="ttdef"><b>Definition</b> <a href="#l00160">vector.h:160</a></div></div>
+<div class="ttc" id="aclass_vector_html_a84e3575a9b72eed581466063e2deedae"><div class="ttname"><a href="class_vector.html#a84e3575a9b72eed581466063e2deedae">Vector::push_back</a></div><div class="ttdeci">void push_back(value_type value, Ref ref)</div><div class="ttdoc">Inserta al final; si no hay espacio, llama a resize().</div><div class="ttdef"><b>Definition</b> <a href="#l00182">vector.h:182</a></div></div>
+<div class="ttc" id="aclass_vector_html_a97f31bfbf3b81013a96ee3a7b885d5bb"><div class="ttname"><a href="class_vector.html#a97f31bfbf3b81013a96ee3a7b885d5bb">Vector::FirstThat</a></div><div class="ttdeci">forward_iterator FirstThat(Func func, Args &amp;&amp;... args)</div><div class="ttdoc">Primer elemento que cumple func(elem, args...) (forward).</div><div class="ttdef"><b>Definition</b> <a href="#l00154">vector.h:154</a></div></div>
+<div class="ttc" id="aclass_vector_html_aafa6562b35142ceaa0de1d8b642579d9"><div class="ttname"><a href="class_vector.html#aafa6562b35142ceaa0de1d8b642579d9">Vector::ToString</a></div><div class="ttdeci">string ToString()</div><div class="ttdoc">Representación textual estilo [a,b,c].</div><div class="ttdef"><b>Definition</b> <a href="#l00210">vector.h:210</a></div></div>
+<div class="ttc" id="aclass_vector_html_ab66d6f398b3f0255f2a6ff4542db087b"><div class="ttname"><a href="class_vector.html#ab66d6f398b3f0255f2a6ff4542db087b">Vector::ForEach</a></div><div class="ttdeci">void ForEach(Func func, Args &amp;&amp;... args)</div><div class="ttdoc">Recorre el vector hacia adelante aplicando func(elem, args...).</div><div class="ttdef"><b>Definition</b> <a href="#l00142">vector.h:142</a></div></div>
+<div class="ttc" id="aclass_vector_html_ace322121c8c304ac699f50a8e3f03c18"><div class="ttname"><a href="class_vector.html#ace322121c8c304ac699f50a8e3f03c18">Vector::rend</a></div><div class="ttdeci">backward_iterator rend()</div><div class="ttdoc">Iterador inverso &quot;uno más allá&quot; del principio.</div><div class="ttdef"><b>Definition</b> <a href="#l00138">vector.h:138</a></div></div>
+<div class="ttc" id="aclassgeneral__iterator_html_a14b696a42ecf1cb1d4e74a8ebd4d5617"><div class="ttname"><a href="classgeneral__iterator.html#a14b696a42ecf1cb1d4e74a8ebd4d5617">general_iterator&lt; Container, vector_forward_iterator&lt; Container &gt; &gt;::general_iterator</a></div><div class="ttdeci">general_iterator(Container *pContainer, Node *pNode)</div><div class="ttdef"><b>Definition</b> <a href="general__iterator_8h_source.html#l00040">general_iterator.h:40</a></div></div>
+<div class="ttc" id="aclassgeneral__iterator_html_ad014839b3798336c6ea88ddd00c62014"><div class="ttname"><a href="classgeneral__iterator.html#ad014839b3798336c6ea88ddd00c62014">general_iterator::m_pNode</a></div><div class="ttdeci">Node * m_pNode</div><div class="ttdoc">Puntero al nodo actual.</div><div class="ttdef"><b>Definition</b> <a href="general__iterator_8h_source.html#l00034">general_iterator.h:34</a></div></div>
+<div class="ttc" id="aclassvector__backward__iterator_html"><div class="ttname"><a href="classvector__backward__iterator.html">vector_backward_iterator</a></div><div class="ttdoc">Iterador hacia atrás para Vector (decrementa el puntero).</div><div class="ttdef"><b>Definition</b> <a href="#l00037">vector.h:39</a></div></div>
+<div class="ttc" id="aclassvector__backward__iterator_html_a596154a1b55a38b23fa3327362b1479d"><div class="ttname"><a href="classvector__backward__iterator.html#a596154a1b55a38b23fa3327362b1479d">vector_backward_iterator::operator++</a></div><div class="ttdeci">MySelf operator++()</div><div class="ttdoc">Retrocede al elemento anterior.</div><div class="ttdef"><b>Definition</b> <a href="#l00045">vector.h:45</a></div></div>
+<div class="ttc" id="aclassvector__forward__iterator_html"><div class="ttname"><a href="classvector__forward__iterator.html">vector_forward_iterator</a></div><div class="ttdoc">Iterador hacia adelante para Vector (incrementa el puntero).</div><div class="ttdef"><b>Definition</b> <a href="#l00023">vector.h:25</a></div></div>
+<div class="ttc" id="aclassvector__forward__iterator_html_a51b615b7a8f091c26a7c72d51218c1b4"><div class="ttname"><a href="classvector__forward__iterator.html#a51b615b7a8f091c26a7c72d51218c1b4">vector_forward_iterator::operator++</a></div><div class="ttdeci">MySelf operator++()</div><div class="ttdoc">Avanza al siguiente elemento (aritmética de punteros).</div><div class="ttdef"><b>Definition</b> <a href="#l00031">vector.h:31</a></div></div>
+<div class="ttc" id="aforeach_8h_html"><div class="ttname"><a href="foreach_8h.html">foreach.h</a></div><div class="ttdoc">Algoritmos genéricos ForEach y FirstThat sobre iteradores.</div></div>
+<div class="ttc" id="ageneral__iterator_8h_html"><div class="ttname"><a href="general__iterator_8h.html">general_iterator.h</a></div><div class="ttdoc">Iterador genérico base (CRTP) usado por todos los contenedores.</div></div>
+<div class="ttc" id="astruct_base_container_trait_html"><div class="ttname"><a href="struct_base_container_trait.html">BaseContainerTrait</a></div><div class="ttdoc">Trait base que mapea un valor T a su tipo de Node.</div><div class="ttdef"><b>Definition</b> <a href="basetrait_8h_source.html#l00022">basetrait.h:22</a></div></div>
+<div class="ttc" id="astruct_vector_node_html"><div class="ttname"><a href="struct_vector_node.html">VectorNode</a></div><div class="ttdoc">Elemento almacenado: par (value, Ref) con operaciones básicas.</div><div class="ttdef"><b>Definition</b> <a href="#l00052">vector.h:52</a></div></div>
+<div class="ttc" id="astruct_vector_node_html_a2c1da7a6aa159d1fff70feaf88fad782"><div class="ttname"><a href="struct_vector_node.html#a2c1da7a6aa159d1fff70feaf88fad782">VectorNode::operator+=</a></div><div class="ttdeci">void operator+=(const value_type &amp;value)</div><div class="ttdoc">Suma al dato.</div><div class="ttdef"><b>Definition</b> <a href="#l00078">vector.h:78</a></div></div>
+<div class="ttc" id="astruct_vector_node_html_a47cc8c6b3b1eec7576c676a0a416d99d"><div class="ttname"><a href="struct_vector_node.html#a47cc8c6b3b1eec7576c676a0a416d99d">VectorNode::GetData</a></div><div class="ttdeci">value_type GetData() const</div><div class="ttdoc">Acceso de solo lectura al dato.</div><div class="ttdef"><b>Definition</b> <a href="#l00070">vector.h:70</a></div></div>
+<div class="ttc" id="astruct_vector_node_html_a48d55a0f2d7a0ba5ac149967de31847f"><div class="ttname"><a href="struct_vector_node.html#a48d55a0f2d7a0ba5ac149967de31847f">VectorNode::VectorNode</a></div><div class="ttdeci">VectorNode(value_type data, Ref ref)</div><div class="ttdoc">Constructor con valor y referencia.</div><div class="ttdef"><b>Definition</b> <a href="#l00061">vector.h:61</a></div></div>
+<div class="ttc" id="astruct_vector_node_html_a6185a133f3b54a11bfa71e3d3ed947d1"><div class="ttname"><a href="struct_vector_node.html#a6185a133f3b54a11bfa71e3d3ed947d1">VectorNode::operator++</a></div><div class="ttdeci">void operator++()</div><div class="ttdoc">Incrementa el dato en una unidad.</div><div class="ttdef"><b>Definition</b> <a href="#l00076">vector.h:76</a></div></div>
+<div class="ttc" id="astruct_vector_node_html_a80b3974a6ffdfcc375ffe16dca047242"><div class="ttname"><a href="struct_vector_node.html#a80b3974a6ffdfcc375ffe16dca047242">VectorNode::GetDataRef</a></div><div class="ttdeci">value_type &amp; GetDataRef()</div><div class="ttdoc">Acceso por referencia al dato.</div><div class="ttdef"><b>Definition</b> <a href="#l00072">vector.h:72</a></div></div>
+<div class="ttc" id="astruct_vector_node_html_ad393e4c6ee8f3da4396c48f2b082d1d2"><div class="ttname"><a href="struct_vector_node.html#ad393e4c6ee8f3da4396c48f2b082d1d2">VectorNode::m_ref</a></div><div class="ttdeci">Ref m_ref</div><div class="ttdoc">Identificador asociado.</div><div class="ttdef"><b>Definition</b> <a href="#l00056">vector.h:56</a></div></div>
+<div class="ttc" id="astruct_vector_node_html_ad7511b5a0f2d627661b57e392f6dd8bb"><div class="ttname"><a href="struct_vector_node.html#ad7511b5a0f2d627661b57e392f6dd8bb">VectorNode::VectorNode</a></div><div class="ttdeci">VectorNode()</div><div class="ttdoc">Constructor por defecto.</div><div class="ttdef"><b>Definition</b> <a href="#l00059">vector.h:59</a></div></div>
+<div class="ttc" id="astruct_vector_node_html_ae4fb6fc733d87f8d072a039e6f39039d"><div class="ttname"><a href="struct_vector_node.html#ae4fb6fc733d87f8d072a039e6f39039d">VectorNode::m_data</a></div><div class="ttdeci">value_type m_data</div><div class="ttdoc">Valor almacenado.</div><div class="ttdef"><b>Definition</b> <a href="#l00055">vector.h:55</a></div></div>
+<div class="ttc" id="astruct_vector_node_html_ae56c6dd623d9fa0f67d5bbcb94c52daf"><div class="ttname"><a href="struct_vector_node.html#ae56c6dd623d9fa0f67d5bbcb94c52daf">VectorNode::ToString</a></div><div class="ttdeci">string ToString()</div><div class="ttdoc">Devuelve representación textual (data,ref).</div><div class="ttdef"><b>Definition</b> <a href="#l00064">vector.h:64</a></div></div>
+<div class="ttc" id="astruct_vector_node_html_aeadd5ba2f961bd3064b0f23b879ebbfd"><div class="ttname"><a href="struct_vector_node.html#aeadd5ba2f961bd3064b0f23b879ebbfd">VectorNode::GetRef</a></div><div class="ttdeci">Ref GetRef() const</div><div class="ttdoc">Acceso de solo lectura al Ref.</div><div class="ttdef"><b>Definition</b> <a href="#l00074">vector.h:74</a></div></div>
+<div class="ttc" id="astruct_vector_traits_html"><div class="ttname"><a href="struct_vector_traits.html">VectorTraits</a></div><div class="ttdoc">Trait listo-para-usar que combina BaseContainerTrait y un nodo.</div><div class="ttdef"><b>Definition</b> <a href="#l00084">vector.h:84</a></div></div>
+<div class="ttc" id="atypes_8h_html"><div class="ttname"><a href="types_8h.html">types.h</a></div><div class="ttdoc">Aliases de tipos y tamaños portables para toda la librería.</div></div>
+<div class="ttc" id="atypes_8h_html_adc90a1f57313299de575a8b66526a96a"><div class="ttname"><a href="types_8h.html#adc90a1f57313299de575a8b66526a96a">Ref</a></div><div class="ttdeci">long Ref</div><div class="ttdoc">Identificador asociado a un dato (long). Sirve como &quot;puntero&quot; ligero: cada nodo guarda un Ref además ...</div><div class="ttdef"><b>Definition</b> <a href="types_8h_source.html#l00039">types.h:39</a></div></div>
+<div class="ttc" id="avector_8h_html_a0ee7a99338680f0f6ff5c8e1091b90f6"><div class="ttname"><a href="vector_8h.html#a0ee7a99338680f0f6ff5c8e1091b90f6">operator&lt;&lt;</a></div><div class="ttdeci">ostream &amp; operator&lt;&lt;(ostream &amp;os, VectorNode&lt; Traits &gt; &amp;vn)</div><div class="ttdoc">Operador de salida por stream (delega en ToString).</div><div class="ttdef"><b>Definition</b> <a href="#l00088">vector.h:88</a></div></div>
+<div class="ttc" id="avector_8h_html_a19cdf5a57d424c5fb8999f2228aa791c"><div class="ttname"><a href="vector_8h.html#a19cdf5a57d424c5fb8999f2228aa791c">DemoConcurrentVector</a></div><div class="ttdeci">void DemoConcurrentVector()</div><div class="ttdoc">Demo de operaciones concurrentes sobre Vector (múltiples hilos).</div><div class="ttdef"><b>Definition</b> <a href="_demo_vector_8cpp_source.html#l00111">DemoVector.cpp:111</a></div></div>
+<div class="ttc" id="avector_8h_html_abaa811e0586ae8f0b4d7d804488aab06"><div class="ttname"><a href="vector_8h.html#abaa811e0586ae8f0b4d7d804488aab06">DemoVector</a></div><div class="ttdeci">void DemoVector()</div><div class="ttdoc">Demo del Vector y operaciones básicas.</div><div class="ttdef"><b>Definition</b> <a href="_demo_vector_8cpp_source.html#l00045">DemoVector.cpp:45</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>containers</b></li><li class="navelem"><a href="vector_8h.html">vector.h</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

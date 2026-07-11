@@ -1,0 +1,39 @@
+<map id="BTreeDemo.cpp" name="BTreeDemo.cpp">
+<area shape="rect" id="Node000001" title="Demostración del B&#45;Tree: insertar, imprimir y recorrer." alt="" coords="328,5,444,32"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="276,229,347,256"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="396,30,416,65,420,86,418,107,402,141,382,172,338,221,335,217,378,169,398,139,413,106,415,86,411,67,395,35"/>
+<area shape="rect" id="Node000003" href="$_b_tree_8h.html" title="Contenedor B&#45;Tree con split en 3 vías, iteradores y concurrencia." alt="" coords="260,80,403,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="378,31,352,69,348,66,375,34"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="332,105,317,215,313,213,328,109"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,155,63,181"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="272,110,79,156,77,151,273,105"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="86,155,190,181"/>
+<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="296,109,187,151,185,146,300,105"/>
+<area shape="rect" id="Node000006" href="$types_8h.html" title="Aliases de tipos y tamaños portables para toda la librería." alt="" coords="370,229,447,256"/>
+<area shape="poly" id="edge6_Node000003_Node000006" title=" " alt="" coords="339,105,398,216,392,215,337,109"/>
+<area shape="rect" id="Node000008" href="$foreach_8h.html" title="Algoritmos genéricos ForEach y FirstThat sobre iteradores." alt="" coords="214,155,302,181"/>
+<area shape="poly" id="edge8_Node000003_Node000008" title=" " alt="" coords="321,106,283,146,280,142,316,109"/>
+<area shape="rect" id="Node000010" href="$_b_tree_page_8h.html" title="Página del B&#45;Tree (CBTreePage), políticas, iterador y algoritmos auxiliares (búsqueda binaria,..." alt="" coords="537,155,635,181"/>
+<area shape="poly" id="edge11_Node000003_Node000010" title=" " alt="" coords="376,105,529,149,524,151,376,110"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="382,304,435,331"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="411,255,411,290,407,287,407,258"/>
+<area shape="poly" id="edge9_Node000008_Node000002" title=" " alt="" coords="268,179,296,217,290,216,266,184"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="669,304,722,331"/>
+<area shape="poly" id="edge10_Node000008_Node000009" title=" " alt="" coords="256,180,253,218,256,238,265,254,284,264,322,273,430,290,657,313,651,313,430,295,320,279,283,269,261,258,251,239,248,218,253,184"/>
+<area shape="poly" id="edge13_Node000010_Node000002" title=" " alt="" coords="536,183,363,231,361,225,541,181"/>
+<area shape="poly" id="edge18_Node000010_Node000006" title=" " alt="" coords="558,181,454,226,453,221,553,183"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="471,229,528,256"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="573,181,527,222,524,217,568,183"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="552,229,620,256"/>
+<area shape="poly" id="edge14_Node000010_Node000012" title=" " alt="" coords="588,180,588,215,584,212,584,184"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="645,229,727,256"/>
+<area shape="poly" id="edge15_Node000010_Node000013" title=" " alt="" coords="604,179,659,220,654,219,603,184"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="751,229,808,256"/>
+<area shape="poly" id="edge16_Node000010_Node000014" title=" " alt="" coords="620,179,740,226,734,226,619,185"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="905,304,979,331"/>
+<area shape="poly" id="edge17_Node000010_Node000015" title=" " alt="" coords="635,167,720,170,820,179,910,197,945,210,968,228,975,243,975,260,961,294,958,289,970,259,970,244,964,231,942,215,909,202,819,184,720,175,635,172"/>
+<area shape="rect" id="Node000016" href="$general__iterator_8h.html" title="Iterador genérico base (CRTP) usado por todos los contenedores." alt="" coords="832,229,953,256"/>
+<area shape="poly" id="edge19_Node000010_Node000016" title=" " alt="" coords="635,178,827,225,821,225,635,184"/>
+<area shape="poly" id="edge21_Node000016_Node000009" title=" " alt="" coords="861,256,737,304,736,299,856,257"/>
+<area shape="poly" id="edge20_Node000016_Node000015" title=" " alt="" coords="902,254,927,292,922,290,900,259"/>
+</map>

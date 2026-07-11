@@ -1,0 +1,578 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Estructuras de Datos - MCC: Referencia de la plantilla de la clase general_iterator&lt; Container, IteratorBase &gt;</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Estructuras de Datos - MCC<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">Colección pedagógica de contenedores en C++ (Lista, Heap, Vector, BST, AVL, B-Tree)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('classgeneral__iterator.html','','classgeneral__iterator-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referencia de la plantilla de la clase general_iterator&lt; Container, IteratorBase &gt;</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Plantilla CRTP para iteradores uniformes en todos los contenedores.  
+ <a href="#details">Más...</a></p>
+
+<p><code>#include &lt;<a class="el" href="general__iterator_8h_source.html">general_iterator.h</a>&gt;</code></p>
+<div class="dynheader">
+Diagrama de herencia de general_iterator&lt; Container, IteratorBase &gt;</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="classgeneral__iterator__inherit__graph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">leyenda</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-types" class="groupheader"><a id="pub-types" name="pub-types"></a>
+Tipos públicos</h2></td></tr>
+<tr class="memitem:a8dd77a98611e3709da97543b3cfa4249" id="r_a8dd77a98611e3709da97543b3cfa4249"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8dd77a98611e3709da97543b3cfa4249">Node</a> = typename Container::Node</td></tr>
+<tr class="memdesc:a8dd77a98611e3709da97543b3cfa4249"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tipo de nodo, tomado del contenedor.  <br /></td></tr>
+<tr class="memitem:ae15c82428a99bb806d234a4d900583a9" id="r_ae15c82428a99bb806d234a4d900583a9"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae15c82428a99bb806d234a4d900583a9">Myself</a> = <a class="el" href="classgeneral__iterator.html">general_iterator</a>&lt;Container, IteratorBase&gt;</td></tr>
+<tr class="memdesc:ae15c82428a99bb806d234a4d900583a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias de la propia clase base.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Métodos públicos</h2></td></tr>
+<tr class="memitem:a14b696a42ecf1cb1d4e74a8ebd4d5617" id="r_a14b696a42ecf1cb1d4e74a8ebd4d5617"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a14b696a42ecf1cb1d4e74a8ebd4d5617">general_iterator</a> (Container *pContainer, <a class="el" href="#a8dd77a98611e3709da97543b3cfa4249">Node</a> *pNode)</td></tr>
+<tr class="memdesc:a14b696a42ecf1cb1d4e74a8ebd4d5617"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor principal.  <br /></td></tr>
+<tr class="memitem:a2bd66a2b7630300b80ff3c580aebc9b9" id="r_a2bd66a2b7630300b80ff3c580aebc9b9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2bd66a2b7630300b80ff3c580aebc9b9">general_iterator</a> (<a class="el" href="#ae15c82428a99bb806d234a4d900583a9">Myself</a> &amp;other)</td></tr>
+<tr class="memdesc:a2bd66a2b7630300b80ff3c580aebc9b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor de copia.  <br /></td></tr>
+<tr class="memitem:aa55141ea90be8b71929e79bdf4d812af" id="r_aa55141ea90be8b71929e79bdf4d812af"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa55141ea90be8b71929e79bdf4d812af">general_iterator</a> (<a class="el" href="#ae15c82428a99bb806d234a4d900583a9">Myself</a> &amp;&amp;other)</td></tr>
+<tr class="memdesc:aa55141ea90be8b71929e79bdf4d812af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor de movimiento.  <br /></td></tr>
+<tr class="memitem:a524135b752d2dc8458733d5406967304" id="r_a524135b752d2dc8458733d5406967304"><td class="memItemLeft" align="right" valign="top">IteratorBase&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a524135b752d2dc8458733d5406967304">operator=</a> (IteratorBase &amp;iter)</td></tr>
+<tr class="memdesc:a524135b752d2dc8458733d5406967304"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operador de asignación: copia/mueve desde otra instancia derivada. Devuelve la referencia a <span class="tt">IteratorBase</span>.  <br /></td></tr>
+<tr class="memitem:a91b5ef41c275d27ebe89c70d1c69eee4" id="r_a91b5ef41c275d27ebe89c70d1c69eee4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a8dd77a98611e3709da97543b3cfa4249">Node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a91b5ef41c275d27ebe89c70d1c69eee4">getNode</a> () const</td></tr>
+<tr class="memdesc:a91b5ef41c275d27ebe89c70d1c69eee4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve el puntero al nodo actual.  <br /></td></tr>
+<tr class="memitem:abda6322f19be14bd3f5db8d5f82f7f7b" id="r_abda6322f19be14bd3f5db8d5f82f7f7b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a8dd77a98611e3709da97543b3cfa4249">Node</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abda6322f19be14bd3f5db8d5f82f7f7b">operator*</a> ()</td></tr>
+<tr class="memdesc:abda6322f19be14bd3f5db8d5f82f7f7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Desreferencia (referencia mutable al nodo).  <br /></td></tr>
+<tr class="memitem:afec34009694fea6b9012b1a7c86070a6" id="r_afec34009694fea6b9012b1a7c86070a6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a8dd77a98611e3709da97543b3cfa4249">Node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afec34009694fea6b9012b1a7c86070a6">operator-&gt;</a> () const</td></tr>
+<tr class="memdesc:afec34009694fea6b9012b1a7c86070a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Acceso a miembro del nodo a través del iterador.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pro-attribs" class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Atributos protegidos</h2></td></tr>
+<tr class="memitem:a64e4e24b3d40eb9aae014680eedc8efa" id="r_a64e4e24b3d40eb9aae014680eedc8efa"><td class="memItemLeft" align="right" valign="top">Container *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a64e4e24b3d40eb9aae014680eedc8efa">m_pContainer</a></td></tr>
+<tr class="memdesc:a64e4e24b3d40eb9aae014680eedc8efa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Puntero al contenedor dueño.  <br /></td></tr>
+<tr class="memitem:ad014839b3798336c6ea88ddd00c62014" id="r_ad014839b3798336c6ea88ddd00c62014"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a8dd77a98611e3709da97543b3cfa4249">Node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad014839b3798336c6ea88ddd00c62014">m_pNode</a></td></tr>
+<tr class="memdesc:ad014839b3798336c6ea88ddd00c62014"><td class="mdescLeft">&#160;</td><td class="mdescRight">Puntero al nodo actual.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-friends" class="groupheader"><a id="friends" name="friends"></a>
+Amigas</h2></td></tr>
+<tr class="memitem:a1e23638992d2f34c18271e6bcf3f9188" id="r_a1e23638992d2f34c18271e6bcf3f9188"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e23638992d2f34c18271e6bcf3f9188">operator==</a> (const IteratorBase &amp;a, const IteratorBase &amp;b)</td></tr>
+<tr class="memdesc:a1e23638992d2f34c18271e6bcf3f9188"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compara dos iteradores por la dirección del nodo.  <br /></td></tr>
+<tr class="memitem:ad7678ea0944c59840c2f24f4495f5f9d" id="r_ad7678ea0944c59840c2f24f4495f5f9d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad7678ea0944c59840c2f24f4495f5f9d">operator!=</a> (const IteratorBase &amp;a, const IteratorBase &amp;b)</td></tr>
+<tr class="memdesc:ad7678ea0944c59840c2f24f4495f5f9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Negación de la igualdad.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename Container, class IteratorBase&gt;<br />
+class general_iterator&lt; Container, IteratorBase &gt;</div><p>Plantilla CRTP para iteradores uniformes en todos los contenedores. </p>
+<dl class="tparams"><dt>Parámetros de plantilla</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Container</td><td>Tipo del contenedor dueño del nodo. </td></tr>
+    <tr><td class="paramname">IteratorBase</td><td>Tipo de la clase derivada (CRTP). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="general__iterator_8h_source.html#l00022">22</a> del archivo <a class="el" href="general__iterator_8h_source.html">general_iterator.h</a>.</p>
+</div><a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Documentación de los «Typedef» miembros de la clase</h2>
+<a id="ae15c82428a99bb806d234a4d900583a9" name="ae15c82428a99bb806d234a4d900583a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae15c82428a99bb806d234a4d900583a9">&#9670;&#160;</a></span>Myself</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Container, class IteratorBase&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classgeneral__iterator.html">general_iterator</a>&lt; Container, IteratorBase &gt;::Myself = <a class="el" href="classgeneral__iterator.html">general_iterator</a>&lt;Container, IteratorBase&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Alias de la propia clase base. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="general__iterator_8h_source.html#l00030">30</a> del archivo <a class="el" href="general__iterator_8h_source.html">general_iterator.h</a>.</p>
+
+</div>
+</div>
+<a id="a8dd77a98611e3709da97543b3cfa4249" name="a8dd77a98611e3709da97543b3cfa4249"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8dd77a98611e3709da97543b3cfa4249">&#9670;&#160;</a></span>Node</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Container, class IteratorBase&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classgeneral__iterator.html">general_iterator</a>&lt; Container, IteratorBase &gt;::Node = typename Container::Node</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tipo de nodo, tomado del contenedor. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="general__iterator_8h_source.html#l00027">27</a> del archivo <a class="el" href="general__iterator_8h_source.html">general_iterator.h</a>.</p>
+
+</div>
+</div>
+<a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Documentación de constructores y destructores</h2>
+<a id="a14b696a42ecf1cb1d4e74a8ebd4d5617" name="a14b696a42ecf1cb1d4e74a8ebd4d5617"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14b696a42ecf1cb1d4e74a8ebd4d5617">&#9670;&#160;</a></span>general_iterator() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Container, class IteratorBase&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgeneral__iterator.html">general_iterator</a>&lt; Container, IteratorBase &gt;::general_iterator </td>
+          <td>(</td>
+          <td class="paramtype">Container *</td>          <td class="paramname"><span class="paramname"><em>pContainer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a8dd77a98611e3709da97543b3cfa4249">Node</a> *</td>          <td class="paramname"><span class="paramname"><em>pNode</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor principal. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pContainer</td><td>Contenedor asociado. </td></tr>
+    <tr><td class="paramname">pNode</td><td><a class="el" href="struct_nodo.html">Nodo</a> inicial al que apunta el iterador. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="general__iterator_8h_source.html#l00040">40</a> del archivo <a class="el" href="general__iterator_8h_source.html">general_iterator.h</a>.</p>
+
+</div>
+</div>
+<a id="a2bd66a2b7630300b80ff3c580aebc9b9" name="a2bd66a2b7630300b80ff3c580aebc9b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bd66a2b7630300b80ff3c580aebc9b9">&#9670;&#160;</a></span>general_iterator() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Container, class IteratorBase&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgeneral__iterator.html">general_iterator</a>&lt; Container, IteratorBase &gt;::general_iterator </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#ae15c82428a99bb806d234a4d900583a9">Myself</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor de copia. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="general__iterator_8h_source.html#l00044">44</a> del archivo <a class="el" href="general__iterator_8h_source.html">general_iterator.h</a>.</p>
+
+</div>
+</div>
+<a id="aa55141ea90be8b71929e79bdf4d812af" name="aa55141ea90be8b71929e79bdf4d812af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa55141ea90be8b71929e79bdf4d812af">&#9670;&#160;</a></span>general_iterator() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Container, class IteratorBase&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgeneral__iterator.html">general_iterator</a>&lt; Container, IteratorBase &gt;::general_iterator </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#ae15c82428a99bb806d234a4d900583a9">Myself</a> &amp;&amp;</td>          <td class="paramname"><span class="paramname"><em>other</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constructor de movimiento. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="general__iterator_8h_source.html#l00048">48</a> del archivo <a class="el" href="general__iterator_8h_source.html">general_iterator.h</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentación de funciones miembro</h2>
+<a id="a91b5ef41c275d27ebe89c70d1c69eee4" name="a91b5ef41c275d27ebe89c70d1c69eee4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91b5ef41c275d27ebe89c70d1c69eee4">&#9670;&#160;</a></span>getNode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Container, class IteratorBase&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a8dd77a98611e3709da97543b3cfa4249">Node</a> * <a class="el" href="classgeneral__iterator.html">general_iterator</a>&lt; Container, IteratorBase &gt;::getNode </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Devuelve el puntero al nodo actual. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="general__iterator_8h_source.html#l00064">64</a> del archivo <a class="el" href="general__iterator_8h_source.html">general_iterator.h</a>.</p>
+
+</div>
+</div>
+<a id="abda6322f19be14bd3f5db8d5f82f7f7b" name="abda6322f19be14bd3f5db8d5f82f7f7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abda6322f19be14bd3f5db8d5f82f7f7b">&#9670;&#160;</a></span>operator*()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Container, class IteratorBase&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a8dd77a98611e3709da97543b3cfa4249">Node</a> &amp; <a class="el" href="classgeneral__iterator.html">general_iterator</a>&lt; Container, IteratorBase &gt;::operator* </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Desreferencia (referencia mutable al nodo). </p>
+
+<p class="definition">Definición en la línea <a class="el" href="general__iterator_8h_source.html#l00075">75</a> del archivo <a class="el" href="general__iterator_8h_source.html">general_iterator.h</a>.</p>
+
+</div>
+</div>
+<a id="afec34009694fea6b9012b1a7c86070a6" name="afec34009694fea6b9012b1a7c86070a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afec34009694fea6b9012b1a7c86070a6">&#9670;&#160;</a></span>operator-&gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Container, class IteratorBase&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a8dd77a98611e3709da97543b3cfa4249">Node</a> * <a class="el" href="classgeneral__iterator.html">general_iterator</a>&lt; Container, IteratorBase &gt;::operator-&gt; </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Acceso a miembro del nodo a través del iterador. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="general__iterator_8h_source.html#l00077">77</a> del archivo <a class="el" href="general__iterator_8h_source.html">general_iterator.h</a>.</p>
+
+</div>
+</div>
+<a id="a524135b752d2dc8458733d5406967304" name="a524135b752d2dc8458733d5406967304"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a524135b752d2dc8458733d5406967304">&#9670;&#160;</a></span>operator=()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Container, class IteratorBase&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">IteratorBase <a class="el" href="classgeneral__iterator.html">general_iterator</a>&lt; Container, IteratorBase &gt;::operator= </td>
+          <td>(</td>
+          <td class="paramtype">IteratorBase &amp;</td>          <td class="paramname"><span class="paramname"><em>iter</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Operador de asignación: copia/mueve desde otra instancia derivada. Devuelve la referencia a <span class="tt">IteratorBase</span>. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="general__iterator_8h_source.html#l00056">56</a> del archivo <a class="el" href="general__iterator_8h_source.html">general_iterator.h</a>.</p>
+
+</div>
+</div>
+<a name="doc-related-members" id="doc-related-members"></a><h2 id="header-doc-related-members" class="groupheader">Documentación de símbolos amigos y relacionados</h2>
+<a id="ad7678ea0944c59840c2f24f4495f5f9d" name="ad7678ea0944c59840c2f24f4495f5f9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7678ea0944c59840c2f24f4495f5f9d">&#9670;&#160;</a></span>operator!=</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Container, class IteratorBase&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool operator!= </td>
+          <td>(</td>
+          <td class="paramtype">const IteratorBase &amp;</td>          <td class="paramname"><span class="paramname"><em>a</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const IteratorBase &amp;</td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel friend">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Negación de la igualdad. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="general__iterator_8h_source.html#l00071">71</a> del archivo <a class="el" href="general__iterator_8h_source.html">general_iterator.h</a>.</p>
+
+</div>
+</div>
+<a id="a1e23638992d2f34c18271e6bcf3f9188" name="a1e23638992d2f34c18271e6bcf3f9188"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e23638992d2f34c18271e6bcf3f9188">&#9670;&#160;</a></span>operator==</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Container, class IteratorBase&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool operator== </td>
+          <td>(</td>
+          <td class="paramtype">const IteratorBase &amp;</td>          <td class="paramname"><span class="paramname"><em>a</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const IteratorBase &amp;</td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel friend">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Compara dos iteradores por la dirección del nodo. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="general__iterator_8h_source.html#l00067">67</a> del archivo <a class="el" href="general__iterator_8h_source.html">general_iterator.h</a>.</p>
+
+</div>
+</div>
+<a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Documentación de datos miembro</h2>
+<a id="a64e4e24b3d40eb9aae014680eedc8efa" name="a64e4e24b3d40eb9aae014680eedc8efa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64e4e24b3d40eb9aae014680eedc8efa">&#9670;&#160;</a></span>m_pContainer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Container, class IteratorBase&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Container* <a class="el" href="classgeneral__iterator.html">general_iterator</a>&lt; Container, IteratorBase &gt;::m_pContainer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Puntero al contenedor dueño. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="general__iterator_8h_source.html#l00033">33</a> del archivo <a class="el" href="general__iterator_8h_source.html">general_iterator.h</a>.</p>
+
+</div>
+</div>
+<a id="ad014839b3798336c6ea88ddd00c62014" name="ad014839b3798336c6ea88ddd00c62014"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad014839b3798336c6ea88ddd00c62014">&#9670;&#160;</a></span>m_pNode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Container, class IteratorBase&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a8dd77a98611e3709da97543b3cfa4249">Node</a>* <a class="el" href="classgeneral__iterator.html">general_iterator</a>&lt; Container, IteratorBase &gt;::m_pNode</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Puntero al nodo actual. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="general__iterator_8h_source.html#l00034">34</a> del archivo <a class="el" href="general__iterator_8h_source.html">general_iterator.h</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="doublelinkedlist_8h_source.html#l00024">DoubleLinkedListBackwardIterator&lt; MySelf &gt;::operator++()</a>, <a class="el" href="linkedlist_8h_source.html#l00034">LinkedListForwardIterator&lt; MySelf &gt;::operator++()</a>, <a class="el" href="vector_8h_source.html#l00045">vector_backward_iterator&lt; MySelf &gt;::operator++()</a> y <a class="el" href="vector_8h_source.html#l00031">vector_forward_iterator&lt; MySelf &gt;::operator++()</a>.</p>
+
+</div>
+</div>
+<hr/>La documentación de esta clase está generada del siguiente archivo:<ul>
+<li><a class="el" href="general__iterator_8h_source.html">general_iterator.h</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="classgeneral__iterator.html">general_iterator</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

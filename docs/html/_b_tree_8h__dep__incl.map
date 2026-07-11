@@ -1,0 +1,7 @@
+<map id="BTree.h" name="BTree.h">
+<area shape="rect" id="Node000001" title="Contenedor B&#45;Tree con split en 3 vías, iteradores y concurrencia." alt="" coords="90,5,157,32"/>
+<area shape="rect" id="Node000002" href="$_b_tree_demo_8cpp.html" title="Demostración del B&#45;Tree: insertar, imprimir y recorrer." alt="" coords="5,80,122,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,43,76,82,72,78,101,45"/>
+<area shape="rect" id="Node000003" href="$main_8cpp_source.html" title=" " alt="" coords="146,80,221,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="145,42,176,80,171,79,142,46"/>
+</map>

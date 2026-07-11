@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Estructuras de Datos - MCC: Referencia del archivo linkedlist.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Estructuras de Datos - MCC<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">Colección pedagógica de contenedores en C++ (Lista, Heap, Vector, BST, AVL, B-Tree)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('linkedlist_8h.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referencia del archivo linkedlist.h</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Lista enlazada simple ordenada con nodo anidado y concurrencia.  
+<a href="#details">Más...</a></p>
+<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;cstddef&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;sstream&gt;</code><br />
+<code>#include &lt;mutex&gt;</code><br />
+<code>#include &lt;functional&gt;</code><br />
+<code>#include &lt;utility&gt;</code><br />
+<code>#include &quot;<a class="el" href="general__iterator_8h_source.html">general_iterator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="types_8h_source.html">../types.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="foreach_8h_source.html">../foreach.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Gráfico de dependencias incluidas en linkedlist.h:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="linkedlist_8h__incl.svg" width="100%" height="440"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Gráfico de los archivos que directa o indirectamente incluyen a este archivo:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="linkedlist_8h__dep__incl.svg" width="267" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<p><a href="linkedlist_8h_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Clases</h2></td></tr>
+<tr class="memitem:LinkedListForwardIterator_3C_20Container_20_3E" id="r_LinkedListForwardIterator_3C_20Container_20_3E"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linked_list_forward_iterator.html">LinkedListForwardIterator&lt; Container &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterador forward que avanza siguiendo <span class="tt">m_pNext</span>.  <a href="class_linked_list_forward_iterator.html#details">Más...</a><br /></td></tr>
+<tr class="memitem:LinkedList_3C_20T_2C_20Comp_20_3E" id="r_LinkedList_3C_20T_2C_20Comp_20_3E"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_linked_list.html">LinkedList&lt; T, Comp &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lista enlazada simple ordenada con nodo anidado.  <a href="class_linked_list.html#details">Más...</a><br /></td></tr>
+<tr class="memitem:LinkedList_3C_20T_2C_20Comp_20_3E_3A_3ANode" id="r_LinkedList_3C_20T_2C_20Comp_20_3E_3A_3ANode"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_linked_list_1_1_node.html">LinkedList&lt; T, Comp &gt;::Node</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_nodo.html">Nodo</a> con dato, <span class="tt"><a class="el" href="types_8h.html#adc90a1f57313299de575a8b66526a96a" title="Identificador asociado a un dato (long). Sirve como &quot;puntero&quot; ligero: cada nodo guarda un Ref además ...">Ref</a></span> y puntero al siguiente.  <a href="struct_linked_list_1_1_node.html#details">Más...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:a45aea45fe509a1bf9bf38b8cc0195649" id="r_a45aea45fe509a1bf9bf38b8cc0195649"><td class="memTemplParams" colspan="2">template&lt;typename T, typename Comp&gt; </td></tr>
+<tr class="memitem:a45aea45fe509a1bf9bf38b8cc0195649 template"><td class="memItemLeft" align="right" valign="top">ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a45aea45fe509a1bf9bf38b8cc0195649">operator&lt;&lt;</a> (ostream &amp;os, <a class="el" href="class_linked_list.html">LinkedList</a>&lt; T, Comp &gt; &amp;list)</td></tr>
+<tr class="memdesc:a45aea45fe509a1bf9bf38b8cc0195649"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operador <span class="tt">&lt;&lt;</span> para imprimir la lista.  <br /></td></tr>
+<tr class="memitem:a4dfe5e1bb6c856a462d1c2afa1133bf4" id="r_a4dfe5e1bb6c856a462d1c2afa1133bf4"><td class="memTemplParams" colspan="2">template&lt;typename T, typename Comp&gt; </td></tr>
+<tr class="memitem:a4dfe5e1bb6c856a462d1c2afa1133bf4 template"><td class="memItemLeft" align="right" valign="top">istream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4dfe5e1bb6c856a462d1c2afa1133bf4">operator&gt;&gt;</a> (istream &amp;is, <a class="el" href="class_linked_list.html">LinkedList</a>&lt; T, Comp &gt; &amp;list)</td></tr>
+<tr class="memdesc:a4dfe5e1bb6c856a462d1c2afa1133bf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operador <span class="tt">&gt;&gt;</span> que lee una línea en formato <span class="tt">[..]</span> y la inserta.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Lista enlazada simple ordenada con nodo anidado y concurrencia. </p>
+<p>Implementa <span class="tt"><a class="el" href="class_linked_list.html" title="Lista enlazada simple ordenada con nodo anidado.">LinkedList</a>&lt;T, Comp&gt;</span> y un iterador forward reutilizable también por <span class="tt"><a class="el" href="class_double_linked_list.html" title="Lista doblemente enlazada ordenada.">DoubleLinkedList</a></span>. </p><dl class="section author"><dt>Autor</dt><dd>Equipo MCC </dd></dl>
+
+<p class="definition">Definición en el archivo <a class="el" href="linkedlist_8h_source.html">linkedlist.h</a>.</p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentación de funciones</h2>
+<a id="a45aea45fe509a1bf9bf38b8cc0195649" name="a45aea45fe509a1bf9bf38b8cc0195649"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45aea45fe509a1bf9bf38b8cc0195649">&#9670;&#160;</a></span>operator&lt;&lt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T, typename Comp&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">ostream &amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">ostream &amp;</td>          <td class="paramname"><span class="paramname"><em>os</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_linked_list.html">LinkedList</a>&lt; T, Comp &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>list</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Operador <span class="tt">&lt;&lt;</span> para imprimir la lista. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="linkedlist_8h_source.html#l00266">266</a> del archivo <a class="el" href="linkedlist_8h_source.html">linkedlist.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="linkedlist_8h_source.html#l00208">LinkedList&lt; T, Comp &gt;::toString()</a>.</p>
+
+</div>
+</div>
+<a id="a4dfe5e1bb6c856a462d1c2afa1133bf4" name="a4dfe5e1bb6c856a462d1c2afa1133bf4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4dfe5e1bb6c856a462d1c2afa1133bf4">&#9670;&#160;</a></span>operator&gt;&gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T, typename Comp&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">istream &amp; operator&gt;&gt; </td>
+          <td>(</td>
+          <td class="paramtype">istream &amp;</td>          <td class="paramname"><span class="paramname"><em>is</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_linked_list.html">LinkedList</a>&lt; T, Comp &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>list</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Operador <span class="tt">&gt;&gt;</span> que lee una línea en formato <span class="tt">[..]</span> y la inserta. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="linkedlist_8h_source.html#l00272">272</a> del archivo <a class="el" href="linkedlist_8h_source.html">linkedlist.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="linkedlist_8h_source.html#l00158">LinkedList&lt; T, Comp &gt;::push_back()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>containers</b></li><li class="navelem"><a href="linkedlist_8h.html">linkedlist.h</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

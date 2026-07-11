@@ -1,0 +1,11 @@
+<map id="DescendingHeapTrait&lt; T &gt;" name="DescendingHeapTrait&lt; T &gt;">
+<area shape="rect" id="Node000001" title="Trait para heap descendente (max&#45;heap en el tope)." alt="" coords="78,212,256,239"/>
+<area shape="rect" id="Node000002" href="$struct_base_container_trait.html" title=" " alt="" coords="5,120,158,163"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,171,156,211,151,212,113,176"/>
+<area shape="rect" id="Node000003" href="$struct_base_container_trait.html" title="Trait base que mapea un valor T a su tipo de Node." alt="" coords="15,5,148,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="83,61,84,120,79,119,80,66"/>
+<area shape="rect" id="Node000004" href="$struct_descending_trait.html" title=" " alt="" coords="181,128,328,155"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="233,164,182,214,179,209,228,166"/>
+<area shape="rect" id="Node000005" href="$struct_descending_trait.html" title="Trait que aporta el comparador descendente (std::greater&lt;T&gt;)." alt="" coords="177,13,332,40"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="257,54,257,129,252,127,253,58"/>
+</map>

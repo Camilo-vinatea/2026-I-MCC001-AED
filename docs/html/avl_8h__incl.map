@@ -1,0 +1,36 @@
+<map id="avl.h" name="avl.h">
+<area shape="rect" id="Node000001" title="Árbol AVL (BST auto&#45;balanceado) basado en BinaryTree (Template Method)." alt="" coords="463,5,512,32"/>
+<area shape="rect" id="Node000002" href="$binarytree_8h.html" title="Árbol binario de búsqueda (BST) genérico basado en políticas." alt="" coords="443,80,532,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="489,30,490,66,485,63,486,35"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,229,77,256"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="441,99,204,120,89,136,50,146,30,157,23,169,22,184,30,215,25,216,16,184,18,168,26,153,48,141,88,131,204,114,444,95"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="349,155,413,181"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="472,106,413,148,411,143,467,108"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="461,229,514,256"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="486,105,480,141,478,181,483,216,479,213,473,181,475,140,482,109"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="588,155,656,181"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="512,105,588,147,583,147,511,110"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="681,155,737,181"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="527,105,669,153,664,153,526,110"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="762,155,819,181"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="533,102,749,154,744,155,532,107"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="857,229,934,256"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="533,96,695,115,776,131,809,141,833,152,864,181,886,216,881,214,860,185,830,157,807,146,775,137,694,120,533,101"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="139,229,191,256"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="440,99,377,108,303,119,235,135,210,145,192,157,182,169,175,184,168,216,164,213,170,182,178,166,189,153,207,141,234,130,302,114,377,102,445,97"/>
+<area shape="rect" id="Node000011" href="$general__iterator_8h.html" title="Iterador genérico base (CRTP) usado por todos los contenedores." alt="" coords="203,155,324,181"/>
+<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="446,108,318,152,316,147,451,106"/>
+<area shape="rect" id="Node000013" href="$basetrait_8h.html" title="Traits base (politics para comparadores y contenedor genérico)." alt="" coords="894,155,977,181"/>
+<area shape="poly" id="edge13_Node000002_Node000013" title=" " alt="" coords="533,98,876,152,882,155,877,155,875,157,532,104"/>
+<area shape="rect" id="Node000014" href="$foreach_8h.html" title="Algoritmos genéricos ForEach y FirstThat sobre iteradores." alt="" coords="40,155,127,181"/>
+<area shape="poly" id="edge15_Node000002_Node000014" title=" " alt="" coords="442,105,147,157,143,158,141,153,146,152,443,100"/>
+<area shape="rect" id="Node000015" href="$types_8h.html" title="Aliases de tipos y tamaños portables para toda la librería." alt="" coords="488,155,564,181"/>
+<area shape="poly" id="edge18_Node000002_Node000015" title=" " alt="" coords="496,105,515,142,510,140,493,110"/>
+<area shape="poly" id="edge12_Node000011_Node000010" title=" " alt="" coords="249,181,195,222,193,218,244,183"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="226,229,301,256"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="266,180,266,215,261,212,262,184"/>
+<area shape="poly" id="edge14_Node000013_Node000009" title=" " alt="" coords="931,181,911,218,908,213,926,183"/>
+<area shape="poly" id="edge16_Node000014_Node000003" title=" " alt="" coords="78,180,58,218,54,214,74,183"/>
+<area shape="poly" id="edge17_Node000014_Node000010" title=" " alt="" coords="99,179,142,218,137,220,97,184"/>
+<area shape="poly" id="edge19_Node000015_Node000005" title=" " alt="" coords="522,180,503,218,500,213,517,183"/>
+</map>

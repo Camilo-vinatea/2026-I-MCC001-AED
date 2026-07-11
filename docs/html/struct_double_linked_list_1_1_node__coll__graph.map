@@ -1,0 +1,9 @@
+<map id="DoubleLinkedList&lt; T, Comp &gt;::Node" name="DoubleLinkedList&lt; T, Comp &gt;::Node">
+<area shape="rect" id="Node000001" title="Nodo con punteros next (heredado) y prev (propio)." alt="" coords="10,212,153,255"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,147,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="79,62,83,212,78,212,74,64"/>
+<area shape="rect" id="Node000003" href="$struct_double_linked_list_1_1_node.html" title="Nodo con punteros next (heredado) y prev (propio)." alt="" coords="98,97,241,140"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="108,56,151,96,146,98,108,62"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="146,152,99,213,95,210,141,153"/>
+<area shape="poly" id="edge4_Node000003_Node000003" title=" " alt="" coords="257,110,268,119,260,127,242,129,241,124,257,122,262,119,256,115"/>
+</map>

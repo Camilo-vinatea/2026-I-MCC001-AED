@@ -1,0 +1,354 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Estructuras de Datos - MCC: Referencia del archivo DemoVector.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Estructuras de Datos - MCC<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">Colección pedagógica de contenedores en C++ (Lista, Heap, Vector, BST, AVL, B-Tree)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('_demo_vector_8cpp.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referencia del archivo DemoVector.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Demos del <a class="el" href="class_vector.html" title="Vector dinámico genérico con iteradores y recorrido concurrente.">Vector</a>: secuencial y concurrente.  
+<a href="#details">Más...</a></p>
+<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;thread&gt;</code><br />
+<code>#include &lt;mutex&gt;</code><br />
+<code>#include &quot;<a class="el" href="vector_8h_source.html">containers/vector.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Gráfico de dependencias incluidas en DemoVector.cpp:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" loading="lazy" frameborder="0" src="_demo_vector_8cpp__incl.svg" width="100%" height="496"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+</div>
+<p><a href="_demo_vector_8cpp_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:aec4da34f6ea38e1810412405c596f483" id="r_aec4da34f6ea38e1810412405c596f483"><td class="memTemplParams" colspan="2">template&lt;typename Node&gt; </td></tr>
+<tr class="memitem:aec4da34f6ea38e1810412405c596f483 template"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aec4da34f6ea38e1810412405c596f483">Print</a> (Node &amp;value, ostream &amp;os)</td></tr>
+<tr class="memdesc:aec4da34f6ea38e1810412405c596f483"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lambda: imprime el nodo seguido de coma.  <br /></td></tr>
+<tr class="memitem:ac63710ccde782fbe11283b4ca774e3aa" id="r_ac63710ccde782fbe11283b4ca774e3aa"><td class="memTemplParams" colspan="2">template&lt;typename Node&gt; </td></tr>
+<tr class="memitem:ac63710ccde782fbe11283b4ca774e3aa template"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac63710ccde782fbe11283b4ca774e3aa">AddOne</a> (Node &amp;node)</td></tr>
+<tr class="memdesc:ac63710ccde782fbe11283b4ca774e3aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lambda: incrementa el dato (con <span class="tt">mutex</span> interno).  <br /></td></tr>
+<tr class="memitem:ac46e1f5e1d4fd56e8f376c8afc15497f" id="r_ac46e1f5e1d4fd56e8f376c8afc15497f"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
+<tr class="memitem:ac46e1f5e1d4fd56e8f376c8afc15497f template"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac46e1f5e1d4fd56e8f376c8afc15497f">AddX</a> (<a class="el" href="struct_vector_node.html">VectorNode</a>&lt; T &gt; &amp;node, T x)</td></tr>
+<tr class="memdesc:ac46e1f5e1d4fd56e8f376c8afc15497f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lambda: suma <span class="tt">x</span> al dato.  <br /></td></tr>
+<tr class="memitem:a204ea04e608b2501ca8093b0301f5b5a" id="r_a204ea04e608b2501ca8093b0301f5b5a"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
+<tr class="memitem:a204ea04e608b2501ca8093b0301f5b5a template"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a204ea04e608b2501ca8093b0301f5b5a">IsMultipleOf</a> (<a class="el" href="struct_vector_node.html">VectorNode</a>&lt; T &gt; &amp;node, T x)</td></tr>
+<tr class="memdesc:a204ea04e608b2501ca8093b0301f5b5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Predicado: ¿es múltiplo de <span class="tt">x</span>?  <br /></td></tr>
+<tr class="memitem:ad4f2ae937a4e7c32d9484e0b77f00877" id="r_ad4f2ae937a4e7c32d9484e0b77f00877"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
+<tr class="memitem:ad4f2ae937a4e7c32d9484e0b77f00877 template"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4f2ae937a4e7c32d9484e0b77f00877">IsGreaterThan</a> (<a class="el" href="struct_vector_node.html">VectorNode</a>&lt; T &gt; &amp;node, T x)</td></tr>
+<tr class="memdesc:ad4f2ae937a4e7c32d9484e0b77f00877"><td class="mdescLeft">&#160;</td><td class="mdescRight">Predicado: ¿es mayor estricto a <span class="tt">x</span>?  <br /></td></tr>
+<tr class="memitem:abaa811e0586ae8f0b4d7d804488aab06" id="r_abaa811e0586ae8f0b4d7d804488aab06"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abaa811e0586ae8f0b4d7d804488aab06">DemoVector</a> ()</td></tr>
+<tr class="memdesc:abaa811e0586ae8f0b4d7d804488aab06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Demo secuencial del <a class="el" href="class_vector.html" title="Vector dinámico genérico con iteradores y recorrido concurrente.">Vector</a> con tres tipos (int, double, string).  <br /></td></tr>
+<tr class="memitem:a19cdf5a57d424c5fb8999f2228aa791c" id="r_a19cdf5a57d424c5fb8999f2228aa791c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a19cdf5a57d424c5fb8999f2228aa791c">DemoConcurrentVector</a> ()</td></tr>
+<tr class="memdesc:a19cdf5a57d424c5fb8999f2228aa791c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Demo concurrente: 5 hilos incrementan 4 elementos 100.000 veces c/u.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Demos del <a class="el" href="class_vector.html" title="Vector dinámico genérico con iteradores y recorrido concurrente.">Vector</a>: secuencial y concurrente. </p>
+<dl class="section author"><dt>Autor</dt><dd>Equipo MCC </dd></dl>
+
+<p class="definition">Definición en el archivo <a class="el" href="_demo_vector_8cpp_source.html">DemoVector.cpp</a>.</p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentación de funciones</h2>
+<a id="ac63710ccde782fbe11283b4ca774e3aa" name="ac63710ccde782fbe11283b4ca774e3aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac63710ccde782fbe11283b4ca774e3aa">&#9670;&#160;</a></span>AddOne()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Node&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void AddOne </td>
+          <td>(</td>
+          <td class="paramtype">Node &amp;</td>          <td class="paramname"><span class="paramname"><em>node</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lambda: incrementa el dato (con <span class="tt">mutex</span> interno). </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_demo_vector_8cpp_source.html#l00020">20</a> del archivo <a class="el" href="_demo_vector_8cpp_source.html">DemoVector.cpp</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_demo_vector_8cpp_source.html#l00111">DemoConcurrentVector()</a> y <a class="el" href="_demo_vector_8cpp_source.html#l00045">DemoVector()</a>.</p>
+
+</div>
+</div>
+<a id="ac46e1f5e1d4fd56e8f376c8afc15497f" name="ac46e1f5e1d4fd56e8f376c8afc15497f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac46e1f5e1d4fd56e8f376c8afc15497f">&#9670;&#160;</a></span>AddX()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void AddX </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_vector_node.html">VectorNode</a>&lt; T &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>node</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T</td>          <td class="paramname"><span class="paramname"><em>x</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lambda: suma <span class="tt">x</span> al dato. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_demo_vector_8cpp_source.html#l00028">28</a> del archivo <a class="el" href="_demo_vector_8cpp_source.html">DemoVector.cpp</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_demo_vector_8cpp_source.html#l00045">DemoVector()</a> y <a class="el" href="_lists_demo_8cpp_source.html#l00037">LinkedListDemo()</a>.</p>
+
+</div>
+</div>
+<a id="a19cdf5a57d424c5fb8999f2228aa791c" name="a19cdf5a57d424c5fb8999f2228aa791c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19cdf5a57d424c5fb8999f2228aa791c">&#9670;&#160;</a></span>DemoConcurrentVector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DemoConcurrentVector </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Demo concurrente: 5 hilos incrementan 4 elementos 100.000 veces c/u. </p>
+<p>Demo de operaciones concurrentes sobre <span class="tt"><a class="el" href="class_vector.html" title="Vector dinámico genérico con iteradores y recorrido concurrente.">Vector</a></span> (múltiples hilos).</p>
+<p>Sin sincronización existe race condition en los contadores; el resultado esperado con sincronización sería 500.000 por elemento. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_demo_vector_8cpp_source.html#l00111">111</a> del archivo <a class="el" href="_demo_vector_8cpp_source.html">DemoVector.cpp</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_demo_vector_8cpp_source.html#l00020">AddOne()</a>, <a class="el" href="vector_8h_source.html#l00142">Vector&lt; Traits &gt;::ForEach()</a> y <a class="el" href="vector_8h_source.html#l00182">Vector&lt; Traits &gt;::push_back()</a>.</p>
+
+</div>
+</div>
+<a id="abaa811e0586ae8f0b4d7d804488aab06" name="abaa811e0586ae8f0b4d7d804488aab06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abaa811e0586ae8f0b4d7d804488aab06">&#9670;&#160;</a></span>DemoVector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DemoVector </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Demo secuencial del <a class="el" href="class_vector.html" title="Vector dinámico genérico con iteradores y recorrido concurrente.">Vector</a> con tres tipos (int, double, string). </p>
+<p>Demo del <a class="el" href="class_vector.html" title="Vector dinámico genérico con iteradores y recorrido concurrente.">Vector</a> y operaciones básicas. </p>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000020">Prueba</a></b></dt><dd><span class="tt"><a class="el" href="foreach_8h.html#a74788599090eff20158143cdd3fe05e9" title="Recorre el rango y devuelve el primer iterador cuya función devuelve true. Si ninguno coincide,...">FirstThat</a></span> con predicado <span class="tt"><a class="el" href="#a204ea04e608b2501ca8093b0301f5b5a" title="Predicado: ¿es múltiplo de x?">IsMultipleOf</a>&lt;<a class="el" href="types_8h.html#a6dd649a724ccc0e9b7677c4515450443" title="Alias para int (tipo entero principal usado en ejemplos y demos).">TI</a>&gt;</span> (forward). </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000021">Prueba</a></b></dt><dd><span class="tt">ReverseFirstThat</span> con predicado <span class="tt"><a class="el" href="#ad4f2ae937a4e7c32d9484e0b77f00877" title="Predicado: ¿es mayor estricto a x?">IsGreaterThan</a>&lt;<a class="el" href="types_8h.html#a6dd649a724ccc0e9b7677c4515450443" title="Alias para int (tipo entero principal usado en ejemplos y demos).">TI</a>&gt;</span>. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000022">Prueba</a></b></dt><dd><a class="el" href="class_vector.html" title="Vector dinámico genérico con iteradores y recorrido concurrente.">Vector&lt;double&gt;</a>. </dd></dl>
+<dl class="test"><dt><b><a class="el" href="test.html#_test000023">Prueba</a></b></dt><dd><a class="el" href="class_vector.html" title="Vector dinámico genérico con iteradores y recorrido concurrente.">Vector&lt;string&gt;</a>. </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="_demo_vector_8cpp_source.html#l00045">45</a> del archivo <a class="el" href="_demo_vector_8cpp_source.html">DemoVector.cpp</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_demo_vector_8cpp_source.html#l00020">AddOne()</a>, <a class="el" href="_demo_vector_8cpp_source.html#l00028">AddX()</a>, <a class="el" href="vector_8h_source.html#l00134">Vector&lt; Traits &gt;::end()</a>, <a class="el" href="vector_8h_source.html#l00154">Vector&lt; Traits &gt;::FirstThat()</a>, <a class="el" href="vector_8h_source.html#l00142">Vector&lt; Traits &gt;::ForEach()</a>, <a class="el" href="_demo_vector_8cpp_source.html#l00040">IsGreaterThan()</a>, <a class="el" href="_demo_vector_8cpp_source.html#l00034">IsMultipleOf()</a>, <a class="el" href="_demo_vector_8cpp_source.html#l00014">Print()</a>, <a class="el" href="vector_8h_source.html#l00182">Vector&lt; Traits &gt;::push_back()</a>, <a class="el" href="vector_8h_source.html#l00138">Vector&lt; Traits &gt;::rend()</a>, <a class="el" href="vector_8h_source.html#l00160">Vector&lt; Traits &gt;::ReverseFirstThat()</a>, <a class="el" href="vector_8h_source.html#l00148">Vector&lt; Traits &gt;::ReverseForEach()</a>, <a class="el" href="vector_8h_source.html#l00204">Vector&lt; Traits &gt;::size()</a> y <a class="el" href="vector_8h_source.html#l00210">Vector&lt; Traits &gt;::ToString()</a>.</p>
+
+</div>
+</div>
+<a id="ad4f2ae937a4e7c32d9484e0b77f00877" name="ad4f2ae937a4e7c32d9484e0b77f00877"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4f2ae937a4e7c32d9484e0b77f00877">&#9670;&#160;</a></span>IsGreaterThan()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool IsGreaterThan </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_vector_node.html">VectorNode</a>&lt; T &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>node</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T</td>          <td class="paramname"><span class="paramname"><em>x</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Predicado: ¿es mayor estricto a <span class="tt">x</span>? </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_demo_vector_8cpp_source.html#l00040">40</a> del archivo <a class="el" href="_demo_vector_8cpp_source.html">DemoVector.cpp</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="vector_8h_source.html#l00072">VectorNode&lt; Traits &gt;::GetDataRef()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_demo_vector_8cpp_source.html#l00045">DemoVector()</a> y <a class="el" href="_lists_demo_8cpp_source.html#l00037">LinkedListDemo()</a>.</p>
+
+</div>
+</div>
+<a id="a204ea04e608b2501ca8093b0301f5b5a" name="a204ea04e608b2501ca8093b0301f5b5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a204ea04e608b2501ca8093b0301f5b5a">&#9670;&#160;</a></span>IsMultipleOf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool IsMultipleOf </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_vector_node.html">VectorNode</a>&lt; T &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>node</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T</td>          <td class="paramname"><span class="paramname"><em>x</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Predicado: ¿es múltiplo de <span class="tt">x</span>? </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_demo_vector_8cpp_source.html#l00034">34</a> del archivo <a class="el" href="_demo_vector_8cpp_source.html">DemoVector.cpp</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="vector_8h_source.html#l00072">VectorNode&lt; Traits &gt;::GetDataRef()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_demo_vector_8cpp_source.html#l00045">DemoVector()</a>.</p>
+
+</div>
+</div>
+<a id="aec4da34f6ea38e1810412405c596f483" name="aec4da34f6ea38e1810412405c596f483"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec4da34f6ea38e1810412405c596f483">&#9670;&#160;</a></span>Print()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Node&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void Print </td>
+          <td>(</td>
+          <td class="paramtype">Node &amp;</td>          <td class="paramname"><span class="paramname"><em>value</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ostream &amp;</td>          <td class="paramname"><span class="paramname"><em>os</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Lambda: imprime el nodo seguido de coma. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_demo_vector_8cpp_source.html#l00014">14</a> del archivo <a class="el" href="_demo_vector_8cpp_source.html">DemoVector.cpp</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_demo_vector_8cpp_source.html#l00045">DemoVector()</a> y <a class="el" href="_lists_demo_8cpp_source.html#l00037">LinkedListDemo()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>demos</b></li><li class="navelem"><a href="_demo_vector_8cpp.html">DemoVector.cpp</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

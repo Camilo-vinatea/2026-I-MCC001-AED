@@ -1,0 +1,5 @@
+<map id="Gráfico de jerarquía de clases" name="Gráfico de jerarquía de clases">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,5,147,48"/>
+<area shape="rect" id="Node000001" href="$struct_double_linked_list_1_1_node.html" title="Nodo con punteros next (heredado) y prev (propio)." alt="" coords="195,5,338,48"/>
+<area shape="poly" id="edge29_Node000000_Node000001" title=" " alt="" coords="162,24,197,26,192,27,162,29"/>
+</map>

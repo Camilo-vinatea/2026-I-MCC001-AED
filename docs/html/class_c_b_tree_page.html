@@ -1,0 +1,1609 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Estructuras de Datos - MCC: Referencia de la plantilla de la clase CBTreePage&lt; Traits &gt;</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Estructuras de Datos - MCC<span id="projectnumber">&#160;0.1.0</span>
+   </div>
+   <div id="projectbrief">Colección pedagógica de contenedores en C++ (Lista, Heap, Vector, BST, AVL, B-Tree)</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Buscar',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('class_c_b_tree_page.html','','class_c_b_tree_page-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referencia de la plantilla de la clase CBTreePage&lt; Traits &gt;</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Página (nodo) del B-Tree con split en 3 vías, redistribuciones y fusión (<span class="tt"><a class="el" href="#ae6f9fd110d53177a6cfc3299e2d93aa5" title="Fusiona tres páginas adyacentes en una.">Merge</a></span>).  
+ <a href="#details">Más...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>&gt;</code></p>
+<div class="dynheader">
+Diagrama de herencia de CBTreePage&lt; Traits &gt;</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" loading="lazy" frameborder="0" src="class_c_b_tree_page__inherit__graph.svg" width="258" height="136"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<center><span class="legend">[<a target="top" href="graph_legend.html">leyenda</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Métodos públicos</h2></td></tr>
+<tr class="memitem:a39dc72ab9fd7d2a25d16c39a45eb3c03" id="r_a39dc72ab9fd7d2a25d16c39a45eb3c03"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a39dc72ab9fd7d2a25d16c39a45eb3c03">CBTreePage</a> (<a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a> maxKeys, bool unique=true)</td></tr>
+<tr class="memdesc:a39dc72ab9fd7d2a25d16c39a45eb3c03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor: inicializa con <span class="tt">maxKeys</span> y modo de unicidad.  <br /></td></tr>
+<tr class="memitem:acf72d41d5d490b83b533799df0677a5d" id="r_acf72d41d5d490b83b533799df0677a5d"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf72d41d5d490b83b533799df0677a5d">~CBTreePage</a> ()</td></tr>
+<tr class="memdesc:acf72d41d5d490b83b533799df0677a5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor; libera los sub-páginas en cascada.  <br /></td></tr>
+<tr class="memitem:ab39acf773699bebc7ee06abb2c09aca7" id="r_ab39acf773699bebc7ee06abb2c09aca7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_b_tree_page_8h.html#a58732915d1f3b97c501b684138dfd4e0">bt_ErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab39acf773699bebc7ee06abb2c09aca7">Insert</a> (const keyType &amp;key, const ObjIDType ObjID)</td></tr>
+<tr class="memdesc:ab39acf773699bebc7ee06abb2c09aca7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserta un par <span class="tt">(key, ObjID)</span> en la página (recursivo).  <br /></td></tr>
+<tr class="memitem:a7b1169e287efb87fa4d47894f023a5a6" id="r_a7b1169e287efb87fa4d47894f023a5a6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_b_tree_page_8h.html#a58732915d1f3b97c501b684138dfd4e0">bt_ErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b1169e287efb87fa4d47894f023a5a6">Remove</a> (const keyType &amp;key, const ObjIDType ObjID)</td></tr>
+<tr class="memdesc:a7b1169e287efb87fa4d47894f023a5a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Elimina una clave; retorna <span class="tt">bt_underflow</span>, <span class="tt">bt_rootmerged</span>, <span class="tt">bt_nofound</span> o <span class="tt">bt_ok</span>.  <br /></td></tr>
+<tr class="memitem:a34d86ba8b8970dd7782a949ff939e931" id="r_a34d86ba8b8970dd7782a949ff939e931"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34d86ba8b8970dd7782a949ff939e931">Search</a> (const keyType &amp;key, <a class="el" href="types_8h.html#af0e722c4b48fd2a6a283e4d473ad6650">obj_id_t</a> &amp;ObjID)</td></tr>
+<tr class="memdesc:a34d86ba8b8970dd7782a949ff939e931"><td class="mdescLeft">&#160;</td><td class="mdescRight">Busca <span class="tt">key</span> y devuelve su <span class="tt">ObjID</span> (incrementa <span class="tt">UseCounter</span>).  <br /></td></tr>
+<tr class="memitem:aab1b75e63aae76268c3d255d77bdcabe" id="r_aab1b75e63aae76268c3d255d77bdcabe"><td class="memItemLeft" align="right" valign="top"><a id="aab1b75e63aae76268c3d255d77bdcabe" name="aab1b75e63aae76268c3d255d77bdcabe"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Print</b> (ostream &amp;os)</td></tr>
+<tr class="memdesc:aab1b75e63aae76268c3d255d77bdcabe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Impresión recursiva de claves e IDs. <br /></td></tr>
+<tr class="memitem:a07496a7ced3f8a48248bfdde69052f68" id="r_a07496a7ced3f8a48248bfdde69052f68"><td class="memTemplParams" colspan="2">template&lt;typename Func, typename ... Args&gt; </td></tr>
+<tr class="memitem:a07496a7ced3f8a48248bfdde69052f68 template"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a07496a7ced3f8a48248bfdde69052f68">ForEach</a> (Func func, <a class="el" href="types_8h.html#ae83c03c4d2b4b1a047f8882dc13cc49c">tree_height_t</a> level, Args &amp;&amp;... args)</td></tr>
+<tr class="memdesc:a07496a7ced3f8a48248bfdde69052f68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recorre la página aplicando <span class="tt">func(node, level, args...)</span>.  <br /></td></tr>
+<tr class="memitem:abe09a79c1360dd21b289b9986f6f59be" id="r_abe09a79c1360dd21b289b9986f6f59be"><td class="memTemplParams" colspan="2">template&lt;typename Func, typename ... Args&gt; </td></tr>
+<tr class="memitem:abe09a79c1360dd21b289b9986f6f59be template"><td class="memItemLeft" align="right" valign="top">Node *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abe09a79c1360dd21b289b9986f6f59be">FirstThat</a> (Func func, <a class="el" href="types_8h.html#ae83c03c4d2b4b1a047f8882dc13cc49c">tree_height_t</a> level, Args &amp;&amp;... args)</td></tr>
+<tr class="memdesc:abe09a79c1360dd21b289b9986f6f59be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Primera página cuyo predicado es verdadero.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pro-methods" class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Métodos protegidos</h2></td></tr>
+<tr class="memitem:a743d1c88b8524ee42f12a06d96d93bb1" id="r_a743d1c88b8524ee42f12a06d96d93bb1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a743d1c88b8524ee42f12a06d96d93bb1">Create</a> ()</td></tr>
+<tr class="memdesc:a743d1c88b8524ee42f12a06d96d93bb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicializa los vectores <span class="tt"><a class="el" href="#afae1582947422d8cf0148f0766fc8214" title="Claves de la página.">m_Keys</a></span> y <span class="tt"><a class="el" href="#a8a1801d60db28c53200358f7a89be822" title="Páginas hijas.">m_SubPages</a></span>.  <br /></td></tr>
+<tr class="memitem:a79aed86e9169d7489f0b3737eb1a459c" id="r_a79aed86e9169d7489f0b3737eb1a459c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a79aed86e9169d7489f0b3737eb1a459c">Reset</a> ()</td></tr>
+<tr class="memdesc:a79aed86e9169d7489f0b3737eb1a459c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Borra recursivamente todas las sub-páginas.  <br /></td></tr>
+<tr class="memitem:a61b87b85c0062a0bf42c068f15c2dd7a" id="r_a61b87b85c0062a0bf42c068f15c2dd7a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61b87b85c0062a0bf42c068f15c2dd7a">Destroy</a> ()</td></tr>
+<tr class="memdesc:a61b87b85c0062a0bf42c068f15c2dd7a"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span class="tt"><a class="el" href="#a79aed86e9169d7489f0b3737eb1a459c" title="Borra recursivamente todas las sub-páginas.">Reset()</a></span> + <span class="tt">delete this</span> (usado en fusiones).  <br /></td></tr>
+<tr class="memitem:acd4e0b2cfe03120dca7ff0ce35960416" id="r_acd4e0b2cfe03120dca7ff0ce35960416"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd4e0b2cfe03120dca7ff0ce35960416">clear</a> ()</td></tr>
+<tr class="memdesc:acd4e0b2cfe03120dca7ff0ce35960416"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reinicia <span class="tt"><a class="el" href="#ae0b383367df129e5541a2d9c80180e8a" title="Número de claves usadas.">m_KeyCount</a></span> a 0 sin tocar memoria.  <br /></td></tr>
+<tr class="memitem:a7f6792441a890a56c145a34b26cbd79b" id="r_a7f6792441a890a56c145a34b26cbd79b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7f6792441a890a56c145a34b26cbd79b">Redistribute1</a> (<a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a> &amp;pos)</td></tr>
+<tr class="memdesc:a7f6792441a890a56c145a34b26cbd79b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Redistribución: elige hermano más rico y mueve claves.  <br /></td></tr>
+<tr class="memitem:a1f8921a88567d70dd077e415058cbc7e" id="r_a1f8921a88567d70dd077e415058cbc7e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f8921a88567d70dd077e415058cbc7e">Redistribute2</a> (<a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a> pos)</td></tr>
+<tr class="memdesc:a1f8921a88567d70dd077e415058cbc7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Redistribución entre tres vecinos tras verificar bajo flujo.  <br /></td></tr>
+<tr class="memitem:a4ee84007446b3082f6fa7628a0c04ccb" id="r_a4ee84007446b3082f6fa7628a0c04ccb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ee84007446b3082f6fa7628a0c04ccb">RedistributeR2L</a> (<a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a> pos)</td></tr>
+<tr class="memdesc:a4ee84007446b3082f6fa7628a0c04ccb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mueve claves de derecha a izquierda.  <br /></td></tr>
+<tr class="memitem:a21c36c49626c43c2710cef7ed41ab836" id="r_a21c36c49626c43c2710cef7ed41ab836"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21c36c49626c43c2710cef7ed41ab836">RedistributeL2R</a> (<a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a> pos)</td></tr>
+<tr class="memdesc:a21c36c49626c43c2710cef7ed41ab836"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mueve claves de izquierda a derecha.  <br /></td></tr>
+<tr class="memitem:a2a285528190d7f8d884290912d9ab603" id="r_a2a285528190d7f8d884290912d9ab603"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a285528190d7f8d884290912d9ab603">TreatUnderflow</a> (<a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a> &amp;pos)</td></tr>
+<tr class="memdesc:a2a285528190d7f8d884290912d9ab603"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aplica <span class="tt"><a class="el" href="#a7f6792441a890a56c145a34b26cbd79b" title="Redistribución: elige hermano más rico y mueve claves.">Redistribute1</a></span> o, si falla, <span class="tt"><a class="el" href="#a1f8921a88567d70dd077e415058cbc7e" title="Redistribución entre tres vecinos tras verificar bajo flujo.">Redistribute2</a></span>.  <br /></td></tr>
+<tr class="memitem:ae6f9fd110d53177a6cfc3299e2d93aa5" id="r_ae6f9fd110d53177a6cfc3299e2d93aa5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_b_tree_page_8h.html#a58732915d1f3b97c501b684138dfd4e0">bt_ErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6f9fd110d53177a6cfc3299e2d93aa5">Merge</a> (<a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a> pos)</td></tr>
+<tr class="memdesc:ae6f9fd110d53177a6cfc3299e2d93aa5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fusiona tres páginas adyacentes en una.  <br /></td></tr>
+<tr class="memitem:af28eb53758aa45a84dca0cfae9dcc820" id="r_af28eb53758aa45a84dca0cfae9dcc820"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_b_tree_page_8h.html#a58732915d1f3b97c501b684138dfd4e0">bt_ErrorCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af28eb53758aa45a84dca0cfae9dcc820">MergeRoot</a> ()</td></tr>
+<tr class="memdesc:af28eb53758aa45a84dca0cfae9dcc820"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fusiona las páginas de la raíz bajando la altura.  <br /></td></tr>
+<tr class="memitem:ae4f553c5c9c1637c638b3e1c4d0f56cb" id="r_ae4f553c5c9c1637c638b3e1c4d0f56cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae4f553c5c9c1637c638b3e1c4d0f56cb">SplitChild</a> (<a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a> pos)</td></tr>
+<tr class="memdesc:ae4f553c5c9c1637c638b3e1c4d0f56cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Divide la página (<span class="tt">pos</span>) en dos mitades; sube la mediana.  <br /></td></tr>
+<tr class="memitem:a15f92af8025de285531bc22b8d830648" id="r_a15f92af8025de285531bc22b8d830648"><td class="memItemLeft" align="right" valign="top">Node &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a15f92af8025de285531bc22b8d830648">GetFirstNode</a> ()</td></tr>
+<tr class="memdesc:a15f92af8025de285531bc22b8d830648"><td class="mdescLeft">&#160;</td><td class="mdescRight">Devuelve el primer nodo hoja (recursivo).  <br /></td></tr>
+<tr class="memitem:ad9a8d8488ff5a6cd74588fdbf19f918d" id="r_ad9a8d8488ff5a6cd74588fdbf19f918d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad9a8d8488ff5a6cd74588fdbf19f918d">Overflow</a> ()</td></tr>
+<tr class="memdesc:ad9a8d8488ff5a6cd74588fdbf19f918d"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span class="tt">true</span> si excede <span class="tt"><a class="el" href="#ab4cf23ab35cd4855a5fba0775807eadf" title="Máximo de claves permitido.">m_MaxKeys</a></span>.  <br /></td></tr>
+<tr class="memitem:afe8238af633bfbe1d63b0830e3a18ac0" id="r_afe8238af633bfbe1d63b0830e3a18ac0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe8238af633bfbe1d63b0830e3a18ac0">Underflow</a> ()</td></tr>
+<tr class="memdesc:afe8238af633bfbe1d63b0830e3a18ac0"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span class="tt">true</span> si está por debajo del mínimo.  <br /></td></tr>
+<tr class="memitem:a584da6723fdc85fcaff7f7bcfbe35119" id="r_a584da6723fdc85fcaff7f7bcfbe35119"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a584da6723fdc85fcaff7f7bcfbe35119">IsFull</a> ()</td></tr>
+<tr class="memdesc:a584da6723fdc85fcaff7f7bcfbe35119"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span class="tt">true</span> si llegó al máximo (<span class="tt">&gt;=</span>).  <br /></td></tr>
+<tr class="memitem:af6d951232a6a9725979bca940e1ce4d5" id="r_af6d951232a6a9725979bca940e1ce4d5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af6d951232a6a9725979bca940e1ce4d5">MinNumberOfKeys</a> ()</td></tr>
+<tr class="memdesc:af6d951232a6a9725979bca940e1ce4d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mínimo de claves que debe tener un nodo (≈ 2·max/3).  <br /></td></tr>
+<tr class="memitem:a6e3e3173a056a3ecb0769127494c18ca" id="r_a6e3e3173a056a3ecb0769127494c18ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6e3e3173a056a3ecb0769127494c18ca">GetFreeCells</a> ()</td></tr>
+<tr class="memdesc:a6e3e3173a056a3ecb0769127494c18ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Celdas libres = máximo - usadas.  <br /></td></tr>
+<tr class="memitem:a42c23a39e1567dfc1e02a998ed2586ed" id="r_a42c23a39e1567dfc1e02a998ed2586ed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a42c23a39e1567dfc1e02a998ed2586ed">NumberOfKeys</a> ()</td></tr>
+<tr class="memdesc:a42c23a39e1567dfc1e02a998ed2586ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Referencia al contador (necesario para <span class="tt">++</span>).  <br /></td></tr>
+<tr class="memitem:a20aa6e78e720d365e97fe4a5f15ecb95" id="r_a20aa6e78e720d365e97fe4a5f15ecb95"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a20aa6e78e720d365e97fe4a5f15ecb95">GetNumberOfKeys</a> ()</td></tr>
+<tr class="memdesc:a20aa6e78e720d365e97fe4a5f15ecb95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lectura del contador.  <br /></td></tr>
+<tr class="memitem:a61a98997ea80ec0f76291d96bf620a24" id="r_a61a98997ea80ec0f76291d96bf620a24"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61a98997ea80ec0f76291d96bf620a24">IsRoot</a> ()</td></tr>
+<tr class="memdesc:a61a98997ea80ec0f76291d96bf620a24"><td class="mdescLeft">&#160;</td><td class="mdescRight"><span class="tt">true</span> si esta página es la raíz.  <br /></td></tr>
+<tr class="memitem:a94ab20679e47735207516139f82846d4" id="r_a94ab20679e47735207516139f82846d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a94ab20679e47735207516139f82846d4">SetMaxKeysForChilds</a> (<a class="el" href="types_8h.html#abd2baa408fdba1e77be947143d0859df">tree_order_t</a> orderforchilds)</td></tr>
+<tr class="memdesc:a94ab20679e47735207516139f82846d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajusta <span class="tt"><a class="el" href="#a17e27a886125d74bcf1224395d694792" title="Máximo para los hijos (≠ raíz).">m_MaxKeysForChilds</a></span> (marca como raíz).  <br /></td></tr>
+<tr class="memitem:a3bd94fecc0b287879ddd32c977727b87" id="r_a3bd94fecc0b287879ddd32c977727b87"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3bd94fecc0b287879ddd32c977727b87">GetFreeCellsOnLeft</a> (<a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a> pos)</td></tr>
+<tr class="memdesc:a3bd94fecc0b287879ddd32c977727b87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Celdas libres del subárbol izquierdo a <span class="tt">pos</span>.  <br /></td></tr>
+<tr class="memitem:a05be527b30a7273cafd9874144b5c38e" id="r_a05be527b30a7273cafd9874144b5c38e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a05be527b30a7273cafd9874144b5c38e">GetFreeCellsOnRight</a> (<a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a> pos)</td></tr>
+<tr class="memdesc:a05be527b30a7273cafd9874144b5c38e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Celdas libres del subárbol derecho a <span class="tt">pos</span>.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pro-attribs" class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Atributos protegidos</h2></td></tr>
+<tr class="memitem:aab85e600a484686e031c380b78c1ebca" id="r_aab85e600a484686e031c380b78c1ebca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab85e600a484686e031c380b78c1ebca">m_MinKeys</a></td></tr>
+<tr class="memdesc:aab85e600a484686e031c380b78c1ebca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mínimo de claves permitido.  <br /></td></tr>
+<tr class="memitem:ab4cf23ab35cd4855a5fba0775807eadf" id="r_ab4cf23ab35cd4855a5fba0775807eadf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab4cf23ab35cd4855a5fba0775807eadf">m_MaxKeys</a></td></tr>
+<tr class="memdesc:ab4cf23ab35cd4855a5fba0775807eadf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Máximo de claves permitido.  <br /></td></tr>
+<tr class="memitem:a17e27a886125d74bcf1224395d694792" id="r_a17e27a886125d74bcf1224395d694792"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#abd2baa408fdba1e77be947143d0859df">tree_order_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a17e27a886125d74bcf1224395d694792">m_MaxKeysForChilds</a></td></tr>
+<tr class="memdesc:a17e27a886125d74bcf1224395d694792"><td class="mdescLeft">&#160;</td><td class="mdescRight">Máximo para los hijos (≠ raíz).  <br /></td></tr>
+<tr class="memitem:ae56d2052d0536e48613ccad331a1e870" id="r_ae56d2052d0536e48613ccad331a1e870"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae56d2052d0536e48613ccad331a1e870">m_Unique</a></td></tr>
+<tr class="memdesc:ae56d2052d0536e48613ccad331a1e870"><td class="mdescLeft">&#160;</td><td class="mdescRight">¿Acepta duplicados?  <br /></td></tr>
+<tr class="memitem:aed106f785fd2917b92798450bd72ebf7" id="r_aed106f785fd2917b92798450bd72ebf7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed106f785fd2917b92798450bd72ebf7">m_isRoot</a></td></tr>
+<tr class="memdesc:aed106f785fd2917b92798450bd72ebf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">¿Es la raíz?  <br /></td></tr>
+<tr class="memitem:afae1582947422d8cf0148f0766fc8214" id="r_afae1582947422d8cf0148f0766fc8214"><td class="memItemLeft" align="right" valign="top">vector&lt; Node &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afae1582947422d8cf0148f0766fc8214">m_Keys</a></td></tr>
+<tr class="memdesc:afae1582947422d8cf0148f0766fc8214"><td class="mdescLeft">&#160;</td><td class="mdescRight">Claves de la página.  <br /></td></tr>
+<tr class="memitem:a8a1801d60db28c53200358f7a89be822" id="r_a8a1801d60db28c53200358f7a89be822"><td class="memItemLeft" align="right" valign="top">vector&lt; BTPage * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a1801d60db28c53200358f7a89be822">m_SubPages</a></td></tr>
+<tr class="memdesc:a8a1801d60db28c53200358f7a89be822"><td class="mdescLeft">&#160;</td><td class="mdescRight">Páginas hijas.  <br /></td></tr>
+<tr class="memitem:ae0b383367df129e5541a2d9c80180e8a" id="r_ae0b383367df129e5541a2d9c80180e8a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae0b383367df129e5541a2d9c80180e8a">m_KeyCount</a></td></tr>
+<tr class="memdesc:ae0b383367df129e5541a2d9c80180e8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Número de claves usadas.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-friends" class="groupheader"><a id="friends" name="friends"></a>
+Amigas</h2></td></tr>
+<tr class="memitem:a9d6df0342877e7dcdf05c936aef43dfc" id="r_a9d6df0342877e7dcdf05c936aef43dfc"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
+<tr class="memitem:a9d6df0342877e7dcdf05c936aef43dfc template"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d6df0342877e7dcdf05c936aef43dfc">BTree</a></td></tr>
+<tr class="memitem:ae26d1b6cdc8b5b3633edcc29cda21c3f" id="r_ae26d1b6cdc8b5b3633edcc29cda21c3f"><td class="memItemLeft" align="right" valign="top">struct&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae26d1b6cdc8b5b3633edcc29cda21c3f">BTreeForwardInorderPolicy</a></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename Traits&gt;<br />
+class CBTreePage&lt; Traits &gt;</div><p>Página (nodo) del B-Tree con split en 3 vías, redistribuciones y fusión (<span class="tt"><a class="el" href="#ae6f9fd110d53177a6cfc3299e2d93aa5" title="Fusiona tres páginas adyacentes en una.">Merge</a></span>). </p>
+<dl class="tparams"><dt>Parámetros de plantilla</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Traits</td><td>Debe exponer <span class="tt">KeyType</span> y <span class="tt">ObjIDType</span>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00199">199</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Documentación de constructores y destructores</h2>
+<a id="a39dc72ab9fd7d2a25d16c39a45eb3c03" name="a39dc72ab9fd7d2a25d16c39a45eb3c03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39dc72ab9fd7d2a25d16c39a45eb3c03">&#9670;&#160;</a></span>CBTreePage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::CBTreePage </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a></td>          <td class="paramname"><span class="paramname"><em>maxKeys</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>unique</em></span><span class="paramdefsep"> = </span><span class="paramdefval">true</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor: inicializa con <span class="tt">maxKeys</span> y modo de unicidad. </p>
+<p>Construye la página reservando <span class="tt">m_MaxKeys+1</span> slots. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00316">316</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_page_8h_source.html#l00785">Create()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00239">m_KeyCount</a>, <a class="el" href="_b_tree_page_8h_source.html#l00233">m_MaxKeys</a>, <a class="el" href="_b_tree_page_8h_source.html#l00235">m_Unique</a> y <a class="el" href="_b_tree_page_8h_source.html#l00290">SetMaxKeysForChilds()</a>.</p>
+
+</div>
+</div>
+<a id="acf72d41d5d490b83b533799df0677a5d" name="acf72d41d5d490b83b533799df0677a5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf72d41d5d490b83b533799df0677a5d">&#9670;&#160;</a></span>~CBTreePage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::~<a class="el" href="class_c_b_tree_page.html">CBTreePage</a> </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Destructor; libera los sub-páginas en cascada. </p>
+<p>Destructor: libera todas las sub-páginas. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00325">325</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_page_8h_source.html#l00796">Reset()</a>.</p>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentación de funciones miembro</h2>
+<a id="acd4e0b2cfe03120dca7ff0ce35960416" name="acd4e0b2cfe03120dca7ff0ce35960416"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd4e0b2cfe03120dca7ff0ce35960416">&#9670;&#160;</a></span>clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::clear </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reinicia <span class="tt"><a class="el" href="#ae0b383367df129e5541a2d9c80180e8a" title="Número de claves usadas.">m_KeyCount</a></span> a 0 sin tocar memoria. </p>
+<p>Reinicia el contador de claves sin tocar memoria. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00805">805</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_page_8h_source.html#l00239">m_KeyCount</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_page_8h_source.html#l00735">MergeRoot()</a> y <a class="el" href="_b_tree_page_8h_source.html#l00796">Reset()</a>.</p>
+
+</div>
+</div>
+<a id="a743d1c88b8524ee42f12a06d96d93bb1" name="a743d1c88b8524ee42f12a06d96d93bb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a743d1c88b8524ee42f12a06d96d93bb1">&#9670;&#160;</a></span>Create()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::Create </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Inicializa los vectores <span class="tt"><a class="el" href="#afae1582947422d8cf0148f0766fc8214" title="Claves de la página.">m_Keys</a></span> y <span class="tt"><a class="el" href="#a8a1801d60db28c53200358f7a89be822" title="Páginas hijas.">m_SubPages</a></span>. </p>
+<p>Inicializa los vectores con tamaño <span class="tt">m_MaxKeys+1</span>. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00785">785</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_page_8h_source.html#l00239">m_KeyCount</a>, <a class="el" href="_b_tree_page_8h_source.html#l00237">m_Keys</a>, <a class="el" href="_b_tree_page_8h_source.html#l00233">m_MaxKeys</a>, <a class="el" href="_b_tree_page_8h_source.html#l00232">m_MinKeys</a>, <a class="el" href="_b_tree_page_8h_source.html#l00238">m_SubPages</a> y <a class="el" href="_b_tree_page_8h_source.html#l00796">Reset()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_page_8h_source.html#l00316">CBTreePage()</a>.</p>
+
+</div>
+</div>
+<a id="a61b87b85c0062a0bf42c068f15c2dd7a" name="a61b87b85c0062a0bf42c068f15c2dd7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61b87b85c0062a0bf42c068f15c2dd7a">&#9670;&#160;</a></span>Destroy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::Destroy </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><span class="tt"><a class="el" href="#a79aed86e9169d7489f0b3737eb1a459c" title="Borra recursivamente todas las sub-páginas.">Reset()</a></span> + <span class="tt">delete this</span> (usado en fusiones). </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00246">246</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_page_8h_source.html#l00796">Reset()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_page_8h_source.html#l00735">MergeRoot()</a>.</p>
+
+</div>
+</div>
+<a id="abe09a79c1360dd21b289b9986f6f59be" name="abe09a79c1360dd21b289b9986f6f59be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe09a79c1360dd21b289b9986f6f59be">&#9670;&#160;</a></span>FirstThat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<div class="memtemplate">
+template&lt;typename Func, typename... Args&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::Node * <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::FirstThat </td>
+          <td>(</td>
+          <td class="paramtype">Func</td>          <td class="paramname"><span class="paramname"><em>func</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#ae83c03c4d2b4b1a047f8882dc13cc49c">tree_height_t</a></td>          <td class="paramname"><span class="paramname"><em>level</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Args &amp;&amp;...</td>          <td class="paramname"><span class="paramname"><em>args</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Primera página cuyo predicado es verdadero. </p>
+<p>Llama a <span class="tt">Call</span> devolviendo el primer nodo que cumple el predicado. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00635">635</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+</div>
+</div>
+<a id="a07496a7ced3f8a48248bfdde69052f68" name="a07496a7ced3f8a48248bfdde69052f68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07496a7ced3f8a48248bfdde69052f68">&#9670;&#160;</a></span>ForEach()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<div class="memtemplate">
+template&lt;typename Func, typename... Args&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::ForEach </td>
+          <td>(</td>
+          <td class="paramtype">Func</td>          <td class="paramname"><span class="paramname"><em>func</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#ae83c03c4d2b4b1a047f8882dc13cc49c">tree_height_t</a></td>          <td class="paramname"><span class="paramname"><em>level</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Args &amp;&amp;...</td>          <td class="paramname"><span class="paramname"><em>args</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Recorre la página aplicando <span class="tt">func(node, level, args...)</span>. </p>
+<p>Llama a <span class="tt">Call</span> ignorando el valor de retorno (recorrido total). </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00626">626</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+</div>
+</div>
+<a id="a15f92af8025de285531bc22b8d830648" name="a15f92af8025de285531bc22b8d830648"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15f92af8025de285531bc22b8d830648">&#9670;&#160;</a></span>GetFirstNode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::Node &amp; <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::GetFirstNode </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Devuelve el primer nodo hoja (recursivo). </p>
+<p>Devuelve el nodo más a la izquierda (primera hoja accesible). </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00776">776</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_page_8h_source.html#l00237">m_Keys</a> y <a class="el" href="_b_tree_page_8h_source.html#l00238">m_SubPages</a>.</p>
+
+</div>
+</div>
+<a id="a6e3e3173a056a3ecb0769127494c18ca" name="a6e3e3173a056a3ecb0769127494c18ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e3e3173a056a3ecb0769127494c18ca">&#9670;&#160;</a></span>GetFreeCells()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a> <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::GetFreeCells </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Celdas libres = máximo - usadas. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00282">282</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_page_8h_source.html#l00239">m_KeyCount</a> y <a class="el" href="_b_tree_page_8h_source.html#l00233">m_MaxKeys</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_page_8h_source.html#l00683">Merge()</a>.</p>
+
+</div>
+</div>
+<a id="a3bd94fecc0b287879ddd32c977727b87" name="a3bd94fecc0b287879ddd32c977727b87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bd94fecc0b287879ddd32c977727b87">&#9670;&#160;</a></span>GetFreeCellsOnLeft()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a> <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::GetFreeCellsOnLeft </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a></td>          <td class="paramname"><span class="paramname"><em>pos</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Celdas libres del subárbol izquierdo a <span class="tt">pos</span>. </p>
+<p>Celdas libres en la página a la izquierda de <span class="tt">pos</span> (0 si no existe). </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00833">833</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_page_8h_source.html#l00238">m_SubPages</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_page_8h_source.html#l00364">Redistribute1()</a>.</p>
+
+</div>
+</div>
+<a id="a05be527b30a7273cafd9874144b5c38e" name="a05be527b30a7273cafd9874144b5c38e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05be527b30a7273cafd9874144b5c38e">&#9670;&#160;</a></span>GetFreeCellsOnRight()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a> <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::GetFreeCellsOnRight </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a></td>          <td class="paramname"><span class="paramname"><em>pos</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Celdas libres del subárbol derecho a <span class="tt">pos</span>. </p>
+<p>Celdas libres en la página a la derecha de <span class="tt">pos</span> (0 si no existe). </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00841">841</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_page_8h_source.html#l00286">GetNumberOfKeys()</a> y <a class="el" href="_b_tree_page_8h_source.html#l00238">m_SubPages</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_page_8h_source.html#l00364">Redistribute1()</a>.</p>
+
+</div>
+</div>
+<a id="a20aa6e78e720d365e97fe4a5f15ecb95" name="a20aa6e78e720d365e97fe4a5f15ecb95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20aa6e78e720d365e97fe4a5f15ecb95">&#9670;&#160;</a></span>GetNumberOfKeys()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a> <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::GetNumberOfKeys </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Lectura del contador. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00286">286</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_page_8h_source.html#l00239">m_KeyCount</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_page_8h_source.html#l00841">GetFreeCellsOnRight()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00455">RedistributeL2R()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00436">RedistributeR2L()</a> y <a class="el" href="_b_tree_page_8h_source.html#l00472">SplitChild()</a>.</p>
+
+</div>
+</div>
+<a id="ab39acf773699bebc7ee06abb2c09aca7" name="ab39acf773699bebc7ee06abb2c09aca7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab39acf773699bebc7ee06abb2c09aca7">&#9670;&#160;</a></span>Insert()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_b_tree_page_8h.html#a58732915d1f3b97c501b684138dfd4e0">bt_ErrorCode</a> <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::Insert </td>
+          <td>(</td>
+          <td class="paramtype">const keyType &amp;</td>          <td class="paramname"><span class="paramname"><em>key</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const ObjIDType</td>          <td class="paramname"><span class="paramname"><em>ObjID</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inserta un par <span class="tt">(key, ObjID)</span> en la página (recursivo). </p>
+<p>Inserción: si es hoja <span class="tt"><a class="el" href="_b_tree_page_8h.html#af8771702919e3213d7b5366d454d943e" title="Inserta object en container[pos] desplazando los siguientes hacia la derecha.">insert_at</a></span>; si no, recursión + manejo de overflow.</p>
+<dl class="section return"><dt>Devuelve</dt><dd><span class="tt">bt_duplicate</span>, <span class="tt">bt_overflow</span> o <span class="tt">bt_ok</span>. </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00332">332</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_page_8h_source.html#l00035">binary_search()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00057">insert_at()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00239">m_KeyCount</a>, <a class="el" href="_b_tree_page_8h_source.html#l00237">m_Keys</a>, <a class="el" href="_b_tree_page_8h_source.html#l00238">m_SubPages</a>, <a class="el" href="_b_tree_page_8h_source.html#l00235">m_Unique</a>, <a class="el" href="_b_tree_page_8h_source.html#l00284">NumberOfKeys()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00274">Overflow()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00364">Redistribute1()</a> y <a class="el" href="_b_tree_page_8h_source.html#l00472">SplitChild()</a>.</p>
+
+</div>
+</div>
+<a id="a584da6723fdc85fcaff7f7bcfbe35119" name="a584da6723fdc85fcaff7f7bcfbe35119"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a584da6723fdc85fcaff7f7bcfbe35119">&#9670;&#160;</a></span>IsFull()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::IsFull </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><span class="tt">true</span> si llegó al máximo (<span class="tt">&gt;=</span>). </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00278">278</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_page_8h_source.html#l00239">m_KeyCount</a> y <a class="el" href="_b_tree_page_8h_source.html#l00233">m_MaxKeys</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_page_8h_source.html#l00364">Redistribute1()</a> y <a class="el" href="_b_tree_page_8h_source.html#l00472">SplitChild()</a>.</p>
+
+</div>
+</div>
+<a id="a61a98997ea80ec0f76291d96bf620a24" name="a61a98997ea80ec0f76291d96bf620a24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61a98997ea80ec0f76291d96bf620a24">&#9670;&#160;</a></span>IsRoot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::IsRoot </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><span class="tt">true</span> si esta página es la raíz. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00288">288</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_page_8h_source.html#l00233">m_MaxKeys</a> y <a class="el" href="_b_tree_page_8h_source.html#l00234">m_MaxKeysForChilds</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_page_8h_source.html#l00642">Remove()</a>.</p>
+
+</div>
+</div>
+<a id="ae6f9fd110d53177a6cfc3299e2d93aa5" name="ae6f9fd110d53177a6cfc3299e2d93aa5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6f9fd110d53177a6cfc3299e2d93aa5">&#9670;&#160;</a></span>Merge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_b_tree_page_8h.html#a58732915d1f3b97c501b684138dfd4e0">bt_ErrorCode</a> <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::Merge </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a></td>          <td class="paramname"><span class="paramname"><em>pos</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Fusiona tres páginas adyacentes en una. </p>
+<p>Fusiona tres páginas adyacentes equilibrando <span class="tt">pChild1</span> y <span class="tt">pChild2</span>. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00683">683</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_page_8h_source.html#l00282">GetFreeCells()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00237">m_Keys</a>, <a class="el" href="_b_tree_page_8h_source.html#l00238">m_SubPages</a>, <a class="el" href="_b_tree_page_8h_source.html#l00280">MinNumberOfKeys()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00284">NumberOfKeys()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00067">remove()</a> y <a class="el" href="_b_tree_page_8h_source.html#l00276">Underflow()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_page_8h_source.html#l00642">Remove()</a>.</p>
+
+</div>
+</div>
+<a id="af28eb53758aa45a84dca0cfae9dcc820" name="af28eb53758aa45a84dca0cfae9dcc820"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af28eb53758aa45a84dca0cfae9dcc820">&#9670;&#160;</a></span>MergeRoot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_b_tree_page_8h.html#a58732915d1f3b97c501b684138dfd4e0">bt_ErrorCode</a> <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::MergeRoot </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Fusiona las páginas de la raíz bajando la altura. </p>
+<p>Fusiona las tres páginas de la raíz, bajando la altura total. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00735">735</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_page_8h_source.html#l00805">clear()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00246">Destroy()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00237">m_Keys</a>, <a class="el" href="_b_tree_page_8h_source.html#l00238">m_SubPages</a>, <a class="el" href="_b_tree_page_8h_source.html#l00280">MinNumberOfKeys()</a> y <a class="el" href="_b_tree_page_8h_source.html#l00284">NumberOfKeys()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_page_8h_source.html#l00642">Remove()</a>.</p>
+
+</div>
+</div>
+<a id="af6d951232a6a9725979bca940e1ce4d5" name="af6d951232a6a9725979bca940e1ce4d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6d951232a6a9725979bca940e1ce4d5">&#9670;&#160;</a></span>MinNumberOfKeys()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a> <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::MinNumberOfKeys </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Mínimo de claves que debe tener un nodo (≈ 2·max/3). </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00280">280</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_page_8h_source.html#l00233">m_MaxKeys</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_page_8h_source.html#l00683">Merge()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00735">MergeRoot()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00364">Redistribute1()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00455">RedistributeL2R()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00436">RedistributeR2L()</a> y <a class="el" href="_b_tree_page_8h_source.html#l00276">Underflow()</a>.</p>
+
+</div>
+</div>
+<a id="a42c23a39e1567dfc1e02a998ed2586ed" name="a42c23a39e1567dfc1e02a998ed2586ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42c23a39e1567dfc1e02a998ed2586ed">&#9670;&#160;</a></span>NumberOfKeys()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a> &amp; <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::NumberOfKeys </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Referencia al contador (necesario para <span class="tt">++</span>). </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00284">284</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_page_8h_source.html#l00239">m_KeyCount</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_page_8h_source.html#l00332">Insert()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00683">Merge()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00735">MergeRoot()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00364">Redistribute1()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00405">Redistribute2()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00455">RedistributeL2R()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00436">RedistributeR2L()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00642">Remove()</a> y <a class="el" href="_b_tree_page_8h_source.html#l00472">SplitChild()</a>.</p>
+
+</div>
+</div>
+<a id="ad9a8d8488ff5a6cd74588fdbf19f918d" name="ad9a8d8488ff5a6cd74588fdbf19f918d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9a8d8488ff5a6cd74588fdbf19f918d">&#9670;&#160;</a></span>Overflow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::Overflow </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><span class="tt">true</span> si excede <span class="tt"><a class="el" href="#ab4cf23ab35cd4855a5fba0775807eadf" title="Máximo de claves permitido.">m_MaxKeys</a></span>. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00274">274</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_page_8h_source.html#l00239">m_KeyCount</a> y <a class="el" href="_b_tree_page_8h_source.html#l00233">m_MaxKeys</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_page_8h_source.html#l00332">Insert()</a>.</p>
+
+</div>
+</div>
+<a id="a7f6792441a890a56c145a34b26cbd79b" name="a7f6792441a890a56c145a34b26cbd79b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f6792441a890a56c145a34b26cbd79b">&#9670;&#160;</a></span>Redistribute1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::Redistribute1 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>pos</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Redistribución: elige hermano más rico y mueve claves. </p>
+<p>Redistribución elegida entre hermanos cuando hay overflow o underflow.</p>
+<dl class="section return"><dt>Devuelve</dt><dd><span class="tt">true</span> si pudo redistribuir, <span class="tt">false</span> si requiere split/merge. </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00364">364</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_page_8h_source.html#l00833">GetFreeCellsOnLeft()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00841">GetFreeCellsOnRight()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00278">IsFull()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00238">m_SubPages</a>, <a class="el" href="_b_tree_page_8h_source.html#l00280">MinNumberOfKeys()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00284">NumberOfKeys()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00455">RedistributeL2R()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00436">RedistributeR2L()</a> y <a class="el" href="_b_tree_page_8h_source.html#l00276">Underflow()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_page_8h_source.html#l00332">Insert()</a> y <a class="el" href="_b_tree_page_8h_source.html#l00260">TreatUnderflow()</a>.</p>
+
+</div>
+</div>
+<a id="a1f8921a88567d70dd077e415058cbc7e" name="a1f8921a88567d70dd077e415058cbc7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f8921a88567d70dd077e415058cbc7e">&#9670;&#160;</a></span>Redistribute2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::Redistribute2 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a></td>          <td class="paramname"><span class="paramname"><em>pos</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Redistribución entre tres vecinos tras verificar bajo flujo. </p>
+<p>Redistribución entre tres vecinos cuando uno queda bajo mínimo. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00405">405</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_page_8h_source.html#l00238">m_SubPages</a>, <a class="el" href="_b_tree_page_8h_source.html#l00284">NumberOfKeys()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00455">RedistributeL2R()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00436">RedistributeR2L()</a> y <a class="el" href="_b_tree_page_8h_source.html#l00276">Underflow()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_page_8h_source.html#l00260">TreatUnderflow()</a>.</p>
+
+</div>
+</div>
+<a id="a21c36c49626c43c2710cef7ed41ab836" name="a21c36c49626c43c2710cef7ed41ab836"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21c36c49626c43c2710cef7ed41ab836">&#9670;&#160;</a></span>RedistributeL2R()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::RedistributeL2R </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a></td>          <td class="paramname"><span class="paramname"><em>pos</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Mueve claves de izquierda a derecha. </p>
+<p>Mueve claves de la página <span class="tt">pos</span> (izquierda) a <span class="tt">pos+1</span> (derecha). </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00455">455</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_page_8h_source.html#l00286">GetNumberOfKeys()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00057">insert_at()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00237">m_Keys</a>, <a class="el" href="_b_tree_page_8h_source.html#l00238">m_SubPages</a>, <a class="el" href="_b_tree_page_8h_source.html#l00280">MinNumberOfKeys()</a> y <a class="el" href="_b_tree_page_8h_source.html#l00284">NumberOfKeys()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_page_8h_source.html#l00364">Redistribute1()</a> y <a class="el" href="_b_tree_page_8h_source.html#l00405">Redistribute2()</a>.</p>
+
+</div>
+</div>
+<a id="a4ee84007446b3082f6fa7628a0c04ccb" name="a4ee84007446b3082f6fa7628a0c04ccb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ee84007446b3082f6fa7628a0c04ccb">&#9670;&#160;</a></span>RedistributeR2L()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::RedistributeR2L </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a></td>          <td class="paramname"><span class="paramname"><em>pos</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Mueve claves de derecha a izquierda. </p>
+<p>Mueve claves de la página <span class="tt">pos</span> (derecha) a <span class="tt">pos-1</span> (izquierda). </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00436">436</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_page_8h_source.html#l00286">GetNumberOfKeys()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00057">insert_at()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00237">m_Keys</a>, <a class="el" href="_b_tree_page_8h_source.html#l00238">m_SubPages</a>, <a class="el" href="_b_tree_page_8h_source.html#l00280">MinNumberOfKeys()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00284">NumberOfKeys()</a> y <a class="el" href="_b_tree_page_8h_source.html#l00067">remove()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_page_8h_source.html#l00364">Redistribute1()</a> y <a class="el" href="_b_tree_page_8h_source.html#l00405">Redistribute2()</a>.</p>
+
+</div>
+</div>
+<a id="a7b1169e287efb87fa4d47894f023a5a6" name="a7b1169e287efb87fa4d47894f023a5a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b1169e287efb87fa4d47894f023a5a6">&#9670;&#160;</a></span>Remove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_b_tree_page_8h.html#a58732915d1f3b97c501b684138dfd4e0">bt_ErrorCode</a> <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::Remove </td>
+          <td>(</td>
+          <td class="paramtype">const keyType &amp;</td>          <td class="paramname"><span class="paramname"><em>key</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const ObjIDType</td>          <td class="paramname"><span class="paramname"><em>ObjID</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Elimina una clave; retorna <span class="tt">bt_underflow</span>, <span class="tt">bt_rootmerged</span>, <span class="tt">bt_nofound</span> o <span class="tt">bt_ok</span>. </p>
+<p>Eliminación: cuatro casos (hoja, no-hoja, underflow, raíz). </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00642">642</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_page_8h_source.html#l00035">binary_search()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00288">IsRoot()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00239">m_KeyCount</a>, <a class="el" href="_b_tree_page_8h_source.html#l00237">m_Keys</a>, <a class="el" href="_b_tree_page_8h_source.html#l00238">m_SubPages</a>, <a class="el" href="_b_tree_page_8h_source.html#l00683">Merge()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00735">MergeRoot()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00284">NumberOfKeys()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00067">remove()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00260">TreatUnderflow()</a> y <a class="el" href="_b_tree_page_8h_source.html#l00276">Underflow()</a>.</p>
+
+</div>
+</div>
+<a id="a79aed86e9169d7489f0b3737eb1a459c" name="a79aed86e9169d7489f0b3737eb1a459c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79aed86e9169d7489f0b3737eb1a459c">&#9670;&#160;</a></span>Reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::Reset </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Borra recursivamente todas las sub-páginas. </p>
+<p>Libera recursivamente todas las sub-páginas. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00796">796</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_page_8h_source.html#l00805">clear()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00239">m_KeyCount</a> y <a class="el" href="_b_tree_page_8h_source.html#l00238">m_SubPages</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_page_8h_source.html#l00785">Create()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00246">Destroy()</a> y <a class="el" href="_b_tree_page_8h_source.html#l00325">~CBTreePage()</a>.</p>
+
+</div>
+</div>
+<a id="a34d86ba8b8970dd7782a949ff939e931" name="a34d86ba8b8970dd7782a949ff939e931"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34d86ba8b8970dd7782a949ff939e931">&#9670;&#160;</a></span>Search()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::Search </td>
+          <td>(</td>
+          <td class="paramtype">const keyType &amp;</td>          <td class="paramname"><span class="paramname"><em>key</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="types_8h.html#af0e722c4b48fd2a6a283e4d473ad6650">obj_id_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>ObjID</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Busca <span class="tt">key</span> y devuelve su <span class="tt">ObjID</span> (incrementa <span class="tt">UseCounter</span>). </p>
+<p>Búsqueda binaria + recursión; en caso de éxito incrementa <span class="tt">UseCounter</span>. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00579">579</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_page_8h_source.html#l00035">binary_search()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00239">m_KeyCount</a>, <a class="el" href="_b_tree_page_8h_source.html#l00237">m_Keys</a> y <a class="el" href="_b_tree_page_8h_source.html#l00238">m_SubPages</a>.</p>
+
+</div>
+</div>
+<a id="a94ab20679e47735207516139f82846d4" name="a94ab20679e47735207516139f82846d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94ab20679e47735207516139f82846d4">&#9670;&#160;</a></span>SetMaxKeysForChilds()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::SetMaxKeysForChilds </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="types_8h.html#abd2baa408fdba1e77be947143d0859df">tree_order_t</a></td>          <td class="paramname"><span class="paramname"><em>orderforchilds</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ajusta <span class="tt"><a class="el" href="#a17e27a886125d74bcf1224395d694792" title="Máximo para los hijos (≠ raíz).">m_MaxKeysForChilds</a></span> (marca como raíz). </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00290">290</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_page_8h_source.html#l00234">m_MaxKeysForChilds</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_page_8h_source.html#l00316">CBTreePage()</a>.</p>
+
+</div>
+</div>
+<a id="ae4f553c5c9c1637c638b3e1c4d0f56cb" name="ae4f553c5c9c1637c638b3e1c4d0f56cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4f553c5c9c1637c638b3e1c4d0f56cb">&#9670;&#160;</a></span>SplitChild()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::SplitChild </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a></td>          <td class="paramname"><span class="paramname"><em>pos</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Divide la página (<span class="tt">pos</span>) en dos mitades; sube la mediana. </p>
+<p>Divide la página <span class="tt">pos</span> en dos mitades; sube la mediana a <span class="tt"><a class="el" href="#afae1582947422d8cf0148f0766fc8214" title="Claves de la página.">m_Keys</a>[pos]</span>. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00472">472</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_page_8h_source.html#l00286">GetNumberOfKeys()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00057">insert_at()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00278">IsFull()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00237">m_Keys</a>, <a class="el" href="_b_tree_page_8h_source.html#l00238">m_SubPages</a> y <a class="el" href="_b_tree_page_8h_source.html#l00284">NumberOfKeys()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_page_8h_source.html#l00332">Insert()</a>.</p>
+
+</div>
+</div>
+<a id="a2a285528190d7f8d884290912d9ab603" name="a2a285528190d7f8d884290912d9ab603"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a285528190d7f8d884290912d9ab603">&#9670;&#160;</a></span>TreatUnderflow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::TreatUnderflow </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>pos</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Aplica <span class="tt"><a class="el" href="#a7f6792441a890a56c145a34b26cbd79b" title="Redistribución: elige hermano más rico y mueve claves.">Redistribute1</a></span> o, si falla, <span class="tt"><a class="el" href="#a1f8921a88567d70dd077e415058cbc7e" title="Redistribución entre tres vecinos tras verificar bajo flujo.">Redistribute2</a></span>. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00260">260</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_page_8h_source.html#l00364">Redistribute1()</a> y <a class="el" href="_b_tree_page_8h_source.html#l00405">Redistribute2()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_page_8h_source.html#l00642">Remove()</a>.</p>
+
+</div>
+</div>
+<a id="afe8238af633bfbe1d63b0830e3a18ac0" name="afe8238af633bfbe1d63b0830e3a18ac0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe8238af633bfbe1d63b0830e3a18ac0">&#9670;&#160;</a></span>Underflow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::Underflow </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><span class="tt">true</span> si está por debajo del mínimo. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00276">276</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Hace referencia a <a class="el" href="_b_tree_page_8h_source.html#l00239">m_KeyCount</a> y <a class="el" href="_b_tree_page_8h_source.html#l00280">MinNumberOfKeys()</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_page_8h_source.html#l00683">Merge()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00364">Redistribute1()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00405">Redistribute2()</a> y <a class="el" href="_b_tree_page_8h_source.html#l00642">Remove()</a>.</p>
+
+</div>
+</div>
+<a name="doc-related-members" id="doc-related-members"></a><h2 id="header-doc-related-members" class="groupheader">Documentación de símbolos amigos y relacionados</h2>
+<a id="a9d6df0342877e7dcdf05c936aef43dfc" name="a9d6df0342877e7dcdf05c936aef43dfc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d6df0342877e7dcdf05c936aef43dfc">&#9670;&#160;</a></span>BTree</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="class_b_tree.html">BTree</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel friend">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00201">201</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+</div>
+</div>
+<a id="ae26d1b6cdc8b5b3633edcc29cda21c3f" name="ae26d1b6cdc8b5b3633edcc29cda21c3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae26d1b6cdc8b5b3633edcc29cda21c3f">&#9670;&#160;</a></span>BTreeForwardInorderPolicy</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend struct <a class="el" href="struct_b_tree_forward_inorder_policy.html">BTreeForwardInorderPolicy</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel friend">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00202">202</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+</div>
+</div>
+<a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Documentación de datos miembro</h2>
+<a id="aed106f785fd2917b92798450bd72ebf7" name="aed106f785fd2917b92798450bd72ebf7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed106f785fd2917b92798450bd72ebf7">&#9670;&#160;</a></span>m_isRoot</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::m_isRoot</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>¿Es la raíz? </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00236">236</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+</div>
+</div>
+<a id="ae0b383367df129e5541a2d9c80180e8a" name="ae0b383367df129e5541a2d9c80180e8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0b383367df129e5541a2d9c80180e8a">&#9670;&#160;</a></span>m_KeyCount</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a> <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::m_KeyCount</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Número de claves usadas. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00239">239</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_page_8h_source.html#l00316">CBTreePage()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00805">clear()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00785">Create()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00282">GetFreeCells()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00286">GetNumberOfKeys()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00332">Insert()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00278">IsFull()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00284">NumberOfKeys()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00274">Overflow()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00642">Remove()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00796">Reset()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00579">Search()</a> y <a class="el" href="_b_tree_page_8h_source.html#l00276">Underflow()</a>.</p>
+
+</div>
+</div>
+<a id="afae1582947422d8cf0148f0766fc8214" name="afae1582947422d8cf0148f0766fc8214"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afae1582947422d8cf0148f0766fc8214">&#9670;&#160;</a></span>m_Keys</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt;Node&gt; <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::m_Keys</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Claves de la página. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00237">237</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_page_8h_source.html#l00785">Create()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00776">GetFirstNode()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00332">Insert()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00683">Merge()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00735">MergeRoot()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00455">RedistributeL2R()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00436">RedistributeR2L()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00642">Remove()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00579">Search()</a> y <a class="el" href="_b_tree_page_8h_source.html#l00472">SplitChild()</a>.</p>
+
+</div>
+</div>
+<a id="ab4cf23ab35cd4855a5fba0775807eadf" name="ab4cf23ab35cd4855a5fba0775807eadf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4cf23ab35cd4855a5fba0775807eadf">&#9670;&#160;</a></span>m_MaxKeys</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a> <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::m_MaxKeys</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Máximo de claves permitido. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00233">233</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_page_8h_source.html#l00316">CBTreePage()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00785">Create()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00282">GetFreeCells()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00278">IsFull()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00288">IsRoot()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00280">MinNumberOfKeys()</a> y <a class="el" href="_b_tree_page_8h_source.html#l00274">Overflow()</a>.</p>
+
+</div>
+</div>
+<a id="a17e27a886125d74bcf1224395d694792" name="a17e27a886125d74bcf1224395d694792"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17e27a886125d74bcf1224395d694792">&#9670;&#160;</a></span>m_MaxKeysForChilds</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#abd2baa408fdba1e77be947143d0859df">tree_order_t</a> <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::m_MaxKeysForChilds</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Máximo para los hijos (≠ raíz). </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00234">234</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_page_8h_source.html#l00288">IsRoot()</a> y <a class="el" href="_b_tree_page_8h_source.html#l00290">SetMaxKeysForChilds()</a>.</p>
+
+</div>
+</div>
+<a id="aab85e600a484686e031c380b78c1ebca" name="aab85e600a484686e031c380b78c1ebca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab85e600a484686e031c380b78c1ebca">&#9670;&#160;</a></span>m_MinKeys</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#ac908e9b6fe0f2566f76ffc19ecfc0803">btree_pos_t</a> <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::m_MinKeys</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Mínimo de claves permitido. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00232">232</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_page_8h_source.html#l00785">Create()</a>.</p>
+
+</div>
+</div>
+<a id="a8a1801d60db28c53200358f7a89be822" name="a8a1801d60db28c53200358f7a89be822"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a1801d60db28c53200358f7a89be822">&#9670;&#160;</a></span>m_SubPages</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt;BTPage *&gt; <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::m_SubPages</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Páginas hijas. </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00238">238</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_page_8h_source.html#l00785">Create()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00776">GetFirstNode()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00833">GetFreeCellsOnLeft()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00841">GetFreeCellsOnRight()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00332">Insert()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00683">Merge()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00735">MergeRoot()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00364">Redistribute1()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00405">Redistribute2()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00455">RedistributeL2R()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00436">RedistributeR2L()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00642">Remove()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00796">Reset()</a>, <a class="el" href="_b_tree_page_8h_source.html#l00579">Search()</a> y <a class="el" href="_b_tree_page_8h_source.html#l00472">SplitChild()</a>.</p>
+
+</div>
+</div>
+<a id="ae56d2052d0536e48613ccad331a1e870" name="ae56d2052d0536e48613ccad331a1e870"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae56d2052d0536e48613ccad331a1e870">&#9670;&#160;</a></span>m_Unique</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Traits&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_c_b_tree_page.html">CBTreePage</a>&lt; Traits &gt;::m_Unique</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>¿Acepta duplicados? </p>
+
+<p class="definition">Definición en la línea <a class="el" href="_b_tree_page_8h_source.html#l00235">235</a> del archivo <a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a>.</p>
+
+<p class="reference">Referenciado por <a class="el" href="_b_tree_page_8h_source.html#l00316">CBTreePage()</a> y <a class="el" href="_b_tree_page_8h_source.html#l00332">Insert()</a>.</p>
+
+</div>
+</div>
+<hr/>La documentación de esta clase está generada del siguiente archivo:<ul>
+<li><a class="el" href="_b_tree_page_8h_source.html">BTreePage.h</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="class_c_b_tree_page.html">CBTreePage</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

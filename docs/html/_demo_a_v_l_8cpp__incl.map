@@ -1,0 +1,41 @@
+<map id="DemoAVL.cpp" name="DemoAVL.cpp">
+<area shape="rect" id="Node000001" title="Demo del AVL: inserción 1..7 (caso degenerado), asserts y comparador descendente." alt="" coords="684,5,790,32"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="718,304,789,331"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="750,30,768,52,784,79,799,119,806,152,812,229,814,243,812,257,800,278,783,296,781,291,795,275,807,255,809,243,807,230,800,153,793,121,779,81,764,55,748,35"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="705,80,769,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="739,30,739,66,735,63,736,35"/>
+<area shape="rect" id="Node000004" href="$avl_8h.html" title="Árbol AVL (BST auto&#45;balanceado) basado en BinaryTree (Template Method)." alt="" coords="500,80,625,107"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="704,34,608,76,606,71,709,32"/>
+<area shape="rect" id="Node000005" href="$binarytree_8h.html" title="Árbol binario de búsqueda (BST) genérico basado en políticas." alt="" coords="488,155,578,181"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="559,105,546,142,542,138,555,109"/>
+<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="542,179,571,216,611,254,657,280,705,302,700,301,654,285,608,258,567,219,540,184"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="621,229,685,256"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="555,179,622,221,617,221,553,184"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="468,304,521,331"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="532,180,504,291,500,287,528,183"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="112,229,181,256"/>
+<area shape="poly" id="edge8_Node000005_Node000008" title=" " alt="" coords="485,177,361,200,197,232,195,226,360,195,490,175"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="205,229,261,256"/>
+<area shape="poly" id="edge9_Node000005_Node000009" title=" " alt="" coords="485,180,277,231,276,226,490,178"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="286,229,343,256"/>
+<area shape="poly" id="edge10_Node000005_Node000010" title=" " alt="" coords="498,181,359,230,357,224,493,183"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="206,304,284,331"/>
+<area shape="poly" id="edge11_Node000005_Node000011" title=" " alt="" coords="508,181,408,232,282,299,280,294,405,227,503,183"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="859,304,911,331"/>
+<area shape="poly" id="edge12_Node000005_Node000012" title=" " alt="" coords="578,168,629,173,688,182,751,200,811,227,846,257,873,292,868,290,842,260,808,232,749,205,687,188,628,178,579,173"/>
+<area shape="rect" id="Node000013" href="$general__iterator_8h.html" title="Iterador genérico base (CRTP) usado por todos los contenedores." alt="" coords="923,229,1044,256"/>
+<area shape="poly" id="edge13_Node000005_Node000013" title=" " alt="" coords="579,174,910,228,905,230,578,179"/>
+<area shape="rect" id="Node000015" href="$basetrait_8h.html" title="Traits base (politics para comparadores y contenedor genérico)." alt="" coords="5,229,88,256"/>
+<area shape="poly" id="edge16_Node000005_Node000015" title=" " alt="" coords="486,175,323,198,103,232,102,226,322,192,491,173"/>
+<area shape="rect" id="Node000016" href="$foreach_8h.html" title="Algoritmos genéricos ForEach y FirstThat sobre iteradores." alt="" coords="710,229,797,256"/>
+<area shape="poly" id="edge18_Node000005_Node000016" title=" " alt="" coords="572,179,703,224,697,224,571,185"/>
+<area shape="rect" id="Node000017" href="$types_8h.html" title="Aliases de tipos y tamaños portables para toda la librería." alt="" coords="419,229,495,256"/>
+<area shape="poly" id="edge21_Node000005_Node000017" title=" " alt="" coords="522,181,482,221,480,216,518,183"/>
+<area shape="poly" id="edge15_Node000013_Node000012" title=" " alt="" coords="969,256,915,297,913,292,964,257"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="947,304,1021,331"/>
+<area shape="poly" id="edge14_Node000013_Node000014" title=" " alt="" coords="986,255,986,290,982,287,982,258"/>
+<area shape="poly" id="edge17_Node000015_Node000011" title=" " alt="" coords="82,254,198,296,194,300,81,259"/>
+<area shape="poly" id="edge19_Node000016_Node000002" title=" " alt="" coords="755,255,755,290,751,287,751,258"/>
+<area shape="poly" id="edge20_Node000016_Node000012" title=" " alt="" coords="777,254,852,297,847,296,775,259"/>
+<area shape="poly" id="edge22_Node000017_Node000007" title=" " alt="" coords="465,254,484,291,479,289,462,259"/>
+</map>

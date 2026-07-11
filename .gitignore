@@ -41,3 +41,27 @@
 *.dwo
 *.tmp
 main
+
+# ====== Doxygen build output ======
+# Ignorar la salida HTML/Doxygen generada (se regenera con build_docs.sh).
+# Mantener los .md de docs/ pero no las miles de páginas autogeneradas.
+docs/html/
+docs/latex/
+docs/man/
+docs/xml/
+docs/rtf/
+
+# ====== Archivos de salida de las demos (datos generados en runtime) ======
+*.txt~
+
+# ====== IDE / editores ======
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ====== Sistema ======
+.DS_Store
+Thumbs.db
+desktop.ini

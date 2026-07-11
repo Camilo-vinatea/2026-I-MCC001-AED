@@ -1,0 +1,5 @@
+<map id="Gráfico de jerarquía de clases" name="Gráfico de jerarquía de clases">
+<area shape="rect" id="Node000000" href="$struct_base_container_trait.html" title=" " alt="" coords="5,5,164,48"/>
+<area shape="rect" id="Node000001" href="$struct_vector_traits.html" title="Trait listo&#45;para&#45;usar que combina BaseContainerTrait y un nodo." alt="" coords="212,13,334,40"/>
+<area shape="poly" id="edge6_Node000000_Node000001" title=" " alt="" coords="179,24,214,26,209,27,179,29"/>
+</map>

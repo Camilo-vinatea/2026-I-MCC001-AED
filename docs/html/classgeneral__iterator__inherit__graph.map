@@ -1,0 +1,65 @@
+<map id="general_iterator&lt; Container, IteratorBase &gt;" name="general_iterator&lt; Container, IteratorBase &gt;">
+<area shape="rect" id="Node000001" title="Plantilla CRTP para iteradores uniformes en todos los contenedores." alt="" coords="5,923,188,966"/>
+<area shape="rect" id="Node000002" href="$class_b_tree_iterator.html" title=" " alt="" coords="1171,123,1378,182"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,907,96,742,100,630,108,510,122,393,143,286,156,240,171,200,189,167,210,142,266,99,326,65,390,39,457,21,527,9,598,4,669,3,740,8,878,28,1005,57,1115,89,1203,121,1197,123,1113,95,1004,62,877,33,740,13,669,9,598,9,528,14,459,26,392,44,328,70,269,103,214,146,194,170,176,202,161,242,148,288,127,394,114,511,105,630,101,742,100,907"/>
+<area shape="rect" id="Node000003" href="$class_b_tree_iterator.html" title=" " alt="" coords="1166,215,1384,274"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="99,907,112,798,135,656,150,585,168,520,187,466,210,428,238,397,266,375,293,359,322,348,385,334,463,318,523,306,601,294,792,274,1167,249,1163,252,793,280,602,299,524,311,464,323,386,340,323,354,295,364,269,379,242,401,214,431,192,468,173,521,156,586,141,657,118,799,104,908"/>
+<area shape="rect" id="Node000004" href="$class_binary_tree_iterator.html" title=" " alt="" coords="1179,428,1371,487"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="96,907,104,839,121,753,136,708,155,664,179,622,210,585,230,569,260,553,343,521,448,488,565,457,792,406,940,380,1042,368,1087,369,1142,380,1192,400,1236,427,1231,428,1190,405,1141,385,1086,374,1042,373,941,386,794,412,566,463,449,493,344,526,262,558,233,574,214,589,184,625,160,666,141,710,127,755,109,840,102,908"/>
+<area shape="rect" id="Node000005" href="$class_binary_tree_iterator.html" title=" " alt="" coords="1173,570,1376,628"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="100,907,111,854,131,790,163,725,185,696,210,670,301,602,385,556,466,528,547,513,631,507,723,504,824,500,940,490,1043,474,1088,476,1143,490,1174,505,1204,525,1251,569,1246,569,1200,529,1172,509,1141,495,1087,481,1043,480,941,495,825,505,723,510,631,512,547,519,467,533,387,561,304,606,213,674,189,699,168,728,136,792,116,855,105,908"/>
+<area shape="rect" id="Node000006" href="$class_binary_tree_iterator.html" title=" " alt="" coords="1179,316,1371,375"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="94,907,97,828,112,725,127,670,147,616,175,565,210,520,261,473,317,432,377,398,441,370,507,348,575,331,644,318,713,309,848,301,975,304,1088,313,1181,327,1176,329,1087,319,975,309,848,306,713,314,644,323,576,336,508,353,443,375,380,403,320,437,264,477,214,523,179,568,152,618,132,671,118,726,103,829,99,908"/>
+<area shape="rect" id="Node000007" href="$class_binary_tree_iterator.html" title=" " alt="" coords="1173,886,1376,944"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="202,946,381,950,614,951,877,947,1141,932,1175,931,1170,933,1142,938,877,952,615,957,381,955,204,951"/>
+<area shape="rect" id="Node000008" href="$class_binary_tree_iterator.html" title=" " alt="" coords="1179,676,1371,735"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="182,917,211,910,679,855,984,818,1090,802,1140,790,1148,784,1152,776,1164,760,1207,734,1203,737,1168,764,1157,779,1152,787,1143,795,1091,807,985,823,679,861,212,915,186,921"/>
+<area shape="rect" id="Node000009" href="$class_binary_tree_iterator.html" title=" " alt="" coords="1173,774,1376,832"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="201,931,212,930,387,928,680,928,971,922,1079,913,1116,907,1140,899,1153,887,1164,872,1219,834,1224,831,1168,875,1157,891,1143,904,1118,912,1080,918,972,927,680,934,387,933,212,935,205,935"/>
+<area shape="rect" id="Node000010" href="$class_double_linked_list_backward_iterator.html" title=" " alt="" coords="1185,1027,1364,1070"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="201,956,212,956,473,975,677,982,881,992,1001,1002,1142,1019,1187,1028,1182,1029,1141,1024,1000,1007,881,997,677,987,473,981,211,962,204,960"/>
+<area shape="rect" id="Node000011" href="$class_linked_list_forward_iterator.html" title=" " alt="" coords="1191,1134,1359,1176"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="114,977,133,1007,154,1038,181,1067,213,1090,251,1106,296,1119,405,1137,532,1146,668,1149,935,1144,1050,1142,1142,1144,1193,1149,1188,1150,1142,1150,1050,1148,935,1149,668,1154,532,1152,405,1143,295,1125,249,1111,210,1095,178,1071,150,1042,128,1010,114,982"/>
+<area shape="rect" id="Node000012" href="$classvector__backward__iterator.html" title=" " alt="" coords="1191,1268,1358,1311"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="100,978,111,1039,129,1110,143,1146,162,1180,185,1210,213,1235,236,1245,272,1254,378,1266,516,1273,669,1277,965,1277,1142,1278,1193,1283,1188,1284,1142,1283,965,1282,669,1282,516,1279,378,1272,271,1259,234,1250,210,1240,181,1214,157,1183,138,1148,124,1112,105,1040,100,984"/>
+<area shape="rect" id="Node000013" href="$classvector__forward__iterator.html" title=" " alt="" coords="1198,1395,1352,1438"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="102,978,118,1074,141,1191,156,1249,173,1300,192,1341,213,1367,250,1373,340,1379,621,1392,1199,1412,1195,1416,621,1398,340,1385,249,1378,210,1372,188,1344,168,1302,151,1250,136,1193,113,1075,102,984"/>
+<area shape="rect" id="Node000014" href="$classgeneral__iterator.html" title=" " alt="" coords="485,1515,667,1558"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="99,979,109,1107,128,1275,142,1358,161,1433,185,1493,198,1515,213,1532,246,1553,283,1567,321,1575,361,1577,440,1571,506,1559,511,1558,441,1576,361,1583,321,1580,281,1572,244,1558,210,1536,194,1519,180,1495,156,1435,137,1359,122,1275,104,1108,99,984"/>
+<area shape="rect" id="Node000015" href="$classgeneral__iterator.html" title=" " alt="" coords="485,184,667,243"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="96,907,102,765,118,570,133,471,152,382,178,309,193,281,210,260,239,237,272,219,307,207,343,198,417,192,486,197,482,200,417,198,344,204,308,212,274,224,242,241,214,263,197,284,182,311,157,383,138,472,124,571,107,765,101,908"/>
+<area shape="rect" id="Node000017" href="$classgeneral__iterator.html" title=" " alt="" coords="475,688,676,747"/>
+<area shape="poly" id="edge18_Node000001_Node000017" title=" " alt="" coords="112,908,151,847,178,816,210,790,274,758,343,736,412,723,477,718,472,721,412,729,345,742,276,763,213,795,182,820,155,850,117,910"/>
+<area shape="rect" id="Node000019" href="$classgeneral__iterator.html" title=" " alt="" coords="464,1032,688,1091"/>
+<area shape="poly" id="edge26_Node000001_Node000019" title=" " alt="" coords="120,976,161,1021,185,1041,213,1056,275,1075,340,1084,404,1084,466,1081,461,1083,404,1090,339,1089,274,1080,211,1061,182,1046,157,1025,121,981"/>
+<area shape="rect" id="Node000021" href="$classgeneral__iterator.html" title=" " alt="" coords="485,1166,667,1224"/>
+<area shape="poly" id="edge29_Node000001_Node000021" title=" " alt="" coords="102,978,116,1031,136,1089,150,1118,167,1146,188,1170,213,1190,244,1207,278,1218,313,1225,349,1229,420,1227,486,1218,482,1221,420,1232,349,1234,312,1231,277,1223,242,1212,210,1194,185,1174,163,1149,145,1121,131,1091,111,1032,102,984"/>
+<area shape="rect" id="Node000023" href="$classgeneral__iterator.html" title=" " alt="" coords="485,1299,667,1358"/>
+<area shape="poly" id="edge32_Node000001_Node000023" title=" " alt="" coords="103,978,119,1070,142,1180,157,1234,174,1283,193,1321,213,1345,232,1354,259,1360,328,1361,408,1354,487,1345,482,1347,408,1360,328,1367,258,1365,231,1359,210,1349,188,1324,169,1285,152,1236,137,1182,114,1070,102,984"/>
+<area shape="rect" id="Node000025" href="$classgeneral__iterator.html" title=" " alt="" coords="485,1432,667,1491"/>
+<area shape="poly" id="edge35_Node000001_Node000025" title=" " alt="" coords="100,978,113,1092,133,1237,148,1308,166,1373,188,1424,200,1443,213,1457,243,1476,276,1490,310,1498,346,1502,418,1499,487,1489,482,1490,419,1504,346,1507,310,1503,274,1495,241,1481,210,1461,196,1446,183,1427,161,1374,143,1310,128,1238,108,1092,100,983"/>
+<area shape="rect" id="Node000016" href="$class_b_tree_iterator.html" title="Iterador uniforme para el B&#45;Tree que expone además level()." alt="" coords="742,192,912,235"/>
+<area shape="poly" id="edge15_Node000015_Node000016" title=" " alt="" coords="681,211,744,212,740,215,684,216"/>
+<area shape="poly" id="edge16_Node000016_Node000002" title=" " alt="" coords="926,190,940,187,1059,170,1173,160,1169,163,1060,176,941,192,928,194"/>
+<area shape="poly" id="edge17_Node000016_Node000003" title=" " alt="" coords="926,231,941,232,1057,241,1168,244,1163,247,1056,246,940,238,928,236"/>
+<area shape="rect" id="Node000018" href="$class_binary_tree_iterator.html" title="Iterador uniforme que materializa la cola al construirse." alt="" coords="754,670,900,712"/>
+<area shape="poly" id="edge19_Node000017_Node000018" title=" " alt="" coords="691,703,756,697,752,700,693,708"/>
+<area shape="poly" id="edge20_Node000018_Node000004" title=" " alt="" coords="850,655,888,609,913,586,939,566,992,539,1037,526,1083,517,1141,502,1193,486,1188,489,1142,507,1084,522,1038,531,994,544,942,571,916,590,892,613,854,659"/>
+<area shape="poly" id="edge21_Node000018_Node000005" title=" " alt="" coords="886,661,940,642,1031,627,1175,610,1170,613,1032,632,941,647,888,665"/>
+<area shape="poly" id="edge22_Node000018_Node000006" title=" " alt="" coords="834,654,847,609,868,556,898,503,917,479,939,457,965,438,989,425,1034,413,1082,407,1141,392,1198,374,1193,377,1142,397,1083,412,1035,418,990,430,967,442,942,461,921,482,903,506,873,559,852,611,839,656"/>
+<area shape="poly" id="edge23_Node000018_Node000007" title=" " alt="" coords="845,723,885,785,911,816,942,841,997,869,1057,889,1117,902,1175,911,1170,912,1116,907,1056,894,995,874,939,845,908,819,881,788,844,729"/>
+<area shape="poly" id="edge24_Node000018_Node000008" title=" " alt="" coords="914,691,1180,701,1176,704,916,696"/>
+<area shape="poly" id="edge25_Node000018_Node000009" title=" " alt="" coords="874,718,908,735,942,748,1000,765,1060,778,1175,795,1170,797,1059,783,999,770,940,753,905,739,875,723"/>
+<area shape="rect" id="Node000020" href="$class_double_linked_list_backward_iterator.html" title="Iterador que recorre la DLL usando m_pPrev." alt="" coords="737,1035,917,1078"/>
+<area shape="poly" id="edge27_Node000019_Node000020" title=" " alt="" coords="703,1056,739,1057,734,1059,704,1061"/>
+<area shape="poly" id="edge28_Node000020_Node000010" title=" " alt="" coords="931,1052,1187,1049,1182,1051,932,1057"/>
+<area shape="rect" id="Node000022" href="$class_linked_list_forward_iterator.html" title="Iterador forward que avanza siguiendo m_pNext." alt="" coords="743,1168,911,1211"/>
+<area shape="poly" id="edge30_Node000021_Node000022" title=" " alt="" coords="682,1190,745,1191,740,1192,683,1195"/>
+<area shape="poly" id="edge31_Node000022_Node000011" title=" " alt="" coords="926,1183,1141,1168,1193,1165,1188,1166,1142,1174,927,1188"/>
+<area shape="rect" id="Node000024" href="$classvector__backward__iterator.html" title="Iterador hacia atrás para Vector (decrementa el puntero)." alt="" coords="743,1302,911,1344"/>
+<area shape="poly" id="edge33_Node000023_Node000024" title=" " alt="" coords="682,1323,745,1324,740,1325,683,1329"/>
+<area shape="poly" id="edge34_Node000024_Node000012" title=" " alt="" coords="926,1316,1141,1302,1193,1299,1188,1300,1142,1307,927,1321"/>
+<area shape="rect" id="Node000026" href="$classvector__forward__iterator.html" title="Iterador hacia adelante para Vector (incrementa el puntero)." alt="" coords="750,1434,904,1476"/>
+<area shape="poly" id="edge36_Node000025_Node000026" title=" " alt="" coords="683,1456,752,1457,747,1457,683,1461"/>
+<area shape="poly" id="edge37_Node000026_Node000013" title=" " alt="" coords="919,1450,1026,1444,1141,1435,1194,1430,1200,1430,1142,1440,1026,1450,920,1455"/>
+</map>

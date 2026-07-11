@@ -1,0 +1,11 @@
+<map id="Gráfico de jerarquía de clases" name="Gráfico de jerarquía de clases">
+<area shape="rect" id="Node000000" href="$struct_ascending_trait.html" title=" " alt="" coords="12,5,151,32"/>
+<area shape="rect" id="Node000001" href="$struct_ascending_heap_trait.html" title="Trait para heap ascendente (min&#45;heap en el tope)." alt="" coords="210,37,380,64"/>
+<area shape="poly" id="edge2_Node000000_Node000001" title=" " alt="" coords="166,29,212,37,207,39,167,34"/>
+<area shape="rect" id="Node000002" href="$struct_base_container_trait.html" title=" " alt="" coords="5,56,158,99"/>
+<area shape="poly" id="edge3_Node000002_Node000001" title=" " alt="" coords="173,63,212,60,207,62,174,68"/>
+<area shape="rect" id="Node000003" href="$struct_descending_heap_trait.html" title="Trait para heap descendente (max&#45;heap en el tope)." alt="" coords="206,92,384,119"/>
+<area shape="poly" id="edge4_Node000002_Node000003" title=" " alt="" coords="173,87,208,93,203,94,173,92"/>
+<area shape="rect" id="Node000004" href="$struct_descending_trait.html" title=" " alt="" coords="8,123,155,149"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="170,121,208,118,203,119,171,126"/>
+</map>

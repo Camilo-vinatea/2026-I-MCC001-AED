@@ -1,0 +1,7 @@
+<map id="BTree&lt; Traits &gt;" name="BTree&lt; Traits &gt;">
+<area shape="rect" id="Node000001" title="Declaración adelantada de BTree (usa CBTreePage)." alt="" coords="61,203,173,229"/>
+<area shape="rect" id="Node000002" href="$class_c_b_tree_page.html" title=" " alt="" coords="5,104,229,131"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="119,145,120,203,114,202,115,148"/>
+<area shape="rect" id="Node000003" href="$class_c_b_tree_page.html" title="Página (nodo) del B&#45;Tree con split en 3 vías, redistribuciones y fusión (Merge)." alt="" coords="41,5,193,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="118,45,120,104,114,103,116,50"/>
+</map>
