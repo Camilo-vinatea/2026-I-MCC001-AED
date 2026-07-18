@@ -8,7 +8,8 @@ SRCS = main.cpp \
 	   demos/DemoBinaryTree.cpp \
 	   demos/DemoAVL.cpp \
 	   demos/BTreeDemo.cpp \
-	   demos/stdmapDemo.cpp
+	   demos/stdmapDemo.cpp \
+	   demos/DigitalTrieDemo.cpp
 # 	   DemoVector.cpp
 # macros.cpp vector.cpp
 
