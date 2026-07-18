@@ -7,6 +7,7 @@
 #include "containers/Btree.h"
 #include "containers/mapDemo.h"
 #include "containers/digitalTrie.h"
+#include "containers/hashPoissonDemo.h"
 
 using namespace std;
 
@@ -24,6 +25,7 @@ int main() {
     // DemoAVL();
     // BTreeDemo();
     // stdmapDemo();
-    DigitalTrieDemo();
+    // DigitalTrieDemo();
+    HashPoissonDemo();
     return 0;
 }
