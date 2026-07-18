@@ -33,6 +33,10 @@ void DigitalTrieDemo() {
     cout << "Trie (orden lexicografico): " << trie << endl;
     cout << "Tamano: " << trie.size() << endl;
 
+    //! @test Dibujo del trie como arbol ASCII (terminales marcados con *).
+    cout << "Arbol del trie:" << endl;
+    trie.printTree(cout);
+
     //! @test Recorrido con iteradores (range-for implícito vía begin/end).
     cout << "Recorrido con iteradores:" << endl;
     for (auto it = trie.begin(); it != trie.end(); ++it)

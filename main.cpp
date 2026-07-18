@@ -27,10 +27,10 @@ int main() {
     // DemoAVL();
     // BTreeDemo();
     // stdmapDemo();
-    // DigitalTrieDemo();
+     DigitalTrieDemo();
     // HashPoissonDemo();
-    DijkstraDemo();
-    cout << "\n";
-    LRUCacheDemo();
+    //DijkstraDemo();
+    //cout << "\n";
+    //LRUCacheDemo();
     return 0;
 }

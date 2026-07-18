@@ -244,6 +244,13 @@ public:
         return ss.str();
     }
 
+    //! @brief Dibuja el trie como árbol ASCII indentado; los nodos terminales
+    //!        se marcan con `*`. Evidencia prefijos compartidos y ramificación.
+    void printTree(ostream& os = cout) const {
+        os << "(raiz)\n";
+        printSubtree(m_pRoot, "", os);
+    }
+
     //! @brief Iterador a la primera clave (menor en orden lexicográfico).
     forward_iterator begin() { return {this, firstTerminal()}; }
     //! @brief Iterador "uno más allá" de la última clave.
@@ -267,6 +274,17 @@ public:
     }
 
 private:
+    //! @brief Recorrido recursivo para `printTree`: dibuja hijos ordenados.
+    void printSubtree(Node* node, const string& prefix, ostream& os) const {
+        size_t i = 0, n = node->m_children.size();
+        for (auto& [c, child] : node->m_children) {
+            bool last = (++i == n);
+            os << prefix << (last ? "\\-- " : "|-- ")
+               << c << (child->m_isEnd ? "*" : "") << "\n";
+            printSubtree(child, prefix + (last ? "    " : "|   "), os);
+        }
+    }
+
     //! @brief Primer nodo terminal en preorden desde la raíz.
     Node* firstTerminal() const {
         Node* p = m_pRoot;
