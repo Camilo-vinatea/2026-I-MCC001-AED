@@ -8,6 +8,8 @@
 #include "containers/mapDemo.h"
 #include "containers/digitalTrie.h"
 #include "containers/hashPoissonDemo.h"
+#include "containers/dijkstraDemo.h"
+#include "containers/lruCacheDemo.h"
 
 using namespace std;
 
@@ -26,6 +28,9 @@ int main() {
     // BTreeDemo();
     // stdmapDemo();
     // DigitalTrieDemo();
-    HashPoissonDemo();
+    // HashPoissonDemo();
+    DijkstraDemo();
+    cout << "\n";
+    LRUCacheDemo();
     return 0;
 }

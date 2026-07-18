@@ -10,7 +10,9 @@ SRCS = main.cpp \
 	   demos/BTreeDemo.cpp \
 	   demos/stdmapDemo.cpp \
 	   demos/DigitalTrieDemo.cpp \
-	   demos/HashPoissonDemo.cpp
+	   demos/HashPoissonDemo.cpp \
+	   demos/DijkstraDemo.cpp \
+	   demos/LRUCacheDemo.cpp
 # 	   DemoVector.cpp
 # macros.cpp vector.cpp
 

@@ -185,7 +185,6 @@ void demoMapDouble() {
 
     for (const auto& [k, v] : m) cout << k << " -> " << v << "\n";
 }
-
 } // namespace
 
 //! @brief Punto de entrada unico del demo de std::map.
