@@ -119,7 +119,7 @@ void demoBounds() {
     map<TI, TS> m{{10, "A"}, {20, "B"}, {30, "C"}, {40, "D"}};
 
     auto lo = m.lower_bound(20); // primer >= 20.
-    auto hi = m.upper_bound(30); // primer > 30.
+    auto hi = m.upper_bound(30); // primer <= 30.
     cout << "[lower_bound(20), upper_bound(30)): ";
     for (auto it = lo; it != hi; ++it) cout << it->first << " ";
     cout << "\n";
@@ -140,22 +140,8 @@ void demoMultiVsUnique() {
     }
 }
 
-// 8. Rendimiento: O(log n) por operacion. Insercion masiva con Refs.
-void demoBulkInsertAndComplexity() {
-    section("Insercion masiva: O(n log n)");
-    map<TI, Ref> m;                                     // clave TI, valor Ref (long).
-    constexpr TI N = 100000;
 
-    for (TI i = 0; i < N; ++i) {
-        m.emplace(i, static_cast<Ref>(i));
-    }
-    cout << "size=" << m.size() << " (insercion O(n log n))\n";
-
-    // std::map garantiza busqueda O(log n) y orden estable.
-    cout << "m[50000]=" << m[50000] << "\n";
-}
-
-// 9. Algoritmos STL sobre map: for_each, find_if, any_of/all_of.
+// 8. Algoritmos STL sobre map: for_each, find_if, any_of/all_of.
 void demoStlAlgorithms() {
     section("Algoritmos STL sobre map");
     map<TS, TI> scores{{"ana", 80}, {"luis", 95}, {"sofia", 70}};
@@ -180,7 +166,7 @@ void demoStlAlgorithms() {
          << "any_pass=" << any_pass << " all_pass=" << all_pass << "\n";
 }
 
-// 10. Insercion desde otro contenedor / initializer_list.
+// 9. Insercion desde otro contenedor / initializer_list.
 void demoBulkConstruction() {
     section("Construccion bulk");
     vector<pair<TS, TI>> v{{"x", 1}, {"y", 2}, {"x", 99}};
@@ -191,7 +177,7 @@ void demoBulkConstruction() {
     cout << "m2 size=" << m2.size() << "\n";
 }
 
-// 11. Map<double,double> usando TD para mostrar uso del alias de coma flotante.
+// 10. Map<double,double> usando TD para mostrar uso del alias de coma flotante.
 void demoMapDouble() {
     section("map<TD, TD>: doubles como clave y valor");
     map<TD, TD> m{{1.5, 2.5}, {3.0, 4.0}, {0.5, 1.0}};
@@ -211,7 +197,6 @@ void stdmapDemo() {
     demoCustomComparator();
     demoBounds();
     demoMultiVsUnique();
-    demoBulkInsertAndComplexity();
     demoStlAlgorithms();
     demoBulkConstruction();
     demoMapDouble();
