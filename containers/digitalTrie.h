@@ -168,6 +168,22 @@ public:
         cur->m_ref  = ref;
     }
 
+    //! @brief Acceso tipo `std::map`: devuelve referencia al valor de `key`,
+    //!        creando la clave (con `T{}`) si no existía. Solo toca `m_data`.
+    T& operator[](const string& key) {
+        scoped_lock<mutex> lock(m_mtx);
+        Node* cur = m_pRoot;
+        for (char c : key) {
+            auto it = cur->m_children.find(c);
+            if (it == cur->m_children.end())
+                cur = cur->m_children[c] = new Node(c, cur);
+            else
+                cur = it->second;
+        }
+        if (!cur->m_isEnd) { cur->m_isEnd = true; ++m_size; }
+        return cur->m_data;
+    }
+
     //! @brief Localiza el nodo terminal de `key`, o `nullptr` si no existe.
     Node* find(const string& key) const {
         Node* cur = m_pRoot;

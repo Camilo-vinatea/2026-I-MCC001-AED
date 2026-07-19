@@ -54,6 +54,14 @@ void DigitalTrieDemo() {
     using TN = DigitalTrie<TI>::Node;
     trie.ForEach(PrintKey<TN>, cout);
 
+    //! @test operator[] estilo std::map: lee, actualiza y crea claves.
+    cout << "trie[\"cat\"] (valor actual): " << trie["cat"] << endl;
+    trie["cat"] = 999;                     // actualiza valor existente
+    trie["fish"]++;                        // crea "fish" con T{}=0, luego ++
+    cout << "Tras trie[\"cat\"]=999 y trie[\"fish\"]++:" << endl;
+    cout << "  cat  = " << trie["cat"]  << endl;
+    cout << "  fish = " << trie["fish"] << " (size=" << trie.size() << ")" << endl;
+
     //! @test FirstThat con predicado.
     auto it = trie.FirstThat(KeyLongerThan<TN>, 3);
     if (it != trie.end())
