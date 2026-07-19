@@ -40,7 +40,7 @@ pair<vector<TI>, vector<TI>> dijkstra(const Graph& g, TI src) {
     while (!pq.empty()) {
         auto [d, u] = pq.top();
         pq.pop();
-        if (d > dist[u]) continue;          // entrada obsoleta (lazy deletion)
+        if (d > dist[u]) continue;          
         for (auto [v, w] : g[u]) {
             if (dist[u] + w < dist[v]) {
                 dist[v] = dist[u] + w;
